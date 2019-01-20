@@ -1,0 +1,465 @@
+.main-container {
+  background-color: #fff;
+  min-height: 400px;
+  padding: 10px 0;
+}
+.row {
+  margin-top: 10px;
+}
+.mrfoot {
+  padding-top: 0 !important;
+}
+.page-shop .cover {
+  height: 250px;
+  width: 100%;
+  position: relative;
+}
+.page-shop .cover .shop-name {
+  position: absolute;
+  top: 8px;
+  left: -5px;
+  background: hsla(0, 0%, 46%, 0.79);
+}
+.page-shop .cover .shop-name h2 {
+  margin: 0;
+  font-size: 20px;
+  color: #fff;
+  text-transform: uppercase;
+  padding: 5px;
+  float: left;
+  font-weight: bold;
+}
+.page-shop .shop-info {
+  width: 100%;
+  display: table;
+  margin-top: 20px;
+}
+.info-left {
+  width: 300px;
+  display: table-cell;
+}
+.page-shop .shop-info .info-left .owner {
+  display: table;
+  width: 300px;
+  margin-bottom: 10px;
+}
+.page-shop .shop-info .info-left .owner .o-avatar {
+  width: 50px;
+  display: table-cell;
+  vertical-align: top;
+}
+.page-shop .shop-info .info-left .owner .o-avatar img {
+  width: 50px;
+  height: 50px;
+}
+.page-shop .shop-info .info-left .owner .o-avatar .lazy-image {
+  display: inline;
+}
+.page-shop .shop-info .info-left .owner .o-name {
+  display: table-cell;
+  width: auto;
+  padding-left: 10px;
+  vertical-align: top;
+  font-weight: bold;
+}
+.page-shop .shop-info .info-left .owner .o-name div.chushop {
+  font-size: 10px;
+  color: #888;
+  line-height: 10px;
+}
+.page-shop .shop-info .info-left .owner .o-name .u-name {
+  font-size: 13px;
+  color: #000;
+  line-height: 15.6px;
+}
+.page-shop .shop-info .info-left .owner .o-name .u-button {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.page-shop .shop-info .info-left .owner .o-name .u-button span.follow_user {
+  background: #ff8000;
+}
+.page-shop .shop-info .info-left .owner .o-name .u-button span {
+  border-radius: 10px;
+  font-size: 11px;
+  text-transform: uppercase;
+  width: 50%;
+  padding: 3px 10px;
+  color: #fff;
+  cursor: pointer;
+}
+.page-shop .shop-info .info-left .owner .o-name .u-button span.chat {
+  background: #7bae1e;
+  margin-left: 3px;
+}
+#show-map {
+  width: 100%;
+  height: 130px;
+  position: relative;
+  overflow: hidden;
+}
+.page-shop .shop-info .info-left .extra-info {
+  margin-top: 8px;
+}
+.page-shop .shop-info .info-left .extra-info .if {
+  font-size: 13px;
+  color: #000;
+  padding: 5px 0;
+  line-height: 15.6px;
+}
+.page-shop .shoplocation {
+  background-position: -5px -189px;
+  width: 16px;
+  height: 15px;
+  margin-bottom: -2px;
+  margin-right: 5px;
+  display: inline-block;
+  background: url(https://static18.muarecdn.com/images/shop/shop_page.png)
+    no-repeat scroll -5px -189px;
+  overflow: hidden;
+  text-indent: -9999px;
+  text-align: left;
+}
+.page-shop .shopphone {
+  width: 16px;
+  height: 15px;
+  margin-bottom: -2px;
+  margin-right: 5px;
+  display: inline-block;
+  background: url(https://static18.muarecdn.com/images/shop/shop_page.png)
+    no-repeat scroll -5px -209px;
+  overflow: hidden;
+  text-indent: -9999px;
+  text-align: left;
+}
+.page-shop .shop-info .info-right {
+  display: table-cell;
+  width: auto;
+  padding-left: 10px;
+  vertical-align: top;
+}
+.page-shop .shop-info .info-right .khung {
+  border: 1px dashed #ccc;
+  padding: 20px 38px 17px 18px;
+  width: 100%;
+  float: left;
+  border-radius: 10px;
+}
+.page-shop .shop-info .info-right .khung .gioi-thieu .no_slider {
+  width: 100%;
+}
+.page-shop .shop-info .info-right .khung .gioi-thieu .o-title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  padding-bottom: 20px;
+}
+.page-shop .shop-info .info-right .khung .gioi-thieu .o-desc .de {
+  width: auto;
+  vertical-align: top;
+  text-align: justify;
+}
+.page-shop .shop-info .info-right .khung .gioi-thieu .o-desc .de .description {
+  min-height: 115px;
+}
+.page-shop .shop-info .info-right .khung .static {
+  margin-top: 40px;
+}
+.page-shop .shop-info .info-right .khung .gioi-thieu .o-desc .de .item-s {
+  width: 20%;
+  display: table;
+  float: left;
+  height: 50px;
+}
+.page-shop
+  .shop-info
+  .info-right
+  .khung
+  .gioi-thieu
+  .o-desc
+  .de
+  .item-s
+  .icon-s {
+  width: 20px;
+  display: table-cell;
+  vertical-align: bottom;
+}
+.page-shop
+  .shop-info
+  .info-right
+  .khung
+  .gioi-thieu
+  .o-desc
+  .de
+  .item-s
+  .s-content {
+  width: auto;
+  display: table-cell;
+  vertical-align: bottom;
+  padding-left: 10px;
+  font-size: 13px;
+  color: #333;
+}
+.page-shop
+  .shop-info
+  .info-right
+  .khung
+  .gioi-thieu
+  .o-desc
+  .de
+  .item-s
+  .s-content
+  .count {
+  font-size: 15px;
+  padding-bottom: 5px;
+  font-weight: 700;
+}
+.shoplist {
+  width: 16px;
+  height: 20px;
+  display: inline-block;
+  background: url(https://static18.muarecdn.com/images/shop/shop_page.png)
+    no-repeat scroll -5px -164px;
+  overflow: hidden;
+  text-indent: -9999px;
+  text-align: left;
+}
+.shopview {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  background: url(https://static18.muarecdn.com/images/shop/shop_page.png)
+    no-repeat scroll -5px -73px;
+  overflow: hidden;
+  text-indent: -9999px;
+  text-align: left;
+}
+.shopaddress {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  background: url(https://static18.muarecdn.com/images/shop/shop_page.png)
+    no-repeat scroll -5px 0;
+  overflow: hidden;
+  text-indent: -9999px;
+  text-align: left;
+}
+.shopinfo {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  background: url(https://static18.muarecdn.com/images/shop/shop_page.png)
+    no-repeat scroll -5px -25px;
+  overflow: hidden;
+  text-indent: -9999px;
+  text-align: left;
+}
+.shopcomment {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  background: url(https://static18.muarecdn.com/images/shop/shop_page.png)
+    no-repeat scroll -5px -98px;
+  overflow: hidden;
+  text-indent: -9999px;
+  text-align: left;
+}
+/* shop-row */
+.page-shop .shop-row {
+  width: 100%;
+  float: left;
+  position: relative;
+}
+.page-shop .shop-row .row-title {
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+  margin-top: 30px;
+}
+.page-shop .shop-row .list-post {
+  width: 100%;
+  float: left;
+}
+.page-shop .shop-row .list-post .shop-post {
+  padding: 0;
+  margin: 3px 0 20px;
+  height: 90px;
+  display: table;
+}
+.page-shop .shop-row .list-post .col-xs-6 {
+  width: 50%;
+}
+
+.page-shop .shop-row .list-post .shop-post .img-post {
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 90px;
+  height: 90px;
+  display: table-cell;
+  vertical-align: top;
+  border-radius: 10px;
+}
+.page-shop .shop-row .list-post .shop-post .img-post img {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  -webkit-box-shadow: 0 1px 20px #b5aeae;
+  box-shadow: 0 1px 20px #b5aeae;
+}
+.page-shop .shop-row .list-post .shop-post .info-post {
+  padding-right: 75px;
+  font-size: 12px;
+  display: table-cell;
+  vertical-align: top;
+  padding-left: 10px;
+}
+.page-shop .shop-row .list-post .shop-post .info-post .title-post {
+  overflow: hidden;
+  max-height: 30px;
+}
+.page-shop
+  .shop-row
+  .list-post
+  .shop-post
+  .info-post
+  .title-post
+  .title-post-h2 {
+  margin: 0;
+  font-size: 14px;
+}
+.page-shop
+  .shop-row
+  .list-post
+  .shop-post
+  .info-post
+  .title-post
+  .title-post-h2
+  a {
+  font-size: 14px;
+  font-weight: Bold;
+  color: #175f92;
+}
+.page-shop .shop-row .list-post .shop-post .info-post .location-post {
+  color: #666;
+  padding-top: 5px;
+}
+.page-shop .shop-row .list-post .shop-post .info-post .location-post .add-h3 {
+  margin: 0;
+  display: inline-block;
+  font-size: 13px;
+  font-family: Roboto-Italic;
+}
+.page-shop .shop-row .list-post .shop-post .info-post .price-post {
+  line-height: 20px;
+  margin-top: 5px;
+}
+.page-shop .shop-row .list-post .shop-post .info-post .price-post span {
+  color: #d80000;
+  font-size: 18px;
+}
+.see_more {
+  margin: 0 auto;
+}
+.button_see_more {
+  width: 100%;
+  text-align: center;
+}
+.page-shop .shop-row .filter-item {
+  width: 100%;
+  display: inline-block;
+  margin-bottom: 10px;
+  font-size: 13px;
+}
+.page-shop .shop-row .filter-item .filter-category {
+  display: inline-block;
+  float: left;
+}
+.page-shop .shop-row .filter-item .filter-category select {
+  color: #666;
+  padding: 5px;
+  margin-left: 10px;
+  border-radius: 10px;
+}
+.page-shop .shop-row .filter-item .filter-order {
+  display: inline-block;
+  float: right;
+  font-size: 13px;
+  color: #666;
+}
+.page-shop .shop-row .filter-item .filter-order select {
+  padding: 5px;
+  border-radius: 10px;
+}
+.page-shop .shop-row .list-items {
+  width: 100%;
+}
+.page-shop .shop-row .list-items .shop-item {
+  margin-bottom: 20px;
+}
+.col-xs-15 {
+  width: 18%;
+  float: left;
+  position: relative;
+  min-height: 1px;
+  margin-right: 2.5%;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.page-shop .shop-row .list-items .img-item .avatar {
+  position: relative;
+}
+.page-shop .shop-row .list-items .img-item .avatar .sale-state {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  text-transform: uppercase;
+  color: #fff;
+  font-size: 14px;
+  padding: 0 15px;
+  background: #999;
+  line-height: 24px;
+}
+.page-shop .shop-row .list-items .shop-item .info-item .title-item .item-h2 a {
+  font-size: 14px;
+  font-weight: bold;
+  color: #175f92;
+  text-overflow: ellipsis;
+  max-height: 40px;
+  white-space: nowrap;
+  width: 100%;
+  display: inline-block;
+  overflow: hidden;
+  margin: 10px 0 5px;
+}
+.page-shop .shop-row .list-items .shop-item .info-item .price-item {
+  font-size: 16px;
+  color: #d80000;
+}
+.page-shop .shop-row .shop-chat {
+  position: absolute;
+  top: 10px;
+  right: 0;
+  text-transform: uppercase;
+  color: #fff;
+  background: #7bae1e;
+  border: 2px solid #8cc622;
+  border-radius: 5px;
+  padding: 3px 15px 3px 40px;
+}
+.shopicon-button {
+  width: 20px;
+  height: 17px;
+  position: absolute;
+  left: 10px;
+  top: 3px;
+  display: inline-block;
+  background: url(https://static18.muarecdn.com/images/shop/shop_page.png)
+    no-repeat scroll -5px -51px;
+  overflow: hidden;
+  text-indent: -9999px;
+  text-align: left;
+}

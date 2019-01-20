@@ -1,0 +1,77 @@
+.storage_shop{
+
+}
+
+.menu_left_storage_tomiot{
+
+}
+
+.thong_bao_tomiot{
+
+}
+
+
+.loc_san_pham_tomiot{
+	display: table;
+}
+
+.thong_tin_loc_tomiot{
+	display: table-cell;
+}
+
+.combo_loc_tomiot{
+	display: table-cell;
+}
+
+.content_quan_ly_cua_hang{
+
+}
+
+.img_sp_kho_hang_tomiot{
+	padding: 10px;
+}
+
+.can_giua_tomiot{
+	text-align: center;
+}
+.red_text_tomiot{
+	color: red;
+}
+.button_inline_tomiot {
+  background-color: white; 
+  color: black; 
+  border: 2px solid #008CBA;
+}
+.button{
+  color: #000;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border: 1px solid #ccc;
+}
+.button_inline_tomiot:hover 
+{
+	background-color: #008CBA;
+  	color: white;
+}
+
+.display_table_cell_tomiot{
+	display: table-cell;
+	padding: 10px;
+}
+.display_table_tomiot{
+	display: table;
+	width: 100%;
+}
+.them_moi_san_pham_kho_hang_tomiot{
+	/*height: 200px; */
+	/*background-color: #ccc;*/
+	text-align: center;
+}
+.can_trai_tomiot{
+	float: left;
+}
