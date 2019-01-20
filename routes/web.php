@@ -8,6 +8,9 @@ Route::get('/home', function () {
     return view('User.trangchu');
 });
 
+Route::get('/chitietdanhmuc', function () {
+    return view('User.chitietdanhmuc');
+});
 
 
 
