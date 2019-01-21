@@ -14,101 +14,52 @@
           <div class="category">
             <div class="parent">
               <h2 class="category-h2">
-                <a href="">Thời trang</a>
+                @include('user.chitietdanhmuc.tendanhmuc')
               </h2>
             </div>
             <ul class="child">
-              <li><a href="">Quần áo</a></li>
-              <li><a href="">Giày dép, túi xách</a></li>
-              <li><a href="">Mẹ và bé</a></li>
-              <li><a href="">Trang sức, và phụ kiện</a></li>
-              <li><a href="">Quần áo</a></li>
+              @include('user.chitietdanhmuc.menu-danhmuc')
             </ul>
             <a class="all-cate" href="">Tất cả chuyên mục</a>
           </div>      
           <div class="show">
             <p class="title-blur">hiển thị theo</p>
-            <div>
-              <div class="radio">
-                <input type="radio" id="post" class="active" checked="" name="hienthi" value="">
-                <label for="post" class="find_radio_lb"><a class="type-ranger" href="">Toàn bộ tin đăng</a></label>
-              </div>
-              <div class="radio">
-                <input type="radio" id="service" class="" name="hienthi" value="">
-                <label for="service" class="find_radio_lb"><a class="type-ranger" href="">Các dịch vụ liên quan</a></label>
-              </div>
-              <div class="radio">
-                <input type="radio" id="product" class="" name="hienthi" value="">
-                <label for="product" class="find_radio_lb"><a class="type-ranger" href="">Kho sản phẩm</a></label><span class="label label-success">Mới</span>
-              </div>
-            </div>
-          </div> 
-          <div class="filter-stop"></div>   
-          <div class="find" id="filter-fix" style="position: unset;width: unset;top: unset;">
-            <p class="title-blur">lọc theo</p>
-            <div class="quality filter">
-              <p class="title">Tình trạng</p>
-              <div class="form-group">
-                <input type="checkbox" name="quality[]" checked="" value="" id="new">
-                <label for="new"><a class="quality-ranger" href="#">Mới</a></label>
-              </div>
-              <div class="form-group">
-                <input type="checkbox" name="quality[]" checked="" value="" id="new_90">
-                <label for="new_90"><a class="quality-ranger" href="">Mới 90%</a></label>
-              </div>
-              <div class="form-group">
-                <input type="checkbox" name="quality[]" value="" id="new_80">
-                <label for="new_80"><a class="quality-ranger" href="">Mới 80%</a></label>
-              </div>
-              <div class="form-group">
-                <input type="checkbox" name="quality[]" value="" id="old">
-                <label for="old"><a class="quality-ranger" href="">Cũ</a></label>
-              </div>
-            </div>
-            <div class="price">
-              <div class="title">Giá (vnđ)</div>
-              <div class="find-price">
-                <ul class="list-price active">
-                  <li data-value="0-500000"><a class="price-ranger" href="">≤ 500.000đ</a></li>
-                  <li data-value="500000-2000000"><a class="price-ranger" href="">500.000đ - 2.000.000đ</a></li>
-                  <li data-value="2000000-5000000"><a class="price-ranger" href="">2.000.000đ - 5.000.000đ</a></li>
-                  <li data-value="5000000-10000000"><a class="price-ranger" href="">5.000.000đ - 10.000.000đ</a></li>
-                  <li class="custom-price" data-value="10000000-2000000000"><a class="price-ranger" href="">≥ 10.000.000đ</a></li>
-                </ul>
-                
-              </div>
-            </div>
-
+            @include('user.chitietdanhmuc.sort-view')
+          </ul>
+        </div> 
+        <div class="filter-stop"></div>   
+        <div class="find" id="filter-fix" style="position: unset;width: unset;top: unset;">
+          <p class="title-blur">lọc theo</p>
+          <div class="quality filter">
+            <p class="title">Tình trạng</p>
+            @include('user.chitietdanhmuc.sort-tinhtrang')
             
-            
-          </div>          
+          </div>
+          <div class="price">
+            <div class="title">Giá (vnđ)</div>
+            @include('user.chitietdanhmuc.sort-price')
+          </div>
+        </div>          
 
+      </div>
+    </div>
+    <div class="col-lg-7 col-md-7"><!-- nội dung các bài đăng -->
+      <div id="view-post" class="view-post">
+        <div class="title-category">
+         <h1 class="title-box">
+          Đăng bán Điện thoại phổ thông tại Hà Nội
+        </h1>
+        <p class="count-result"> Tin đăng rao bán về <b style="font-weight: bold;">Điện thoại phổ thông</b> tại <b style="font-weight: bold;">Hà Nội</b></p>
+      </div>
+      <div class="row-no-padding pagination-box">
+        @include('user.chitietdanhmuc.phantrang')
+
+        <div class="sorting">
+          @include('user.chitietdanhmuc.sort-timkiem')
         </div>
       </div>
-      <div class="col-lg-7 col-md-7"><!-- nội dung các bài đăng -->
-        <div id="view-post" class="view-post">
-          <div class="title-category">
-           <h1 class="title-box">
-            Đăng bán Điện thoại phổ thông tại Hà Nội
-          </h1>
-          <p class="count-result"> Tin đăng rao bán về <b style="font-weight: bold;">Điện thoại phổ thông</b> tại <b style="font-weight: bold;">Hà Nội</b></p>
-        </div>
-        <div class="row-no-padding pagination-box">
-         <ul class="pagination pagination2">
-          <li class="page-item"><a class="page-link" href="http://muare.vn/posts/ha-noi/dien-thoai-pho-thong.94?page=1" rel="prev" style="border-radius: 0px;">« Trang trước</a></li>
-          <li class="page-item"><a class="page-link" href="http://muare.vn/posts/ha-noi/dien-thoai-pho-thong.94?page=3" rel="next" style="border-radius: 0px;">Trang sau »</a></li>
-        </ul>
-        <div class="sorting">
-          <select name="sorting_select" id="sorting_select" class="sorting_select">
-           <option value="https://muare.vn/posts/ha-noi/dien-thoai-pho-thong.94.tin-dang.moi-va-cu.gia-tot.moi-cap-nhat.uy-tin" selected="selected">Tin up mới nhất</option>
-           <option value="https://muare.vn/posts/ha-noi/dien-thoai-pho-thong.94.tin-dang.moi-va-cu.gia-tot.xem-nhieu-nhat.uy-tin">Xem nhiều nhất</option>
-           <option value="https://muare.vn/posts/ha-noi/dien-thoai-pho-thong.94.tin-dang.moi-va-cu.gia-tot.gia-thap-nhat.uy-tin">Giá thấp nhất</option>
-           <option value="https://muare.vn/posts/ha-noi/dien-thoai-pho-thong.94.tin-dang.moi-va-cu.gia-tot.tin-moi-nhat.uy-tin">Tin mới nhất</option>
-         </select>
-       </div>
-     </div>
-     
-     <div class="row-no-padding">
+      
+      <div class="row-no-padding">
        <div class="posts-list">
         <div class="row post-items border-items" style="border-color: #ffbf02;border-style: dashed;border-width: 2px;">
          <p class="post_sticky sticky_vip">

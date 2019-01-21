@@ -10,4 +10,5 @@
 <link href="assets/css/style.css" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/media/media.css">
 
-
+<link href="assets/css/gianhangcuchuoing.css" type="text/css" rel="stylesheet"/>
+<link href="assets/css/muaquangcao.css" type="text/css" rel="stylesheet">
