@@ -19,7 +19,7 @@
 	
 	<div class="clearfix"></div>
 
-	@yield('content')
+		@yield('content')
 
 	<div class="clearfix"></div>
 
