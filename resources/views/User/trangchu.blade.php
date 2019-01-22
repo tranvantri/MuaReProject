@@ -5,13 +5,12 @@
 @section('content')
 
 <section class="content mt-2">
-
+	
 		<div class="container">
 			<div class="row">
 				<div class="content-left col-lg-9 col-md-9"> <!-- content-left -->				
 					<div class="row"> <!-- category -->
 						@include('user.trangchu.thongbaothaydoi')
-						
 						
 						<div class="all-category">
 							<div class="category-row">

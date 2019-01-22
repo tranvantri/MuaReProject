@@ -4,8 +4,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/home', function () {
-    return view('User.trangchu');
+Route::group(['namespace' => 'UserController'], function() {
+	Route::get('/home',['as'=>'trangchu','uses'=>'HomePageController@getHomePage']); 
+
+
+
+
+
+
+    
 });
 
 Route::get('/chitietdanhmuc', function () {

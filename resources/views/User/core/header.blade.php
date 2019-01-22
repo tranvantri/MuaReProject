@@ -9,12 +9,13 @@
                       <button type="button" data-toggle="dropdown" style="color: white;background: none;">
                         <i class="fas fa-map-marker-alt iconstyle"></i>Hà Nội
                     </button>
+
                     <div class="dropdown-menu hoverable">
-                        <a class="dropdown-item" href="#">Hà Nội</a>
-                        <a class="dropdown-item" href="#">Hải Phòng</a>
-                        <a class="dropdown-item" href="#">Đà Nẵng</a>
-                        <a class="dropdown-item" href="#">TP. Hồ Chí Minh</a>
+                        @foreach($places as $child) 
+                        <a class="dropdown-item" href="#">{{$child->name}}</a>
+                        @endforeach
                     </div>
+                    
                 </div>
             </li>
             <li class="page-item cheader-item2"><a>Liên hệ quảng cáo</a></li>
@@ -66,10 +67,10 @@
                             Tất cả &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
                         </button>
                         <div class="dropdown-menu" style="border-radius: 0px;border-top: 0px;font-size: 12px;">
-                            <a class="dropdown-item" href="#">Hà Nội</a>
-                            <a class="dropdown-item" href="#">Hải Phòng</a>
-                            <a class="dropdown-item" href="#">Đà Nẵng</a>
-                            <a class="dropdown-item" href="#">TP. Hồ Chí Minh</a>
+                            
+                            @foreach($cates as $child)
+                            <a class="dropdown-item" href="#">{{$child->name}}</a>
+                            @endforeach
                         </div>
                     </div>
 
@@ -102,37 +103,20 @@
             <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAABfAAAAXwBsrqMZwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAAxSURBVEiJ7dKhEQAgAMPAlP13LooJQACXV1VVAX0va7Tt0eMkAOPkqe5kRdpnRXrABNDNDApC+gFWAAAAAElFTkSuQmCC" style="padding-right: 8px;"><abbr style="font-size: 17px;vertical-align: middle;">Tất cả chuyên mục</abbr>
         </button>
         <div class="dropdown-menu" style="font-size: 14px;">
+
+            @foreach($cates as $child)
             <div class="dropdown-submenu">
-                <a class="dropdown-item dropdown-itemlv1" tabindex="-1" href="#">Thời trang</a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item dropd-itemlv2" tabindex="-1" href="#">Quần áo</a>
-                    <a class="dropdown-item dropd-itemlv2" href="#">Giày dép, Túi xách</a>
-                    <a class="dropdown-item dropd-itemlv2" href="#">Mẹ và Bé</a>
-                    <a class="dropdown-item dropd-itemlv2" href="#">Trang sức, Phụ Kiện</a>
-                </div>
+                <a class="dropdown-item dropdown-itemlv1" tabindex="-1" href="#">{{$child->name}}</a> 
+                    <div class="dropdown-menu">
+                        @foreach($catesChilds as $itemcate)
+                            @if($child->id == $itemcate->idParent)
+                            <a class="dropdown-item dropd-itemlv2" tabindex="-1" href="#">{{$itemcate->name}}</a>
+                            @endif
+                        @endforeach
+                    </div>                 
             </div>
             <div class="dropdown-divider line"></div>
-            <a class="dropdown-item dropdown-itemlv1" href="#">Điện thoại, Máy tính bảng</a>
-            <div class="dropdown-divider line"></div>
-            <a class="dropdown-item dropdown-itemlv1" href="#">Máy tính, Thiết bị văn phòng</a>
-            <div class="dropdown-divider line"></div>
-            <a class="dropdown-item dropdown-itemlv1" href="#">Điện tử, Kỹ thuật số</a>
-            <div class="dropdown-divider line"></div>
-            <a class="dropdown-item dropdown-itemlv1" href="#">Dịch vụ cá nhân, doanh nghiệp</a>
-            <div class="dropdown-divider line"></div>
-            <a class="dropdown-item dropdown-itemlv1" href="#">Điện lạnh, Điện gia dụng</a>
-            <div class="dropdown-divider line"></div>
-            <a class="dropdown-item dropdown-itemlv1" href="#">Ăn uống, Vui chơi</a>
-            <div class="dropdown-divider line"></div>
-            <a class="dropdown-item dropdown-itemlv1" href="#">Ô tô, Xe máy, Phương tiện</a>
-            <div class="dropdown-divider line"></div>
-            <a class="dropdown-item dropdown-itemlv1" href="#">Nhà đất, Nội thất, Xây dựng</a>
-            <div class="dropdown-divider line"></div>
-            <a class="dropdown-item dropdown-itemlv1" href="#">Rao vặt tổng hơp</a>
-            <div class="dropdown-divider line"></div>
-            <a class="dropdown-item dropdown-itemlv1" href="#">Sim số, Thẻ cào, Dịch vụ</a>
-            <div class="dropdown-divider line"></div>
-            <a class="dropdown-item dropdown-itemlv1" href="#">Cộng đồng</a>
+            @endforeach
         </div>
 
         <button type="button" class="btn-dang-tin-Tr">
