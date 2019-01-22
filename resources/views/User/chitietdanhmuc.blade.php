@@ -1,6 +1,6 @@
 @extends('user.layouts.index')
 @section('title')
-<title>Chi tiết danh mục</title>
+  <title>Chi tiết danh mục</title>
 @endsection
 @section('content')
 

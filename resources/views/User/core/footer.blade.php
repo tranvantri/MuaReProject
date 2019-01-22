@@ -8,101 +8,107 @@
         </div>
         <div class="col-sm-6 col-lg-6 col-md-6 col-xs-12">
             <div class="column">
+
+
+
                 <div class="row-sm-6 row-lg-6 row-md-6 row-xs-12">
                     <div class="row">
                         <div class="col-sm-4 col-lg-4 col-md-4 col-xs-12">
                             <h6>THỜI TRANG</h6>
                             <ul>
-                                <li><a href="#"><i class='fas fa-chevron-right'></i>&#160;&#160;Quần Áo</a></li>
-                                <li><a href="#"><i class='fas fa-chevron-right'></i>&#160;&#160;Giày Dép, Túi Xách</a></li>
-                                <li><a href="#"><i class='fas fa-chevron-right'></i>&#160;&#160;Trang Sức, Phụ Kiện</a></li>
-                                <li><a href="#"><i class='fas fa-chevron-right'></i>&#160;&#160;Mẹ và Bé</a></li>
+                                @foreach($childThoiTrang as $child)
+                                <li><a href="{{$child->id}}"><i class='fas fa-chevron-right'></i>&#160;&#160;{{$child->name}}</a></li>
+                                @endforeach
                             </ul>
                         </div>
                         <div class="col-sm-4 col-lg-4 col-md-4 col-xs-12">
                             <h6>ĐIỆN TỬ - ĐIỆN LẠNH</h6>
                             <ul>
-                                <li><a href="#"><i class='fas fa-chevron-right'></i>&#160;&#160;Điện thoại, Máy tính bảng</a></li>
-                                <li><a href="#"><i class='fas fa-chevron-right'></i>&#160;&#160;Máy tính, Thiết bị VP</a></li>
-                                <li><a href="#"><i class='fas fa-chevron-right'></i>&#160;&#160;Điện tử, KTS</a></li>
-                                <li><a href="#"><i class='fas fa-chevron-right'></i>&#160;&#160;Điện lạnh, Đồ Gia Dụng</a></li>
+                                @foreach($childDienLanh as $child)
+                                <li><a href="{{$child->id}}"><i class='fas fa-chevron-right'></i>&#160;&#160;{{$child->name}}</a></li>
+                                @endforeach
                             </ul>
                         </div>
                         <div class="col-sm-4 col-lg-4 col-md-4 col-xs-12">
                             <h6>XE CỘ</h6>
                             <ul>
-                                <li><a href="#"><i class='fas fa-chevron-right'></i>&#160;&#160;Xe Ôtô</a></li>
-                                <li><a href="#"><i class='fas fa-chevron-right'></i>&#160;&#160;Xe Máy</a></li>
-                                <li><a href="#"><i class='fas fa-chevron-right'></i>&#160;&#160;Xe Đạp, Xe Điện</a></li>
-                                <li><a href="#"><i class='fas fa-chevron-right'></i>&#160;&#160;Phụ Tùng, Đồ chơi</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="row-sm-6 row-lg-6 row-md-6 row-xs-12" style="margin-top: 10%;">
-                    <div class="row">
-                        <div class="col-sm-4 col-lg-4 col-md-4 col-xs-12">
-                            <h6>RAO VẶT</h6>
-                            <ul>
-                                <li><a href="#"><i class='fas fa-chevron-right'></i>&#160;&#160;Hoa, Quà Tặng</a></li>
-                                <li><a href="#"><i class='fas fa-chevron-right'></i>&#160;&#160;Thú Cưng, Cây Cảnh</a></li>
-                                <li><a href="#"><i class='fas fa-chevron-right'></i>&#160;&#160;Thuốc Men</a></li>
-                                <li><a href="#"><i class='fas fa-chevron-right'></i>&#160;&#160;Sách, Truyện, VPP</a></li>
-                                <li><a href="#"><i class='fas fa-chevron-right'></i>&#160;&#160;Chợ Đồ Cũ</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-sm-4 col-lg-4 col-md-4 col-xs-12">
-                            <h6>BẤT ĐỘNG SẢN</h6>
-                            <ul>
-                                <li><a href="#"><i class='fas fa-chevron-right'></i>&#160;&#160;Mua, Bán Nhà Đất</a></li>
-                                <li><a href="#"><i class='fas fa-chevron-right'></i>&#160;&#160;Thuê, Cho Thuê Nhà</a></li>
-                                <li><a href="#"><i class='fas fa-chevron-right'></i>&#160;&#160;Mua, Bán Nội Thất</a></li>
-                                <li><a href="#"><i class='fas fa-chevron-right'></i>&#160;&#160;Vật Liệu, Máy Xây Dựng</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-sm-4 col-lg-4 col-md-4 col-xs-12">
-                            <h6>ĂN UỐNG - VUI CHƠI</h6>
-                            <ul>
-                                <li><a href="#"><i class='fas fa-chevron-right'></i>&#160;&#160;Đặc Sản, Ẩm Thực</a></li>
-                                <li><a href="#"><i class='fas fa-chevron-right'></i>&#160;&#160;Quán Ăn, Bar, Cafe</a></li>
-                                <li><a href="#"><i class='fas fa-chevron-right'></i>&#160;&#160;Du Lịch, Phượt, Giảm Giá</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
+                                @foreach($childXeCo as $child)
+                                <li><a href="{{$child->id}}"><i class='fas fa-chevron-right'></i>&#160;&#160;{!! $child->name !!}</a></li>
 
-        <div class="col-sm-3 col-lg-3 col-md-3 col-xs-12">
-            <div class="column">
-                <div class="row-sm-6 row-lg-6 row-md-6 row-xs-12">
-                    <h6>CÔNG TY CỔ PHẦN VCCORP</h6>
-                    <div class="contacts-info">
-                        <address>
-                            <i class="fas">&#xf3c5;</i>
-                            Tầng 17 Tòa nhà Center Building,<br>&nbsp;Hapulico Complex, số 1 Nguyễn Huy Tưởng, Thanh Xuân, Hà Nội
-                        </address>
-                        <div class="phone-footer" style="line-height: 22px;">
-                            <i class="fas">&#xf095;</i>CSKH: 024-73095555 - 255/117/162 <br><span class="contact-qc" style="padding-left: 3px;">Liên hệ quảng cáo: 096 906 1788</span><br><a style="margin-left: 48px; color: #FFFFCC;" href="https://muare.vn/mua-quang-cao">
-                                <i class="far fa-thumbs-up"></i> Xem chi tiết</a>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="row-sm-6 row-lg-6 row-md-6 row-xs-12" style="margin-top: 10%;"> -->
+                    <div class="row-sm-6 row-lg-6 row-md-6 row-xs-12">
+                        <div class="row">
+                            <div class="col-sm-4 col-lg-4 col-md-4 col-xs-12">
+                                <h6>RAO VẶT</h6>
+                                <ul>
+                                    @foreach($childRaoVat as $child)
+                                    <li><a href="#"><i class='fas fa-chevron-right'></i>&#160;&#160;{{$child->name}}</a></li>
+                                    @endforeach
+                                </ul>
                             </div>
-                            <div class="email-footer">
-                                <i class="fas">&#xf0e0;</i> <a class="email-hotro" href="mailto:hotro@muare.vn">hotro@muare.vn - info@muare.vn</a> 
+                            <div class="col-sm-4 col-lg-4 col-md-4 col-xs-12">
+                                <h6>BẤT ĐỘNG SẢN</h6>
+                                <ul>
+                                    @foreach($childBDS as $child)
+                                    <li><a href="#"><i class='fas fa-chevron-right'></i>&#160;&#160;{{$child->name}}</a></li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                            <div class="col-sm-4 col-lg-4 col-md-4 col-xs-12">
+                                <h6>ĂN UỐNG - VUI CHƠI</h6>
+                                <ul>
+                                    @foreach($childVuiChoi as $child)
+                                    <li><a href="#"><i class='fas fa-chevron-right'></i>&#160;&#160;{{$child->name}}</a></li>
+                                    @endforeach
+                                </ul>
                             </div>
                         </div>
                     </div>
-                    <div class="row-sm-6 row-lg-6 row-md-6 row-xs-12" style="padding-top: 6%;">
-                        <h6>SIM SỐ, THẺ CÀO, DỊCH VỤ</h6>
-                        <ul>
-                            <li><a href="#"><i class='fas fa-chevron-right'></i>&#160;&#160;Sim VIP, Cam kết, Năm sinh</a></li>
-                            <li><a href="#"><i class='fas fa-chevron-right'></i>&#160;&#160;Sim giá rẻ</a></li>
-                            <li><a href="#"><i class='fas fa-chevron-right'></i>&#160;&#160;Sim 3G, 4G, Thẻ cào, Dịch vụ</a></li>
-                        </ul>
-                    </div>
+
+
+
+
                 </div>
             </div>
-            
-            
-        </div>
-    </footer>
+
+
+            <div class="col-sm-3 col-lg-3 col-md-3 col-xs-12">
+                <div class="column">
+                    <div class="row-sm-6 row-lg-6 row-md-6 row-xs-12">
+                        @foreach($childLienLac as $child)
+                        <h6>{{$child->name}}</h6>
+                        <div class="contacts-info">
+                            <address>
+                                <i class="fas">&#xf3c5;</i>
+                                {{$child->address}}
+                            </address><br>
+                            <div class="phone-footer" style="line-height: 22px;">
+                                <i class="fas">&#xf095;</i>CSKH: {{$child->cskh}} <br><span class="contact-qc" style="padding-left: 3px;">Liên hệ quảng cáo: {{$child->lhqc}}</span><br><a style="margin-left: 48px; color: #FFFFCC;" href="https://muare.vn/mua-quang-cao">
+                                    <i class="far fa-thumbs-up"></i> Xem chi tiết</a>
+                                </div>
+                                <div class="email-footer">
+                                    <i class="fas">&#xf0e0;</i> <a class="email-hotro" href="mailto:{{$child->hotrokh}}">{{$child->hotrokh}}</a> 
+                                </div>
+                            </div>
+                            @endforeach
+                        </div>
+
+                        <div class="row-sm-6 row-lg-6 row-md-6 row-xs-12" style="padding-top: 20%;">
+                            <h6>SIM SỐ, THẺ CÀO, DỊCH VỤ</h6>
+                            <ul>
+                                @foreach($childSimSo as $child)
+                                <li><a href="#"><i class='fas fa-chevron-right'></i>&#160;&#160;{{$child->name}}</a></li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </footer>
