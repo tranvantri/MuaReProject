@@ -110,7 +110,7 @@
                     <div class="dropdown-menu">
                         @foreach($catesChilds as $itemcate)
                             @if($child->id == $itemcate->idParent)
-                            <a class="dropdown-item dropd-itemlv2" tabindex="-1" href="{{$child->id}}">{{$itemcate->name}}</a>
+                            <a class="dropdown-item dropd-itemlv2" tabindex="-1" href="{{$itemcate->id}}">{{$itemcate->name}}</a>
                             @endif
                         @endforeach
                     </div>                 

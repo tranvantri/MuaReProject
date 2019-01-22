@@ -9,9 +9,4 @@ class Services extends Model
     protected $table = "services";
     public $timestamps = false;
 
-    public function users()
-    {
-    	return $this->belongsTo('App\Users', 'idUser','id');
-    	
-    }
 }

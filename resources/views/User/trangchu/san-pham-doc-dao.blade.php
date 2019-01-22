@@ -1,20 +1,22 @@
+@foreach($products as $child)	
 <div class="motkhoi col-lg-3 col-md-4 col-sm-6">
-	<div class="card item">
+	<div class="card item">		
 		<div class="wrap-img">
 			<a href="">
-				<img class="card-img-top" src="assets/images/trangchu/tuisach.jpg" alt="Card image cap">
+				<img class="card-img-top" src="{{$child->images}}" alt="">
 			</a>
-			<div class="qv-button-container"> <a href="https://muare.vn/products/tui-dung-my-pham-95k-nho-gon.221509" title="Túi đựng mỹ phẩm 95k nhỏ gọn"><i class="fas fa-eye"></i></a></div>											
-		</div>									    
+			<div class="qv-button-container"> <a href="{{$child->id}}" title="{{$child->name}}"><i class="fas fa-eye"></i></a></div>											
+		</div>		
+
 		<div class="card-body info">
 			<div class="info-inner">
 				<div class="title_products_related">
-					<a href="https://muare.vn/products/tui-dung-my-pham-95k-nho-gon.221509" title="Túi đựng mỹ phẩm 95k nhỏ gọn" class="OverlayPopup" data-size="l" data-id="popupItem">Túi đựng mỹ phẩm 95k nhỏ gọn</a>
+					<a href="{{$child->id}}" title="{{$child->name}}" class="OverlayPopup" data-size="l" data-id="popupItem">{{$child->name}}</a>
 				</div>
 				<!--item-title-->
 				<div class="item-content">
 					<div class="price-box">
-						<p class="special-price"> <span class="price"> 95.000đ </span> </p>
+						<p class="special-price"> <span class="price"> {{number_format($child->price,0)}}đ </span> </p>
 					</div>
 				</div>
 				<!--item-content-->
@@ -31,6 +33,9 @@
 				</button>
 			</div>
 		</div>
+		
 	</div>			
 	
 </div>
+
+@endforeach

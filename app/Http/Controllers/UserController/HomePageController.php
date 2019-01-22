@@ -15,6 +15,10 @@ class HomePageController extends Controller
     {
     	$services = DB::table('services')->leftJoin('users', 'users.id', '=', 'services.idUser')->where('services.status', 1)->orderBy('services.id', 'desc')->take(18)->get();
 
-        return view('user.trangchu',compact('services'));
+    	$products =  DB::table('products')->where('adminCheck', 1)->inRandomOrder()->limit(6)->get();
+
+    	$newestProducts = DB::table('products')->where('adminCheck', 1)->orderBy('id','desc')->take(9)->get();
+
+        return view('user.trangchu',compact('services','products','newestProducts'));
     }
 }
