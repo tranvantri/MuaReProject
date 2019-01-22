@@ -12,7 +12,7 @@
 
                     <div class="dropdown-menu hoverable">
                         @foreach($places as $child) 
-                        <a class="dropdown-item" href="#">{{$child->name}}</a>
+                        <a class="dropdown-item" href="{{$child->id}}">{{$child->name}}</a>
                         @endforeach
                     </div>
                     
@@ -69,7 +69,7 @@
                         <div class="dropdown-menu" style="border-radius: 0px;border-top: 0px;font-size: 12px;">
                             
                             @foreach($cates as $child)
-                            <a class="dropdown-item" href="#">{{$child->name}}</a>
+                            <a class="dropdown-item" href="{{$child->id}}">{{$child->name}}</a>
                             @endforeach
                         </div>
                     </div>
@@ -106,11 +106,11 @@
 
             @foreach($cates as $child)
             <div class="dropdown-submenu">
-                <a class="dropdown-item dropdown-itemlv1" tabindex="-1" href="#">{{$child->name}}</a> 
+                <a class="dropdown-item dropdown-itemlv1" tabindex="-1" href="{{$child->id}}">{{$child->name}}</a> 
                     <div class="dropdown-menu">
                         @foreach($catesChilds as $itemcate)
                             @if($child->id == $itemcate->idParent)
-                            <a class="dropdown-item dropd-itemlv2" tabindex="-1" href="#">{{$itemcate->name}}</a>
+                            <a class="dropdown-item dropd-itemlv2" tabindex="-1" href="{{$child->id}}">{{$itemcate->name}}</a>
                             @endif
                         @endforeach
                     </div>                 
