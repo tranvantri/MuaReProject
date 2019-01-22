@@ -13,7 +13,8 @@ class HomePageController extends Controller
     //
     public function getHomePage()
     {
+    	$services = DB::table('services')->leftJoin('users', 'users.id', '=', 'services.idUser')->where('services.status', 1)->orderBy('services.id', 'desc')->take(18)->get();
 
-        return view('user.trangchu',compact('places','cates','catesChilds'));
+        return view('user.trangchu',compact('services'));
     }
 }
