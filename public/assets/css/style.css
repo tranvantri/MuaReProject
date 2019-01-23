@@ -1288,12 +1288,8 @@ table .td-info .user-post .username .username-h4 a {
   position: relative;
   background-color: #fff;
   background-clip: padding-box;
-  border: 1px solid #999;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  border-radius: 6px;
   outline: 0;
-  -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
-  box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+  
 }
 #title-login {
   font-size: 30px;
@@ -1301,7 +1297,11 @@ table .td-info .user-post .username .username-h4 a {
 }
 .login-group {
   padding: 20px 35px;
+  margin-bottom: 15px;
   min-height: 330px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
 }
 
 .radioTypeLogin {
@@ -1330,31 +1330,29 @@ table .td-info .user-post .username .username-h4 a {
   margin: 0;
 }
 
+.sociallite a.btn{
+  margin-bottom: 2px;
+}
+
 .inputPadding {
   padding: 0 5px 10px 5px;
 }
 
 .row-note {
   padding: 0px;
-  margin: 0 -15px 0 10px;
+  margin-bottom: 15px;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  position: absolute;
-  top: 0;
-  right: 0;
-  height: 100%;
-  width: 100%;
   background: #636b6f;
+  -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
 }
 .note-title {
-  font-size: 20px;
-  font-family: Roboto-Bold;
+  font-size: 16px;
+  font-weight: bold;
   color: #fff;
-  padding-top: 20px;
-  padding-left: 10px;
-  padding-bottom: 10px;
+  padding: 20px 10px 10px 10px;
   border-bottom: 1px dashed #fff;
-  text-align: center;
 }
 
 .reason-list {
@@ -1377,7 +1375,7 @@ table .td-info .user-post .username .username-h4 a {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   margin-bottom: 10px;
-  font-size: 15px;
+  font-size: 13px;
   text-align: left;
 }
 

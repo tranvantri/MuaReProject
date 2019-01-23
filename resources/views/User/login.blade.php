@@ -5,15 +5,12 @@
 @section('content')
 <section class="content mt-5 mb-5">
 
-		<div class="container">
-			<div class="row">
-				<div class="col-md-2">
-                    <!-- bên trái của form đăng ký -->
-                </div>
-                <div class="modal-content-tomiot col-md-8 col-sm-12 col-sx-12">
-                    <div class="modal-body col-md-12 col-sm-12 col-sx-12">
+        <div class="container">
+            <div class="row">
+                <div class="modal-content-tomiot col-md-8 offset-md-2">
+                    <div class="modal-body-tomiot">
                         <div class="row">
-                            <div class="login-group col-md-8 col-sm-12 col-sx-12">
+                            <div class="login-group col-md-8">
                                 <div >
                                     <h4 id="title-login">Đăng nhập tài khoản</h4>
                                 </div>
@@ -107,8 +104,7 @@
                                 </div>
                                 
                             </div>
-                            <div class="row-note col-md-4 col-sm-12 col-sx-12">
-                                
+                            <div class="row-note col-md-4">                                
                                 <p class="note-title">Là thành viên của Muare bạn sẽ được</p>
                                 <ul class="reason-list">
                                     <li>Kinh doanh mọi lúc mọi nơi trên Muare</li>
@@ -124,12 +120,10 @@
                         
                     </div>
                 </div>
-                <div class="col-md-3">
-                    
-                </div>
+                
             </div>
 
-		</div>
+        </div>
 
-	</section>
+    </section>
 @endsection
