@@ -4,47 +4,47 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['namespace' => 'UserController'], function() {
+Route::group(['namespace' => 'userController'], function() {
 	Route::get('/home',['as'=>'trangchu','uses'=>'HomePageController@getHomePage']); 
 
     Route::get('/chitietdanhmuc', function () {
-        return view('User.chitietdanhmuc');
+        return view('user.chitietdanhmuc');
     });
 
     Route::get('/chitietsanpham', function () {
-        return view('User.chitietsanpham');
+        return view('user.chitietsanpham');
     });
 
     Route::get('/dangtindichvu', function () {
-        return view('User.dangtindichvu');
+        return view('user.dangtindichvu');
     });
 
     Route::get('/dangtinsanpham', function () {
-        return view('User.dangtinsanpham');
+        return view('user.dangtinsanpham');
     });
 
     Route::get('/gianhangcuanguoidung', function () {
-        return view('User.gianhangcuanguoidung');
+        return view('user.gianhangcuanguoidung');
     });
 
     Route::get('/tatcatindang', function () {
-        return view('User.tatcatindang');
+        return view('user.tatcatindang');
     });
 
     Route::get('/userquanlykhohang', function () {
-        return view('User.userquanlykhohang');
+        return view('user.userquanlykhohang');
     });
 
     Route::get('/dangtinchung', function () {
-        return view('User.dangtinchung');
+        return view('user.dangtinchung');
     });
 
     Route::get('/login', function () {
-        return view('User.login');
+        return view('user.login');
     });
 
     Route::get('/muaquangcao', function () {
-        return view('User.muaquangcao');
+        return view('user.muaquangcao');
     });
 
     
