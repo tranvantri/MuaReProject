@@ -21,4 +21,5 @@ class HomePageController extends Controller
 
         return view('user.trangchu',compact('services','products','newestProducts'));
     }
+    
 }

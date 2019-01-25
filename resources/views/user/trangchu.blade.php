@@ -71,7 +71,7 @@
 					<h3 class="title-block">Sản phẩm mới nhất</h3>
 					<div class="list-item">
 					  	
-					  	@include('User.trangchu.san-pham-moi-nhat')
+					  	@include('user.trangchu.san-pham-moi-nhat')
 					  
 					</div>
 				</div> <!-- Kết thúc Phần sản phẩm mới nhất -->
