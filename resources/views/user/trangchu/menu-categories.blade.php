@@ -1,5 +1,5 @@
 <div class="category-col col-lg-2">
-	<a href="" class="icon-category">
+	<a href="danhmuc/thoi-trang/1" class="icon-category">
 		<div class="icon-c" style="background: transparent url('assets/images/trangchu/category-icon-home.png') no-repeat scroll 0 -50px;"></div>
 		<div class="title-category">
 			<h2>Thời trang</h2>

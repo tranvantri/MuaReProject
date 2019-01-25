@@ -149,6 +149,29 @@ $(document).ready(function() {
 			$('.upload-product-Tr').trigger('click');
 		});
 	}
+
+
+	//set cookie cho dia diem
+
+	$(document).on('click', 'div.dropdown-menu a.dropdown-item', function(event) {
+		event.preventDefault();
+		var idPlace = $(this).attr('href');
+		$.ajax({
+			url: 'set-cookie/'+idPlace,
+			type: 'get',
+		})
+		.done(function() {
+			// console.log("success");
+			location.reload();
+		})
+		.fail(function() {
+			// console.log("error");
+		})
+		.always(function() {
+			// console.log("complete");
+		});
+		
+	});
 	
 });
 

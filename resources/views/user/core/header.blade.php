@@ -2,18 +2,36 @@
 <div id="navigationbar">
     <!-- CONTRACT HEADER: Hà Nội - Liên hệ quảng cáo - Hỗ trợ -->
     <div id="contract-header">
-        <div class="contact-child-Tr">
+        <div class="contact-child-Tr">  
             <ul class="pagination toplinks" style="width: auto;">
                 <li class="page-item">
                     <div class="dropdown">
                       <button type="button" data-toggle="dropdown" style="color: white;background: none;">
-                        <i class="fas fa-map-marker-alt iconstyle"></i>Hà Nội
+                        <i class="fas fa-map-marker-alt iconstyle"></i>
+                        @if(Cookie::get('place') != null)
+                            @foreach($places as $child)                                
+                                @if($child->id == Cookie::get('place'))
+                                {{$child->name}}
+                                @endif                                
+                            @endforeach
+                        @else
+                            Hà Nội
+                        @endif
                     </button>
-
                     <div class="dropdown-menu hoverable">
-                        @foreach($places as $child) 
-                        <a class="dropdown-item" href="{{$child->id}}">{{$child->name}}</a>
-                        @endforeach
+                        @if(Cookie::get('place') != null)
+                            @foreach($places as $child) 
+                                <a class="dropdown-item 
+                                @if($child->id == Cookie::get('place'))
+                                active
+                                @endif
+                                " href="{{$child->id}}">{{$child->name}}</a>
+                            @endforeach
+                        @else
+                            @foreach($places as $child) 
+                                <a class="dropdown-item" href="{{$child->id}}">{{$child->name}}</a>
+                            @endforeach
+                        @endif                        
                     </div>
                     
                 </div>

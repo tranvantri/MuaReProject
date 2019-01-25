@@ -3,13 +3,14 @@
 Route::get('/', function () {
     return view('welcome');
 });
-
+ 
 Route::group(['namespace' => 'UserController'], function() {
 	Route::get('/home',['as'=>'trangchu','uses'=>'HomePageController@getHomePage']); 
 
-    Route::get('/chi-tiet-danh-muc', function () {
-        return view('user.chitietdanhmuc');
-    });
+    //set Cookie
+    Route::get('/set-cookie/{id}','PlacesController@setCookie');
+
+    Route::get('/danh-muc/{name}/{id}', 'CategoryDetail@getIndex');
 
     Route::get('/chi-tiet-san-pham', function () {
         return view('user.chitietsanpham');
