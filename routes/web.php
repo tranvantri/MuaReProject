@@ -8,9 +8,9 @@ Route::group(['namespace' => 'UserController'], function() {
 	Route::get('/home',['as'=>'trangchu','uses'=>'HomePageController@getHomePage']); 
 
     //set Cookie
-    Route::get('/set-cookie/{id}','PlacesController@setCookie');
+    Route::get('/set-cookie/{id}', 'PlacesController@setCookie');
 
-    Route::get('/danh-muc/{name}/{id}', 'CategoryDetail@getIndex');
+    Route::get('/danh-muc/{name}/{id}', 'CategoryDetail@getDanhMuc');
 
     Route::get('/chi-tiet-san-pham', function () {
         return view('user.chitietsanpham');

@@ -1,5 +1,6 @@
 <div class="category-col col-lg-2">
-	<a href="danhmuc/thoi-trang/1" class="icon-category">
+	<?php $name = 'Thời trang'; $id =1;?>
+	<a href="danh-muc/{{str_slug($name)}}/{{$id}}" class="icon-category">
 		<div class="icon-c" style="background: transparent url('assets/images/trangchu/category-icon-home.png') no-repeat scroll 0 -50px;"></div>
 		<div class="title-category">
 			<h2>Thời trang</h2>

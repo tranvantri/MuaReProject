@@ -1,1 +1,1 @@
-<a href="">Thời trang</a>
+<a href="danh-muc/{{str_slug($categoryParent->name)}}/{{$categoryParent->id}}">{{$categoryParent->name}}</a>
