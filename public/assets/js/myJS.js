@@ -45,6 +45,10 @@ $(document).ready(function() {
 			$('#menu-category').parent().removeClass('col-lg-2 col-md-2');		  	
 		  	$('#view-post').parent().addClass('col-lg-12 col-md-12');
 		  	$('#view-post').parent().removeClass('col-lg-10 col-md-10');
+		  	if ($('#menu-left-user-L').length) {
+		  		$('#menu-left-user-L').setAttribute("style", "font-size:12px;");
+		  	}
+            
 		}
 
 
