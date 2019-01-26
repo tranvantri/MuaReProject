@@ -1,6 +1,10 @@
 @extends('user.layouts.index')
 @section('title')
-  <title>Chi tiết danh mục</title>
+  <title>Muare - Danh mục
+    @if($categoryParent->name)
+    {{$categoryParent->name}}
+    @endif
+  </title>
 @endsection
 @section('content')
 
@@ -47,13 +51,31 @@
       <div id="view-post" class="view-post">
         <div class="title-category">
          <h1 class="title-box">
-          Đăng bán Điện thoại phổ thông tại Hà Nội
+          Đăng bán 
+            @if($categoryParent->name)
+            {{$categoryParent->name}}
+            @endif
+           tại {{$place->name}}
         </h1>
-        <p class="count-result"> Tin đăng rao bán về <b style="font-weight: bold;">Điện thoại phổ thông</b> tại <b style="font-weight: bold;">Hà Nội</b></p>
+        <p class="count-result"> Tin đăng rao bán về <b style="font-weight: bold;">
+          @if($categoryParent->name)
+          {{$categoryParent->name}}
+          @endif
+        </b> tại <b style="font-weight: bold;">{{$place->name}}</b></p>
       </div>
+
+      <?php $checknull= false;
+        if($products && count($products)> 0){
+          $checknull= true;
+        }else{
+          $checknull= false;
+        }
+
+      ?>
+      @if($checknull)
       <div class="row-no-padding pagination-box">
         @include('user.chitietdanhmuc.phantrang')
-
+          
         <div class="sorting">
           @include('user.chitietdanhmuc.sort-timkiem')
         </div>
@@ -198,13 +220,13 @@ display: none;
       </div>
       <div class="user-post">
        <div class="my-avatar">
-        {{-- <a title="{{$childPro->tenchushop}}" href="https://muare.vn/shop/diemsangviet/30270" class="img-rounded"> --}}
+        <a title="{{$childPro->tenchushop}}" href="https://muare.vn/shop/diemsangviet/30270" class="img-rounded">
           <img class="lazy-image" src="https://static8.muarecdn.com/zoom,80/74_74/muare/avatars/l/30/30270_1446804977.jpg?1446804977" alt="diemsangviet" width="40px" height="40px">
         </a>
       </div>
       <div class="username">
         <h4 class="username-h4">
-         {{-- <a title="{{$childPro->tenchushop}}" href="https://muare.vn/shop/diemsangviet/30270">{{$childPro->tenchushop}}</a> --}}
+         <a title="{{$childPro->tenchushop}}" href="https://muare.vn/shop/diemsangviet/30270">{{$childPro->tenchushop}}</a>
        </h4>
       </div>
       <div class="post-date-ad">{{date("d/m/Y", strtotime($childPro->date_added))}}, lúc {{date("H:m", strtotime($childPro->date_added))}}</div>
@@ -234,12 +256,13 @@ display: none;
 @endforeach
 
 
-
 </div>
 
 <div class="row-no-padding">
  @include('user.chitietdanhmuc.phantrang')
 </div>
+
+
 <style>
 label.col-md-12.text-bold {
  padding: unset;
@@ -261,7 +284,11 @@ span.price-int {
 }
 </style>
 </div>
-
+@else
+  <div class="text-center mt-2">
+    <h4>Chuyên mục này chưa có tin đăng!</h4>
+  </div>
+@endif
 </div>
 </div>
 <div class="col-lg-3 col-md-3">
