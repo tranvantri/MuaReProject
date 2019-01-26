@@ -157,21 +157,21 @@ display: none;
 </tbody>
 </table>
 </div>
-
+@foreach($products as $childPro)
 <div class="row post-items border-items">
   <table>
     <tbody>
       <tr>
         <td class="td-avatar">
             <div class="avatar">
-              <a title="Philips pin khủng BH chính hãng giá mới tháng 12 2017 Full Model" href="https://muare.vn/posts/philips-pin-khung-bh-chinh-hang-gia-moi-thang-12-2017-full-model.3941242" class="img-rounded">
-                <img class="lazy-image" src="https://muare.vn/images/global/logo-deffault.png?v=11010" alt="diemsangviet" width="150px" height="150px">
+              <a title="{{$childPro->name}}" href="https://muare.vn/posts/philips-pin-khung-bh-chinh-hang-gia-moi-thang-12-2017-full-model.3941242" class="img-rounded">
+                <img class="lazy-image" src="{{$childPro->images}}" width="150px" height="150px">
               </a>
             </div>
             <div class="views-count">
               <div class="glyphicon glyphicon-eye-open">
                 <span class="fred"></span>
-                41,464
+                {{$childPro->view}}
               </div>
             </div>
         </td>
@@ -179,35 +179,35 @@ display: none;
          <div class="box-info">
           <div class="title">
            <h3 class="box-info-h3">
-            <a title="Philips pin khủng BH chính hãng giá mới tháng 12 2017 Full Model" href="https://muare.vn/posts/philips-pin-khung-bh-chinh-hang-gia-moi-thang-12-2017-full-model.3941242">Philips pin khủng BH chính hãng giá mới tháng 12 2017 Full Model</a>
+            <a title="Philips pin khủng BH chính hãng giá mới tháng 12 2017 Full Model" href="https://muare.vn/posts/philips-pin-khung-bh-chinh-hang-gia-moi-thang-12-2017-full-model.3941242">{{$childPro->name}}</a>
           </h3>
         </div>
         <div class="location">
          <span class="glyphicon glyphicon-map-marker"><i class="fas fa-map-marker-alt" style="font-size: 12px;"></i></span>
          <div title="9B - 354 Trần Khát Chân - Hai Bà Trưng - Hà Nội" class="my-location">
-          <h4 class="marker-h4">9B - 354 Trần Khát Chân - Hai Bà Trưng - Hà Nội</h4>
+          <h4 class="marker-h4">{{$childPro->address}}</h4>
         </div>
       </div>
       <div class="price">
        <span class=""> </span> 
        <div class="price-des"> Giá từ: </div>
-       <div class="my-price">700.000  đ </div>
+       <div class="my-price">{{number_format($childPro->price,0)}}  đ </div>
       </div>
       <div class="status">
        <div class=""> Tình trạng: Mới</div>
       </div>
       <div class="user-post">
        <div class="my-avatar">
-        <a title="diemsangviet" href="https://muare.vn/shop/diemsangviet/30270" class="img-rounded">
+        {{-- <a title="{{$childPro->tenchushop}}" href="https://muare.vn/shop/diemsangviet/30270" class="img-rounded"> --}}
           <img class="lazy-image" src="https://static8.muarecdn.com/zoom,80/74_74/muare/avatars/l/30/30270_1446804977.jpg?1446804977" alt="diemsangviet" width="40px" height="40px">
         </a>
       </div>
       <div class="username">
         <h4 class="username-h4">
-         <a title="diemsangviet" href="https://muare.vn/shop/diemsangviet/30270">diemsangviet</a>
+         {{-- <a title="{{$childPro->tenchushop}}" href="https://muare.vn/shop/diemsangviet/30270">{{$childPro->tenchushop}}</a> --}}
        </h4>
       </div>
-      <div class="post-date-ad">07/09/2018, lúc 00:10</div>
+      <div class="post-date-ad">{{date("d/m/Y", strtotime($childPro->date_added))}}, lúc {{date("H:m", strtotime($childPro->date_added))}}</div>
       </div>
       </div>
       <hr/>
@@ -231,16 +231,14 @@ display: none;
     </tbody>
   </table>
 </div>
+@endforeach
 
 
 
 </div>
 
 <div class="row-no-padding">
- <ul class="pagination pagination2">
-  <li class="page-item"><a class="page-link" href="http://muare.vn/posts/ha-noi/dien-thoai-pho-thong.94?page=1" rel="prev" style="border-radius: 0px;">« Trang trước</a></li>
-  <li class="page-item"><a class="page-link" href="http://muare.vn/posts/ha-noi/dien-thoai-pho-thong.94?page=3" rel="next" style="border-radius: 0px;">Trang sau »</a></li>
-</ul>
+ @include('user.chitietdanhmuc.phantrang')
 </div>
 <style>
 label.col-md-12.text-bold {
