@@ -1,6 +1,10 @@
 @extends('user.layouts.index')
 @section('title')
-  <title>Chi tiết danh mục</title>
+  <title>Muare - Danh mục
+    @if($categoryParent->name)
+    {{$categoryParent->name}}
+    @endif
+  </title>
 @endsection
 @section('content')
 
@@ -47,13 +51,31 @@
       <div id="view-post" class="view-post">
         <div class="title-category">
          <h1 class="title-box">
-          Đăng bán Điện thoại phổ thông tại Hà Nội
+          Đăng bán 
+            @if($categoryParent->name)
+            {{$categoryParent->name}}
+            @endif
+           tại {{$place->name}}
         </h1>
-        <p class="count-result"> Tin đăng rao bán về <b style="font-weight: bold;">Điện thoại phổ thông</b> tại <b style="font-weight: bold;">Hà Nội</b></p>
+        <p class="count-result"> Tin đăng rao bán về <b style="font-weight: bold;">
+          @if($categoryParent->name)
+          {{$categoryParent->name}}
+          @endif
+        </b> tại <b style="font-weight: bold;">{{$place->name}}</b></p>
       </div>
+
+      <?php $checknull= false;
+        if($products && count($products)> 0){
+          $checknull= true;
+        }else{
+          $checknull= false;
+        }
+
+      ?>
+      @if($checknull)
       <div class="row-no-padding pagination-box">
         @include('user.chitietdanhmuc.phantrang')
-
+          
         <div class="sorting">
           @include('user.chitietdanhmuc.sort-timkiem')
         </div>
@@ -157,157 +179,90 @@ display: none;
 </tbody>
 </table>
 </div>
-
+@foreach($products as $childPro)
 <div class="row post-items border-items">
- <table>
-  <tbody>
-   <tr>
-    <td class="td-avatar">
-     <div class="avatar">
-      <a title="Philips pin khủng BH chính hãng giá mới tháng 12 2017 Full Model" href="https://muare.vn/posts/philips-pin-khung-bh-chinh-hang-gia-moi-thang-12-2017-full-model.3941242" class="img-rounded">
-        <img class="lazy-image" src="https://muare.vn/images/global/logo-deffault.png?v=11010" alt="diemsangviet" width="150px" height="150px">
-      </a>
-    </div>
-    <div class="views-count">
-      <div class="glyphicon glyphicon-eye-open">
-       <span class="fred"></span>
-       41,464
-     </div>
-   </div>
- </td>
- <td class="td-info">
-   <div class="box-info">
-    <div class="title">
-     <h3 class="box-info-h3">
-      <a title="Philips pin khủng BH chính hãng giá mới tháng 12 2017 Full Model" href="https://muare.vn/posts/philips-pin-khung-bh-chinh-hang-gia-moi-thang-12-2017-full-model.3941242">Philips pin khủng BH chính hãng giá mới tháng 12 2017 Full Model</a>
-    </h3>
-  </div>
-  <div class="location">
-   <span class="glyphicon glyphicon-map-marker"><i class="fas fa-map-marker-alt" style="font-size: 12px;"></i></span>
-   <div title="9B - 354 Trần Khát Chân - Hai Bà Trưng - Hà Nội" class="my-location">
-    <h4 class="marker-h4">9B - 354 Trần Khát Chân - Hai Bà Trưng - Hà Nội</h4>
-  </div>
+  <table>
+    <tbody>
+      <tr>
+        <td class="td-avatar">
+            <div class="avatar">
+              <a title="{{$childPro->name}}" href="https://muare.vn/posts/philips-pin-khung-bh-chinh-hang-gia-moi-thang-12-2017-full-model.3941242" class="img-rounded">
+                <img class="lazy-image" src="{{$childPro->images}}" width="150px" height="150px">
+              </a>
+            </div>
+            <div class="views-count">
+              <div class="glyphicon glyphicon-eye-open">
+                <span class="fred"></span>
+                {{$childPro->view}}
+              </div>
+            </div>
+        </td>
+       <td class="td-info">
+         <div class="box-info">
+          <div class="title">
+           <h3 class="box-info-h3">
+            <a title="Philips pin khủng BH chính hãng giá mới tháng 12 2017 Full Model" href="https://muare.vn/posts/philips-pin-khung-bh-chinh-hang-gia-moi-thang-12-2017-full-model.3941242">{{$childPro->name}}</a>
+          </h3>
+        </div>
+        <div class="location">
+         <span class="glyphicon glyphicon-map-marker"><i class="fas fa-map-marker-alt" style="font-size: 12px;"></i></span>
+         <div title="9B - 354 Trần Khát Chân - Hai Bà Trưng - Hà Nội" class="my-location">
+          <h4 class="marker-h4">{{$childPro->address}}</h4>
+        </div>
+      </div>
+      <div class="price">
+       <span class=""> </span> 
+       <div class="price-des"> Giá từ: </div>
+       <div class="my-price">{{number_format($childPro->price,0)}}  đ </div>
+      </div>
+      <div class="status">
+       <div class=""> Tình trạng: Mới</div>
+      </div>
+      <div class="user-post">
+       <div class="my-avatar">
+        <a title="{{$childPro->tenchushop}}" href="https://muare.vn/shop/diemsangviet/30270" class="img-rounded">
+          <img class="lazy-image" src="https://static8.muarecdn.com/zoom,80/74_74/muare/avatars/l/30/30270_1446804977.jpg?1446804977" alt="diemsangviet" width="40px" height="40px">
+        </a>
+      </div>
+      <div class="username">
+        <h4 class="username-h4">
+         <a title="{{$childPro->tenchushop}}" href="https://muare.vn/shop/diemsangviet/30270">{{$childPro->tenchushop}}</a>
+       </h4>
+      </div>
+      <div class="post-date-ad">{{date("d/m/Y", strtotime($childPro->date_added))}}, lúc {{date("H:m", strtotime($childPro->date_added))}}</div>
+      </div>
+      </div>
+      <hr/>
+      <div class="last-comment">
+        <div class="my-avatar" style="padding-top: 4px;">
+         <a href="https://muare.vn/shop" class="img-rounded" title="">
+           <img src="https://muare.vn/images/avatars/avatar_male_s.png?v=2" alt="" width="25px" height="25px">
+         </a>
+       </div>
+       <div class="cmt" title="Add co ban pin Philips E170 ko vay? Co gi lien he so 0909080986 cho minh nhé. Thanks ban">Add co ban pin Philips E170 ko...</div>
+       <div class="post-date">21/08/2018, lúc 11:43</div>
+       <div class="count_cmt">
+         <div class="glyphicon cmt"><a title="Philips pin khủng BH chính hãng giá mới tháng 12 2017 Full Model" href="https://muare.vn/posts/philips-pin-khung-bh-chinh-hang-gia-moi-thang-12-2017-full-model.3941242?#show_comment" style="color:#313131;text-decoration: none;cursor: pointer">Bình luận</a></div>
+       </div>
+       <div class="follow" data-id="3941242">
+         <div data-toggle="tooltip" data-placement="bottom" title="" class="icon-follow " data-original-title="Lưu tin"></div>
+       </div>
+      </div>
+      </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
-<div class="price">
- <span class=""> </span> 
- <div class="price-des"> Giá từ: </div>
- <div class="my-price">700.000  đ </div>
-</div>
-<div class="status">
- <div class=""> Tình trạng: Mới</div>
-</div>
-<div class="user-post">
- <div class="my-avatar">
-  <a title="diemsangviet" href="https://muare.vn/shop/diemsangviet/30270" class="img-rounded">
-    <img class="lazy-image" src="https://static8.muarecdn.com/zoom,80/74_74/muare/avatars/l/30/30270_1446804977.jpg?1446804977" alt="diemsangviet" width="40px" height="40px">
-  </a>
-</div>
-<div class="username">
-  <h4 class="username-h4">
-   <a title="diemsangviet" href="https://muare.vn/shop/diemsangviet/30270">diemsangviet</a>
- </h4>
-</div>
-<div class="post-date-ad">07/09/2018, lúc 00:10</div>
-</div>
-</div>
-<hr/>
-<div class="last-comment">
-  <div class="my-avatar" style="padding-top: 4px;">
-   <a href="https://muare.vn/shop" class="img-rounded" title="">
-     <img src="https://muare.vn/images/avatars/avatar_male_s.png?v=2" alt="" width="25px" height="25px">
-   </a>
- </div>
- <div class="cmt" title="Add co ban pin Philips E170 ko vay? Co gi lien he so 0909080986 cho minh nhé. Thanks ban">Add co ban pin Philips E170 ko...</div>
- <div class="post-date">21/08/2018, lúc 11:43</div>
- <div class="count_cmt">
-   <div class="glyphicon cmt"><a title="Philips pin khủng BH chính hãng giá mới tháng 12 2017 Full Model" href="https://muare.vn/posts/philips-pin-khung-bh-chinh-hang-gia-moi-thang-12-2017-full-model.3941242?#show_comment" style="color:#313131;text-decoration: none;cursor: pointer">Bình luận</a></div>
- </div>
- <div class="follow" data-id="3941242">
-   <div data-toggle="tooltip" data-placement="bottom" title="" class="icon-follow " data-original-title="Lưu tin"></div>
- </div>
-</div>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
+@endforeach
 
 
-<div class="row post-items border-items">
- <table>
-  <tbody>
-   <tr>
-    <td class="td-avatar">
-     <div class="avatar">
-      <a title="Philips pin khủng BH chính hãng giá mới tháng 12 2017 Full Model" href="https://muare.vn/posts/philips-pin-khung-bh-chinh-hang-gia-moi-thang-12-2017-full-model.3941242" class="img-rounded">
-        <img class="lazy-image" src="https://muare.vn/images/global/logo-deffault.png?v=11010" alt="diemsangviet" width="150px" height="150px">
-      </a>
-    </div>
-    <div class="views-count">
-      <div class="glyphicon glyphicon-eye-open">
-       <span class="fred"></span>
-       41,464
-     </div>
-   </div>
- </td>
- <td class="td-info">
-   <div class="box-info">
-    <div class="title">
-     <h3 class="box-info-h3">
-      <a title="Philips pin khủng BH chính hãng giá mới tháng 12 2017 Full Model" href="https://muare.vn/posts/philips-pin-khung-bh-chinh-hang-gia-moi-thang-12-2017-full-model.3941242">Philips pin khủng BH chính hãng giá mới tháng 12 2017 Full Model</a>
-    </h3>
-  </div>
-  <div class="location">
-   <span class="glyphicon glyphicon-map-marker"><i class="fas fa-map-marker-alt" style="font-size: 12px;"></i></span>
-   <div title="9B - 354 Trần Khát Chân - Hai Bà Trưng - Hà Nội" class="my-location">
-    <h4 class="marker-h4">9B - 354 Trần Khát Chân - Hai Bà Trưng - Hà Nội</h4>
-  </div>
-</div>
-<div class="price">
- <span class=""> </span> 
- <div class="price-des"> Giá từ: </div>
- <div class="my-price">700.000  đ </div>
-</div>
-<div class="status">
- <div class=""> Tình trạng: Mới</div>
-</div>
-<div class="user-post">
- <div class="my-avatar">
-  <a title="diemsangviet" href="https://muare.vn/shop/diemsangviet/30270" class="img-rounded">
-    <img class="lazy-image" src="https://static8.muarecdn.com/zoom,80/74_74/muare/avatars/l/30/30270_1446804977.jpg?1446804977" alt="diemsangviet" width="40px" height="40px">
-  </a>
-</div>
-<div class="username">
-  <h4 class="username-h4">
-   <a title="diemsangviet" href="https://muare.vn/shop/diemsangviet/30270">diemsangviet</a>
- </h4>
-</div>
-<div class="post-date-ad">07/09/2018, lúc 00:10</div>
-</div>
-</div>
-<hr/>
-<div class="last-comment">
-  <div class="cmt empty-comment" style="color:#ccc">(Chưa có bình luận)</div>
-  <div class="count_cmt">
-   <div class="glyphicon cmt"><a title="Philips pin khủng BH chính hãng giá mới tháng 12 2017 Full Model" href="https://muare.vn/posts/philips-pin-khung-bh-chinh-hang-gia-moi-thang-12-2017-full-model.3941242?#show_comment" style="color:#313131;text-decoration: none;cursor: pointer">Bình luận</a></div>
- </div>
- <div class="follow" data-id="3941242">
-   <div data-toggle="tooltip" data-placement="bottom" title="" class="icon-follow " data-original-title="Lưu tin"></div>
- </div>
-</div>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
 </div>
 
 <div class="row-no-padding">
- <ul class="pagination pagination2">
-  <li class="page-item"><a class="page-link" href="http://muare.vn/posts/ha-noi/dien-thoai-pho-thong.94?page=1" rel="prev" style="border-radius: 0px;">« Trang trước</a></li>
-  <li class="page-item"><a class="page-link" href="http://muare.vn/posts/ha-noi/dien-thoai-pho-thong.94?page=3" rel="next" style="border-radius: 0px;">Trang sau »</a></li>
-</ul>
+ @include('user.chitietdanhmuc.phantrang')
 </div>
+
+
 <style>
 label.col-md-12.text-bold {
  padding: unset;
@@ -329,7 +284,11 @@ span.price-int {
 }
 </style>
 </div>
-
+@else
+  <div class="text-center mt-2">
+    <h4>Chuyên mục này chưa có tin đăng!</h4>
+  </div>
+@endif
 </div>
 </div>
 <div class="col-lg-3 col-md-3">

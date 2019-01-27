@@ -45,6 +45,10 @@ $(document).ready(function() {
 			$('#menu-category').parent().removeClass('col-lg-2 col-md-2');		  	
 		  	$('#view-post').parent().addClass('col-lg-12 col-md-12');
 		  	$('#view-post').parent().removeClass('col-lg-10 col-md-10');
+		  	if ($('#menu-left-user-L').length) {
+		  		$('#menu-left-user-L').setAttribute("style", "font-size:12px;");
+		  	}
+            
 		}
 
 
@@ -145,6 +149,29 @@ $(document).ready(function() {
 			$('.upload-product-Tr').trigger('click');
 		});
 	}
+
+
+	//set cookie cho dia diem
+
+	$(document).on('click', 'div.dropdown-menu a.dropdown-item', function(event) {
+		event.preventDefault();
+		var idPlace = $(this).attr('href');
+		$.ajax({
+			url: 'set-cookie/'+idPlace,
+			type: 'get',
+		})
+		.done(function() {
+			// console.log("success");
+			location.reload();
+		})
+		.fail(function() {
+			// console.log("error");
+		})
+		.always(function() {
+			// console.log("complete");
+		});
+		
+	});
 	
 });
 

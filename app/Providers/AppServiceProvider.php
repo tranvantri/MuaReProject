@@ -21,6 +21,10 @@ class AppServiceProvider extends ServiceProvider
         //
         schema::defaultStringLength(191);
 
+        // if(!isset($_COOKIE['place'])){
+        //     setcookie('place', 1, (86400 * 30), '/');
+        // }
+
         /*  ------------- View share HEader---------------*/
         $places = Places::all();
         $cates = DB::table('categories')->where('idParent', 0)->where('enable',1)->get();
