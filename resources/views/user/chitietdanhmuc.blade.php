@@ -8,6 +8,8 @@
 @endsection
 @section('content')
 <?php 
+
+  
   $hienthi = 'tin-dang';
   $tinhtrang = 'moi-va-cu';
   $gia = 'gia-tot';
@@ -70,7 +72,7 @@
       </div>
 
       <?php $checknull= false;
-        if($products && count($products)> 0){
+        if(isset($products) && count($products)> 0){
           $checknull= true;
         }else{
           $checknull= false;

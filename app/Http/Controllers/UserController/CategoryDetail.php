@@ -12,6 +12,7 @@ class CategoryDetail extends Controller
 {
 	public function getDanhMuc($name, $id){
 		$categoryParent = Categories::find($id);
+		$categoryCurrent = $categoryParent;
 		$idPlace = 1;
 		if(Cookie::get('place')!= null){
 			$idPlace = Cookie::get('place');
@@ -34,7 +35,7 @@ class CategoryDetail extends Controller
 			->where('products.status',1)
             ->select('products.*','users.name as tenchushop')
             ->paginate(9);            
-  		return view('user.chitietdanhmuc',compact('categoryParent', 'childCate','products','place'));
+  		return view('user.chitietdanhmuc',compact('categoryParent', 'categoryCurrent', 'childCate','products','place'));
 	}  
 
 	public function getCustomCategory($nameCate, $idCate, $hienthi, $tinhtrang, $gia, $sapxep){
