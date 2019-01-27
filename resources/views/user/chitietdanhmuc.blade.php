@@ -7,7 +7,12 @@
   </title>
 @endsection
 @section('content')
-
+<?php 
+  $hienthi = 'tin-dang';
+  $tinhtrang = 'moi-va-cu';
+  $gia = 'gia-tot';
+  $sapxep = 'tin-moi-nhat';
+?>
 <section class="content mt-2">
   <div class="container">
     <div class="row">
@@ -52,14 +57,14 @@
         <div class="title-category">
          <h1 class="title-box">
           Đăng bán 
-            @if($categoryParent->name)
-            {{$categoryParent->name}}
+            @if(isset($categoryCurrent->name))
+            {{$categoryCurrent->name}}
             @endif
            tại {{$place->name}}
         </h1>
         <p class="count-result"> Tin đăng rao bán về <b style="font-weight: bold;">
-          @if($categoryParent->name)
-          {{$categoryParent->name}}
+          @if(isset($categoryCurrent->name))
+          {{$categoryCurrent->name}}
           @endif
         </b> tại <b style="font-weight: bold;">{{$place->name}}</b></p>
       </div>
