@@ -11,7 +11,12 @@ Route::group(['namespace' => 'UserController'], function() {
     
     Route::get('/set-cookie/{id}', 'PlacesController@setCookie');
 
+    //chitietdanhmuc
+
     Route::get('/danh-muc/{name}/{id}', 'CategoryDetail@getDanhMuc');
+
+    Route::get('/danh-muc/{nameCate}/{idCate}/{hienthi}/{tinhtrang}/{gia}/{sapxep}/uy-tin-chat-luong', 'CategoryDetail@getCustomCategory');
+    ///////////////////////
 
     Route::get('/chi-tiet-san-pham', function () {
         return view('user.chitietsanpham');
