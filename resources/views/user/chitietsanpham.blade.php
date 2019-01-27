@@ -1,6 +1,6 @@
 @extends('user.layouts.index')
 @section('title')
-<title>Chi tiết sản phẩm</title>
+  <title>Chi tiết sản phẩm</title>
 @endsection
 @section('content')
 <section class="content mt-1">
