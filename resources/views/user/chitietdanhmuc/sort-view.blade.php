@@ -14,7 +14,7 @@
         'gia' => $gia,
         'sapxep' => $sapxep
       ])}}" 
-      @if(isset($hienthi) && $hienthi == 'dich-vu')
+      @if(isset($hienthi) && $hienthi == 'tin-dang')
       style="color: red;"
       @endif
       >Toàn bộ tin đăng</a></label>

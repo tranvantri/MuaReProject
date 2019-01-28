@@ -173,6 +173,12 @@ $(document).ready(function() {
 		});
 		
 	});
+	// Sap xep trang chi tiet danh muc
+
+	$('#sorting_select').on('change', function() {
+	  var url = this.value;
+	  window.location.href = url;
+	});
 	
 });
 
