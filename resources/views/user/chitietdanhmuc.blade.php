@@ -24,7 +24,7 @@
             <ul class="child">
               @include('user.chitietdanhmuc.menu-danhmuc')
             </ul>
-            <a class="all-cate" href="">Tất cả chuyên mục</a>
+            {{-- <a class="all-cate" href="">Tất cả chuyên mục</a> --}}
           </div>      
           <div class="show">
             <p class="title-blur">hiển thị theo</p>
