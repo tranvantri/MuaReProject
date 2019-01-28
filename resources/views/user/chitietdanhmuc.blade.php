@@ -7,14 +7,7 @@
   </title>
 @endsection
 @section('content')
-<?php 
 
-  
-  $hienthi = 'tin-dang';
-  $tinhtrang = 'moi-va-cu';
-  $gia = 'gia-tot';
-  $sapxep = 'tin-moi-nhat';
-?>
 <section class="content mt-2">
   <div class="container">
     <div class="row">

@@ -128,6 +128,7 @@ $(document).ready(function() {
 		}
 	});
 
+
 	// multi select
 	if ($('#chon-danh-muc-multi-Tr').length) {
 		$('#chon-danh-muc-multi-Tr').fSelect();
