@@ -13,9 +13,9 @@ Route::group(['namespace' => 'UserController'], function() {
 
     //chitietdanhmuc
 
-    Route::get('/danh-muc/{name}/{id}', 'CategoryDetail@getDanhMuc');
+    Route::get('/{name}/{id}', 'CategoryDetail@getDanhMuc');
 
-    Route::get('/danh-muc/{nameCate}/{idCate}/{hienthi}/{tinhtrang}/{gia}/{sapxep}/uy-tin-chat-luong', 'CategoryDetail@getCustomCategory');
+    Route::get('/{nameCate}/{idCate}/{hienthi}/{tinhtrang}/{gia}/{sapxep}/uy-tin-chat-luong', 'CategoryDetail@getCustomCategory')->name('danhmuc');
     ///////////////////////
 
     Route::get('/chi-tiet-san-pham', function () {

@@ -7,12 +7,7 @@
   </title>
 @endsection
 @section('content')
-<?php 
-  $hienthi = 'tin-dang';
-  $tinhtrang = 'moi-va-cu';
-  $gia = 'gia-tot';
-  $sapxep = 'tin-moi-nhat';
-?>
+
 <section class="content mt-2">
   <div class="container">
     <div class="row">
@@ -70,7 +65,7 @@
       </div>
 
       <?php $checknull= false;
-        if($products && count($products)> 0){
+        if(isset($products) && count($products)> 0){
           $checknull= true;
         }else{
           $checknull= false;
