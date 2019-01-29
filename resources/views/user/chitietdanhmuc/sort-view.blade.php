@@ -52,7 +52,7 @@
         'hienthi' => 'san-pham',
         'tinhtrang' => $tinhtrang,
         'gia' => $gia,
-        'sapxep' => $sapxep
+        'sapxep' => 'tin-moi-nhat'
       ])}}"
       @if(isset($hienthi) && $hienthi == 'san-pham')
       style="color: red;" 

@@ -52,7 +52,7 @@ button {
 }*/
 
 /*****************HEADER********************************/
-/*CONTRACT HEADER: HÃƒÂ  NÃ¡Â»â„¢i - LiÃƒÂªn hÃ¡Â»â€¡ quÃ¡ÂºÂ£ng cÃƒÂ¡o - HÃ¡Â»â€” trÃ¡Â»Â£*/
+/*CONTRACT HEADER: HÃƒÂ  NÃ¡Â»â„¢i - LiÃƒÂªn hÃ¡Â»â€¡ quÃ¡ÂºÂ£ng cÃƒÂ¡o - HÃ¡Â»â€” trÃ¡Â»Â£*/
 #navigationbar #contract-header {
   background-color: rgb(44, 89, 135); /* #2c5987 */
   width: 100%;
@@ -128,6 +128,7 @@ button {
   border-radius: 0px;
   font-size: 12px;
   width: 60%;
+  height: auto;
 }
 
 #logo-header .input-search:focus {
@@ -156,7 +157,7 @@ button {
 }
 
 /* MENU-HEADER */
-/*CONTRACT HEADER: HÃƒÂ  NÃ¡Â»â„¢i - LiÃƒÂªn hÃ¡Â»â€¡ quÃ¡ÂºÂ£ng cÃƒÂ¡o - HÃ¡Â»â€” trÃ¡Â»Â£*/
+/*CONTRACT HEADER: HÃƒÂ  NÃ¡Â»â„¢i - LiÃƒÂªn hÃ¡Â»â€¡ quÃ¡ÂºÂ£ng cÃƒÂ¡o - HÃ¡Â»â€” trÃ¡Â»Â£*/
 #navigationbar #menu-header {
   background-color: rgb(44, 89, 135); /* #2c5987 */
   width: 100%;
@@ -1041,7 +1042,7 @@ table .td-info .price .my-price {
   display: inline;
   line-height: 20px;
 }
-/* KHUNG SÃ¡ÂºÂ¢N PHÃ¡ÂºÂ¨M BÃƒÅ N DÃ†Â¯Ã¡Â»Å¡I KHUNG TOP VIP*/
+/* KHUNG SÃ¡ÂºÂ¢N PHÃ¡ÂºÂ¨M BÃƒÅ N DÃ†Â¯Ã¡Â»Å¡I KHUNG TOP VIP*/
 .img-rounded {
   border-radius: 6px;
 }
@@ -1170,7 +1171,6 @@ table .td-info .user-post .username .username-h4 a {
   width: 100%;
 }
 .item-L {
-  border-bottom: 1px solid #ccc;
   padding: 15px 20px 15px 15px;
   min-height: 320px;
 }

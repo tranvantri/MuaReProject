@@ -47,8 +47,98 @@
 
       </div>
     </div>
+
+    <?php $checknull= false;
+        if(isset($products) && count($products)> 0){
+          $checknull= true;
+        }else{
+          $checknull= false;
+        }
+
+      ?>
+    
+    @if(isset($hienthi) && $hienthi == 'san-pham') {{-- xet loai hien thi --}}
+      <div id="products-L" class="col-lg-10 col-md-10"><!-- nội dung các bài đăng -->             
+                    <div id="view-post" class="view-post">
+                        <div class="title-category">
+                           <h1 class="title-box">
+                              Đăng bán 
+                              @if(isset($categoryCurrent->name))
+                              {{$categoryCurrent->name}}
+                              @endif
+                               tại {{$place->name}}
+                           </h1>
+                           <p class="count-result"> Tin đăng rao bán về <b style="font-weight: bold;">
+                             @if(isset($categoryCurrent->name))
+                              {{$categoryCurrent->name}}
+                              @endif
+                           </b> tại <b style="font-weight: bold;">{{$place->name}}</b></p>
+                        </div>
+                        <div class="row-no-padding pagination-box">
+                           @include('user.chitietdanhmuc.phantrang')
+                           <div class="sorting">
+                              @include('user.chitietdanhmuc.sort-timkiem-sanpham')
+                           </div>
+                        </div>
+                        
+                        <div class="row-no-padding" style="padding: 0;">
+                            <div class="product-list-L">
+                                @foreach($products as $childPro)
+                                <div class="col-lg-4 col-md-4 col-sm-4 item-L" style="float: left;">
+                                    <div> <!-- SẢN PHẨM THỨ ? -->
+                                        <div class="avatar-sp-L">
+                                            <a href="" title="" data-title="Load sản phẩm" data-size="l" data-id="popupItem" class="img-rounded OverlayPopup" data-item="224062">
+                                            <img class="lazy-image" data-original="https://static8.muarecdn.com/zoom,80/180_180/muare/images/2019/01/16/4994361_18020628229.jpg" src="https://static8.muarecdn.com/zoom,80/180_180/muare/images/2019/01/16/4994361_18020628229.jpg" alt="Áo màu xanh lá đậm, cỡ người 1m65-1m75, 55-60kg mặc vừa." width="180px" height="180px" style="display: inline;">
+                                            </a>
+                                        </div>
+                                        <div class="title-sp-L">
+                                            <h2 class="item-title-h2">
+                                                <a href="https://muare.vn/products/ban-ao-mang-to-da-hq.224062" title="Bán áo măng-tô dạ HQ" data-title="Load sản phẩm" data-size="l" data-id="popupItem" class="img-rounded OverlayPopup" data-item="224062">
+                                                    Bán áo măng-tô dạ HQ
+                                                </a>
+                                            </h2>
+                                        </div>
+                                        <div class="desc-sp-L">
+                                            <h3 class="item-desc-h3">
+                                                Áo màu xanh lá đậm, cỡ người 1m65-1m75, 55-60kg mặc vừa.
+                                            </h3>
+                                        </div>
+                                        <div class="user-post-L">
+                                            <div class="username-sp-L">bán bởi <span class="name">GioKayVaLa</span>
+                                                <div class="box-arrow-L">
+                                                    <div class="user-info-L">
+                                                        <div class="user-name-L">
+                                                            <img class="lazy-image" src="https://static8.muarecdn.com/zoom,80/30_30/muare/avatars/l/29/29055_1475477187.jpg?1475477187" title="GioKayVaLa" width="40px" height="40px">
+                                                            <span>GioKayVaLa</span>
+                                                        </div>
+                                                        <div class="user-shop-L">
+                                                            <ul>
+                                                                <li><span>Cửa hàng: </span><a href="https://muare.vn/shop/GioKayVaLa/29055">GioKayVaLa</a></li>
+
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="post-date-L">16/01/2019, lúc 23:11</div>
+                                        </div>
+                                        <div class="price-sp-L">
+                                            <div class="product-price-L">1,200,000  đ </div>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    
+                                </div>
+                                @endforeach
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+    @else {{-- xet loai hien thi --}}
+
     <div class="col-lg-7 col-md-7"><!-- nội dung các bài đăng -->
-      <div id="view-post" class="view-post">
+      <div id="view-post-tt-dv" class="view-post">
         <div class="title-category">
          <h1 class="title-box">
           Đăng bán 
@@ -64,20 +154,13 @@
         </b> tại <b style="font-weight: bold;">{{$place->name}}</b></p>
       </div>
 
-      <?php $checknull= false;
-        if(isset($products) && count($products)> 0){
-          $checknull= true;
-        }else{
-          $checknull= false;
-        }
-
-      ?>
+      
       @if($checknull)
       <div class="row-no-padding pagination-box">
         @include('user.chitietdanhmuc.phantrang')
           
         <div class="sorting">
-          @include('user.chitietdanhmuc.sort-timkiem')
+          @include('user.chitietdanhmuc.sort-timkiem-tintuc-dv')
         </div>
       </div>
       
@@ -291,6 +374,8 @@ span.price-int {
 @endif
 </div>
 </div>
+
+
 <div class="col-lg-3 col-md-3">
   <!-- Vùng tìm kiếm -->
   <div id="search-zone" class="search-zone">
@@ -434,7 +519,9 @@ span.price-int {
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> {{-- vung tim kiem --}}
+              @endif  {{-- end xet loai hien thi --}}
+
             </div>
           </div>
         </section>
