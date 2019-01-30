@@ -16,7 +16,6 @@ Route::group(['namespace' => 'UserController'], function() {
     Route::get('/{name}/{id}', 'CategoryDetail@getDanhMuc');
 
     Route::get('/{nameCate}/{idCate}/{hienthi}/{tinhtrang}/{gia}/{sapxep}/uy-tin-chat-luong', 'CategoryDetail@getCustomCategory')->name('danhmuc');
-    ///////////////////////
 
     Route::get('/chi-tiet-san-pham/{id}', ['as'=>'chitietsanpham','uses'=>'ProductController@getProduct']);
 
