@@ -27,9 +27,7 @@ Route::group(['namespace' => 'UserController'], function() {
         return view('user.dangtinsanpham');
     });
 
-    Route::get('/gian-hang-cua-nguoi-dung', function () {
-        return view('user.gianhangcuanguoidung');
-    });
+    Route::get('/gian-hang-cua-nguoi-dung', ['as'=>'gianhangcuanguoidung','uses'=>"UserPageController@getView"]);
 
     Route::get('/tat-ca-tin-dang', function () {
         return view('user.tatcatindang');
