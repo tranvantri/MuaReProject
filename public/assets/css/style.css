@@ -1641,6 +1641,24 @@ table .td-info .user-post .username .username-h4 a {
   /*font-family: Roboto-Regular;*/
 }
 
+.thu_gon_text_tomiot{
+  display: block;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  overflow: hidden;
+  max-height: 14em;
+  line-height: 1.8em;
+}
+.thu_gon_text_chitietsanpham_tomiot{
+  display: block;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  overflow: hidden;
+  max-height: 5em;
+  line-height: 1.8em;
+  
+}
+
 .imgTinDangMoiNhat {
   display: table-cell;
   vertical-align: top;
@@ -1991,22 +2009,42 @@ table .td-info .user-post .username .username-h4 a {
 }
 .noidung_tintuc_tomiot {
 }
+
 #hinh_anh_shop_tomiot {
   border-radius: 10px;
   border: 1px solid #ccc;
   -webkit-box-shadow: 0 1px 20px #ccc;
   box-shadow: 0 1px 20px #ccc;
 }
+#img_shop_tomiot{
+    display: table-cell;
+
+}
+#hinh_anh_shop_tomiot{
+     border-radius: 10px;
+    border: 1px solid #ccc;
+    -webkit-box-shadow: 0 1px 20px #ccc;
+    box-shadow: 0 1px 20px #ccc;
+    height: 200px;
+
+}
 #table_product_tomiot {
   display: inline-flex;
   padding: 20px 10px 5px 20px;
 }
+
 #img_shop_tomiot {
   display: table-cell;
 }
 #thong_tin_san_pham_tomiot {
   display: inline-block;
   padding-left: 20px;
+}
+
+#thong_tin_san_pham_tomiot{
+    display: inline-block;
+    padding-left: 20px;
+
 }
 .facebook_button_tomiot {
   padding: 20px 0 10px 10px;
@@ -2045,12 +2083,25 @@ table .td-info .user-post .username .username-h4 a {
   list-style-type: none;
   padding: 0 10px;
 }
+
 .tieu_de_splq_tomiot {
   font-family: Roboto-Bold;
   font-size: 14px;
   color: #176093;
   display: inline-block;
   /*min-height: 39px;*/
+}
+.tieu_de_splq_tomiot{
+    font-family: Roboto-Bold;
+    font-size: 14px;
+    color: #176093;
+    display: inline-block;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    overflow: hidden;
+    max-height: 2em;
+    line-height: 3em;
+
 }
 .user_thongtin_splq_tomiot {
 }

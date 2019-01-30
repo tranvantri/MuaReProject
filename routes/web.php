@@ -18,9 +18,7 @@ Route::group(['namespace' => 'UserController'], function() {
     Route::get('/{nameCate}/{idCate}/{hienthi}/{tinhtrang}/{gia}/{sapxep}/uy-tin-chat-luong', 'CategoryDetail@getCustomCategory')->name('danhmuc');
     ///////////////////////
 
-    Route::get('/chi-tiet-san-pham', function () {
-        return view('user.chitietsanpham');
-    });
+    Route::get('/chi-tiet-san-pham/{id}', ['as'=>'chitietsanpham','uses'=>'ProductController@getProduct']);
 
     Route::get('/dang-tin-dich-vu', function () {
         return view('user.dangtindichvu');

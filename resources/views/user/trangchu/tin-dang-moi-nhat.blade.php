@@ -9,7 +9,7 @@
 	<div class="row">
 		<div class="chip">
 			<img src="https://www.w3schools.com/howto/img_avatar.png" alt="User"	>
-			<a href="{{$child->idUser}}">{{$child->name}}</a>  đăng 44 phút trước
+			<a href="{{$child->idChuShop}}">{{$child->tenChuShop}}</a>  đăng 44 phút trước
 		</div>
 	</div>
 	<div class="noidungTin">
@@ -19,14 +19,15 @@
 					{{$child->description}} 
 				</span> 
 				<div class="post-address">
-					<i class="fas fa-tag"></i> <span class="gia_tin_dang_tomiot">{!! number_format($child->price,0)  ?? "1" !!}đ</span>
+					<i class="fas fa-tag"></i> <span class="gia_tin_dang_tomiot">{!! number_format($child->price,0)  ?? "chưa có giá" !!}đ</span>
 				</div>
 				<div class="post-address">
 					<i class="fas fa-map-marker-alt"></i> <span>{{$child->address}}</span>
+					<i class="fas fa-map-marker-alt"></i> <span>{{$child->address ?? $child->diaChiChuShop}}</span>
 				</div>
 			</div>
 			<div class="imgTinDangMoiNhat col-md-5">
-				<a href="#"><img class="" src="{{$child->images}}" alt=""></a>
+				<a href="#"><img class="" src="{{$child->images}}" alt="Hình ảnh của shop"></a>
 			</div>
 		</div>									
 	</div>								
