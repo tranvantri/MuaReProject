@@ -178,81 +178,25 @@
     </div>
     <div class="noi_dung_tin_khac_tomiot">
       <ul>
+
+        @foreach($product_user as $childpc)
         <li>
           <div class="post-title">
             <h3 class="post-title-h3">
-              <a title="Bán Samsung galaxy S8  chống nước  tại Hà Nội" href="https://muare.vn/posts/ban-samsung-galaxy-s8-chong-nuoc-tai-ha-noi.4736647">Bán Samsung galaxy S8  chống nước  tại Hà Nội</a>
+              <a title="{{$childpc->name}}" href="{{$childpc->id}}">{{$childpc->name}}</a>
             </h3>
           </div>
           <div class="post-info">
-            <span class="date">06/06/2018, lúc 09:48</span>
+            <span class="date">{{$childpc->date_added}}</span>
             <span class="category">
               <h4 class="post-info-category-h4">
-                <a href="https://muare.vn/posts/ha-noi/smartphone.56" title="SmartPhone"><i class="fas fa-user-tag"></i> Smart  Phone</a>
+                <a href="{{$childpc->idCate}}" title="{{$childpc->nameCate}}"><i class="fas fa-user-tag"></i> {{$childpc->nameCate}}</a>
               </h4>
             </span>
           </div>
         </li>
-        <li>
-          <div class="post-title">
-            <h3 class="post-title-h3">
-              <a title="Bán Samsung galaxy S6 EDGE xanh ngọc lục bảo siêu độc và cực hiếm  tại Hà Nội" href="https://muare.vn/posts/ban-samsung-galaxy-s6-edge-xanh-ngoc-luc-bao-sieu-doc-va-cuc-hiem-tai-ha-noi.4727403">Bán Samsung galaxy S6 EDGE xanh ngọc lục...</a>
-            </h3>
-          </div>
-          <div class="post-info">
-            <span class="date">14/05/2018, lúc 12:50</span>
-            <span class="category">
-              <h4 class="post-info-category-h4">
-                <a href="https://muare.vn/posts/ha-noi/smartphone.56" title="SmartPhone"><i class="fas fa-user-tag"></i> Smart  Phone</a>
-              </h4>
-            </span>
-          </div>
-        </li>
-        <li>
-          <div class="post-title">
-            <h3 class="post-title-h3">
-              <a title="Máy tính bảng Huawei Mediapad T3 10inch rẻ" href="https://muare.vn/posts/may-tinh-bang-huawei-mediapad-t3-10inch-re.4726029">Máy tính bảng Huawei Mediapad T3 10inch rẻ</a>
-            </h3>
-          </div>
-          <div class="post-info">
-            <span class="date">10/05/2018, lúc 10:42</span>
-            <span class="category">
-              <h4 class="post-info-category-h4">
-                <a href="https://muare.vn/posts/ha-noi/smartphone.56" title="SmartPhone"><i class="fas fa-user-tag"></i> Smart  Phone</a>
-              </h4>
-            </span>
-          </div>
-        </li>
-        <li>
-          <div class="post-title">
-            <h3 class="post-title-h3">
-              <a title="Máy tính bảng Sony Xperia tablet Z likenew 99% kèm bao da" href="https://muare.vn/posts/may-tinh-bang-sony-xperia-tablet-z-likenew-99-kem-bao-da.4724472">Máy tính bảng Sony Xperia tablet Z...</a>
-            </h3>
-          </div>
-          <div class="post-info">
-            <span class="date">05/05/2018, lúc 20:04</span>
-            <span class="category">
-              <h4 class="post-info-category-h4">
-                <a href="https://muare.vn/posts/ha-noi/smartphone.56" title="SmartPhone"><i class="fas fa-user-tag"></i> Smart  Phone</a>
-              </h4>
-            </span>
-          </div>
-        </li>
-        <li>
-          <div class="post-title">
-            <h3 class="post-title-h3">
-              <a title="Máy tính bảng Sony Xperia tablet Z likenew 99% kèm bao da" href="https://muare.vn/posts/may-tinh-bang-sony-xperia-tablet-z-likenew-99-kem-bao-da.4724180">Máy tính bảng Sony Xperia tablet Z...</a>
-            </h3>
-          </div>
-          <div class="post-info">
-            <span class="date">05/05/2018, lúc 09:23</span>
-            <span class="category">
-              <h4 class="post-info-category-h4">
-                <a href="https://muare.vn/posts/ha-noi/may-tinh-bang-may-doc-sach.58" title="Máy tính bảng, Máy đọc sách"><i class="fas fa-user-tag"></i> Máy tính bảng,...</a>
-              </h4>
-            </span>
-          </div>
-        </li>
+        @endforeach
+
       </ul>
     </div>
   </div>
