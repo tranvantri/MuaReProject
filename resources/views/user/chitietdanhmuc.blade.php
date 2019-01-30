@@ -74,6 +74,8 @@
                               @endif
                            </b> tại <b style="font-weight: bold;">{{$place->name}}</b></p>
                         </div>
+
+                        @if($checknull)
                         <div class="row-no-padding pagination-box">
                            @include('user.chitietdanhmuc.phantrang')
                            <div class="sorting">
@@ -87,43 +89,43 @@
                                 <div class="col-lg-4 col-md-4 col-sm-4 item-L" style="float: left;">
                                     <div> <!-- SẢN PHẨM THỨ ? -->
                                         <div class="avatar-sp-L">
-                                            <a href="" title="" data-title="Load sản phẩm" data-size="l" data-id="popupItem" class="img-rounded OverlayPopup" data-item="224062">
-                                            <img class="lazy-image" data-original="https://static8.muarecdn.com/zoom,80/180_180/muare/images/2019/01/16/4994361_18020628229.jpg" src="https://static8.muarecdn.com/zoom,80/180_180/muare/images/2019/01/16/4994361_18020628229.jpg" alt="Áo màu xanh lá đậm, cỡ người 1m65-1m75, 55-60kg mặc vừa." width="180px" height="180px" style="display: inline;">
+                                            <a href="" title="{{$childPro->name}}" data-title="Load sản phẩm" data-size="l" data-id="popupItem" class="img-rounded OverlayPopup">
+                                            <img class="lazy-image" src="{{$childPro->images}}" alt="{{$childPro->name}}" width="180px" height="180px" style="display: inline;">
                                             </a>
                                         </div>
                                         <div class="title-sp-L">
                                             <h2 class="item-title-h2">
-                                                <a href="https://muare.vn/products/ban-ao-mang-to-da-hq.224062" title="Bán áo măng-tô dạ HQ" data-title="Load sản phẩm" data-size="l" data-id="popupItem" class="img-rounded OverlayPopup" data-item="224062">
-                                                    Bán áo măng-tô dạ HQ
+                                                <a href="https://muare.vn/products/ban-ao-mang-to-da-hq.224062" title="{{$childPro->name}}" data-title="Load sản phẩm" data-size="l" data-id="popupItem" class="img-rounded OverlayPopup" data-item="224062">
+                                                    {{$childPro->name}}
                                                 </a>
                                             </h2>
                                         </div>
                                         <div class="desc-sp-L">
                                             <h3 class="item-desc-h3">
-                                                Áo màu xanh lá đậm, cỡ người 1m65-1m75, 55-60kg mặc vừa.
+                                                {{$childPro->description}}
                                             </h3>
                                         </div>
                                         <div class="user-post-L">
-                                            <div class="username-sp-L">bán bởi <span class="name">GioKayVaLa</span>
+                                            <div class="username-sp-L">bán bởi <span class="name">{{$childPro->tenchushop}}</span>
                                                 <div class="box-arrow-L">
                                                     <div class="user-info-L">
                                                         <div class="user-name-L">
                                                             <img class="lazy-image" src="https://static8.muarecdn.com/zoom,80/30_30/muare/avatars/l/29/29055_1475477187.jpg?1475477187" title="GioKayVaLa" width="40px" height="40px">
-                                                            <span>GioKayVaLa</span>
+                                                            <span>{{$childPro->tenchushop}}</span>
                                                         </div>
                                                         <div class="user-shop-L">
                                                             <ul>
-                                                                <li><span>Cửa hàng: </span><a href="https://muare.vn/shop/GioKayVaLa/29055">GioKayVaLa</a></li>
+                                                                <li><span>Cửa hàng: </span><a href="https://muare.vn/shop/GioKayVaLa/29055">{{$childPro->tenchushop}}</a></li>
 
                                                             </ul>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="post-date-L">16/01/2019, lúc 23:11</div>
+                                            <div class="post-date-L">{{date("d/m/Y", strtotime($childPro->date_added))}}, lúc {{date("H:m", strtotime($childPro->date_added))}}</div>
                                         </div>
                                         <div class="price-sp-L">
-                                            <div class="product-price-L">1,200,000  đ </div>
+                                            <div class="product-price-L">{{number_format($childPro->price,0)}}  đ </div>
                                         </div>
                                     </div>
                                     <hr>
@@ -132,6 +134,11 @@
                                 @endforeach
                             </div>
                         </div>
+                        @else
+                          <div class="text-center mt-2">
+                            <h4>Chuyên mục này chưa có tin đăng!</h4>
+                          </div>
+                        @endif
 
                     </div>
                 </div>
@@ -284,7 +291,7 @@ display: none;
          <div class="box-info">
           <div class="title">
            <h3 class="box-info-h3">
-            <a title="Philips pin khủng BH chính hãng giá mới tháng 12 2017 Full Model" href="https://muare.vn/posts/philips-pin-khung-bh-chinh-hang-gia-moi-thang-12-2017-full-model.3941242">{{$childPro->name}}</a>
+            <a title="Philips pin khủng BH chính hãng giá mới tháng 12 2017 Full Model" href="https://muare.vn/posts/philips-pin-khung-bh-chinh-hang-gia-moi-thang-12-2017-full-model.3941242">{{$childPro->title_tindang}}</a>
           </h3>
         </div>
         <div class="location">
