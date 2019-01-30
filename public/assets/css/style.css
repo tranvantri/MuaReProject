@@ -1242,8 +1242,18 @@ table .td-info .user-post .username .username-h4 a {
   overflow: hidden;
   max-height: 14em;
   line-height: 1.8em;
-
 }
+.thu_gon_text_chitietsanpham_tomiot{
+  display: block;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  overflow: hidden;
+  max-height: 5em;
+  line-height: 1.8em;
+  
+}
+
+
 .imgTinDangMoiNhat {
   display: table-cell;
   vertical-align: top;
@@ -1600,20 +1610,23 @@ table .td-info .user-post .username .username-h4 a {
 
 
 }
+#img_shop_tomiot{
+    display: table-cell;
+
+}
 #hinh_anh_shop_tomiot{
      border-radius: 10px;
     border: 1px solid #ccc;
     -webkit-box-shadow: 0 1px 20px #ccc;
     box-shadow: 0 1px 20px #ccc;
+    height: 200px;
 
 }
 #table_product_tomiot{
     display: inline-flex;
     padding: 20px 10px 5px 20px;
 }
-#img_shop_tomiot{
-    display: table-cell;
-}
+
 #thong_tin_san_pham_tomiot{
     display: inline-block;
     padding-left: 20px;
@@ -1662,7 +1675,11 @@ table .td-info .user-post .username .username-h4 a {
     font-size: 14px;
     color: #176093;
     display: inline-block;
-       /*min-height: 39px;*/
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    overflow: hidden;
+    max-height: 2em;
+    line-height: 3em;
 }
 .user_thongtin_splq_tomiot{
 

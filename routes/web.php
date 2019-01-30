@@ -13,9 +13,7 @@ Route::group(['namespace' => 'UserController'], function() {
 
     Route::get('/danh-muc/{name}/{id}', 'CategoryDetail@getDanhMuc');
 
-    Route::get('/chi-tiet-san-pham', function () {
-        return view('user.chitietsanpham');
-    });
+    Route::get('/chi-tiet-san-pham/{id}', ['as'=>'chitietsanpham','uses'=>'ProductController@getProduct']);
 
     Route::get('/dang-tin-dich-vu', function () {
         return view('user.dangtindichvu');
