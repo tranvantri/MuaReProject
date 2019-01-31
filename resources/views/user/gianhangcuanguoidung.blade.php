@@ -9,17 +9,9 @@
         <div class="row">
           <div class="mrfoot">
             <div class="no-sidebar">
-              <input
-                type="hidden"
-                name="user_login"
-                class="user_login"
-                value="0"
-              />
-              <input
-                type="hidden"
-                name="_token"
-                value="SPnZ2K70Iym1xvMiiTxDG7Xb0nRukPiG9zPXlQBF"
-              />
+         @foreach($user as $childUser)
+              <input type="hidden" name="user_login" class="user_login" value="0" />
+              <input type="hidden" name="_token" value="SPnZ2K70Iym1xvMiiTxDG7Xb0nRukPiG9zPXlQBF" />
               <div class="page-shop">
                 <div class="cover">
                   <div class="image-cover">
@@ -31,7 +23,11 @@
                       alt="banner"
                     />
                   </div>
-                  <div class="shop-name"><h2>Gian hàng của cuchuoing</h2></div>
+
+
+                  <div class="shop-name"><h2>Gian hàng của {{$childUser->username}}</h2></div>
+
+                    
                 </div>
                 <div class="shop-info">
                   <div class="info-left">
@@ -48,7 +44,7 @@
                       </div>
                       <div class="o-name">
                         <div class="chushop">CHỦ SHOP</div>
-                        <div class="u-name">cuchuoing</div>
+                        <div class="u-name">{{$childUser->username}}</div>
                         <div class="u-button">
                           <span
                             href="javascript:void(0);"
@@ -917,6 +913,8 @@
                   </div>
                 </div>
               </div>
+          @endforeach 
+              <!-- Kết thúc $childUser -->
             </div>
           </div>
         </div>
