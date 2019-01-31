@@ -3221,3 +3221,99 @@ output {
 
 
 /*************************KET THUC TRANG QUAN LY TIN DANG**************************************/
+
+
+/****************Hieu ung cua so chi tiet sp Nifty model window effect*/
+/*id cá»§a cáº£ form login*/
+#modal-16 {
+	margin: 20px 800px 20px 0px;
+	width: 100%;
+}
+/*pháº§n tÃªn form vÃ  má»¥c select*/
+#modal-16 h4 {
+	background-color: #05984f;
+    
+	-webkit-border-radius: 20px 20px 0 0;
+	-moz-border-radius: 20px 20px 0 0;
+	border-radius: 20px 20px 0 0;
+	
+	font-size: 20px;
+	padding: 20px 30px;
+    color: #fff;
+    width: 765px;
+    
+    font-weight: bold;
+}
+/* k biáº¿t
+#modal-15 h4 span[class*="fontawesome-"] {
+	margin-right: 14px;
+}*/
+/*form*/
+#modal-16 fieldset {
+	background-color: #fff;
+    /*bo trÃ²n 2 gÃ³c dÆ°á»›i*/
+	-webkit-border-radius: 0 0 20px 20px;
+	-moz-border-radius: 0 0 20px 20px;
+	border-radius: 0 0 20px 20px;
+	padding: 20px 26px;
+    
+    color: #343536;
+    line-height: 27px;
+    width: 770px;
+    display: inline-block;
+}
+
+/*#modal-15 fieldset div:last-child {
+	margin-bottom: 0;
+}*/
+
+#modal-16 fieldset input[type="text"], #modal-16 fieldset input[type="password"] {
+	background-color: #eee;
+	color: #5a6265;
+	padding: 7px 7px;
+	width: 350px;
+}
+
+#modal-16 fieldset input[type="submit"] {
+	background-color: #05984f;
+	color: #fff;
+	padding: 10px 0;
+	width: 85px;
+    font-weight: bold;
+    font-size: 17px;
+}
+
+#modal-16 fieldset input[type="submit"]:hover {
+    background-color: #077b41;
+    cursor: pointer;
+}
+/*float username vÃ  btn check lÃªn 1 hÃ ng*/
+#modal-16 #login_form2 #top {
+   display:flex;   /*tÃ¡ch biá»‡t vá»›i cÃ¡c object ngoÃ i div nÃ y*/
+    
+} 
+#modal-16 #login_form2 #left_top {
+    padding-top: 10px;
+    float: left;
+    
+} 
+#modal-16 #login_form2 #right_top {
+    padding-top: 32px;
+    float: left;
+    margin: 0px 300px 0px 20px;
+}
+#modal-16 #login_form2 h3 {
+    margin: 15px 0px 0px 0px;
+    font-size: 20px;
+} 
+/*cÃ¡c label vÃ  Ã´ input nháº­p vÃ o repair student*/
+/*2 button repair vÃ  cancel*/
+#modal-16 #login_form2 #btn {
+    float: right;
+    margin-top: 20px;
+    
+} 
+#modal-16 #login_form2 #btn .md-close {
+    margin-left: 20px;
+    margin-right: 20px;
+}
