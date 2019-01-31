@@ -12,7 +12,7 @@ class ProductController extends Controller
 {
 	/* 	Lấy chi tiết sản phẩm theo id truyền vào
 		- 	đầu vào: id của sản phẩm
-		-	đầu ra: sản phẩm, người bán sp đó
+		-	đầu ra: sản phẩm, người bán sp đó, các sp của shop đó
 	*/
 	public function getProduct($id){
 		$products = DB::table('products')->join('users', 'users.id', '=', 'products.idUser')->where('products.id',$id)->where('products.adminCheck',1)->select('users.id as idChuShop', 'products.*','users.email as emailChuShop','users.phone as phoneChuShop','users.address as addressChuShop','users.name as tenChuShop','users.avatar as avatarChuShop','users.username as username')->get();
