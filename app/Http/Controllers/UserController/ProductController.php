@@ -26,7 +26,7 @@ class ProductController extends Controller
 
 
 		/*Truyền id của user đã đăng nhập vào đây*/
-		$product_user = DB::table('products')->join('users','users.id','=','products.idUser')->join('categories','categories.id','=','products.idCate')->where('products.adminCheck',1)->where('users.adminCheck',1)->where('users.id',1)->select('products.*','categories.id as idCate','categories.name as nameCate');
+		$product_user = DB::table('products')->join('users','users.id','=','products.idUser')->join('categories','categories.id','=','products.idCate')->where('products.adminCheck',1)->where('users.adminCheck',1)->where('users.id',1)->select('products.*','categories.id as idCate','categories.name as nameCate')->get();
 
   		return view('user.chitietsanpham',compact('products','product_category','product_relate','randPro','product_user'));
 	}   	
