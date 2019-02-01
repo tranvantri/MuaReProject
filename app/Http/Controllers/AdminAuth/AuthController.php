@@ -156,11 +156,23 @@ class AuthController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|max:255',
+            'name' => 'required|max:50',
             'phone' => 'required|max:11',
-            'email' => 'required|email|max:255|unique:admins',
+            'email' => 'required|email|max:50|unique:admins',
             'password' => 'required|min:6|confirmed',
-        ]);
+        ],
+        [
+            'email.required'=>'Bạn chưa nhập email',
+            'email.email'=>'Email không hợp lệ',
+            'email.max'=>'Email có độ dài không quá 50 ký tự',
+            'email.unique'=>'Email đã tồn tại',
+            'phone.required'=>'Bạn chưa nhập điện thoại',
+            'phone.max'=>'Điện có độ dài không quá 10 ký tự',
+            'password.required'=>'Bạn chưa nhập mật khẩu',
+            'password.confirmed'=>'Mật khẩu không khớp',
+            'password.min'=>'Mật khẩu có độ dài từ 6-20 ký tự',
+        ]
+        );
     }
 
     /**

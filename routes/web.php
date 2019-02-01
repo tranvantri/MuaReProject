@@ -13,8 +13,8 @@ Route::group(['namespace' => 'AdminAuth'], function() {
         Route::post('login',['as'=>'loginAdmin','uses'=>'AuthController@postLogin']);
     });
     
-    Route::get('admin/register','AuthController@getRegister');
-    Route::post('admin/register','AuthController@postRegister');
+    // Route::get('admin/register','AuthController@getRegister');
+    // Route::post('admin/register','AuthController@postRegister');
 
     Route::get('admin/dashboard','AdminAuthController@getIndex');
     Route::get('admin/logout','AdminAuthController@getLogout');
@@ -64,13 +64,17 @@ Route::group(['namespace' => 'UserController'], function() {
         return view('user.dangtinchung');
     });
 
-    Route::get('/login', function () {
-        return view('user.login');
-    });
-
     Route::get('/mua-quang-cao', function () {
         return view('user.muaquangcao');
     });
+
+    Route::group(['middleware'=>'userCheckLogin'], function() {
+        Route::get('login',['as'=>'loginUser','uses'=>'LoginUserController@getDangNhap']);
+        Route::post('login','LoginUserController@postDangNhap');
+    });  
+
+    Route::get('logout','LoginUserController@getUserLogout');
+    Route::post('register',['as'=>'postUserRegister','uses'=>'LoginUserController@postUserRegister']);
 
     
 });
