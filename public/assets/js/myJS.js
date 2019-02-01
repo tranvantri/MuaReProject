@@ -99,17 +99,17 @@ $(document).ready(function() {
 
 	$('input[type=radio][name=typelogin]').on('change', function(){
 	    switch($(this).val()){
-	        case '1' :
+	        case 'username' :
 	            $(".phone-number-login").hide();
 	            $(".email-login").hide();
 	            $(".username-login").show();
 	            break;
-	        case '2' :
+	        case 'phone' :
 	            $(".username-login").hide();
 	            $(".email-login").hide();
 	            $(".phone-number-login").show();
 	            break;
-            case '3' :
+            case 'email' :
 	            $(".phone-number-login").hide();
 	            $(".username-login").hide();
 	            $(".email-login").show();
