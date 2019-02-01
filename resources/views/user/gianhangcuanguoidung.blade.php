@@ -23,8 +23,6 @@
                       alt="banner"
                     />
                   </div>
-
-
                   <div class="shop-name"><h2>Gian hàng của {{$childUser->username}}</h2></div>
 
                     
@@ -149,14 +147,13 @@
                 </div>
                 <div class="shop-row">
                   <h2 class="row-title">Tin đăng của shop</h2>
-                  @foreach($services as $childService)
+                  
                   <div class="list-post row">
+                    @foreach($services as $childService)
                     <div class="shop-post col-xs-6">
+                      
                       <div class="img-post">
-                        <a
-                          title="{{$childService->name}}"
-                          href="{{$childService->id}}"
-                        >
+                        <a title="{{$childService->name}}" href="{{ route('sanpham', $childService->id) }}" >
                           <img
                             class="lazy-images"
                             src="{{$childService->images}}"
@@ -185,10 +182,11 @@
                           Giá từ: <span>{{ number_format($childService->price,0)}} đ </span>
                         </div>
                       </div>
-                    </div>
-                    @endforeach
 
+                    </div> 
+                    @endforeach
                   </div>
+                  
                 </div>
 
 
@@ -417,11 +415,7 @@
                     <div class="shop-item col-xs-15">
                       <div class="img-item show-item" item-data="221991">
                         <div class="avatar">
-                          <a
-                            title="{{$childProduct->name}}"
-                            href="{{$childProduct->id}}"
-                            data-title="Load sản phẩm"
-                            data-size="l"
+                          <a title="{{$childProduct->name}}" href="{{ route('sanpham', $childProduct->id) }}" data-title="Load sản phẩm" data-size="l"
                             data-id="popupItem"
                             class="OverlayPopup"
                           >
@@ -443,7 +437,7 @@
                             <h2 class="item-h2">
                               <a
                                 title="{{$childProduct->name}}"
-                                href="{{$childProduct->id}}"
+                                href="{{ route('sanpham', $childProduct->id) }}"
                                 data-title="Load sản phẩm"
                                 data-size="l"
                                 data-id="popupItem"

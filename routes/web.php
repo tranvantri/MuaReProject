@@ -50,7 +50,12 @@ Route::group(['namespace' => 'UserController'], function() {
         return view('user.dangtinsanpham');
     });
 
-    Route::get('/gian-hang-cua-nguoi-dung', ['as'=>'gianhangcuanguoidung','uses'=>"UserPageController@getView"]);
+    Route::get('/gian-hang-cua-nguoi-dung/{id}', ['as'=>'gianhangcuanguoidung','uses'=>"UserPageController@getView"]);
+
+    Route::get('/quan-ly-don-hang',['as'=>'quanlydonhang','uses'=>'UserPageController@getQuanLyDonHang']);
+
+    Route::get('/san-pham/{id}',['as'=>'sanpham','uses'=>'ProductController@viewProduct']);
+
 
     Route::get('/tat-ca-tin-dang', function () {
         return view('user.tatcatindang');

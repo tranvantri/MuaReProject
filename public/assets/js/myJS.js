@@ -180,6 +180,40 @@ $(document).ready(function() {
 	  window.location.href = url;
 	});
 	
+	// trang quan ly don hang
+	document.getElementById("span-tuychon").onclick = function () {
+        if(document.getElementById("a-phanhoi").style.display == 'none'){
+            document.getElementById("a-phanhoi").style.display = 'block'; 
+        } else {
+            document.getElementById("a-phanhoi").style.display = 'none';
+        }
+        
+    }    
+    
+    document.getElementById("span-reply").onclick = function () {
+        if(document.getElementById("input-reply-customer").style.display == 'none'){
+            document.getElementById("input-reply-customer").style.display = 'block'; 
+        } else {
+            document.getElementById("input-reply-customer").style.display = 'none';
+        }
+        
+    }    
+    function showPicture(imgs) {
+    	var expandImg = document.getElementById("expandedImg");
+	// var imgText = document.getElementById("imgtext");
+	expandImg.src = imgs.src;
+	// imgText.innerHTML = imgs.alt;
+	// expandImg.parentElement.style.display = "block";
+	}
+	function scrollleft() {
+		var elmnt = document.getElementById("abc123");
+		elmnt.scrollLeft += 50;
+	}
+	function scrollright() {
+		var elmnt1 = document.getElementById("abc123");
+		elmnt1.scrollLeft -= 50;
+	}
+
 });
 
 	
