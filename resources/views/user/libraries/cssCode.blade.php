@@ -12,3 +12,4 @@
 
 <link href="assets/css/gianhangcuchuoing.css" type="text/css" rel="stylesheet"/>
 <link href="assets/css/muaquangcao.css" type="text/css" rel="stylesheet">
+<link href="assets/css/product-info.css" type="text/css" rel="stylesheet" />

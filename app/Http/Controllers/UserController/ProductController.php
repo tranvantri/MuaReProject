@@ -31,5 +31,30 @@ class ProductController extends Controller
   		return view('user.chitietsanpham',compact('products','product_category','product_relate','randPro','product_user'));
 	}   	
 
+	public function viewProduct($id){
+		// Thông tin của sản phẩm +  Thông tin người bán sản phẩm
+		$products = DB::table('products')->join('users', 'users.id', '=', 'products.idUser')->where('products.id',$id)->where('products.adminCheck',1)->select('users.id as idChuShop', 'products.*','users.email as emailChuShop','users.phone as phoneChuShop','users.address as addressChuShop','users.name as tenChuShop','users.avatar as avatarChuShop','users.username as usernameChuShop','users.created_at as ngayTaoChuShop')->get();
+
+
+		// Đề xuất sản phẩm cùng chuyên mục 5 sp
+		$getCate = DB::table('products')->where('id', $id)->first();
+		$product_offer = DB::table('products')->where('products.adminCheck',1)->where('products.id','<>',$id)->where('products.idCate',$getCate->idCate)->inRandomOrder()->limit(5)->get();
+		// đếm số lượng pro lấy ra
+		$soluongOffer = $product_offer->count();
+		// nếu nhỏ hơn 5, lấy thêm 5-soluong
+		if ($soluongOffer < 5) {
+			$more = 5 - $soluongOffer;
+			$more_product_offer = DB::table('products')->where('products.adminCheck',1)->where('products.id','<>',$id)->inRandomOrder()->take($more)->get();
+			$product_offer = $product_offer->merge($more_product_offer);
+		}
+
+
+		// Sản phẩm ngẫu nhiên 5sp
+		$randPro = DB::table('products')->where('products.adminCheck',1)->inRandomOrder()->limit(5)->get();
+		
+
+
+		return view('user.product-info',compact('products','randPro','product_offer'));
+	}
 
 }
