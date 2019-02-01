@@ -3,6 +3,29 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::group(['namespace' => 'AdminAuth'], function() {
+
+    Route::group(['prefix' => 'authadmin','middleware'=>'adminCheckLogin'], function()
+    {
+        Route::get('login','AuthController@getLogin');
+        Route::post('login',['as'=>'loginAdmin','uses'=>'AuthController@postLogin']);
+    });
+    
+    Route::get('admin/register','AuthController@getRegister');
+    Route::post('admin/register','AuthController@postRegister');
+
+    Route::get('admin/dashboard','AdminAuthController@getIndex');
+    Route::get('admin/logout','AdminAuthController@getLogout');
+
+    Route::get('admin/password/reset', 'ForgotPasswordController@showLinkRequestForm')->name('admin.password.request');
+    Route::post('admin/password/email', 'ForgotPasswordController@sendResetLinkEmail')->name('admin.password.email');
+
+    Route::get('admin/password/reset/{token}', 'ResetPasswordController@showResetForm')->name('admin.password.reset');
+    Route::post('admin/password/reset', 'ResetPasswordController@reset');
+});
+
  
 Route::group(['namespace' => 'UserController'], function() {
 	Route::get('/home',['as'=>'trangchu','uses'=>'HomePageController@getHomePage']); 
