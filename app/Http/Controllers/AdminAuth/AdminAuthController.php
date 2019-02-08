@@ -16,7 +16,7 @@ class AdminAuthController extends Controller
     }
     public function getIndex()
     {   
-    	return redirect('home');
+    	return redirect('admin/category/list');
     }
     public function getLogout() {
     	Auth::guard('admin')->logout();
