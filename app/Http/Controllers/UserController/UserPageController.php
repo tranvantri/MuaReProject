@@ -39,4 +39,21 @@ class UserPageController extends Controller
         return view('user.trangquanlydonhang');
     }
 
+    // trang quan ly kho hang cua user.(yeu caud ang nhap)
+    // dau vao: id cua user
+    // dau ra: thong tin cua san pham cua user
+    public function getUserQuanLyKhoHang(){
+        // thông tin các sản phẩm user bán, truyền id của khách hàng = 1. Yêu cầu lấy id của Auth:id() đã đăng nhập
+        $products = DB::table('products')->where('adminCheck',1)->where('idUser',1)->get();
+        $soluongProducts = $products->count();
+        
+        $cateParent = DB::table('categories')->where('enable',1)->where('idParent',0)->get();
+        $cateChild = DB::table('categories')->where('enable',1)->where('idParent','<>',0)->get();
+
+        //$place_product = DB::table('products')->join('place_product','place_product.idProduct','=','products.id')->where('adminCheck',1)->where('idUser',1)->select('products.*','place_product.idPlace as placeProduct')->get();
+
+        $place_product = DB::table('products')->join('place_product','place_product.idProduct','=','products.id')->where('products.adminCheck',1)->where('products.idUser',1)->select('place_product.*')->get();
+
+        return view('user.userquanlykhohang',compact('products','soluongProducts','cateParent','cateChild','place_product'));
+    }
 }
