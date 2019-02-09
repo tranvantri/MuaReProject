@@ -5,7 +5,6 @@ namespace App\Http\Controllers\AdminAuth;
 use App\Admin;
 use Validator;
 use Auth;
-use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
