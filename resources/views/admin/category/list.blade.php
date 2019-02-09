@@ -35,9 +35,9 @@
                         <td>{{$child->id}}</td>
                         <td>{{$child->name}}</td>
                         @if($child->enable == 1)
-                            <td style="color: blue"><a class="btn btn-primary" href="admin/category/delete/{{$child->id}}">Đang hoạt động...</a></td>
+                            <td style="color: blue"><a style="width: 90px;" class="btn btn-primary" href="admin/category/enable/{{$child->id}}">Hoạt động</a></td>
                         @else
-                            <td style="color: red"><a class="btn btn-dark" href="admin/category/delete/{{$child->id}}">Ngừng hoạt động</a></td>
+                            <td style="color: red"><a style="width: 90px;" class="btn btn-danger" href="admin/category/enable/{{$child->id}}">Khóa</a></td>
                         @endif
                         <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="admin/category/edit/{{$child->id}}">Edit</a></td>
                     </tr> 
@@ -47,9 +47,9 @@
                         <td>{{$child2->id}}</td>
                         <td>{{$child2->name}}</td>
                         @if($child2->enable == 1)
-                            <td style="color: blue"><a class="btn btn-primary" href="admin/category/delete/{{$child2->id}}">Đang hoạt động...</a></td>
+                            <td style="color: blue"><a style="width: 90px;" class="btn btn-primary" href="admin/category/enable/{{$child2->id}}">Hoạt động</a></td>
                         @else
-                            <td style="color: red"><a class="btn btn-dark" href="admin/category/delete/{{$child2->id}}">Ngừng hoạt động</a></td>
+                            <td style="color: red"><a style="width: 90px;" class="btn btn-danger" href="admin/category/enable/{{$child2->id}}">Khóa</a></td>
                         @endif
                         <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="admin/category/edit/{{$child2->id}}">Edit</a></td>
                         </tr> 

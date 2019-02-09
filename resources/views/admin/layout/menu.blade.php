@@ -15,20 +15,11 @@
             {{-- <li>
                 <a ><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
             </li> --}}
-            <li>
-                <a href="admin/categorygroup/list"><i class="fa fa-bar-chart-o fa-fw"></i> Nhóm danh mục<span class="fa arrow"></span></a>
-                {{-- <ul class="nav nav-second-level">
-                    <li>
-                        <a href="admin/categorygroup/list"><i class="fa fa-list"></i> Danh sách</a>
-                    </li>
-                   
-                </ul> --}}
-                <!-- /.nav-second-level -->
-            </li>
+            
 
             <!-- Nhóm sản phẩm, một danh mục có nhiều sản phẩm -->
             <li>
-                <a href="admin/categoryproduct/list"><i class="fa fa-tasks fa-fw"></i> Danh mục<span class="fa arrow"></span></a>
+                <a href="admin/category/list"><i class="fa fa-tasks fa-fw"></i> Danh mục<span class="fa arrow"></span></a>
                 {{-- <ul class="nav nav-second-level">
                     <li>
                         <a href="admin/categoryproduct/list"><i class="fa fa-list"></i> Danh sách</a>

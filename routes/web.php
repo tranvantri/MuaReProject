@@ -52,7 +52,7 @@ Route::group(['namespace' => 'AdminManager'], function() {
             Route::post('add', 'CategoryController@postAdd');
             Route::get('edit/{id}', 'CategoryController@getEdit');
             Route::post('edit/{id}', 'CategoryController@postEdit');
-            Route::get('delete/{id}', 'CategoryController@getDelete');
+            Route::get('enable/{id}', 'CategoryController@getEnable');
             // Route::get('view-history-cate-group/{id}', 'CategoryGroupController@getHistory');
         });
 

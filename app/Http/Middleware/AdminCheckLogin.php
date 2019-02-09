@@ -17,7 +17,7 @@ class AdminCheckLogin
     public function handle($request, Closure $next, $guard = 'admin')
     {
         if (Auth::guard($guard)->check() && Auth::guard($guard)->user()->enable == 1) {
-            return redirect('home');
+            return redirect('admin/category/list');
         }
 
         return $next($request);

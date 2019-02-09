@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CategoryGroupRequest extends FormRequest
+class CategoryRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,7 +26,9 @@ class CategoryGroupRequest extends FormRequest
     public function rules()
     {
         return [
-            'Ten'=>'required|max:100|min:2|regex: /^[a-zA-Z_ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểếẾỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\-\d\s]+$/i',
+            'Ten'=>'required|max:100|min:2',
+            // 'Ten'=>'required|max:100|min:2|regex: /^[a-zA-Z_ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểếẾỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\-\d\s]+$/i',
+
             
         ];
     }
@@ -34,10 +36,10 @@ class CategoryGroupRequest extends FormRequest
     public function messages()
     {
         return [
-            'Ten.required'=>'Vui lòng nhập tên nhóm danh mục.',                
-            'Ten.min'=>'Tên nhóm danh mục có độ dài 2-100 kí tự.',                
-            'Ten.max'=>'Tên nhóm danh mục có độ dài 2-100 kí tự.',                
-            'Ten.regex'=>'Tên nhóm danh mục chỉ bao gồm chữ thường, chữ hoa, số và dấu gạch ngang.',           
+            'Ten.required'=>'Vui lòng nhập tên danh mục.',                
+            'Ten.min'=>'Tên danh mục có độ dài 2-100 kí tự.',                
+            'Ten.max'=>'Tên danh mục có độ dài 2-100 kí tự.',                
+            // 'Ten.regex'=>'Tên nhóm danh mục chỉ bao gồm chữ thường, chữ hoa, số và dấu gạch ngang.',           
 
         ];
     }

@@ -1,6 +1,6 @@
 <?php
 namespace App\Http\Controllers\AdminManager;
-use App\Http\Requests\CategoryGroupRequest;
+use App\Http\Requests\CategoryRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Categories;
@@ -17,50 +17,53 @@ class CategoryController extends Controller
     }
     public function getAdd()
     {
-        return view('admin.categorygroup.add');
+        $cateParent = Categories::where('idParent', 0)->get();
+        return view('admin.category.add', compact('cateParent'));
     }
 
 
     
-    public function postAdd(CategoryGroupRequest $req)
+    public function postAdd(CategoryRequest $req)
     {
-        $cateGroup = new Categories;
-        $cateGroup->name = $req->Ten;
-        $cateGroup->enable = $req->enable;
-        $cateGroup->save();              
-        return redirect('admin/categorygroup/add')->with('thongbao','Thêm thành công!');
+        $cate = new Categories;
+        $cate->name = $req->Ten;
+        $cate->enable = $req->enable;
+        $cate->idParent = $req->parent;
+        $cate->save();              
+        return redirect('admin/category/add')->with('thongbao','Thêm thành công!');
     }
     public function getEdit($id)
     {
-        $cateGroup = Categories::find($id);
+        $cateCurrent = Categories::find($id);
+        $cateParent = Categories::where('idParent', 0)->get();
 
-        return view('admin.categorygroup.edit',compact('cateGroup'));
+        return view('admin.category.edit',compact('cateCurrent','cateParent'));
     }
 
    
-    public function postEdit(CategoryGroupRequest $req,$id)
+    public function postEdit(CategoryRequest $req,$id)
     {
         $cate = Categories::find($id);
         $cate->name = $req->Ten;
         $cate->enable = $req->enable;
-        
-        
+        $cate->idParent = $req->parent;     
        
         $cate->save();       
-        return redirect('admin/categorygroup/edit/'.$id)->with('thongbao','Sửa thành công!');
+        return redirect('admin/category/edit/'.$id)->with('thongbao','Sửa thành công!');
     }
-    public function getDelete($id)
+    public function getEnable($id)
     {
-        $cate= CategoryGroup::find($id);
-        try {
-            $check = $cate->delete();
-            if(!$check)
-                throw new QueryException;
-        } catch (QueryException $e) {
-            return redirect('admin/category/list')->with('loi','Không thể xóa!');
+        $cate = Categories::find($id);       
+        if($cate->enable == 1){
+            $cate->enable = 0;  
+            $cate->save();    
+            return redirect('admin/category/list')->with('thongbao','Đã tắt hoạt động cho danh mục '. $cate->name);
+        }else{
+            $cate->enable = 1;  
+            $cate->save();
+            return redirect('admin/category/list')->with('thongbao','Đã bật hoạt động cho danh mục '. $cate->name);
         }
         
-        return redirect('admin/category/list')->with('thongbao','Xóa thành công!');
     }
 
     
