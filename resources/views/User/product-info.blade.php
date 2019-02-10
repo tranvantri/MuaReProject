@@ -90,7 +90,13 @@
                 </div>
                 <div class="list-tags-v"> </div>
               </div>
-              <a href="#" class="order-v"></a>
+              <button class="order-v" data-toggle="modal" data-target="#modalThemSanPham"></button>
+
+              @include('user.chitietsanpham.modalThemSanPham')
+
+
+
+
               <p class="item-price-v">{{number_format($child->price,0)}}đ</p>
               <div class="phone-fix-v">
                 <div class="phone-head-v"></div>
