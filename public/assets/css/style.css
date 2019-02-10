@@ -3328,3 +3328,13 @@ output {
   box-shadow: 1px 1px 1px #999;
   width: 100%;
 }
+
+.numberElement-tomiot{
+  background-color: red;
+
+
+}
+
+.contentElement_tomiot{
+background-color: yellow;
+}

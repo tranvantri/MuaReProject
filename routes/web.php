@@ -61,8 +61,6 @@ Route::group(['namespace' => 'UserController'], function() {
         return view('user.tatcatindang');
     });
 
-
-
     Route::get('/user-quan-ly-kho-hang',['as'=>'userquanlykhohang','uses'=>'UserPageController@getUserQuanLyKhoHang']);
 
     Route::get('/dang-tin-chung', function () {
