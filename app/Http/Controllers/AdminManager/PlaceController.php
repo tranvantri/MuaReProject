@@ -48,11 +48,11 @@ class PlaceController extends Controller
         if($place->enable == 1){
             $place->enable = 0;  
             $place->save();    
-            return redirect('admin/place/list')->with('thongbao','Đã tắt hoạt động cho danh mục '. $place->name);
+            return redirect('admin/place/list')->with('thongbao','Đã tắt hoạt động cho khu vực '. $place->name);
         }else{
             $place->enable = 1;  
             $place->save();
-            return redirect('admin/place/list')->with('thongbao','Đã bật hoạt động cho danh mục '. $place->name);
+            return redirect('admin/place/list')->with('thongbao','Đã bật hoạt động cho khu vực '. $place->name);
         }
         
     }

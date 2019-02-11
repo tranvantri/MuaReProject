@@ -105,11 +105,12 @@ Route::group(['namespace' => 'AdminManager'], function() {
         /*User*/
         Route::group(['prefix' => 'user'], function() {
             Route::get('list', 'UserController@getList');
-            Route::get('add', 'UserController@getAdd');
-            Route::post('add', 'UserController@postAdd');
+            // Route::get('add', 'UserController@getAdd');
+            // Route::post('add', 'UserController@postAdd');
             Route::get('edit/{id}', 'UserController@getEdit');
             Route::post('edit/{id}', 'UserController@postEdit');
-            Route::get('delete/{id}', 'UserController@getDelete');
+            Route::get('enable/{id}', 'UserController@getEnable');
+            // Route::get('delete/{id}', 'UserController@getDelete');
         });
         Route::post('/imageupload', 'ImageUpLoadController@upLoadFiles');
         Route::get('/imageview/{category}', 'ImageUpLoadController@viewImage');
