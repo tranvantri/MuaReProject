@@ -118,8 +118,8 @@ Route::group(['namespace' => 'AdminAuth'], function() {
         Route::post('login',['as'=>'loginAdmin','uses'=>'AuthController@postLogin']);
     });
     
-    Route::get('admin/register','AuthController@getRegister');
-    Route::post('admin/register','AuthController@postRegister');
+    // Route::get('admin/register','AuthController@getRegister');
+    // Route::post('admin/register','AuthController@postRegister');
 
     Route::get('admin/dashboard','AdminAuthController@getIndex');
     Route::get('admin/logout','AdminAuthController@getLogout');
