@@ -23,8 +23,6 @@
                       alt="banner"
                     />
                   </div>
-
-
                   <div class="shop-name"><h2>Gian hàng của {{$childUser->username}}</h2></div>
 
                     
@@ -35,9 +33,9 @@
                       <div class="o-avatar">
                         <img
                           class="lazy-image"
-                          src="assets/images/gianhangcuchuoing/278021_1446885013.jpg"
-                          data-original="assets/images/gianhangcuchuoing/278021_1446885013.jpg"
-                          alt="cuchuoing"
+                          src="{{$childUser->avatar ??'assets/images/chitietsanpham/avatar_male.png'}}"
+                          data-original="{{$childUser->avatar ??'assets/images/chitietsanpham/avatar_male.png'}}"
+                          alt="{{$childUser->username ?? 'Người dùng'}}"
                           width="50px"
                           height="50px"
                         />
@@ -55,9 +53,9 @@
                           </span>
                           <span
                             class="chat_shop chat user shop-chat"
-                            data-id="cuchuoing@gmail.com"
-                            data-name="cuchuoing"
-                            data-avatar="assets/images/gianhangcuchuoing/278021_1446885013.jpg"
+                            data-id="{{$childUser->email}}"
+                            data-name="{{$childUser->username ?? $childUser->name}}"
+                            data-avatar="{{$childUser->avatar ??'assets/images/chitietsanpham/avatar_male.png'}}"
                             >CHAT VỚI SHOP</span
                           >
                         </div>
@@ -68,11 +66,11 @@
                     <div class="extra-info">
                       <div class="if">
                         <div class="shoplocation"></div>
-                        Liên hệ trực tiếp
+                          {{$childUser->address}}
                       </div>
                       <div class="if">
                         <div class="shopphone"></div>
-                        Liên hệ trực tiếp
+                        {{$childUser->phone}}
                       </div>
                     </div>
                   </div>
@@ -94,7 +92,9 @@
                                   <div class="shoplist"></div>
                                 </div>
                                 <div class="s-content">
-                                  <div class="count">22</div>
+                                  <div class="count">
+                                    {{$soluongService}}
+                                  </div>
                                   Tin đăng
                                 </div>
                               </div>
@@ -114,7 +114,7 @@
                                   <div class="shopaddress"></div>
                                 </div>
                                 <div class="s-content">
-                                  <div class="count">3</div>
+                                  <div class="count">{{$soluongProducts}}</div>
                                   Sản phẩm
                                 </div>
                               </div>
@@ -147,17 +147,17 @@
                 </div>
                 <div class="shop-row">
                   <h2 class="row-title">Tin đăng của shop</h2>
+                  
                   <div class="list-post row">
+                    @foreach($services as $childService)
                     <div class="shop-post col-xs-6">
+                      
                       <div class="img-post">
-                        <a
-                          title="Áo Len Cổ Lọ Vặn Thừng Hàng vnxk"
-                          href="https://muare.vn/posts/ao-len-co-lo-van-thung-hang-vnxk.4819204"
-                        >
+                        <a title="{{$childService->name}}" href="{{ route('sanpham', $childService->id) }}" >
                           <img
                             class="lazy-images"
-                            src=" https://static8.muarecdn.com/zoom,80/90_90/muare/images/2019/01/09/4986146_enbac2f15470206733d801aa532c1cec3ee82d87a99fdf63f.jpg "
-                            alt="Áo Len Cổ Lọ Vặn Thừng Hàng vnxk"
+                            src="{{$childService->images}}"
+                            alt="{{$childService->name}}"
                           />
                         </a>
                       </div>
@@ -166,393 +166,41 @@
                         <div class="title-post">
                           <h2 class="title-post-h2">
                             <a
-                              title="Áo Len Cổ Lọ Vặn Thừng Hàng vnxk"
-                              href="https://muare.vn/posts/ao-len-co-lo-van-thung-hang-vnxk.4819204"
+                              title="{{$childService->name}}"
+                              href="{{$childService->id}}"
                             >
-                              Áo Len Cổ Lọ Vặn Thừng Hàng vnxk
+                              {{$childService->name}}
                             </a>
                           </h2>
                         </div>
-
                         <div class="location-post">
-                          <h3 class="add-h3" title="đường Tố hữu">
-                            đường Tố hữu
+                          <h3 class="add-h3" title="{{$childService->namePlace}}">
+                            {{$childService->namePlace}}
                           </h3>
                         </div>
-
                         <div class="price-post">
-                          Giá từ: <span>220.000 đ </span>
+                          Giá từ: <span>{{ number_format($childService->price,0)}} đ </span>
                         </div>
                       </div>
-                    </div>
-                    <!--shop-post-->
 
-                    <div class="shop-post col-xs-6">
-                      <div class="img-post">
-                        <a
-                          title="Xả áo len hàng VN hàng QC"
-                          href="https://muare.vn/posts/ao-len-co-lo-van-thung-hang-vnxk.4819204"
-                        >
-                          <img
-                            class="lazy-images"
-                            src=" https://static8.muarecdn.com/zoom,80/90_90/muare/images/2019/01/09/4986146_enbac2f15470206733d801aa532c1cec3ee82d87a99fdf63f.jpg "
-                            alt="Xả áo len hàng VN hàng QC"
-                          />
-                        </a>
-                      </div>
-                      <!--img-post-->
-                      <div class="info-post">
-                        <div class="title-post">
-                          <h2 class="title-post-h2">
-                            <a
-                              title="Xả áo len hàng VN hàng QC"
-                              href="https://muare.vn/posts/ao-len-co-lo-van-thung-hang-vnxk.4819204"
-                            >
-                              Xả áo len hàng VN hàng QC
-                            </a>
-                          </h2>
-                        </div>
-
-                        <div class="location-post">
-                          <h3 class="add-h3" title="đường Tố hữu">
-                            đường Tố hữu
-                          </h3>
-                        </div>
-
-                        <div class="price-post">
-                          Giá từ: <span>150.000 đ </span>
-                        </div>
-                      </div>
-                    </div>
-                    <!--shop-post-->
-
-                    <div class="shop-post col-xs-6">
-                      <div class="img-post">
-                        <a
-                          title="Bán B1.4 lô góc vườn Hoa đường 17m2 giá 22 tr – muốn bán cho người sử dụng"
-                          href="#"
-                        >
-                          <img
-                            class="lazy-images"
-                            src=" https://static8.muarecdn.com/zoom,80/90_90/muare/images/2019/01/09/4986146_enbac2f15470206733d801aa532c1cec3ee82d87a99fdf63f.jpg "
-                            alt="Bán B1.4 lô góc vườn Hoa đường 17m2 giá 22 tr – muốn bán cho người sử dụng"
-                          />
-                        </a>
-                      </div>
-                      <!--img-post-->
-                      <div class="info-post">
-                        <div class="title-post">
-                          <h2 class="title-post-h2">
-                            <a
-                              title="Bán B1.4 lô góc vườn Hoa đường 17m2 giá 22 tr – muốn bán cho người sử dụng"
-                              href="#"
-                            >
-                              Bán B1.4 lô góc vườn Hoa đường 17m2 giá 22 tr –
-                              muốn bán cho người sử dụng
-                            </a>
-                          </h2>
-                        </div>
-
-                        <div class="location-post">
-                          <h3 class="add-h3" title="đường Tố hữu">
-                            đường Tố hữu
-                          </h3>
-                        </div>
-
-                        <div class="price-post">Giá từ: <span>22 đ </span></div>
-                      </div>
-                    </div>
-                    <!--shop-post-->
-
-                    <div class="shop-post col-xs-6">
-                      <div class="img-post">
-                        <a
-                          title="Cần bán suất ngoại giao chung cư A10 Nam Trung Yên"
-                          href="#"
-                        >
-                          <img
-                            class="lazy-images"
-                            src=" https://static8.muarecdn.com/zoom,80/90_90/muare/images/2019/01/09/4986146_enbac2f15470206733d801aa532c1cec3ee82d87a99fdf63f.jpg "
-                            alt="Cần bán suất ngoại giao chung cư A10 Nam Trung Yên"
-                          />
-                        </a>
-                      </div>
-                      <!--img-post-->
-                      <div class="info-post">
-                        <div class="title-post">
-                          <h2 class="title-post-h2">
-                            <a
-                              title="Cần bán suất ngoại giao chung cư A10 Nam Trung Yên"
-                              href="https://muare.vn/posts/ao-len-co-lo-van-thung-hang-vnxk.4819204"
-                            >
-                              Cần bán suất ngoại giao chung cư A10 Nam Trung Yên
-                            </a>
-                          </h2>
-                        </div>
-
-                        <div class="location-post">
-                          <h3 class="add-h3" title="đường Tố hữu">
-                            đường Tố hữu
-                          </h3>
-                        </div>
-
-                        <div class="price-post">
-                          Giá từ: <span>2.000.000.000 đ </span>
-                        </div>
-                      </div>
-                    </div>
-                    <!--shop-post-->
-                    <div class="shop-post col-xs-6">
-                      <div class="img-post">
-                        <a
-                          title="Bán căn 3 ngủ view Sông Hồng dự án 122 Vĩnh Tuy cắt lỗ"
-                          href="#"
-                        >
-                          <img
-                            class="lazy-images"
-                            src=" https://static8.muarecdn.com/zoom,80/90_90/muare/images/2019/01/09/4986146_enbac2f15470206733d801aa532c1cec3ee82d87a99fdf63f.jpg "
-                            alt="Bán căn 3 ngủ view Sông Hồng dự án 122 Vĩnh Tuy cắt lỗ"
-                          />
-                        </a>
-                      </div>
-                      <!--img-post-->
-                      <div class="info-post">
-                        <div class="title-post">
-                          <h2 class="title-post-h2">
-                            <a
-                              title="Bán căn 3 ngủ view Sông Hồng dự án 122 Vĩnh Tuy cắt lỗ"
-                              href="https://muare.vn/posts/ao-len-co-lo-van-thung-hang-vnxk.4819204"
-                            >
-                              Bán căn 3 ngủ view Sông Hồng dự án 122 Vĩnh Tuy
-                              cắt lỗ
-                            </a>
-                          </h2>
-                        </div>
-
-                        <div class="location-post">
-                          <h3 class="add-h3" title="đường Tố hữu">
-                            đường Tố hữu
-                          </h3>
-                        </div>
-
-                        <div class="price-post">
-                          Giá từ: <span>2.300.000.000 đ </span>
-                        </div>
-                      </div>
-                    </div>
-                    <!--shop-post-->
-
-                    <div class="shop-post col-xs-6">
-                      <div class="img-post">
-                        <a
-                          title="Phân phối chung cư 60 Nguyễn Đức Cảnh Chủ đầu tư HUD3"
-                          href="#"
-                        >
-                          <img
-                            class="lazy-images"
-                            src=" https://static8.muarecdn.com/zoom,80/90_90/muare/images/2019/01/09/4986146_enbac2f15470206733d801aa532c1cec3ee82d87a99fdf63f.jpg "
-                            alt="Phân phối chung cư 60 Nguyễn Đức Cảnh Chủ đầu tư HUD3"
-                          />
-                        </a>
-                      </div>
-                      <!--img-post-->
-                      <div class="info-post">
-                        <div class="title-post">
-                          <h2 class="title-post-h2">
-                            <a
-                              title="Phân phối chung cư 60 Nguyễn Đức Cảnh Chủ đầu tư HUD3"
-                              href="https://muare.vn/posts/ao-len-co-lo-van-thung-hang-vnxk.4819204"
-                            >
-                              Phân phối chung cư 60 Nguyễn Đức Cảnh Chủ đầu tư
-                              HUD3
-                            </a>
-                          </h2>
-                        </div>
-
-                        <div class="location-post">
-                          <h3 class="add-h3" title="đường Tố hữu">
-                            đường Tố hữu
-                          </h3>
-                        </div>
-
-                        <div class="price-post">
-                          Giá từ: <span>270.000 đ </span>
-                        </div>
-                      </div>
-                    </div>
-                    <!--shop-post-->
-                    <div class="shop-post col-xs-6">
-                      <div class="img-post">
-                        <a
-                          title="Chung cư A10 Nam Trung Yên Phân phối suất ngoại giao"
-                          href="#"
-                        >
-                          <img
-                            class="lazy-images"
-                            src=" https://static8.muarecdn.com/zoom,80/90_90/muare/images/2019/01/09/4986146_enbac2f15470206733d801aa532c1cec3ee82d87a99fdf63f.jpg "
-                            alt="Chung cư A10 Nam Trung Yên Phân phối suất ngoại giao"
-                          />
-                        </a>
-                      </div>
-                      <!--img-post-->
-                      <div class="info-post">
-                        <div class="title-post">
-                          <h2 class="title-post-h2">
-                            <a
-                              title="Áo Len Cổ Lọ Vặn Thừng Hàng vnxk"
-                              href="https://muare.vn/posts/ao-len-co-lo-van-thung-hang-vnxk.4819204"
-                            >
-                              Chung cư A10 Nam Trung Yên Phân phối suất ngoại
-                              giao
-                            </a>
-                          </h2>
-                        </div>
-
-                        <div class="location-post">
-                          <h3 class="add-h3" title="đường Tố hữu">
-                            đường Tố hữu
-                          </h3>
-                        </div>
-
-                        <div class="price-post">
-                          Giá từ: <span>27.000.000 đ </span>
-                        </div>
-                      </div>
-                    </div>
-                    <!--shop-post-->
-
-                    <div class="shop-post col-xs-6">
-                      <div class="img-post">
-                        <a
-                          title="Áo Len Cổ Lọ Vặn Thừng Hàng vnxk"
-                          href="https://muare.vn/posts/ao-len-co-lo-van-thung-hang-vnxk.4819204"
-                        >
-                          <img
-                            class="lazy-images"
-                            src=" https://static8.muarecdn.com/zoom,80/90_90/muare/images/2019/01/09/4986146_enbac2f15470206733d801aa532c1cec3ee82d87a99fdf63f.jpg "
-                            alt="Áo Len Cổ Lọ Vặn Thừng Hàng vnxk"
-                          />
-                        </a>
-                      </div>
-                      <!--img-post-->
-                      <div class="info-post">
-                        <div class="title-post">
-                          <h2 class="title-post-h2">
-                            <a
-                              title="Bán mặt bằng Kinh Doanh Linh Đàm giá 33 tr m2"
-                              href="#"
-                            >
-                              Bán mặt bằng Kinh Doanh Linh Đàm giá 33 tr m2
-                            </a>
-                          </h2>
-                        </div>
-
-                        <div class="location-post">
-                          <h3 class="add-h3" title="đường Tố hữu">
-                            đường Tố hữu
-                          </h3>
-                        </div>
-
-                        <div class="price-post">
-                          Giá từ: <span>1.900.000.000 đ </span>
-                        </div>
-                      </div>
-                    </div>
-                    <!--shop-post-->
-                    <div class="shop-post col-xs-6">
-                      <div class="img-post">
-                        <a
-                          title="Chung cư 60 Nguyễn Đức Cảnh – Tổ ấm an cư với 1,2 tỷ"
-                          href="#"
-                        >
-                          <img
-                            class="lazy-images"
-                            src=" https://static8.muarecdn.com/zoom,80/90_90/muare/images/2019/01/09/4986146_enbac2f15470206733d801aa532c1cec3ee82d87a99fdf63f.jpg "
-                            alt="Chung cư 60 Nguyễn Đức Cảnh – Tổ ấm an cư với 1,2 tỷ"
-                          />
-                        </a>
-                      </div>
-                      <!--img-post-->
-                      <div class="info-post">
-                        <div class="title-post">
-                          <h2 class="title-post-h2">
-                            <a
-                              title="Áo Len Cổ Lọ Vặn Thừng Hàng vnxk"
-                              href="https://muare.vn/posts/ao-len-co-lo-van-thung-hang-vnxk.4819204"
-                            >
-                              Chung cư 60 Nguyễn Đức Cảnh – Tổ ấm an cư với 1,2
-                              tỷ
-                            </a>
-                          </h2>
-                        </div>
-
-                        <div class="location-post">
-                          <h3 class="add-h3" title="đường Tố hữu">
-                            đường Tố hữu
-                          </h3>
-                        </div>
-
-                        <div class="price-post">
-                          Giá từ: <span>23.000.000 đ </span>
-                        </div>
-                      </div>
-                    </div>
-                    <!--shop-post-->
-                    <div class="shop-post col-xs-6">
-                      <div class="img-post">
-                        <a
-                          title="Kiot chung cư Ahtena Xuân Phương hàng bán đã ký độc quyền"
-                          href="#"
-                        >
-                          <img
-                            class="lazy-images"
-                            src=" https://static8.muarecdn.com/zoom,80/90_90/muare/images/2019/01/09/4986146_enbac2f15470206733d801aa532c1cec3ee82d87a99fdf63f.jpg "
-                            alt="Kiot chung cư Ahtena Xuân Phương hàng bán đã ký độc quyền"
-                          />
-                        </a>
-                      </div>
-                      <!--img-post-->
-                      <div class="info-post">
-                        <div class="title-post">
-                          <h2 class="title-post-h2">
-                            <a
-                              title="Kiot chung cư Ahtena Xuân Phương hàng bán đã ký độc quyền"
-                              href="https://muare.vn/posts/ao-len-co-lo-van-thung-hang-vnxk.4819204"
-                            >
-                              Kiot chung cư Ahtena Xuân Phương hàng bán đã ký
-                              độc quyền
-                            </a>
-                          </h2>
-                        </div>
-
-                        <div class="location-post">
-                          <h3 class="add-h3" title="đường Tố hữu">
-                            đường Tố hữu
-                          </h3>
-                        </div>
-
-                        <div class="price-post">
-                          Giá từ: <span>1.000.000.000 đ </span>
-                        </div>
-                      </div>
-                    </div>
-                    <!--shop-post-->
+                    </div> 
+                    @endforeach
                   </div>
-                  <!--list-post-->
+                  
                 </div>
-                <!--shop-row-->
 
-                <div class="shop-row button_see_more">
+
+                <!-- <div class="shop-row button_see_more">
                   <button type="" class="btn btn-success see_more" page="2">
                     Xem thêm
                   </button>
-                </div>
+                </div> -->
 
                 <div class="shop-row" id="shopItemRow">
                   <h2 class="row-title">Sản phẩm của shop</h2>
                   <div class="filter-item">
                     <div class="filter-category">
-                      <span class="count-items">3</span>
+                      <span class="count-items">{{$soluongProducts}}</span>
                       <span>sản phẩm được tìm thấy trong</span>
                       <select name="filter_category">
                         <option value="">Tất cả các chuyên mục</option>
@@ -750,32 +398,33 @@
                         <option value="1">Mới nhất</option>
                         <option value="2">Cũ nhất</option>
                         <option value="3">Giá từ thấp đến cao</option>
-                        <option selected="" value="4"
-                          >Giá từ cao đến thấp</option
+                        <option selected="" value="4">Giá từ cao đến thấp</option
                         >
                       </select>
                     </div>
                   </div>
 
                   <!-- filter-item -->
+
+
+
+                  <!-- Hiển thị các sản phẩm của User -->
+
+                  @foreach($products as $childProduct)
                   <div class="list-items">
                     <div class="shop-item col-xs-15">
                       <div class="img-item show-item" item-data="221991">
                         <div class="avatar">
-                          <a
-                            title="Áo Len Cổ Lọ Vặn Thừng Hàng vnxk"
-                            href="https://muare.vn/products/ao-len-co-lo-van-thung-hang-vnxk.221991"
-                            data-title="Load sản phẩm"
-                            data-size="l"
+                          <a title="{{$childProduct->name}}" href="{{ route('sanpham', $childProduct->id) }}" data-title="Load sản phẩm" data-size="l"
                             data-id="popupItem"
                             class="OverlayPopup"
                           >
                             <img
                               class="lazy-image"
-                              data-original="https://static8.muarecdn.com/zoom,80/200_200/muare/images/2019/01/09/4986146_enbac2f15470206733d801aa532c1cec3ee82d87a99fdf63f.jpg"
-                              src="https://static8.muarecdn.com/zoom,80/200_200/muare/images/2019/01/09/4986146_enbac2f15470206733d801aa532c1cec3ee82d87a99fdf63f.jpg"
-                              alt="Áo Len Cổ Lọ Vặn Thừng Hàng vnxk"
-                              style="display: inline;"
+                              data-original="{{$childProduct->name}}"
+                              src="{{$childProduct->images}}"
+                              alt="{{$childProduct->name}}"
+                              style="display: inline; width: 200px; height: 200px; border-radius: 10px; "
                             />
                           </a>
                           <div class="sale-state"></div>
@@ -787,123 +436,37 @@
                           >
                             <h2 class="item-h2">
                               <a
-                                title="Áo Len Cổ Lọ Vặn Thừng Hàng vnxk"
-                                href="https://muare.vn/products/ao-len-co-lo-van-thung-hang-vnxk.221991"
+                                title="{{$childProduct->name}}"
+                                href="{{ route('sanpham', $childProduct->id) }}"
                                 data-title="Load sản phẩm"
                                 data-size="l"
                                 data-id="popupItem"
                                 class="OverlayPopup"
                               >
-                                Áo Len Cổ Lọ Vặn Thừng Hàng vnxk
+                                {{$childProduct->name}}
                               </a>
                             </h2>
                           </div>
-                          <div class="price-item">220.000 đ</div>
+                          <div class="price-item">{{number_format($childProduct->price,0)}} đ</div>
                         </div>
                       </div>
                     </div>
-                    <!-- shop-item show-item -->
-                    <div class="shop-item col-xs-15">
-                      <div class="img-item show-item" item-data="221989">
-                        <div class="avatar">
-                          <a
-                            title="Xả áo len hàng VN hàng QC"
-                            href="https://muare.vn/products/xa-ao-len-hang-vn-hang-qc.221989"
-                            data-title="Load sản phẩm"
-                            data-size="l"
-                            data-id="popupItem"
-                            class="OverlayPopup"
-                          >
-                            <img
-                              class="lazy-image"
-                              data-original="https://static8.muarecdn.com/zoom,80/200_200/muare/images/2019/01/09/4986145_enbac2f15470206033d801aa532c1cec3ee82d87a99fdf63f.jpg"
-                              src="https://static8.muarecdn.com/zoom,80/200_200/muare/images/2019/01/09/4986145_enbac2f15470206033d801aa532c1cec3ee82d87a99fdf63f.jpg"
-                              alt="Xả áo len hàng VN hàng QC"
-                              style="display: inline;"
-                            />
-                          </a>
-                          <div class="sale-state"></div>
-                        </div>
-                        <div class="info-item">
-                          <div
-                            class="title-item notify-item-comment"
-                            data-item="221991"
-                          >
-                            <h2 class="item-h2">
-                              <a
-                                title="Áo Len Cổ Lọ Vặn Thừng Hàng vnxk"
-                                href="https://muare.vn/products/xa-ao-len-hang-vn-hang-qc.221989"
-                                data-title="Load sản phẩm"
-                                data-size="l"
-                                data-id="popupItem"
-                                class="OverlayPopup"
-                              >
-                                Áo Len Cổ Lọ Vặn Thừng Hàng vnxk
-                              </a>
-                            </h2>
-                          </div>
-                          <div class="price-item">150.000 đ</div>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- shop-item show-item -->
-                    <div class="shop-item col-xs-15">
-                      <div class="img-item show-item" item-data="221989">
-                        <div class="avatar">
-                          <a
-                            title="Xả áo len hàng VN hàng QC"
-                            href="https://muare.vn/products/xa-ao-len-hang-vn-hang-qc.221989"
-                            data-title="Load sản phẩm"
-                            data-size="l"
-                            data-id="popupItem"
-                            class="OverlayPopup"
-                          >
-                            <img
-                              class="lazy-image"
-                              data-original="https://static8.muarecdn.com/zoom,80/200_200/muare/images/2019/01/09/4986145_enbac2f15470206033d801aa532c1cec3ee82d87a99fdf63f.jpg"
-                              src="https://static8.muarecdn.com/zoom,80/200_200/muare/images/2019/01/09/4986145_enbac2f15470206033d801aa532c1cec3ee82d87a99fdf63f.jpg"
-                              alt="Xả áo len hàng VN hàng QC"
-                              style="display: inline;"
-                            />
-                          </a>
-                          <div class="sale-state"></div>
-                        </div>
-                        <div class="info-item">
-                          <div
-                            class="title-item notify-item-comment"
-                            data-item="221991"
-                          >
-                            <h2 class="item-h2">
-                              <a
-                                title="Áo Len Cổ Lọ Vặn Thừng Hàng vnxk"
-                                href="https://muare.vn/products/xa-ao-len-hang-vn-hang-qc.221989"
-                                data-title="Load sản phẩm"
-                                data-size="l"
-                                data-id="popupItem"
-                                class="OverlayPopup"
-                              >
-                                Áo Len Cổ Lọ Vặn Thừng Hàng vnxk
-                              </a>
-                            </h2>
-                          </div>
-                          <div class="price-item">150.000 đ</div>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- shop-item show-item -->
                   </div>
+                  @endforeach
+                  <!-- Kết thúc foreach của Hiển thị sản phẩm -->
+
                 </div>
                 <!-- shop-row -->
                 <div class="shop-row feeback-box">
                   <h2 class="row-title">Phản hồi của khách hàng</h2>
                   <div
                     class="chat_shop chat user shop-chat"
-                    data-id="cuchuoing@gmail.com"
-                    data-name="cuchuoing"
-                    data-avatar="https://static8.muarecdn.com/zoom,80/74_74/muare/avatars/l/278/278021_1446885013.jpg?1446885013"
+                    data-id="{{$childUser->username}}"
+                    data-name="{{$childUser->username}}"
+                    data-avatar="{{$childUser->avatar??'assets/images/chitietsanpham/avatar_male.png'}}"
                   >
                     <div class="shopicon-button"></div>
-                    Chat với chủ shop
+                    Chat với chủ shop(tích hợp Messager của fb)
                   </div>
                   <div>
                     <center>

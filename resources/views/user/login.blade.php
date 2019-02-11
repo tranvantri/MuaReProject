@@ -13,75 +13,98 @@
                 <div class="modal-content-tomiot col-md-8 col-sm-12 col-sx-12">
                     <div class="modal-body col-md-12 col-sm-12 col-sx-12">
                         <div class="row">
+                             
+                            @if(count($errors) > 0)
+                                <div class="alert alert-danger col-md-8 col-sm-12 col-sx-12">
+                                    @foreach($errors->all() as $err)
+                                        {{$err}}<br>
+                                    @endforeach
+                                </div>
+                                @endif
+                                @if(session('thongbao'))
+                                <div class="alert alert-success col-md-8 col-sm-12 col-sx-12">{{session('thongbao')}}</div>
+                                @endif
+                                @if(session('loi'))
+                                <div class="alert alert-danger col-md-8 col-sm-12 col-sx-12">{{session('loi')}}</div>
+                                @endif
                             <div class="login-group col-md-8 col-sm-12 col-sx-12">
+
                                 <div >
                                     <h4 id="title-login">Đăng nhập tài khoản</h4>
                                 </div>
-                                <div class="form-action">
-                                    <form action="#" method="POST">
-                                        <div class="formgroup">
-                                            <div class="radioTypeLogin">
-                                                <input type="radio"  name="typelogin" value="1" checked=""> Tên tài khoản
-                                                <input type="radio"  name="typelogin" value="2"> Số điện thoại
-                                                <input type="radio" name="typelogin" value="3"> Email
-                                            </div>
+                                <div class="form-action">                                    
+                                        <div class="formgroup">                                       
+                                            
                                             <div class="inputLogin">
+                                                 <form action="login" method="POST">
+                                                    {{ csrf_field() }}  
                                                 <div id="dangnhapsection">
+                                                    <div class="radioTypeLogin">
+                                                        <input type="radio"  name="typelogin" value="username" checked=""> Tên tài khoản
+                                                        <input type="radio"  name="typelogin" value="phone"> Số điện thoại
+                                                        <input type="radio" name="typelogin" value="email"> Email
+                                                    </div>
                                                     <div class="inputPadding username-login">
-                                                        <label>Tên đăng nhập :</label>
-                                                        <input type="text" class="form-control" name="" placeholder="Nhập tên đăng nhập tại đây" />
+                                                        <label>Tên đăng nhập:</label>
+                                                        <input type="text" class="form-control" name="username" placeholder="Nhập tên đăng nhập tại đây" />
                                                     </div>
                                                     <div class="inputPadding phone-number-login">
-                                                        <label>Số điện thoại :</label>
-                                                        <input type="text" class="form-control" name="" placeholder="Nhập số điện thoại tại đây" />
+                                                        <label>Số điện thoại:</label>
+                                                        <input type="text" class="form-control" name="phone" placeholder="Nhập số điện thoại tại đây" />
                                                     </div>
                                                     <div class="inputPadding email-login">
-                                                        <label>Email :</label>
-                                                        <input type="email" class="form-control" name="" placeholder="Nhập email tại đây" />
+                                                        <label>Email:</label>
+                                                        <input type="email" class="form-control" name="email" placeholder="Nhập email tại đây" />
                                                     </div>
                                                     <div class="inputPadding">
-                                                        <label>Mật khẩu :</label>
+                                                        <label>Mật khẩu:</label>
                                                         <label style="float: right;"><a href="#">Quên mật khẩu?</a></label>
-                                                        <input type="password" class="form-control" name="" placeholder="Nhập mật khẩu tại đây" />
+                                                        <input type="password" class="form-control" name="password" placeholder="Nhập mật khẩu tại đây" />
                                                     </div>
                                                     <div  class="inputPadding">
                                                          <input type="checkbox" name="" value="">        Ghi nhớ đăng nhập
                                                     </div>
+                                                    <div  class="inputPadding">
+                                                        <button type="submit"  class="btn-dang-nhap btn btn-primary">Đăng nhập</button>
+                                                    </div>
                                                 </div>
-
-                                                <div id="dangkysection">
-                                                    
+                                            </form>
+                                            <form action="register" method="POST">  
+                                            {{ csrf_field() }}  
+                                                <div id="dangkysection">    
                                                     <div class="inputPadding">
                                                     <label>Tên tài khoản:</label>
-                                                    <input type="text" class="form-control" name="" placeholder="Nhập tên đăng nhập tại đây" required />
+                                                    <input type="text" class="form-control" name="username" placeholder="Nhập tên đăng nhập tại đây" required />
                                                     </div>
                                                     <div class="inputPadding">
-                                                        <label>Email :</label>
-                                                        <input type="email" class="form-control" name="" placeholder="Nhập email tại đây" required />
+                                                        <label>Email:</label>
+                                                        <input type="email" class="form-control" name="email" placeholder="Nhập email tại đây" required />
                                                     </div>
                                                     <div class="inputPadding">
-                                                        <label>Số điện thoại :</label>
-                                                        <input type="text" class="form-control" name="" placeholder="Nhập số điện thoại tại đây" required />
+                                                        <label>Số điện thoại:</label>
+                                                        <input type="number" class="form-control" name="phone" decimal="true" numbersonly="true" placeholder="Nhập số điện thoại tại đây" required />
                                                     </div>
                                                     <div class="inputPadding">
                                                         <label>Mật khẩu :</label>
-                                                        <input type="password" class="form-control" name="" placeholder="Nhập mật khẩu tại đây"   />
+                                                        <input type="password" class="form-control" name="password" placeholder="Nhập mật khẩu tại đây"   />
                                                     </div>
                                                     <div class="inputPadding">
-                                                        <label>Nhập lại mật khẩu :</label>
-                                                        <input type="text" class="form-control" name="" placeholder="Nhập lại mật khẩu tại đây"  required />
+                                                        <label>Nhập lại mật khẩu:</label>
+                                                        <input type="password" class="form-control" name="" placeholder="Nhập lại mật khẩu tại đây"  required />
                                                     </div>
                                                     <div  class="inputPadding">
                                                          <input type="checkbox" name="" value="" required>        Tôi hoàn toàn đồng ý với <a href="#">Quy định</a> mà diễn đàn đề ra
                                                     </div>
+                                                    <div  class="inputPadding">
+                                                        <button type="submit"  class="btn-dang-nhap btn btn-primary">Đăng ký</button>
+                                                    </div>
                                                 </div>
+                                                </form>
 
-                                                <div  class="inputPadding">
-                                                    <button type="submit"  class="btn-dang-nhap btn btn-primary">Đăng nhập</button>
-                                                </div>
+                                                
                                             </div>
                                         </div>
-                                    </form>
+                                    
                                 </div>
                                 <div class="dangnhapbang">
                                     <div class="inputPadding line-group">

@@ -12,7 +12,7 @@ class PlacesController extends Controller
     //
     public function getPlaces()
     {
-        $places = Places::all();
+        $places = Places::where('enable',1)->get();
         return view('user.layouts.index',compact('places'));
     }
 

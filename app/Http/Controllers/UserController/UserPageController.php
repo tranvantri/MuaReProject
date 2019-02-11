@@ -9,26 +9,51 @@ use Cookie;
 use Illuminate\Support\Facades\DB;
 class UserPageController extends Controller
 {
-    //
+    // Trang Gian hàng của người dùng
     /* 
-	Đầu vào: id của khách hàng đã đăng nhập
-	Đầu ra: thông tin của User(đã đăng nhập)
-
-
-
+	Đầu vào: id của khách hàng
+	Đầu ra: thông tin của User
     */
-    public function getView(){
+    public function getView($id){
 
     	// truyền id của khách hàng đã đăng nhập vào đây -------------
-    	$user = DB::table('users')->where('adminCheck',1)->where('users.id',1)->get();
+    	$user = DB::table('users')->where('adminCheck',1)->where('users.id',$id)->get();
 
-    	$user_service =  DB::table('users')->join('services','services.idUser','=','users.id')->where('adminCheck',1)->where('users.id',1)->get();
+    	$services = DB::table('services')
+    				->join('places','places.id','=','services.idPlace')
+    				->where('services.adminCheck',1)->where('services.idUser',$id)->where('places.enable',1)
+    				->select('services.*','places.name as namePlace','places.id as idPlace')
+    				->get();
+    	$soluongService = $services->count();
 
-    	$user_product =  DB::table('users')->where('adminCheck',1)->where('users.id',1)->get();
+    	$products =  DB::table('products')->where('adminCheck',1)->where('idUser',$id)->get();
+    	$soluongProducts = $products->count();
 
+    	return view('user.gianhangcuanguoidung',compact('user','services','soluongService','products','soluongProducts'));
+    }
 
+    // Trang quản lý đơn hàng
+    // Đầu vào: 
+    // Đầu ra:
+    public function getQuanLyDonHang(){
+        return view('user.trangquanlydonhang');
+    }
 
+    // trang quan ly kho hang cua user.(yeu caud ang nhap)
+    // dau vao: id cua user
+    // dau ra: thong tin cua san pham cua user
+    public function getUserQuanLyKhoHang(){
+        // thông tin các sản phẩm user bán, truyền id của khách hàng = 1. Yêu cầu lấy id của Auth:id() đã đăng nhập
+        $products = DB::table('products')->where('adminCheck',1)->where('idUser',1)->get();
+        $soluongProducts = $products->count();
+        
+        $cateParent = DB::table('categories')->where('enable',1)->where('idParent',0)->get();
+        $cateChild = DB::table('categories')->where('enable',1)->where('idParent','<>',0)->get();
 
-    	return view('user.gianhangcuanguoidung',compact('user'));
+        //$place_product = DB::table('products')->join('place_product','place_product.idProduct','=','products.id')->where('adminCheck',1)->where('idUser',1)->select('products.*','place_product.idPlace as placeProduct')->get();
+
+        $place_product = DB::table('products')->join('place_product','place_product.idProduct','=','products.id')->where('products.adminCheck',1)->where('products.idUser',1)->select('place_product.*')->get();
+
+        return view('user.userquanlykhohang',compact('products','soluongProducts','cateParent','cateChild','place_product'));
     }
 }

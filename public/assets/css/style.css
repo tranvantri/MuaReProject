@@ -2507,6 +2507,7 @@ table .td-info .user-post .username .username-h4 a {
 .content_quan_ly_cua_hang input[name="price"] {
   width: 300px;
   display: inline-block;
+  float: left;
 }
 
 .post-form-Tr .row-post-price-Tr span {
@@ -2656,6 +2657,7 @@ table .td-info .user-post .username .username-h4 a {
 .price-item-Tr .vnd-Tr {
   margin-left: -20px;
   color: #999;
+  float: left;
 }
 
 .attr-basic-Tr label {
@@ -3323,4 +3325,23 @@ output {
 	-ms-transform: scale(1);
 	transform: scale(1);
 	opacity: 1;
+}
+
+
+.textarea_tomiot{
+  line-height: 1.5; 
+  border-radius: 5px; 
+  border: 1px solid #ccc; 
+  box-shadow: 1px 1px 1px #999;
+  width: 100%;
+}
+
+.numberElement-tomiot{
+  background-color: red;
+
+
+}
+
+.contentElement_tomiot{
+background-color: yellow;
 }
