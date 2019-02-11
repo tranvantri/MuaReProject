@@ -22,6 +22,7 @@
                     <tr align="center">
                         <th>Mã ID</th>
                         <th>Tên</th>
+                        <th>Username</th>
                         <th>Email</th>
                         <th>Địa chỉ</th>
                         <th>Số ĐT</th>
@@ -36,13 +37,14 @@
                     <tr class="odd gradeX" align="center" style="">
                         <td>{{$child->id}}</td>
                         <td>{{$child->name}}</td>
+                        <td>{{$child->username}}</td>
                         <td>{{$child->email}}</td>
                         <td>{{$child->address}}</td>
                         <td>{{$child->phone}}</td>                        
                         @if($child->status == 1)
-                            <td style="color: blue"><a style="width: 90px;" class="btn btn-primary" href="admin/user/enable/{{$child->id}}">Hoạt động</a></td>
+                            <td><a style="width: 90px;" class="btn btn-primary" href="admin/user/enable/{{$child->id}}">Hoạt động</a></td>
                         @else
-                            <td style="color: red"><a style="width: 90px;" class="btn btn-primary" href="admin/user/enable/{{$child->id}}">Khóa</a></td>
+                            <td><a style="width: 90px;" class="btn btn-danger" href="admin/user/enable/{{$child->id}}">Khóa</a></td>
                         @endif                        
                         <td>{{$child->created_at}}</td>
                         <td>{{$child->updated_at}}</td>                     

@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
-class UserCheckLogin
+class UserCheckLogout
 {
     /**
      * Handle an incoming request.
@@ -16,8 +16,9 @@ class UserCheckLogin
      */
     public function handle($request, Closure $next, $guard = 'web')
     {
-        if (Auth::guard($guard)->check() && Auth::guard($guard)->user()->status == 1) {
-            return redirect('/home');
+        if (Auth::guard($guard)->check() && Auth::guard($guard)->user()->status != 1) {
+            Auth::logout();
+            return redirect('/login');
         }
 
         return $next($request);

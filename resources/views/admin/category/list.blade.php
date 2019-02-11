@@ -35,9 +35,9 @@
                         <td>{{$child->id}}</td>
                         <td>{{$child->name}}</td>
                         @if($child->enable == 1)
-                            <td style="color: blue"><a style="width: 90px;" class="btn btn-primary" href="admin/category/enable/{{$child->id}}">Hoạt động</a></td>
+                            <td><a style="width: 90px;" class="btn btn-primary" href="admin/category/enable/{{$child->id}}">Hoạt động</a></td>
                         @else
-                            <td style="color: red"><a style="width: 90px;" class="btn btn-danger" href="admin/category/enable/{{$child->id}}">Khóa</a></td>
+                            <td><a style="width: 90px;" class="btn btn-danger" href="admin/category/enable/{{$child->id}}">Khóa</a></td>
                         @endif
                         <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="admin/category/edit/{{$child->id}}">Edit</a></td>
                     </tr> 

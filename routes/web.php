@@ -144,7 +144,7 @@ Route::group(['namespace' => 'AdminAuth'], function() {
 });
 
  
-Route::group(['namespace' => 'UserController'], function() {
+Route::group(['namespace' => 'UserController' , 'middleware'=>'userCheckLogout'], function() {
 	Route::get('/home',['as'=>'trangchu','uses'=>'HomePageController@getHomePage']); 
 
     //set Cookie

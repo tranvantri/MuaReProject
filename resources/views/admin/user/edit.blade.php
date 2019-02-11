@@ -26,14 +26,19 @@
                 <div class="col-lg-7" style="padding-bottom:120px">   
 
                     <div class="form-group">
-                        <label>Tên tài khoản</label>
+                        <label>Họ tên</label>
                         <input class="form-control" type="text" name="Ten" placeholder="Nhập tên tài khoản" required maxlength="50" minlength="2" value="{{$user->name}}" />
                     </div>
 
                     <div class="form-group">
+                        <label>Tên tài khoản</label>
+                        <input class="form-control" type="email" placeholder="Nhập email tài khoản" readonly="" required maxlength="30" minlength="2" value="{{$user->username}}" />
+                    </div>
+                    <div class="form-group">
                         <label>Email</label>
                         <input class="form-control" type="email" placeholder="Nhập email tài khoản" readonly="" required maxlength="30" minlength="2" value="{{$user->email}}" />
                     </div>
+
                     <div class="form-group">
                         <label>Địa chỉ</label>
                         <input class="form-control" type="text" name="DiaChi" placeholder="Nhập địa chỉ tài khoản" maxlength="100" minlength="3" value="{{$user->address}}" />
@@ -53,21 +58,21 @@
                         <label>Trạng thái</label>
                         <label class="radio-inline">
                             <input type="radio" name="enable" value="0" 
-                            @if($user->enable == 0)
+                            @if($user->status == 0)
                                 {{"checked"}}                     
                             @endif
                             > Khóa
                         </label>
                         <label class="radio-inline">
                             <input type="radio" name="enable" value="1"
-                            @if($user->enable == 1)
+                            @if($user->status == 1)
                                 {{"checked"}}                     
                             @endif >Hoạt động   
                         </label>
                     </div>
 
 
-                    <button type="submit" id="submit"  class="btn btn-warning">Sửa</button>
+                    <button type="submit" id="submit"  class="btn btn-warning">Chỉnh sửa</button>
                                    
                 </div>
                 

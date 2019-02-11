@@ -54,22 +54,22 @@ class UserController extends Controller
         }
         $user->address = $req->DiaChi;
         $user->phone = $req->SoDT;
-        $user->enable = $req->enable;    
+        $user->status = $req->enable;    
         $user->save();
        
         return redirect('admin/user/edit/'.$id)->with('thongbao','Sửa thành công!');
     }
     public function getEnable($id)
     {
-        $cate = Categories::find($id);       
-        if($cate->enable == 1){
-            $cate->enable = 0;  
-            $cate->save();    
-            return redirect('admin/category/list')->with('thongbao','Đã tắt hoạt động cho danh mục '. $cate->name);
+        $user = User::find($id);       
+        if($user->status == 1){
+            $user->status = 0;  
+            $user->save();    
+            return redirect('admin/user/list')->with('thongbao','Đã tắt hoạt động người dùng '. $user->name);
         }else{
-            $cate->enable = 1;  
-            $cate->save();
-            return redirect('admin/category/list')->with('thongbao','Đã bật hoạt động cho danh mục '. $cate->name);
+            $user->status = 1;  
+            $user->save();
+            return redirect('admin/user/list')->with('thongbao','Đã bật hoạt động người dùng '. $user->name);
         }
         
     }
