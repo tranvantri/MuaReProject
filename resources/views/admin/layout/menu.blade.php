@@ -19,7 +19,7 @@
 
             <!-- Nhóm sản phẩm, một danh mục có nhiều sản phẩm -->
             <li>
-                <a href="admin/category/list"><i class="fa fa-tasks fa-fw"></i> Danh mục<span class="fa arrow"></span></a>
+                <a href="admin/category/list"><i class="fa fa-tasks fa-fw"></i>Quản lý danh mục<span class="fa arrow"></span></a>
                 {{-- <ul class="nav nav-second-level">
                     <li>
                         <a href="admin/categoryproduct/list"><i class="fa fa-list"></i> Danh sách</a>
@@ -43,7 +43,7 @@
                 <!-- /.nav-second-level -->
             </li>
             <li>
-                <a href="admin/promotion/list"><i class="fa fa-tasks fa-fw"></i> Khuyến mãi<span class="fa arrow"></span></a>
+                <a href="admin/place/list"><i class="fa fa-tasks fa-fw"></i> Quản lý khu vực<span class="fa arrow"></span></a>
                 {{-- <ul class="nav nav-second-level">
                     <li>
                         <a href="admin/promotion/list"><i class="fa fa-list"></i> Danh sách khuyến mãi</a>

@@ -15,33 +15,33 @@ Route::group(['namespace' => 'AdminManager'], function() {
         Route::get('edit/{id}', 'AdminController@getEdit');
         Route::post('edit/{id}', 'AdminController@postEdit');
 
-        Route::group(['prefix' => 'ckfinder'], function() {
-            Route::get('view', 'CkfinderController@getCkfinder');
-            Route::any('connector', 'CkfinderController@getConnector');
-        });
+        // Route::group(['prefix' => 'ckfinder'], function() {
+        //     Route::get('view', 'CkfinderController@getCkfinder');
+        //     Route::any('connector', 'CkfinderController@getConnector');
+        // });
         
-        /* Product*/
-        Route::group(['prefix' => 'product'], function() {
-            Route::get('list', 'ProductController@getList');
-            Route::get('add', 'ProductController@getAdd');
-            Route::post('add', 'ProductController@postAdd');
-            Route::get('edit/{id}', 'ProductController@getEdit');
-            Route::post('edit/{id}', 'ProductController@postEdit');
-            Route::get('delete/{id}', 'ProductController@getDelete');
-            Route::get('view-history-pro/{id}', 'ProductController@getHistory');
+        // /* Product*/
+        // Route::group(['prefix' => 'product'], function() {
+        //     Route::get('list', 'ProductController@getList');
+        //     Route::get('add', 'ProductController@getAdd');
+        //     Route::post('add', 'ProductController@postAdd');
+        //     Route::get('edit/{id}', 'ProductController@getEdit');
+        //     Route::post('edit/{id}', 'ProductController@postEdit');
+        //     Route::get('delete/{id}', 'ProductController@getDelete');
+        //     Route::get('view-history-pro/{id}', 'ProductController@getHistory');
            
-        });
+        // });
 
-        /* Bill*/
-        Route::group(['prefix' => 'bill'], function() {
-            Route::get('list', 'BillController@getList');
-            // Route::get('add', 'BillController@getAdd');
-            // Route::post('add', 'BillController@postAdd');
-            Route::get('edit/{id}', 'BillController@getEdit');
-            Route::post('edit/{id}', 'BillController@postEdit');
-            Route::get('delete/{id}', 'BillController@getDelete');
-            Route::get('view-bill-detail/{id}', 'BillController@getBillDetail');
-        });
+        // /* Bill*/
+        // Route::group(['prefix' => 'bill'], function() {
+        //     Route::get('list', 'BillController@getList');
+        //     // Route::get('add', 'BillController@getAdd');
+        //     // Route::post('add', 'BillController@postAdd');
+        //     Route::get('edit/{id}', 'BillController@getEdit');
+        //     Route::post('edit/{id}', 'BillController@postEdit');
+        //     Route::get('delete/{id}', 'BillController@getDelete');
+        //     Route::get('view-bill-detail/{id}', 'BillController@getBillDetail');
+        // });
 
 
         /*------------------------------------------------------------------*/
@@ -56,40 +56,51 @@ Route::group(['namespace' => 'AdminManager'], function() {
             // Route::get('view-history-cate-group/{id}', 'CategoryGroupController@getHistory');
         });
 
-
-        /* Slide*/
-        Route::group(['prefix' => 'slide'], function() {
-            Route::get('list', 'SlideController@getList');
-            Route::get('add', 'SlideController@getAdd');
-            Route::post('add', 'SlideController@postAdd');
-            Route::get('edit/{id}', 'SlideController@getEdit');
-            Route::post('edit/{id}', 'SlideController@postEdit');
-            Route::get('delete/{id}', 'SlideController@getDelete');
-            Route::get('view-history-slide/{id}', 'SlideController@getHistory');
-
+        // place
+        Route::group(['prefix' => 'place'], function() {
+            Route::get('list', 'PlaceController@getList');
+            Route::get('add', 'PlaceController@getAdd');
+            Route::post('add', 'PlaceController@postAdd');
+            Route::get('edit/{id}', 'PlaceController@getEdit');
+            Route::post('edit/{id}', 'PlaceController@postEdit');
+            Route::get('enable/{id}', 'PlaceController@getEnable');
+            // Route::get('view-history-cate-group/{id}', 'CategoryGroupController@getHistory');
         });
 
-        /* Size*/
-        Route::group(['prefix' => 'size'], function() {
-            Route::get('list', 'SizeController@getList');
-            Route::get('add', 'SizeController@getAdd');
-            Route::post('add', 'SizeController@postAdd');
-            Route::get('edit/{id}', 'SizeController@getEdit');
-            Route::post('edit/{id}', 'SizeController@postEdit');
-            Route::get('delete/{id}', 'SizeController@getDelete');
-            Route::get('view-history-size/{id}', 'SizeController@getHistory');
-        });
 
-        /* Promotion*/
-        Route::group(['prefix' => 'promotion'], function() {
-            Route::get('list', 'PromotionController@getList');
-            Route::get('add', 'PromotionController@getAdd');
-            Route::post('add', 'PromotionController@postAdd');
-            Route::get('edit/{id}', 'PromotionController@getEdit');
-            Route::post('edit/{id}', 'PromotionController@postEdit');
-            Route::get('delete/{id}', 'PromotionController@getDelete');
-            Route::get('view-history-promotion/{id}', 'PromotionController@getHistory');
-        });
+        // /* Slide*/
+        // Route::group(['prefix' => 'slide'], function() {
+        //     Route::get('list', 'SlideController@getList');
+        //     Route::get('add', 'SlideController@getAdd');
+        //     Route::post('add', 'SlideController@postAdd');
+        //     Route::get('edit/{id}', 'SlideController@getEdit');
+        //     Route::post('edit/{id}', 'SlideController@postEdit');
+        //     Route::get('delete/{id}', 'SlideController@getDelete');
+        //     Route::get('view-history-slide/{id}', 'SlideController@getHistory');
+
+        // });
+
+        // /* Size*/
+        // Route::group(['prefix' => 'size'], function() {
+        //     Route::get('list', 'SizeController@getList');
+        //     Route::get('add', 'SizeController@getAdd');
+        //     Route::post('add', 'SizeController@postAdd');
+        //     Route::get('edit/{id}', 'SizeController@getEdit');
+        //     Route::post('edit/{id}', 'SizeController@postEdit');
+        //     Route::get('delete/{id}', 'SizeController@getDelete');
+        //     Route::get('view-history-size/{id}', 'SizeController@getHistory');
+        // });
+
+        // /* Promotion*/
+        // Route::group(['prefix' => 'promotion'], function() {
+        //     Route::get('list', 'PromotionController@getList');
+        //     Route::get('add', 'PromotionController@getAdd');
+        //     Route::post('add', 'PromotionController@postAdd');
+        //     Route::get('edit/{id}', 'PromotionController@getEdit');
+        //     Route::post('edit/{id}', 'PromotionController@postEdit');
+        //     Route::get('delete/{id}', 'PromotionController@getDelete');
+        //     Route::get('view-history-promotion/{id}', 'PromotionController@getHistory');
+        // });
 
         /*User*/
         Route::group(['prefix' => 'user'], function() {

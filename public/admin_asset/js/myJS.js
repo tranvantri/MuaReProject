@@ -757,7 +757,7 @@ $(document).ready(function() {
 		if($(this).is(":checked")){
 			$("#groupPassword").append(
 				' <div class="form-group">'+
-				'<label>Mật khẩu</label>'+
+				'<label>Mật khẩu mới</label>'+
 				'<input id="password" class="form-control" type="password" required minlength="6" maxlength="50" name="Password" placeholder="Nhập mật khẩu" />'+
 				'</div>'+
 				'<div class="form-group">'+
