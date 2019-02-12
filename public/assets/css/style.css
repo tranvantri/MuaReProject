@@ -3284,6 +3284,7 @@ output {
                 overflow: hidden;
                 max-width: 100%;
                 height: auto;
+              z-index: 1000;
           }
         #modal-productview .img-zoom{
 /*
@@ -3306,6 +3307,14 @@ output {
               width: 400px;
               height: 400px;
             }
+/* product - info */
+.modal-productinfo-L{
+    z-index: 1100;
+}
+.productinfo-content-L{
+    height: 200px;
+    overflow-y: scroll;
+}
 
 /* Effect 1: Fade in and scale up */
 .md-effect-1 .md-content {

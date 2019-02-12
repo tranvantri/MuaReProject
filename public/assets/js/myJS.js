@@ -187,6 +187,8 @@ $(document).ready(function() {
           /*create lens:*/
           lens = document.createElement("DIV");
           lens.setAttribute("class", "img-zoom-lens");
+          /*img.setAttribute("opacity","0.2");
+                  lens.setAttribute("opacity","0.6");*/
           /*insert lens:*/
           img.parentElement.insertBefore(lens, img);
           /*calculate the ratio between result DIV and lens:*/
