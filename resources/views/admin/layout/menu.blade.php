@@ -63,7 +63,7 @@
                 <!-- /.nav-second-level -->
             </li>
             <li>
-                <a href="admin/slide/list"><i class="fa fa-picture-o"></i> Slide<span class="fa arrow"></span></a>
+                <a href="admin/logo/list"><i class="fa fa-picture-o"></i> Quản lý logo<span class="fa arrow"></span></a>
                {{--  <ul class="nav nav-second-level">
                     <li>
                         <a href="admin/slide/list"><i class="fa fa-list"></i> Danh sách slide</a>

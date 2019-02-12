@@ -69,35 +69,35 @@ $(document).ready(function() {
 
 
 	function initUpload(){
-		list_image('sanpham');
-		list_image('danhmuc');
-		list_image('khuyenmai');
-		list_image('slide');
+		list_image('logo');
+		// list_image('danhmuc');
+		// list_image('khuyenmai');
+		// list_image('slide');
 
 	}
 
 	
 
-	$(document).on('click', '#sanpham2', function(event) {
+	$(document).on('click', '#logo2', function(event) {
 		event.preventDefault();
 		var data = $(this).attr('data')
 		$('#cartegory-upload').attr('cartegory', data);
 	});
-	$(document).on('click', '#danhmuc2', function(event) {
-		event.preventDefault();
-		var data = $(this).attr('data')
-		$('#cartegory-upload').attr('cartegory', data);
-	});
-	$(document).on('click', '#khuyenmai2', function(event) {
-		event.preventDefault();
-		var data = $(this).attr('data')
-		$('#cartegory-upload').attr('cartegory', data);
-	});
-	$(document).on('click', '#slide2', function(event) {
-		event.preventDefault();
-		var data = $(this).attr('data')
-		$('#cartegory-upload').attr('cartegory', data);
-	});
+	// $(document).on('click', '#danhmuc2', function(event) {
+	// 	event.preventDefault();
+	// 	var data = $(this).attr('data')
+	// 	$('#cartegory-upload').attr('cartegory', data);
+	// });
+	// $(document).on('click', '#khuyenmai2', function(event) {
+	// 	event.preventDefault();
+	// 	var data = $(this).attr('data')
+	// 	$('#cartegory-upload').attr('cartegory', data);
+	// });
+	// $(document).on('click', '#slide2', function(event) {
+	// 	event.preventDefault();
+	// 	var data = $(this).attr('data')
+	// 	$('#cartegory-upload').attr('cartegory', data);
+	// });
 
 	function tatthongbao(){
 		if ($('#success').length) {
@@ -188,6 +188,7 @@ $(document).ready(function() {
 
 
 	$(document).on('click', '.remove_image', function(){
+		event.preventDefault();
 		tatthongbao();
 	  	var imageName = $(this).attr('id');
 	  	var category = $(this).attr('data');
@@ -209,7 +210,7 @@ $(document).ready(function() {
 		});
 	});
 
-	$(document).on('blur', '#myModal', function(event) {	
+	$(document).on('click', '#myModal', function(event) {	
 		tatthongbao();
 	});
 
@@ -242,80 +243,24 @@ $(document).ready(function() {
 		    }
 		    $('.card').removeClass('active-box-shadow');
 	}
-	//set anh cho danh muc san pham
+	
 
-	$(document).on('click', '#ckfinder-popup-cate-pro', function(event) {
+	//set anh cho logo
+
+	$(document).on('click', '#ckfinder-popup-logo', function(event) {
 		event.preventDefault();
 		initUpload();
 	});
-	if($('#ckfinder-input-cate-pro').length){
+	if($('#ckfinder-input-logo').length){
         $(document).on('click', '#choise', function(event) {
 		    event.preventDefault();
-		    selectFileWithMyUpload('ckfinder-input-cate-pro', 'img-cate-pro');
+		    selectFileWithMyUpload('ckfinder-input-logo', 'img-logo');		    
 	    });
 	}
 
-	//set anh cho slide
+	
 
-	$(document).on('click', '#ckfinder-popup-slide', function(event) {
-		event.preventDefault();
-		initUpload();
-	});
-	if($('#ckfinder-input-slide').length){
-        $(document).on('click', '#choise', function(event) {
-		    event.preventDefault();
-		    selectFileWithMyUpload('ckfinder-input-slide', 'img-slide');		    
-	    });
-	}
-
-	//set anh cho promotion
-
-	$(document).on('click', '#ckfinder-popup-promotion', function(event) {
-		event.preventDefault();
-		initUpload();
-	});
-	if($('#ckfinder-input-promotion').length){
-        $(document).on('click', '#choise', function(event) {
-		    event.preventDefault();
-		    selectFileWithMyUpload('ckfinder-input-promotion', 'img-promotion');		    
-	    });
-	}
-
-	//set anh cho sanpham
-
-	// $(document).on('click', '#ckfinder-popup-avatar-pro', function(event) {
-	// 	event.preventDefault();
-	// 	initUpload();
-
-	// });
-	// if($('#ckfinder-input-avatar-pro').length){
-	// 	// var button_avatar_pro = do
- //        $(document).on('click', '#choise', function(event) {
-	// 	    event.preventDefault();
-	// 	    selectFileWithMyUpload('ckfinder-input-avatar-pro', 'img-avatar-pro');		    
-	//     });
-	// }
-
-    
-	//set anh cho other image san pham
-	var inputOtherID='ckfinder-input-1';
-	var imgOtherID= 'img-pro-1';
-    $(document).on('click', "button.ckfinder-popup", function() {
-    	event.preventDefault();
-    	initUpload();
-	    inputOtherID = $(this).siblings('input.form-control').attr('id');
-	    imgOtherID = $(this).prev().children('img.img-edit').attr('id');
-	    // console.log(inputOtherID);      
-	});
-
-	if($('#'+inputOtherID).length && $('#'+imgOtherID).length){
-        $(document).on('click', '#choise', function(event) {
-		    event.preventDefault();
-		    console.log(inputOtherID);
-		    console.log(imgOtherID);
-		    selectFileWithMyUpload(inputOtherID, imgOtherID);		    
-	    });
-	}
+	
 
 
     
