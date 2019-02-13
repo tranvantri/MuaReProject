@@ -37,6 +37,7 @@ class CategoryDetail extends Controller
 			})
 			->join('users','products.idUser','=','Users.id')
 			->where('products.status',1)
+			->where('products.adminCheck',1)
             ->select('products.*','users.name as tenchushop')
             ->paginate(9);            
   		return view('user.chitietdanhmuc',compact('categoryParent', 'categoryCurrent', 'childCate','products','place','hienthi', 'tinhtrang', 'gia', 'sapxep'));
@@ -105,6 +106,7 @@ class CategoryDetail extends Controller
 					})
 					->join('users','products.idUser','=','Users.id')
 					->where('products.status',1)
+					->where('products.adminCheck',1)
 					->where(function($query) use ($tinhtrang){
 						switch($tinhtrang){
 							case 'tinh-trang-moi':
@@ -173,6 +175,7 @@ class CategoryDetail extends Controller
 					})
 					->join('users','products.idUser','=','Users.id')
 					->where('products.status',1)
+					->where('products.adminCheck',1)
 					->where(function($query) use ($tinhtrang){
 						switch($tinhtrang){
 							case 'tinh-trang-moi':
@@ -272,6 +275,7 @@ class CategoryDetail extends Controller
 					// })
 					->join('users','services.idUser','=','Users.id')
 					->where('services.status',1)
+					->where('services.adminCheck',1)
 					->where('services.idPlace',$idPlace)
 					->where(function($query) use ($tinhtrang){
 						switch($tinhtrang){
@@ -341,6 +345,7 @@ class CategoryDetail extends Controller
 					// })
 					->join('users','services.idUser','=','Users.id')
 					->where('services.status',1)
+					->where('services.adminCheck',1)
 					->where('services.idPlace',$idPlace)
 					->where(function($query) use ($tinhtrang){
 						switch($tinhtrang){
@@ -441,6 +446,7 @@ class CategoryDetail extends Controller
 					})
 					->join('users','products.idUser','=','Users.id')
 					->where('products.status',1)
+					->where('products.adminCheck',1)
 					->where(function($query) use ($tinhtrang){
 						switch($tinhtrang){
 							case 'tinh-trang-moi':
@@ -509,6 +515,7 @@ class CategoryDetail extends Controller
 					})
 					->join('users','products.idUser','=','Users.id')
 					->where('products.status',1)
+					->where('products.adminCheck',1)
 					->where(function($query) use ($tinhtrang){
 						switch($tinhtrang){
 							case 'tinh-trang-moi':

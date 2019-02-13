@@ -717,28 +717,69 @@ $(document).ready(function() {
 		}
 	});
 
-	// //Xử lý chọn sản phẩm trang khuyren mãi
+	//ajax lấy info user
+	$(document).on('click', "button.view-info-user", function() {
+	    var idUser = $(this).attr('data');
+	    var inforUser = $('#info-user');
+	    var loadding = $('#loadding');
+	    var error = $('#error');
+	    inforUser.hide();
+	    loadding.show();
+	    error.hide();
+	    
+	    $.ajax({
+	    	type: "get",
+	    	url: 'admin/product/view-info-user/'+ idUser, 
+	    	success: function(data){
+	            inforUser.html(data);      
+	            setTimeout(function() {
+				    inforUser.show();
+				    loadding.hide();
+				}, 800);	            
+	            
+        	},
+        	error: function() {
+        		setTimeout(function() {
+	            	loadding.hide();
+		        	error.show();
+				}, 800);
+        		
+		    },
+    	});        
+	});
 
-	// $('.checkbox-sp').change(function(event) {
-	// 	var id = $(this).attr('attrId');		
-	// 	if($(this).is(":checked")){		
-	// 		var name = $(this).attr('attrName');
-	// 		$('#tag').append(
-	// 			'<div class="sp-'+id+'" style="margin-right: 5px;margin-bottom: 5px; float:left;">'+
-	// 			'<input type="hidden" name="sp[]"'+
-	// 			'value="'+id +'"><span class="btn btn-primary">'+name+' <i class="fa fa-times" ></i></span></input>'+
-	// 			'</div>'
-	// 		);
-	// 	}else{		
-	// 		$('.sp-'+id).remove();			
-	// 	}
+	//ajax lấy info product
+	$(document).on('click', "button.view-info-pro", function() {
+	    var idPro = $(this).attr('data');
+	    var inforPro = $('#info-pro');
+	    var loadding = $('#loadding2');
+	    var error = $('#error2');
+	    inforPro.hide();
+	    loadding.show();
+	    error.hide();
+	    
+	    $.ajax({
+	    	type: "get",
+	    	url: 'admin/product/view-info-pro/'+ idPro, 
+	    	success: function(data){
+	            inforPro.html(data);      
+	            setTimeout(function() {
+				    inforPro.show();
+				    loadding.hide();
+				}, 800);	            
+	            
+        	},
+        	error: function() {
+        		setTimeout(function() {
+	            	loadding.hide();
+		        	error.show();
+				}, 800);
+        		
+		    },
+    	});        
+	});
 
-	// });
-	// $(document).on('click', '#tag i.fa', function(event) {
-	// 	var id = $(this).parent().prev().val();
-	// 	$('.check-sp-'+id).prop('checked', false);
-	// 	$('.sp-'+id).remove();	
-	// });
+
 
 });
 

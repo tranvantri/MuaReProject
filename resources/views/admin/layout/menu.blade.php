@@ -30,8 +30,9 @@
             </li>
             <!-- comment -->
             <li>
-                <a ><i class="fa fa-cube fa-fw"></i> Sản phẩm<span class="fa arrow"></span></a>
-                <ul class="nav nav-second-level">
+                <a href="admin/product/list"><i class="fa fa-cube fa-fw"></i>Duyệt sản phẩm <span class="
+notifi">{{$spchuaduyet}}</span><span class="fa arrow"></span></a>
+                {{-- <ul class="nav nav-second-level">
                     <li>
                         <a href="admin/product/list"><i class="fa fa-list"></i> Danh sách sản phẩm</a>
                     </li>
@@ -39,7 +40,7 @@
                         <a href="admin/size/list"><i class="fa fa-list"></i> Size sản phẩm</a>
                     </li>
                     
-                </ul>
+                </ul> --}}
                 <!-- /.nav-second-level -->
             </li>
             <li>

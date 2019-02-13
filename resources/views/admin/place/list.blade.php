@@ -87,14 +87,3 @@
   </div> --}}
 @endsection
 
-@section('script')
-        <script>
-            $(document).ready(function() {
-                $('#dataTables-example').DataTable().destroy();
-                $('#dataTables-example').dataTable({
-                  "ordering": false
-                });
-            });
-            
-        </script>
-@endsection

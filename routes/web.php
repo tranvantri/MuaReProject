@@ -14,17 +14,18 @@ Route::group(['namespace' => 'AdminManager'], function() {
         Route::post('edit/{id}', 'AdminController@postEdit');
 
         
-        // /* Product*/
-        // Route::group(['prefix' => 'product'], function() {
-        //     Route::get('list', 'ProductController@getList');
-        //     Route::get('add', 'ProductController@getAdd');
-        //     Route::post('add', 'ProductController@postAdd');
-        //     Route::get('edit/{id}', 'ProductController@getEdit');
-        //     Route::post('edit/{id}', 'ProductController@postEdit');
-        //     Route::get('delete/{id}', 'ProductController@getDelete');
-        //     Route::get('view-history-pro/{id}', 'ProductController@getHistory');
+        /* Product*/
+        Route::group(['prefix' => 'product'], function() {
+            Route::get('list', 'ProductController@getList');
+            Route::get('add', 'ProductController@getAdd');
+            Route::post('add', 'ProductController@postAdd');
+            Route::get('edit/{id}', 'ProductController@getEdit');
+            Route::post('edit/{id}', 'ProductController@postEdit');
+            Route::get('enable/{id}/{option}', 'ProductController@getEnable');
+            Route::get('view-info-user/{id}', 'ProductController@getInforUser');
+            Route::get('view-info-pro/{id}', 'ProductController@getInforPro');
            
-        // });
+        });
 
 
         /*------------------------------------------------------------------*/

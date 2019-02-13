@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use App\Places;
 use App\Categories;
+use App\Products;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\QueryException;
 
@@ -72,6 +73,12 @@ class AppServiceProvider extends ServiceProvider
 
 
        /*  Kết thúc View share Footer*/
+
+
+
+       // đếm sp chưa duyệt
+       $spchuaduyet = Products::where('adminCheck','0')->count();
+       view()->share('spchuaduyet', $spchuaduyet);
     }
 
     /**

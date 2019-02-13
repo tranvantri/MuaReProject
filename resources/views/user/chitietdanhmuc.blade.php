@@ -424,12 +424,24 @@ display: none;
          <div class="box-info">
           <div class="title">
            <h3 class="box-info-h3">
-            <a title="Philips pin khủng BH chính hãng giá mới tháng 12 2017 Full Model" href="https://muare.vn/posts/philips-pin-khung-bh-chinh-hang-gia-moi-thang-12-2017-full-model.3941242">{{$childPro->title_tindang}}</a>
+            <a title=
+            "@if(isset($childPro->title_tindang))
+              {{$childPro->title_tindang}}
+              @else
+              {{$childPro->name}}
+              @endif"
+             href="https://muare.vn/posts/philips-pin-khung-bh-chinh-hang-gia-moi-thang-12-2017-full-model.3941242">
+              @if(isset($childPro->title_tindang))
+              {{$childPro->title_tindang}}
+              @else
+              {{$childPro->name}}
+              @endif
+            </a>
           </h3>
         </div>
         <div class="location">
          <span class="glyphicon glyphicon-map-marker"><i class="fas fa-map-marker-alt" style="font-size: 12px;"></i></span>
-         <div title="9B - 354 Trần Khát Chân - Hai Bà Trưng - Hà Nội" class="my-location">
+         <div title="{{$childPro->address}}" class="my-location">
           <h4 class="marker-h4">{{$childPro->address}}</h4>
         </div>
       </div>
