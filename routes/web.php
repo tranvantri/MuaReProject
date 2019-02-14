@@ -136,6 +136,8 @@ Route::group(['namespace' => 'UserController' , 'middleware'=>'userCheckLogout']
 
     Route::get('/chi-tiet-san-pham/{id}', ['as'=>'chitietsanpham','uses'=>'ProductController@getProduct']);
 
+    Route::get('/chi-tiet-tin-dang/{id}',['as'=>'chitiettindang','uses'=>'ServiceController@getTinDang']);
+
     Route::get('/dang-tin-dich-vu', function () {
         return view('user.dangtindichvu');
     });
@@ -151,9 +153,7 @@ Route::group(['namespace' => 'UserController' , 'middleware'=>'userCheckLogout']
     Route::get('/san-pham/{id}',['as'=>'sanpham','uses'=>'ProductController@viewProduct']);
 
 
-    Route::get('/tat-ca-tin-dang', function () {
-        return view('user.tatcatindang');
-    });
+    Route::get('/tat-ca-tin-dang',['as'=>'tatcatindang','uses'=>'ServiceController@viewAllServices']); // 
 
     Route::get('/user-quan-ly-kho-hang',['as'=>'userquanlykhohang','uses'=>'UserPageController@getUserQuanLyKhoHang']);
 

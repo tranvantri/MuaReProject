@@ -1,6 +1,10 @@
 @extends('user.layouts.index')
 @section('title')
-  <title>Chi tiết sản phẩm</title>
+  <title>
+    @foreach($products as $child)
+      {{$child->name}}
+    @endforeach
+  </title>
 @endsection
 @section('content')
 <section class="content mt-1">

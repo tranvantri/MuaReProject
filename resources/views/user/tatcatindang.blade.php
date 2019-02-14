@@ -27,41 +27,45 @@
 					</div><!-- -----------------------Kết thúc div row Tin đăng mới nhất -->
                     <div class="row">
                         <div class="allNews allNews-Tr">
+
+                            @foreach($services as $child)
                             <div class="col-md-6 recentNew recentNew-Tr">
                                 <div class="row">                                    
                                     <div class="recent-item-title-Tr">
-                                        <div class="title-dotted-Tr">
-                                            <a href="#"> Tour du lịch ninh chữ - bình ba 3n2đ</a>
+                                        <div class="title-dotted-Tr thu_gon_text_tindang_tomiot">
+                                            <a href="{{$child->id}}"> {{$child->name}}</a>
                                         </div>                                        
                                     </div> 
                                 </div>
                                 <div class="row">
                                         <div class="chip">
                                           <img src="https://www.w3schools.com/howto/img_avatar.png" alt="Person">
-                                          <a href="#">haihaln</a>  đăng 43 phút trước
+                                          <a href="{{$child->username}}">{{$child->username}}</a>  đăng {{$child->date_added}} phút trước
                                         </div>
                                 </div>                                
                                 <div class="noidungTin">
                                     <div class="row">
                                         <div class="canTraiNoiDung col-md-7">
-                                        <span>
-                                            Cuối năm cần tiền xoay vòng vốn nên bán gấp tổ hợp nhà hàng khách sạn và 4ha đất mặt tiền tại phường 10, tp đà 
+                                        <span class="thu_gon_text_tomiot">
+                                            {{$child->description}}
                                         </span> 
                                         <div class="post-address">
-                                            <i class="fas fa-tag"></i> <span>800.000đ</span>
+                                            <i class="fas fa-tag"></i> <span> {{number_format($child->price,0)}}đ</span>
                                         </div>
-                                        <div class="post-address">
-                                            <i class="fas fa-map-marker-alt"></i> <span>phường 10, TP Đà Lạt</span>
+                                        <div class="post-address ">
+                                             <span class="thu_gon_text_diachitindang_tomiot"><i class="fas fa-map-marker-alt"></i> {{$child->address}}</span>
                                         </div>
                                     </div>
                                     <div class="imgTinDangMoiNhat col-md-5">
-                                        <a href="#">
-                                        <img  style="" class="" src="https://static8.muarecdn.com/zoom,90/150_150/muare/images/2019/01/08/4984389_4be0279c5442b71cee53.jpg" alt=""></a>
+                                        <a href="{{$child->id}}">
+                                        <img  style="width: 150px; height: 150px;" class="" src="{{$child->images?? 'https://static8.muarecdn.com/zoom,90/150_150/muare/images/2019/01/08/4984389_4be0279c5442b71cee53.jpg'}}" alt="{{$child->name}}"></a>
                                     </div>
                                     </div>
                                 </div>                              
                             </div>
-                            <div class="col-md-6 recentNew recentNew-Tr">
+                            @endforeach
+
+                            <!-- <div class="col-md-6 recentNew recentNew-Tr">
                                 <div class="row">                                    
                                     <div class="recent-item-title-Tr">
                                         <div class="title-dotted-Tr">
@@ -264,7 +268,9 @@
                                     </div>
                                     </div>
                                 </div>                              
-                            </div>
+                            </div> -->
+
+
                         </div> <!-- Kết thúc all News -->
                     </div>
                     <div class="row">
