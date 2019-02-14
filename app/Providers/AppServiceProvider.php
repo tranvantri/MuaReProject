@@ -6,6 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use App\Places;
 use App\Categories;
 use App\Products;
+use App\Services;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\QueryException;
 
@@ -79,6 +80,12 @@ class AppServiceProvider extends ServiceProvider
        // đếm sp chưa duyệt
        $spchuaduyet = Products::where('adminCheck','0')->count();
        view()->share('spchuaduyet', $spchuaduyet);
+
+       // đếm dich vu chưa duyệt
+       $dichvuchuaduyet = Services::where('adminCheck','0')->count();
+       view()->share('dichvuchuaduyet', $dichvuchuaduyet);
+
+
     }
 
     /**

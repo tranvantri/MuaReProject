@@ -86,6 +86,7 @@ class ProductController extends Controller
                 <div><label>Tình trạng: </label><span> '.$tinhtrang.'</span></div>  
                 <div><label>Mô tả: </label></div>  
                 <div><textarea style="width: 100%" rows="8">'.$pro->description.'</textarea></div>
+                <div><label>Ngày đăng: </label><span> '.$pro->date_added.'</span></div>
                 <div><label>Nơi bán: </label><span> '.$pro->address.'</span></div>       
                 <div><label>Khu vực bán: </label><span> '.$khuvuc.'</span></div>
              ';

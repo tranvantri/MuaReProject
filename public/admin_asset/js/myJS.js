@@ -779,6 +779,37 @@ $(document).ready(function() {
     	});        
 	});
 
+	//ajax lấy info serice
+	$(document).on('click', "button.view-info-ser", function() {
+	    var idSer = $(this).attr('data');
+	    var inforSer = $('#info-ser');
+	    var loadding = $('#loadding2');
+	    var error = $('#error2');
+	    inforSer.hide();
+	    loadding.show();
+	    error.hide();
+	    
+	    $.ajax({
+	    	type: "get",
+	    	url: 'admin/service/view-info-ser/'+ idSer, 
+	    	success: function(data){
+	            inforSer.html(data);      
+	            setTimeout(function() {
+				    inforSer.show();
+				    loadding.hide();
+				}, 800);	            
+	            
+        	},
+        	error: function() {
+        		setTimeout(function() {
+	            	loadding.hide();
+		        	error.show();
+				}, 800);
+        		
+		    },
+    	});        
+	});
+
 
 
 });

@@ -4,7 +4,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Sản phẩm
+                <h1 class="page-header">Dịch vụ
                     <small>Danh sách</small>
                     {{-- <small><a href="admin/product/add" class="btn btn-success btn-them"><i class="fa fa-plus"></i> Thêm sản phẩm</a></small> --}}
                 </h1>
@@ -20,8 +20,8 @@
             <table class="table table-striped table-bordered table-hover table-list" id="dataTables-example">
                 <thead>
                     <tr align="center" style="font-size: 12px">
-                        <th>MãSP</th>
-                        <th>TênSP</th>
+                        <th>MãDV</th>
+                        <th>TênDV</th>
                         <th>Ảnh mẫu</th>
                         <th>Danh mục</th>        
                         <th>Trạng thái</th>                                        
@@ -30,91 +30,91 @@
                     </tr>
                 </thead>
                 <tbody>
-                	@foreach($products as $pro)
-                    @if($pro->adminCheck == 0)
+                    @foreach($services as $child)
+                    @if($child->adminCheck == 0)
                     <tr class="odd gradeX" align="center" style="font-size: 12px">
-                        <td>{{$pro->id}}</td>
-                        <td style="width: 250px;">{{$pro->name}}</td>   
+                        <td>{{$child->id}}</td>
+                        <td style="width: 250px;">{{$child->name}}</td>   
                         <td>
-                            <a target="_blank" href="{{$pro->images}}">
-                              <img class="img-avatar" src="{{$pro->images}}" alt="Forest"> <i class="fa fa-external-link" aria-hidden="true"></i>
+                            <a target="_blank" href="{{$child->images}}">
+                              <img class="img-avatar" src="{{$child->images}}" alt="Forest"> <i class="fa fa-external-link" aria-hidden="true"></i>
                             </a>                            
                         </td>   
-                        <td>{{$pro->namecate}}</td>                                        
+                        <td>{{$child->namecate}}</td>                                        
                         <td>
                             <div class="dropdown">
                                 <button style="width: 100px" class="btn
 
-                                @if($pro->adminCheck == 0)
+                                @if($child->adminCheck == 0)
                                     btn-dark
-                                @elseif($pro->adminCheck == 1)
+                                @elseif($child->adminCheck == 1)
                                     btn-success
                                 @else
                                     btn-danger
                                 @endif
 
                                  dropdown-toggle" type="button" data-toggle="dropdown">
-                                    @if($pro->adminCheck == 0)
+                                    @if($child->adminCheck == 0)
                                         Chưa duyệt
-                                    @elseif($pro->adminCheck == 1)
+                                    @elseif($child->adminCheck == 1)
                                         Đã duyệt
                                     @else
                                         Khóa
                                     @endif
                                 <span class="caret"></span></button>
                                 <ul class="dropdown-menu">
-                                    <li><a href="admin/product/enable/{{$pro->id}}/{{1}}">Đã duyệt</a></li>
-                                    <li><a href="admin/product/enable/{{$pro->id}}/{{0}}">Chưa duyệt</a></li>
-                                    <li><a href="admin/product/enable/{{$pro->id}}/{{2}}">Khóa</a></li>
+                                    <li><a href="admin/service/enable/{{$child->id}}/{{1}}">Đã duyệt</a></li>
+                                    <li><a href="admin/service/enable/{{$child->id}}/{{0}}">Chưa duyệt</a></li>
+                                    <li><a href="admin/service/enable/{{$child->id}}/{{2}}">Khóa</a></li>
                                 </ul>
                             </div>
                         </td>                                         
-                        <td><button class="view-info-pro btn btn-info" data="{{$pro->id}}" data-toggle="modal" data-target="#myModalProInfo">Xem</button></td>
-                        <td><button class="view-info-user btn btn-info" data="{{$pro->idchushop}}" data-toggle="modal" data-target="#myModalUserInfo">Xem</button></td>
+                        <td><button class="view-info-ser btn btn-info" data="{{$child->id}}" data-toggle="modal" data-target="#myModalProInfo">Xem</button></td>
+                        <td><button class="view-info-user btn btn-info" data="{{$child->idchushop}}" data-toggle="modal" data-target="#myModalUserInfo">Xem</button></td>
                     </tr> 
                     @endif
                     @endforeach  
-                    @foreach($products as $pro)
-                    @if($pro->adminCheck == 1 || $pro->adminCheck == 2)
+                    @foreach($services as $child)
+                    @if($child->adminCheck == 1 || $child->adminCheck == 2)
                     <tr class="odd gradeX" align="center" style="font-size: 12px">
-                        <td>{{$pro->id}}</td>
-                        <td style="width: 250px;">{{$pro->name}}</td>   
+                        <td>{{$child->id}}</td>
+                        <td style="width: 250px;">{{$child->name}}</td>   
                         <td>
-                            <a target="_blank" href="{{$pro->images}}">
-                              <img class="img-avatar" src="{{$pro->images}}" alt="Forest"> <i class="fa fa-external-link" aria-hidden="true"></i>
+                            <a target="_blank" href="{{$child->images}}">
+                              <img class="img-avatar" src="{{$child->images}}" alt="Forest"> <i class="fa fa-external-link" aria-hidden="true"></i>
                             </a>                            
                         </td>   
-                        <td>{{$pro->namecate}}</td>                                        
+                        <td>{{$child->namecate}}</td>                                        
                         <td>
                             <div class="dropdown">
                                 <button style="width: 100px" class="btn
 
-                                @if($pro->adminCheck == 0)
+                                @if($child->adminCheck == 0)
                                     btn-dark
-                                @elseif($pro->adminCheck == 1)
+                                @elseif($child->adminCheck == 1)
                                     btn-success
                                 @else
                                     btn-danger
                                 @endif
 
                                  dropdown-toggle" type="button" data-toggle="dropdown">
-                                    @if($pro->adminCheck == 0)
+                                    @if($child->adminCheck == 0)
                                         Chưa duyệt
-                                    @elseif($pro->adminCheck == 1)
+                                    @elseif($child->adminCheck == 1)
                                         Đã duyệt
                                     @else
                                         Khóa
                                     @endif
                                 <span class="caret"></span></button>
                                 <ul class="dropdown-menu">
-                                    <li><a href="admin/product/enable/{{$pro->id}}/{{1}}">Đã duyệt</a></li>
-                                    <li><a href="admin/product/enable/{{$pro->id}}/{{0}}">Chưa duyệt</a></li>
-                                    <li><a href="admin/product/enable/{{$pro->id}}/{{2}}">Khóa</a></li>
+                                    <li><a href="admin/service/enable/{{$child->id}}/{{1}}">Đã duyệt</a></li>
+                                    <li><a href="admin/service/enable/{{$child->id}}/{{0}}">Chưa duyệt</a></li>
+                                    <li><a href="admin/service/enable/{{$child->id}}/{{2}}">Khóa</a></li>
                                 </ul>
                             </div>
                         </td>                                         
-                        <td><button class="view-info-pro btn btn-info" data="{{$pro->id}}" data-toggle="modal" data-target="#myModalProInfo">Xem</button></td>
-                        <td><button class="view-info-user btn btn-info" data="{{$pro->idchushop}}" data-toggle="modal" data-target="#myModalUserInfo">Xem</button></td>
+                        <td><button class="view-info-ser btn btn-info" data="{{$child->id}}" data-toggle="modal" data-target="#myModalProInfo">Xem</button></td>
+                        <td><button class="view-info-user btn btn-info" data="{{$child->idchushop}}" data-toggle="modal" data-target="#myModalUserInfo">Xem</button></td>
                     </tr> 
                     @endif
                     @endforeach                 
@@ -153,12 +153,12 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Thông tin sản phẩm</h4>
+          <h4 class="modal-title">Thông tin dịch vụ</h4>
         </div>
         <div class="modal-body">
             <h3 id="loadding2" class="text-center"><i class="fa fa-spinner fa-spin" aria-hidden="true"></i> Loadding...</h3>
             <h3 id="error2" class="text-center"><i style="color: red;" class="fa fa-exclamation-circle" aria-hidden="true"></i> Có sự cố xảy ra. </h3>
-            <div id="info-pro">
+            <div id="info-ser">
 
             </div>
             

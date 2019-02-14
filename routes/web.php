@@ -27,6 +27,21 @@ Route::group(['namespace' => 'AdminManager'], function() {
            
         });
 
+        /* Service*/
+        Route::group(['prefix' => 'service'], function() {
+            Route::get('list', 'ServiceController@getList');
+            Route::get('add', 'ServiceController@getAdd');
+            Route::post('add', 'ServiceController@postAdd');
+            Route::get('edit/{id}', 'ServiceController@getEdit');
+            Route::post('edit/{id}', 'ServiceController@postEdit');
+            Route::get('enable/{id}/{option}', 'ServiceController@getEnable');
+            Route::get('view-info-user/{id}', 'ProductController@getInforUser');
+            Route::get('view-info-ser/{id}', 'ServiceController@getInforSer');
+           
+        });
+
+
+
 
         /*------------------------------------------------------------------*/
         /* Category*/
