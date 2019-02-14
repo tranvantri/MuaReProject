@@ -1658,6 +1658,23 @@ table .td-info .user-post .username .username-h4 a {
   line-height: 1.8em;
   
 }
+.thu_gon_text_tindang_tomiot {
+    display: block;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    overflow: hidden;
+    max-height: 3.6em;
+    line-height: 3em;
+}
+
+.thu_gon_text_diachitindang_tomiot {
+    display: block;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    overflow: hidden;
+    max-height: 3.6em;
+    line-height: 3em;
+}
 
 .imgTinDangMoiNhat {
   display: table-cell;
