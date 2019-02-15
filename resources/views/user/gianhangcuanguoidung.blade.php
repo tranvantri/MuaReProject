@@ -146,14 +146,18 @@
                   </div>
                 </div>
                 <div class="shop-row">
-                  <h2 class="row-title">Tin đăng của shop</h2>
+                  <h2 class="row-title">{{$soluongService}} Tin đăng của shop</h2>
                   
                   <div class="list-post row">
                     @foreach($services as $childService)
                     <div class="shop-post col-xs-6">
                       
                       <div class="img-post">
-                        <a title="{{$childService->name}}" href="{{ route('sanpham', $childService->id) }}" >
+                        
+                        <a title="{{$childService->name}}" href="{{ route('chitiettindang', $childService->id) }}" data-title="Load sản phẩm" data-size="l"
+                          data-id="popupItem"
+                          class="OverlayPopup"
+                        > 
                           <img
                             class="lazy-images"
                             src="{{$childService->images}}"
@@ -166,8 +170,7 @@
                         <div class="title-post">
                           <h2 class="title-post-h2">
                             <a
-                              title="{{$childService->name}}"
-                              href="{{$childService->id}}"
+                              title="{{$childService->name}}" href="{{ route('chitiettindang', $childService->id) }}"
                             >
                               {{$childService->name}}
                             </a>
@@ -197,7 +200,7 @@
                 </div> -->
 
                 <div class="shop-row" id="shopItemRow">
-                  <h2 class="row-title">Sản phẩm của shop</h2>
+                  <h2 class="row-title">{{$soluongProducts}} Sản phẩm của shop </h2>
                   <div class="filter-item">
                     <div class="filter-category">
                       <span class="count-items">{{$soluongProducts}}</span>
