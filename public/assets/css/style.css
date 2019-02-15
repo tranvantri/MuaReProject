@@ -2535,7 +2535,8 @@ table .td-info .user-post .username .username-h4 a {
 }
 
 .post-form-Tr .forum-thread-infor-Tr .fs-wrap {
-  width: 300px;
+  /*width: 300px;*/
+  width: 100%;
 }
 
 .post-form-Tr #location-post-Tr {

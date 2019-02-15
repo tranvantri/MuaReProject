@@ -24,7 +24,7 @@ class LoginUserController extends Controller
 		            //kiểm tra ngdung có bị khóa hay không
 		            if(Auth::user()->status == 1) 
 		            {                
-		                return Redirect('home');
+		                return Redirect('/home');
 		            }
 		            // người dùng bị khóa
 		            else
@@ -40,7 +40,7 @@ class LoginUserController extends Controller
 		            //kiểm tra ngdung có bị khóa hay không
 		            if(Auth::user()->status == 1) 
 		            {                
-		                return Redirect('home');
+		                return Redirect('/home');
 		            }
 		            // người dùng bị khóa
 		            else
