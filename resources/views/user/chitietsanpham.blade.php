@@ -1,9 +1,11 @@
 @extends('user.layouts.index')
 @section('title')
   <title>
-    @foreach($products as $child)
+
+    @foreach($services as $child)
       {{$child->name}}
     @endforeach
+
   </title>
 @endsection
 @section('content')
@@ -15,12 +17,12 @@
     <div class="col-md-9">
       @include('user.chitietsanpham.mualuotclick')
 
-      @foreach($products as $child)
+      @foreach($services as $child)
       <div class="new_title_header_tomiot col-md-12">
         <div class="row">
           <div class="col-md-10">
             <b><strong><p style="margin-bottom: 0rem;">{{$child->name}}</p></strong></b>
-            @foreach($product_category as $childCate)
+            @foreach($service_category as $childCate)
               <p class="timePost_tomiot">Cập nhật: {{$child->date_added }} - <a href="{{$childCate->idCate}}">{{$childCate->nameCate}}</a></p>
             @endforeach
           </div>
@@ -87,7 +89,7 @@
             <div class="danhsach_sp_lien_quan_tomiot">
               <div class="list_item_tomiot row">
                 <!-- Hiện sản phẩm tin đăng liên quan -->
-                @foreach($product_relate as $childRelate)
+                @foreach($service_relate as $childRelate)
                 <div class="col-md-4 sp_lien_quan_tomiot">
                   <div class="avatar_splq_tomiot">
                     <img class="img_splq_tomiot" src="assets/images/chitietsanpham/logo_muare.png" alt="">
@@ -183,7 +185,7 @@
     <div class="noi_dung_tin_khac_tomiot">
       <ul>
 
-        @foreach($product_user as $childpc)
+        @foreach($service_user as $childpc)
         <li>
           <div class="post-title">
             <h3 class="post-title-h3">
@@ -219,7 +221,7 @@
       <div class="nguoi_ban_de_xuat_tomiot col-md-12">
         <div class="row">
 
-          @foreach($randPro as $childPro)
+          @foreach($randSer as $childPro)
             <div class="col-md-2">
               <img class="image_spdx_tomiot" src="{{$childPro->images}}" alt="">
               <a style="max-height: 1.4em;   " class="thu_gon_text_chitietsanpham_tomiot ds_cac_sp_de_xuat_tomiot " href="#">{{$childPro->name}}</a>
