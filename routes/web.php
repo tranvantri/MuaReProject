@@ -143,11 +143,17 @@ Route::group(['namespace' => 'UserController' , 'middleware'=>'userCheckLogout']
         return view('user.dangtindichvu');
     });
 
-    Route::get('/dang-tin-san-pham', function () {
-        return view('user.dangtinsanpham');
+
+    Route::get('/dang-tin-san-pham',['as'=>'getdangtinsanpham','uses'=>'PostController@postProduct']);
+    Route::post('/dang-tin-san-pham',['as'=>'postdangtinsanpham','uses'=>'PostController@addNewProduct']);
+
+
+    Route::get('/dang-tin-chung', function () {
+        return view('user.dangtinchung');
     });
 
-    Route::get('/gian-hang-cua-nguoi-dung/{id}', ['as'=>'gianhangcuanguoidung','uses'=>"UserPageController@getView"]); // còn service
+
+    Route::get('/gian-hang-cua-nguoi-dung/{id}', ['as'=>'gianhangcuanguoidung','uses'=>"UserPageController@getView"]); // xong
 
     Route::get('/quan-ly-don-hang',['as'=>'quanlydonhang','uses'=>'UserPageController@getQuanLyDonHang']); // chưa xong, cần phần giỏ hàng
 
@@ -158,9 +164,7 @@ Route::group(['namespace' => 'UserController' , 'middleware'=>'userCheckLogout']
 
     Route::get('/user-quan-ly-kho-hang',['as'=>'userquanlykhohang','uses'=>'UserPageController@getUserQuanLyKhoHang']);
 
-    Route::get('/dang-tin-chung', function () {
-        return view('user.dangtinchung');
-    });
+    
 
     Route::get('/mua-quang-cao', function () {
         return view('user.muaquangcao');

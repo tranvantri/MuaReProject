@@ -8,6 +8,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Database\QueryException;
 use Cookie;
 use Illuminate\Support\Facades\DB;
+
+
 class ProductController extends Controller
 {
 	/* 	Lấy chi tiết sản phẩm theo id truyền vào
@@ -59,4 +61,5 @@ class ProductController extends Controller
 		return view('user.product-info',compact('products','randPro','product_offer'));
 	}
 
+	
 }

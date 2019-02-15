@@ -1,6 +1,6 @@
 @extends('user.layouts.index')
 @section('title')
-	<title>Đăng tin chung</title>
+	<title>Đăng tin</title>
 @endsection
 @section('content')
 <section class="content mt-5 mb-5">
@@ -29,10 +29,10 @@
                         <p class="select-note-Tr">Vui lòng lựa chọn hình thức đăng tin phù hợp với Sản phẩm hoặc Dịch vụ mà bạn muốn cung cấp, để đảm bảo tin đăng đúng quy định và được duyệt.<a href="https://muare.vn/huong-dan-su-dung#dang_tin" target="_blank"> (Tìm hiểu thêm)</a></p>
                         <div class="row">
                             <div class="col-lg-6">
-                                <button class="select-type-item-Tr" onclick="location.href='https://muare.vn/storage/add';">Đăng tin Sản phẩm</button>
+                                <button class="select-type-item-Tr" onclick="location.href='http://localhost:6969/MuaReProject/public/dang-tin-san-pham';">Đăng tin Sản phẩm</button>
                             </div>
                             <div class="col-lg-6">
-                                <button class="select-type-service-Tr">Đăng tin dịch vụ</button>
+                                <button class="select-type-service-Tr" onclick="location.href='http://localhost:6969/MuaReProject/public/dang-tin-dich-vu';">Đăng tin dịch vụ</button>
                             </div>
                         </div>                     
                     </div>
