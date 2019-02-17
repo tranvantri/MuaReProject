@@ -25,6 +25,7 @@ $(document).ready(function() {
 
 		 if($(window).width()>800 && $(window).width()<1200){
 			// console.log("800-1200");
+             
 			$('#menu-category').parent().addClass('col-lg-2 col-md-2');
 			$('#menu-category').parent().show();			
 			$('#view-post-tt-dv').parent().addClass('col-lg-10 col-md-10');
@@ -50,7 +51,6 @@ $(document).ready(function() {
 		  	}
             
 		}
-
 
 	});
 	// owl-carousel sản phẩm độc đáo
@@ -247,6 +247,11 @@ $(document).ready(function() {
       document.getElementById("myresult-div").style.display = "none";
     }
     
+    if(screen.width > 800 && screen.width < 1200){
+        document.getElementById("modal-productview").setAttribute("style","height: auto;");
+    } else {
+       document.getElementById("modal-productview").setAttribute("style","height: 100%;"); 
+    }
     /* Comment part */
     var divs = document.getElementsByTagName('div');
                                 
