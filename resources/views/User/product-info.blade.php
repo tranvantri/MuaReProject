@@ -170,7 +170,7 @@
 
         <!-- Đề xuất sản phẩm -->
         <div id="title-product-related-v"><span>NGƯỜI BÁN KHÁC ĐỀ XUẤT CHO BẠN</span></div>
-        <div class="products_related_parent-v">
+        <!-- <div class="products_related_parent-v">
         @foreach($product_offer as $childOffer)
             <div class="offer-category-v">          
               <div class="colum-offer-category-v">
@@ -196,12 +196,48 @@
               </div>
             </div>
          @endforeach
-        </div>
+        </div> -->
+        
+        <div class="promoteProduct row owl-carousel">
+        @foreach($product_offer as $childOffer)	
+<div class="motkhoi col-lg-3 col-md-4 col-sm-6">
+	<div class="card item">		
+		<div class="wrap-img">
+			<a href="">
+				<img class="card-img-top" src="{{$childOffer->images}}" alt="">
+			</a>
+			<div class="qv-button-container"> <a href="{{$childOffer->id}}" title="{{$childOffer->name}}"><i class="fas fa-eye"></i></a></div>											
+		</div>		
+
+		<div class="card-body info">
+			<div class="info-inner">
+				<div class="title_products_related">
+					<a href="{{$childOffer->id}}" title="{{$childOffer->name}}" class="OverlayPopup" data-size="l" data-id="popupItem">{{$childOffer->name}}</a>
+				</div>
+				<!--item-title-->
+				<div class="item-content">
+					<div class="price-box">
+						<p class="special-price"> <span class="price"> {{number_format($childOffer->price,0)}}đ </span> </p>
+					</div>
+				</div>
+				<!--item-content-->
+
+      </div>
+      
+		</div>
+		
+	</div>			
+	
+</div>
+
+@endforeach
+
+				</div>
         <!-- Kết thúc Đề xuất sản phẩm -->
 
         <!-- Sản phẩm ngẫu nhiên -->
         <div id="title-product-related-v"><span>CÓ THỂ BẠN QUAN TÂM</span></div>
-        <div class="products_related_parent-v">
+        <!-- <div class="products_related_parent-v">
 
           @foreach($randPro as $childRand)
           <div class="offer-category-v">
@@ -228,7 +264,42 @@
           </div>
           @endforeach
           
-        </div>
+        </div> -->
+        <div class="promoteProduct row owl-carousel">
+        @foreach($randPro as $childRand)	
+<div class="motkhoi col-lg-3 col-md-4 col-sm-6">
+	<div class="card item">		
+		<div class="wrap-img">
+			<a href="">
+				<img class="card-img-top" src="{{$childRand->images}}" alt="">
+			</a>
+			<div class="qv-button-container"> <a href="{{$childRand->id}}" title="{{$childRand->name}}"><i class="fas fa-eye"></i></a></div>											
+		</div>		
+
+		<div class="card-body info">
+			<div class="info-inner">
+				<div class="title_products_related">
+					<a href="{{$childRand->id}}" title="{{$childRand->name}}" class="OverlayPopup" data-size="l" data-id="popupItem">{{$childRand->name}}</a>
+				</div>
+				<!--item-title-->
+				<div class="item-content">
+					<div class="price-box">
+						<p class="special-price"> <span class="price"> {{number_format($childRand->price,0)}}đ </span> </p>
+					</div>
+				</div>
+				<!--item-content-->
+
+      </div>
+      
+		</div>
+		
+	</div>			
+	
+</div>
+
+@endforeach
+
+				</div>
         <!-- Kết thúc Sản phẩm ngẫu nhiên -->
 
       </div>

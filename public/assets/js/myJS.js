@@ -267,23 +267,23 @@ $(document).ready(function() {
         }
         
     }    
-    function showPicture(imgs) {
-    	var expandImg = document.getElementById("expandedImg");
-	// var imgText = document.getElementById("imgtext");
-	expandImg.src = imgs.src;
-	// imgText.innerHTML = imgs.alt;
-	// expandImg.parentElement.style.display = "block";
-	}
-	function scrollleft() {
-		var elmnt = document.getElementById("abc123");
-		elmnt.scrollLeft += 50;
-	}
-	function scrollright() {
-		var elmnt1 = document.getElementById("abc123");
-		elmnt1.scrollLeft -= 50;
-	}
 
 });
+function showPicture(imgs) {
+	var expandImg = document.getElementById("expandedImg");
+// var imgText = document.getElementById("imgtext");
+expandImg.src = imgs.src;
+// imgText.innerHTML = imgs.alt;
+// expandImg.parentElement.style.display = "block";
+}
+function scrollleft() {
+var elmnt = document.getElementById("abc123");
+elmnt.scrollLeft += 50;
+}
+function scrollright() {
+var elmnt1 = document.getElementById("abc123");
+elmnt1.scrollLeft -= 50;
+}
 
 
 	
