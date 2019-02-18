@@ -246,7 +246,7 @@
 
             <div class="register-date-v">
               <span><i class="far fa-clock"></i>
-                Thành viên từ {{$child->ngayTaoChuShop ?? '1/1/2019'}}
+                Thành viên từ {{date('d-m-Y', strtotime($child->ngayTaoChuShop)) ?? '1/1/2019'}}
               </span>
             </div>
             <div class="register-date-v sms">
