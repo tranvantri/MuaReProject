@@ -18,18 +18,18 @@
                                 Hà Nội
                             @endif
                         </button>
-                        <div class="dropdown-menu hoverable">
+                        <div class="dropdown-menu hoverable place">
                             @if(Cookie::get('place') != null)
                                 @foreach($places as $child) 
                                     <a class="dropdown-item 
                                     @if($child->id == Cookie::get('place'))
                                     active
                                     @endif
-                                    " href="{{$child->id}}">{{$child->name}}</a>
+                                    " data="{{$child->id}}">{{$child->name}}</a>
                                 @endforeach
                             @else
                                 @foreach($places as $child) 
-                                    <a class="dropdown-item" href="{{$child->id}}">{{$child->name}}</a>
+                                    <a class="dropdown-item" data="{{$child->id}}">{{$child->name}}</a>
                                 @endforeach
                             @endif                        
                         </div>
@@ -78,22 +78,25 @@
                         <a class="logo" title="Tìm là có, ngó là mua, vừa là bán" href="https://muare.vn"><img src="https://static8.muarecdn.com/original/muare/images/2018/05/25/4657344_new-logo.png" alt="Tìm là có, ngó là mua, vừa là bán"></a>
                     </div>
                     <div class="col-lg-7 " style="margin-top: 1%;">
-                            <form>
+                            <form action="search" method="get">
+                                {{-- {{ csrf_field() }} --}}
                             <div class="input-group-prepend" style="height: 29px;">
                                 <div class="searchtypes dropdown">
-                                  <button type="button" data-toggle="dropdown" class="btn-tatca">
-                                    Tất cả &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+                                  <button type="button" data-toggle="dropdown" class="btn-tatca catename">
+                                    Tất cả 
                                   </button>
                                   <div class="dropdown-menu" style="border-radius: 0px;border-top: 0px;font-size: 12px;">
+                                    <a class="dropdown-item" title="Tất cả" data="" href="">Tất cả</a>
                                     @foreach($cates as $child)
-                                    <a class="dropdown-item" href="{{str_slug($child->name)}}/{{$child->id}}">{{$child->name}}</a>
+                                    <a class="dropdown-item" style="cursor: pointer;" title="{{$child->name}}" data="{{$child->id}}" >{{$child->name}}</a>
                                     @endforeach
                                     </div>
                                 </div>
+                                <input type="text" class="input-search form-control " name="text" placeholder="Tìm kiếm..." aria-label="" aria-describedby="basic-addon1">
+                                <input type="hidden" id="categoryParent_id" name="categoryParent_id" value="">
                                 
-                                <input type="text" class="input-search form-control " placeholder="Tìm kiếm..." aria-label="" aria-describedby="basic-addon1">
                                 
-                                <button class="btnsearch" type="button">TÌM KIẾM</button>
+                                <button class="btnsearch" type="submit">TÌM KIẾM</button>
                             </div>
                             </form>
                     </div>
@@ -122,12 +125,12 @@
                           <div class="dropdown-menu" style="font-size: 14px;">
                             @foreach($cates as $child)
                                 <div class="dropdown-submenu">
-                                    <a class="dropdown-item dropdown-itemlv1" tabindex="-1" href="{{str_slug($child->name)}}/{{$child->id}}">{{$child->name}}</a> 
+                                    <a class="dropdown-item dropdown-itemlv1" tabindex="-1" href="danh-muc/{{str_slug($child->name)}}/{{$child->id}}">{{$child->name}}</a> 
                                         <div class="dropdown-menu">
                                             @foreach($catesChilds as $itemcate)
                                                 @if($child->id == $itemcate->idParent)
                                                 <a class="dropdown-item dropd-itemlv2" tabindex="-1" 
-                                                href="{{str_slug($itemcate->name)}}/{{$itemcate->id}}">{{$itemcate->name}}</a>
+                                                href="danh-muc/{{str_slug($itemcate->name)}}/{{$itemcate->id}}">{{$itemcate->name}}</a>
                                                 @endif
                                             @endforeach
                                         </div>                 

@@ -46,142 +46,27 @@
         }
 
       ?>
-    
-      <script>
-        function showZoomImg() {
-          document.getElementById("myresult-div").style.display = "block";
-        }
-        function hideZoomImg() {
-          document.getElementById("myresult-div").style.display = "none";
-        }
-      </script>
       
-     <div class="md-modal md-effect-1" id="modal-productview">
-         <div class="modal-productview-L row">
-            <!--Image Zoom & Imagelist-->
-            <div class="col-lg-6 col-md-6 col-sm-6 imgproduct-L">
-                
-                <div class="img-zoom-container" onmouseover="showZoomImg()" onmouseout="hideZoomImg()">
-                  <img class="img-zoom" id="myimage" src="https://static8.muarecdn.com/zoom/430_430/muare/images/2019/01/30/5004798_giay-bong-da-205n-black-gold-1-360x360.jpg" xoriginal="https://static8.muarecdn.com/thumb_w/1000/muare/images/2019/01/30/5004798_giay-bong-da-205n-black-gold-1-360x360.jpg" width="400" height="400" >
-                </div>
-               
-            </div>
-            
-            <!-- Product Info -->
-            <div class="col-lg-6 col-md-6 col-sm-6">
-                <div id="myresult-div" class="img-zoom-container">
-                    <div id="myresult" class="img-zoom-result"></div>
-                </div>
-                <button class="md-close">Close me!</button>
-            </div>
-        </div>
-      </div>
-      
-      
-      
-      <Style>
-          .md-modal {
-            position: fixed;
-            top: 30%;
-            left: 50%;
-            width: 80%;
-            max-width: 860px;
-            min-width: 320px;
-            height: auto;
-            z-index: 2000;
-            visibility: hidden;
-            -webkit-backface-visibility: hidden;
-            -moz-backface-visibility: hidden;
-            backface-visibility: hidden;
-            -webkit-transform: translateX(-50%) translateY(-50%);
-            -moz-transform: translateX(-50%) translateY(-50%);
-            -ms-transform: translateX(-50%) translateY(-50%);
-            transform: translateX(-50%) translateY(-50%);
-        }
 
-        .md-show {
-            visibility: visible;
-        }
-
-        .md-overlay {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            visibility: hidden;
-            top: 0;
-            left: 0;
-            z-index: 1000;
-            opacity: 0;
-            background: rgba(143,27,15,0.8);
-            -webkit-transition: all 0.3s;
-            -moz-transition: all 0.3s;
-            transition: all 0.3s;
-        }
-
-        .md-show ~ .md-overlay {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        #modal-productview {
-            margin: 60px auto 20px auto;
-            width: 100%; /*hiá»ƒn thá»‹ 70% lÃ  cÃ¢n báº±ng khi thu nhá»�*/
-            padding: 10px;
-            background: #fff;
-            background-color: #fff;
-            color: black;
-        }
-          .img-zoom-container{
-                /*height: 400px;*/
-                position: relative;
-               display: inline-block;
-                overflow: hidden;
-                max-width: 100%;
-                height: auto;
-          }
-        #modal-productview .img-zoom{
-/*
-            -webkit-box-shadow: 0 0 5px 0 rgba(0,0,0,.5);
-*/
-            box-shadow: 0 0 5px 0 rgba(0,0,0,.5);
-            margin-bottom: 15px;      
-        }
-          .img-zoom-lens {
-              position: absolute;
-              border: 1px solid #d4d4d4;
-              /*set the size of the lens:*/
-              width: 180px;
-              height: 180px;
-            }
-
-            .img-zoom-result {
-              border: 1px solid #d4d4d4;
-              /*set the size of the result div:*/
-              width: 400px;
-              height: 400px;
-            }
-            
-      </Style>
       
-      
-      <!--<div class="md-overlay"></div>-->
-      
-    {{-- @if(isset($hienthi) && $hienthi == 'san-pham') --}} {{-- xet loai hien thi --}}
+    @if(isset($hienthi) && $hienthi == 'tin-dang') {{-- xet loai hien thi --}}
       <div id="products-L" class="col-lg-10 col-md-10"><!-- nội dung các bài đăng -->             
                     <div id="view-post" class="view-post">
                         <div class="title-category">
                            <h1 class="title-box">
-                              Đăng bán 
-                              @if(isset($categoryCurrent->name))
-                              {{$categoryCurrent->name}}
+                              
+                              @if(isset($coutPro))
+                              ({{$coutPro}})
                               @endif
-                               tại {{-- {{$place->name}} --}}
+                                
+                              @if(isset($textSearch))
+                              {{$textSearch}}
+                              @endif
+
+                               ({{$place->name}})
+
                            </h1>
-                           <p class="count-result"> Tin đăng rao bán về <b style="font-weight: bold;">
-                             @if(isset($categoryCurrent->name))
-                              {{$categoryCurrent->name}}
-                              @endif
-                           </b> tại <b style="font-weight: bold;">{{-- {{$place->name}} --}}</b></p>
+                           <p class="count-result"></p>
                         </div>
 
                         @if($checknull)
@@ -194,7 +79,7 @@
                         
                         <div class="row-no-padding" style="padding: 0;">
                             <div class="product-list-L">
-                                {{-- @foreach($products as $childPro) --}}
+                                @foreach($products as $childPro)
                                 <div class="col-lg-4 col-md-4 col-sm-4 item-L" style="float: left;">
                                     <div> <!-- SẢN PHẨM THỨ ? -->
                                         <div class="avatar-sp-L">
@@ -204,17 +89,7 @@
                                             <!--<script src="/public/assets/js/classie.js"></script>
                                             <script src="/public/assets/js/modalEffects.js"></script>-->
                                         </div>
-                                        <script type="text/javascript">
-            //nút close của login
-               /* document.getElementById("avatar-sp-L2").onclick = function abc2() {
-                        $("#modal-20").show();
-                        $("#username").val("");
-                        $("#password").val("");
-                    };
-                document.getElementById("closebtn").onclick = function abc() {
-                        $("#modal-20").hide();
-                    };*/
-                                        </script>
+
                                         <div class="title-sp-L">
                                             <h2 class="item-title-h2">
                                                 <a href="#" title="name" data-title="Load sản phẩm" data-size="l" data-id="popupItem" class="img-rounded OverlayPopup" data-item="224062">
@@ -253,12 +128,12 @@
                                     <hr>
                                     
                                 </div>
-                                {{-- @endforeach --}}
+                                @endforeach
                             </div>
                         </div>
                         @else
                           <div class="text-center mt-2">
-                            <h4>Chuyên mục này chưa có tin đăng!</h4>
+                            <h4>Không tìm thấy sản phẩm nào, vui lòng thử lại với từ khóa khác!</h4>
                           </div>
                         @endif
 
@@ -272,7 +147,7 @@
 
 
 
-              {{-- @endif  end xet loai hien thi --}}
+              @endif  {{-- end xet loai hien thi --}}
 
             </div>
         </section>

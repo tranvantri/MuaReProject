@@ -154,9 +154,9 @@ $(document).ready(function() {
 
 	//set cookie cho dia diem
 
-	$(document).on('click', 'div.dropdown-menu a.dropdown-item', function(event) {
+	$(document).on('click', 'div.dropdown-menu.place a.dropdown-item', function(event) {
 		event.preventDefault();
-		var idPlace = $(this).attr('href');
+		var idPlace = $(this).attr('data');
 		$.ajax({
 			url: 'set-cookie/'+idPlace,
 			type: 'get',
@@ -173,11 +173,27 @@ $(document).ready(function() {
 		});
 		
 	});
+
+
 	// Sap xep trang chi tiet danh muc
 
 	$('#sorting_select').on('change', function() {
 	  var url = this.value;
 	  window.location.href = url;
+	});
+
+	//Set id category cho search
+	$(document).on('click', '.searchtypes a.dropdown-item', function(event) {
+		event.preventDefault();
+		/* Act on the event */
+		var categoryParent_id = $(this).attr('data');
+		var categoryParent_name = $(this).html();
+		$('#categoryParent_id').val(categoryParent_id) ;
+		if(categoryParent_id == 'all'){
+			$('.searchtypes button.catename').html('Tất cả');
+		}else{
+			$('.searchtypes button.catename').html(categoryParent_name);
+		}
 	});
     
     function imageZoom(imgID, resultID) {
