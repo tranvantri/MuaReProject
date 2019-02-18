@@ -19,10 +19,10 @@ class UserPageController extends Controller
     	// truyền id của khách hàng đã đăng nhập vào đây -------------
     	$user = DB::table('users')->where('adminCheck',1)->where('users.id',$id)->get();
 
-    	$services = DB::table('services')
-    				->join('places','places.id','=','services.idPlace')
-    				->where('services.adminCheck',1)->where('services.idUser',$id)->where('places.enable',1)
-    				->select('services.*','places.name as namePlace','places.id as idPlace')
+    	$services = DB::table('tindang')
+    				->join('places','places.id','=','tindang.idPlace')
+    				->where('tindang.adminCheck',1)->where('tindang.idUser',$id)->where('places.enable',1)
+    				->select('tindang.*','places.name as namePlace','places.id as idPlace')
     				->get();
     	$soluongService = $services->count();
 

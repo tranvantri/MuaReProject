@@ -1,4 +1,4 @@
-@foreach($services as $child)
+@foreach($tindang as $child)
 <div class="col-sm-12 col-xs-12 col-md-6 recentNew ">
 	<div class="row">
 		<div class="tieudetintuc">

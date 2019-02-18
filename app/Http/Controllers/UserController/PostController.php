@@ -42,7 +42,7 @@ class PostController extends Controller
 	    if(isset($user)){
 	    	$this->createService($request,$user->id);
 	    	$this->createProduct($request,$user->id);
-	    	$new_service_user = DB::table('services')->where('status',1)->where('idUser',$user->id)->orderBy('id', 'desc')->first();
+	    	$new_service_user = DB::table('tindang')->where('status',1)->where('idUser',$user->id)->orderBy('id', 'desc')->first();
 	    	return redirect()->route('chitiettindang', ['id' => $new_service_user->id]); 
 	    }
 	    else{
@@ -62,7 +62,7 @@ class PostController extends Controller
 			);
 			$this->createService($request,$idUser);
 	    	$this->createProduct($request,$idUser);
-	    	$new_service_user = DB::table('services')->where('status',1)->where('idUser',$idUser)->orderBy('id', 'desc')->first();
+	    	$new_service_user = DB::table('tindang')->where('status',1)->where('idUser',$idUser)->orderBy('id', 'desc')->first();
 	    	return redirect()->route('chitiettindang', ['id' => $new_service_user->id]); 
 
 	    }
@@ -86,7 +86,7 @@ class PostController extends Controller
 	    /*------------------------chưa lấy dc filepath*/
 	    $image = $request->input('image', 'Null');
 
-	    DB::table('services')->insert(
+	    DB::table('tindang')->insert(
 		    array('name' => $nameService, 
 		    	'description' => $descriptionService,
 		    	'images' => $image,
