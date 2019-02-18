@@ -424,19 +424,9 @@ display: none;
          <div class="box-info">
           <div class="title">
            <h3 class="box-info-h3">
-            <a title=
-            "@if(isset($childPro->title_tindang))
-              {{$childPro->title_tindang}}
-              @else
-              {{$childPro->name}}
-              @endif"
-             href="https://muare.vn/posts/philips-pin-khung-bh-chinh-hang-gia-moi-thang-12-2017-full-model.3941242">
-              @if(isset($childPro->title_tindang))
-              {{$childPro->title_tindang}}
-              @else
-              {{$childPro->name}}
-              @endif
-            </a>
+            <a title="{{$childPro->name}}"
+             href="https://muare.vn/posts/philips-pin-khung-bh-chinh-hang-gia-moi-thang-12-2017-full-model.3941242">{{$childPro->name}}
+              </a>
           </h3>
         </div>
         <div class="location">

@@ -779,23 +779,24 @@ $(document).ready(function() {
     	});        
 	});
 
-	//ajax lấy info serice
-	$(document).on('click', "button.view-info-ser", function() {
-	    var idSer = $(this).attr('data');
-	    var inforSer = $('#info-ser');
+	//ajax lấy info tindang
+	$(document).on('click', "button.view-info-tindang", function() {
+	    var idTinDang = $(this).attr('data');
+	    console.log(idTinDang);
+	    var inforTinDang = $('#info-tindang');
 	    var loadding = $('#loadding2');
 	    var error = $('#error2');
-	    inforSer.hide();
+	    inforTinDang.hide();
 	    loadding.show();
 	    error.hide();
 	    
 	    $.ajax({
 	    	type: "get",
-	    	url: 'admin/service/view-info-ser/'+ idSer, 
+	    	url: 'admin/tindang/view-info-tindang/'+ idTinDang, 
 	    	success: function(data){
-	            inforSer.html(data);      
+	            inforTinDang.html(data);      
 	            setTimeout(function() {
-				    inforSer.show();
+				    inforTinDang.show();
 				    loadding.hide();
 				}, 800);	            
 	            

@@ -27,16 +27,16 @@ Route::group(['namespace' => 'AdminManager'], function() {
            
         });
 
-        /* Service*/
-        Route::group(['prefix' => 'service'], function() {
-            Route::get('list', 'ServiceController@getList');
-            Route::get('add', 'ServiceController@getAdd');
-            Route::post('add', 'ServiceController@postAdd');
-            Route::get('edit/{id}', 'ServiceController@getEdit');
-            Route::post('edit/{id}', 'ServiceController@postEdit');
-            Route::get('enable/{id}/{option}', 'ServiceController@getEnable');
+        /* TinDang*/
+        Route::group(['prefix' => 'tindang'], function() {
+            Route::get('list', 'TinDangController@getList');
+            Route::get('add', 'TinDangController@getAdd');
+            Route::post('add', 'TinDangController@postAdd');
+            Route::get('edit/{id}', 'TinDangController@getEdit');
+            Route::post('edit/{id}', 'TinDangController@postEdit');
+            Route::get('enable/{id}/{option}', 'TinDangController@getEnable');
             Route::get('view-info-user/{id}', 'ProductController@getInforUser');
-            Route::get('view-info-ser/{id}', 'ServiceController@getInforSer');
+            Route::get('view-info-tindang/{id}', 'TinDangController@getInforTinDang');
            
         });
 
@@ -133,6 +133,8 @@ Route::group(['namespace' => 'UserController' , 'middleware'=>'userCheckLogout']
     Route::get('/danh-muc/{name}/{id}', 'CategoryDetail@getDanhMuc');
 
     Route::get('/danh-muc/{nameCate}/{idCate}/{hienthi}/{tinhtrang}/{gia}/{sapxep}/uy-tin-chat-luong', 'CategoryDetail@getCustomCategory')->name('danhmuc');
+
+    Route::get('/search', 'SearchController@getIndex');
 
     /*bỏ*/
     // Route::get('/chi-tiet-san-pham/{id}', ['as'=>'chitietsanpham','uses'=>'ProductController@getProduct']);

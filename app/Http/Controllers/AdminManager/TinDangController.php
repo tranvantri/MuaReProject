@@ -1,34 +1,34 @@
 <?php
 namespace App\Http\Controllers\AdminManager;
 use Illuminate\Http\Request;
-use App\Services;
+use App\TinDang;
 use App\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\QueryException;
 use App\Http\Controllers\Controller;
-class ServiceController extends Controller
+class TinDangController extends Controller
 {
     public function getList()
     {
-        $services = DB::table('services')
-            ->join('categories', 'services.idCate','=','categories.id')          
-            ->join('users','services.idUser','=','Users.id')
-            ->select('services.*', 'users.id as idchushop', 'categories.name as namecate')->get();
-        return view('admin.service.list',compact('services'));
+        $tindang = DB::table('tindang')
+            ->join('categories', 'tindang.idCate','=','categories.id')          
+            ->join('users','tindang.idUser','=','Users.id')
+            ->select('tindang.*', 'users.id as idchushop', 'categories.name as namecate')->get();
+        return view('admin.tindang.list',compact('tindang'));
     }
     
     public function getEnable($id, $option)
     {
-        $ser = Services::find($id);       
+        $tindang = TinDang::find($id);       
         if($option == 0){
-            $ser->adminCheck = 0;  //chua duyet            
+            $tindang->adminCheck = 0;  //chua duyet            
         }elseif($option == 1){
-            $ser->adminCheck = 1;  //da duyet
+            $tindang->adminCheck = 1;  //da duyet
         }else{
-            $ser->adminCheck = 2;//khoas
+            $tindang->adminCheck = 2;//khoas
         }
-        $ser->save();    
-        return redirect('admin/service/list');        
+        $tindang->save();    
+        return redirect('admin/tindang/list');        
     }
 
     // public function getInforUser($id){
@@ -42,20 +42,29 @@ class ServiceController extends Controller
     //     ';
     // }
 
-    public function getInforSer($id){
-        $services = DB::table('services')
-        ->join('categories', 'services.idCate','=','categories.id')
-        ->join('places', 'services.idPlace','=','places.id')
-        ->where('services.id', $id)
-        ->select('services.*', 'categories.name as namecate', 'places.name as nameplace')->get();
+    public function getInforTinDang($id){
+        $tindang = DB::table('tindang')
+        ->join('categories', 'tindang.idCate','=','categories.id')
+        ->join('places', 'tindang.idPlace','=','places.id')
+        ->where('tindang.id', $id)
+        ->select('tindang.*', 'categories.name as namecate', 'places.name as nameplace')->get();
 
-        foreach($services as $child){
+        foreach($tindang as $child){
             $trangthai = '';
-            $tinhtrang = 'Mới';
+            $tinhtrang = '';
             if($child->status == 1){
                 $trangthai = 'Hoạt động';
             }else{
                 $trangthai = 'Ngừng hoạt động';
+            }
+            if($child->statusTinDang == 1){
+                $tinhtrang = 'Mới';
+            }elseif($child->statusTinDang == 2){
+                 $tinhtrang = '90%';
+            }elseif($child->statusTinDang == 3){
+                 $tinhtrang = '80%';
+            }elseif($child->statusTinDang == 4){
+                 $tinhtrang = 'Cũ';
             }
             
 

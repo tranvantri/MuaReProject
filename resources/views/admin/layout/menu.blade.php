@@ -30,8 +30,8 @@
             </li>
             <!-- comment -->
             <li>
-                <a href="admin/service/list"><i class="fa fa-cube fa-fw"></i>Duyệt dịch vụ <span class="
-                notifi">{{$dichvuchuaduyet}}</span><span class="fa arrow"></span></a>
+                <a href="admin/tindang/list"><i class="fa fa-cube fa-fw"></i>Duyệt tin đăng <span class="
+                notifi">{{$tindangchuaduyet}}</span><span class="fa arrow"></span></a>
                 
                 <!-- /.nav-second-level -->
             </li>

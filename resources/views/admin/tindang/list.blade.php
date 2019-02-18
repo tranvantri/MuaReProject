@@ -30,7 +30,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($services as $child)
+                    @foreach($tindang as $child)
                     @if($child->adminCheck == 0)
                     <tr class="odd gradeX" align="center" style="font-size: 12px">
                         <td>{{$child->id}}</td>
@@ -63,18 +63,18 @@
                                     @endif
                                 <span class="caret"></span></button>
                                 <ul class="dropdown-menu">
-                                    <li><a href="admin/service/enable/{{$child->id}}/{{1}}">Đã duyệt</a></li>
-                                    <li><a href="admin/service/enable/{{$child->id}}/{{0}}">Chưa duyệt</a></li>
-                                    <li><a href="admin/service/enable/{{$child->id}}/{{2}}">Khóa</a></li>
+                                    <li><a href="admin/tindang/enable/{{$child->id}}/{{1}}">Đã duyệt</a></li>
+                                    <li><a href="admin/tindang/enable/{{$child->id}}/{{0}}">Chưa duyệt</a></li>
+                                    <li><a href="admin/tindang/enable/{{$child->id}}/{{2}}">Khóa</a></li>
                                 </ul>
                             </div>
                         </td>                                         
-                        <td><button class="view-info-ser btn btn-info" data="{{$child->id}}" data-toggle="modal" data-target="#myModalProInfo">Xem</button></td>
+                        <td><button class="view-info-tindang btn btn-info" data="{{$child->id}}" data-toggle="modal" data-target="#myModalProInfo">Xem</button></td>
                         <td><button class="view-info-user btn btn-info" data="{{$child->idchushop}}" data-toggle="modal" data-target="#myModalUserInfo">Xem</button></td>
                     </tr> 
                     @endif
                     @endforeach  
-                    @foreach($services as $child)
+                    @foreach($tindang as $child)
                     @if($child->adminCheck == 1 || $child->adminCheck == 2)
                     <tr class="odd gradeX" align="center" style="font-size: 12px">
                         <td>{{$child->id}}</td>
@@ -107,13 +107,13 @@
                                     @endif
                                 <span class="caret"></span></button>
                                 <ul class="dropdown-menu">
-                                    <li><a href="admin/service/enable/{{$child->id}}/{{1}}">Đã duyệt</a></li>
-                                    <li><a href="admin/service/enable/{{$child->id}}/{{0}}">Chưa duyệt</a></li>
-                                    <li><a href="admin/service/enable/{{$child->id}}/{{2}}">Khóa</a></li>
+                                    <li><a href="admin/tindang/enable/{{$child->id}}/{{1}}">Đã duyệt</a></li>
+                                    <li><a href="admin/tindang/enable/{{$child->id}}/{{0}}">Chưa duyệt</a></li>
+                                    <li><a href="admin/tindang/enable/{{$child->id}}/{{2}}">Khóa</a></li>
                                 </ul>
                             </div>
                         </td>                                         
-                        <td><button class="view-info-ser btn btn-info" data="{{$child->id}}" data-toggle="modal" data-target="#myModalProInfo">Xem</button></td>
+                        <td><button class="view-info-tindang btn btn-info" data="{{$child->id}}" data-toggle="modal" data-target="#myModalProInfo">Xem</button></td>
                         <td><button class="view-info-user btn btn-info" data="{{$child->idchushop}}" data-toggle="modal" data-target="#myModalUserInfo">Xem</button></td>
                     </tr> 
                     @endif
@@ -153,12 +153,12 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Thông tin dịch vụ</h4>
+          <h4 class="modal-title">Thông tin tin đăng</h4>
         </div>
         <div class="modal-body">
             <h3 id="loadding2" class="text-center"><i class="fa fa-spinner fa-spin" aria-hidden="true"></i> Loadding...</h3>
             <h3 id="error2" class="text-center"><i style="color: red;" class="fa fa-exclamation-circle" aria-hidden="true"></i> Có sự cố xảy ra. </h3>
-            <div id="info-ser">
+            <div id="info-tindang">
 
             </div>
             
