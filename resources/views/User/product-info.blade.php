@@ -59,12 +59,20 @@
               <div class="view-caring-v">
                 <div class="social-v">
                   <div class="view-saved-v">
-                    <span class="glyphicon glyphicon-saved" aria-hidden="true"><i class="far fa-save"></i></span>
+                    <span class="glyphicon glyphicon-saved" aria-hidden="true"><i class="fas fa-shopping-cart"></i></span>
                     <a href="https://www.facebook.com/saved/" target="_blank" class="btn btn-white save-facebook__list">Xem
                     sản phẩm đã lưu</a>
                   </div>
                 </div>
+                <div class="social-v">
+                  <div class="view-saved-v">
+                    <span class="glyphicon glyphicon-saved" aria-hidden="true"><i class="far fa-save"></i></span>
+                    <a href="https://www.facebook.com/saved/" target="_blank" class="btn btn-white save-facebook__list">Lưu
+                    vào Facebook</a>
+                  </div>
+                </div>
               </div>
+              
 
             </div>
 
@@ -206,13 +214,13 @@
 			<a href="">
 				<img class="card-img-top" src="{{$childOffer->images}}" alt="">
 			</a>
-			<div class="qv-button-container"> <a href="{{$childOffer->id}}" title="{{$childOffer->name}}"><i class="fas fa-eye"></i></a></div>											
+			<div class="qv-button-container"> <a href="{{ route('sanpham', $childOffer->id)}}" title="{{$childOffer->name}}"><i class="fas fa-eye"></i></a></div>											
 		</div>		
 
 		<div class="card-body info">
 			<div class="info-inner">
 				<div class="title_products_related">
-					<a href="{{$childOffer->id}}" title="{{$childOffer->name}}" class="OverlayPopup" data-size="l" data-id="popupItem">{{$childOffer->name}}</a>
+					<a href="{{ route('sanpham', $childOffer->id)}}" title="{{$childOffer->name}}" class="OverlayPopup" data-size="l" data-id="popupItem">{{$childOffer->name}}</a>
 				</div>
 				<!--item-title-->
 				<div class="item-content">
@@ -273,13 +281,13 @@
 			<a href="">
 				<img class="card-img-top" src="{{$childRand->images}}" alt="">
 			</a>
-			<div class="qv-button-container"> <a href="{{$childRand->id}}" title="{{$childRand->name}}"><i class="fas fa-eye"></i></a></div>											
+			<div class="qv-button-container"> <a href="{{ route('sanpham', $childRand->id)}}" title="{{$childRand->name}}"><i class="fas fa-eye"></i></a></div>											
 		</div>		
 
 		<div class="card-body info">
 			<div class="info-inner">
 				<div class="title_products_related">
-					<a href="{{$childRand->id}}" title="{{$childRand->name}}" class="OverlayPopup" data-size="l" data-id="popupItem">{{$childRand->name}}</a>
+					<a href="{{ route('sanpham', $childRand->id)}}" title="{{$childRand->name}}" class="OverlayPopup" data-size="l" data-id="popupItem">{{$childRand->name}}</a>
 				</div>
 				<!--item-title-->
 				<div class="item-content">
