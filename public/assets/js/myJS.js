@@ -296,6 +296,8 @@ $(document).ready(function() {
   };
 });
 
+
+
 //JS product-info
 imageZoom1("expandedImg", "myresult-v");
 function showPicture(imgs) {
@@ -310,8 +312,6 @@ function showPicture(imgs) {
   // imgText.innerHTML = imgs.alt;
   // expandImg.parentElement.style.display = "block";
 }
-
-
 function scrollleft() {
   var elmnt = document.getElementById("abc123");
   elmnt.scrollLeft += 50;
@@ -322,10 +322,13 @@ function scrollright() {
 }
 function showZoomImgPro() {
 	document.getElementById("myresult-v").style.display = "block";
+	var lens= document.getElementById("img-zoom-lens-pro-v");
+	lens.style.display = "block";
 }
 function hideZoomImgPro() {
 	document.getElementById("myresult-v").style.display = "none";
-	document.getElementById("myresult-v").style.display = "none";
+	var lens= document.getElementById("img-zoom-lens-pro-v");
+	lens.style.display = "none";
 }
 function imageZoom1(imgID, resultID) {
   var img, lens, result, cx, cy;
