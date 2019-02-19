@@ -4,7 +4,14 @@
 		@foreach($categories as $child)
 		<li>
 			<a class="price-ranger" 
-			href="" 
+			href="{{route('searchproduct', [
+        'hienthi' => 'san-pham',
+        'text' => ($textSearch == null) ? 'tim-kiem':$textSearch,
+        'idCate' => $child->id,
+        'tinh-trang'=>$tinhtrang,
+        'gia'=>$gia,
+        'sapxep' => 'tin-moi-nhat'
+      ])}}" 
 		    
 			>{{$child->name}}</a>
 		</li>

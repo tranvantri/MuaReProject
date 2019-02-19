@@ -133,9 +133,10 @@ Route::group(['namespace' => 'UserController' , 'middleware'=>'userCheckLogout']
     Route::get('/danh-muc/{name}/{id}', 'CategoryDetail@getDanhMuc');
 
     Route::get('/danh-muc/{nameCate}/{idCate}/{hienthi}/{tinhtrang}/{gia}/{sapxep}/uy-tin-chat-luong', 'CategoryDetail@getCustomCategory')->name('danhmuc');
-
+    //search
     Route::get('/search', 'SearchController@getIndex');
-    Route::get('/search/{hienthi}/{text?}/{idCate?}/{sapxep}', 'SearchController@getSearchPost')->name('searchtindang');
+    Route::get('/search/{hienthi}/{text}/{idCate}/{sapxep}', 'SearchController@getSearchPost')->name('searchtindang');
+    Route::get('/search/{hienthi}/{text}/{idCate}/{tinhtrang}/{gia}/{sapxep}', 'SearchController@getSearchProduct')->name('searchproduct');
 
     /*bỏ*/
     // Route::get('/chi-tiet-san-pham/{id}', ['as'=>'chitietsanpham','uses'=>'ProductController@getProduct']);

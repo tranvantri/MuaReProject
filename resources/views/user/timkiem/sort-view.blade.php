@@ -7,10 +7,10 @@
       >
     <label for="post" class="find_radio_lb"><a class="type-ranger" 
       href="{{route('searchtindang', [
-        'hienthi' => $hienthi,
-        'text' => $textSearch = 'tim-kiem',
-        'idCate' => $idCate ='tat-ca',
-        'sapxep' => 'gia-cao-nhat'
+        'hienthi' => 'tin-dang',
+        'text' => ($textSearch == null) ? 'tim-kiem':$textSearch,
+        'idCate' => ($idCate == null) ? 'tat-ca':$idCate,
+        'sapxep' => 'tin-moi-nhat'
       ])}}" 
       @if(isset($hienthi) && $hienthi == 'tin-dang')
       style="color: red;"
@@ -25,7 +25,14 @@
       @endif
     >
     <label for="product" class="find_radio_lb"><a class="type-ranger"
-      href=""
+      href="{{route('searchproduct', [
+        'hienthi' => 'san-pham',
+        'text' => ($textSearch == null) ? 'tim-kiem':$textSearch,
+        'idCate' => ($idCate == null) ? 'tat-ca':$idCate,
+        'tinh-trang'=>'tinh-trang-moi',
+        'gia'=>'gia-tot',
+        'sapxep' => 'tin-moi-nhat'
+      ])}}"
 
       >Kho sản phẩm</a></label><span class="label label-success">Mới</span>
   </div>

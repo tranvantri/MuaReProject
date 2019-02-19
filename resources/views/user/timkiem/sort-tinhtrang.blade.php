@@ -5,7 +5,14 @@
       @endif
   >
   <label for="new"><a class="quality-ranger" 
-  	href="" 
+  	href="{{route('searchproduct', [
+        'hienthi' => 'san-pham',
+        'text' => ($textSearch == null) ? 'tim-kiem':$textSearch,
+        'idCate' => ($idCate == null) ? 'tat-ca':$idCate,
+        'tinh-trang'=>'tinh-trang-moi',
+        'gia'=>$gia,
+        'sapxep' => $sapxep
+      ])}}" 
       @if(isset($tinhtrang) && $tinhtrang == 'tinh-trang-moi')
       style="color: red;"
       @endif
@@ -18,7 +25,14 @@
       @endif
     id="new_90">
   <label for="new_90"><a class="quality-ranger" 
-  	href=""
+  	href="{{route('searchproduct', [
+        'hienthi' => 'san-pham',
+        'text' => ($textSearch == null) ? 'tim-kiem':$textSearch,
+        'idCate' => ($idCate == null) ? 'tat-ca':$idCate,
+        'tinh-trang'=>'tinh-trang-90',
+        'gia'=>$gia,
+        'sapxep' => $sapxep
+      ])}}"
       @if(isset($tinhtrang) && $tinhtrang == 'tinh-trang-90')
       style="color: red;"
       @endif
@@ -31,7 +45,14 @@
       @endif
    value="" id="new_80">
   <label for="new_80"><a class="quality-ranger" 
-  	href=""
+  	href="{{route('searchproduct', [
+        'hienthi' => 'san-pham',
+        'text' => ($textSearch == null) ? 'tim-kiem':$textSearch,
+        'idCate' => ($idCate == null) ? 'tat-ca':$idCate,
+        'tinh-trang'=>'tinh-trang-80',
+        'gia'=>$gia,
+        'sapxep' => $sapxep
+      ])}}"
       @if(isset($tinhtrang) && $tinhtrang == 'tinh-trang-80')
       style="color: red;"
       @endif
@@ -44,7 +65,14 @@
       @endif
    id="old">
   <label for="old"><a class="quality-ranger" 
-  	href=""
+  	href="{{route('searchproduct', [
+        'hienthi' => 'san-pham',
+        'text' => ($textSearch == null) ? 'tim-kiem':$textSearch,
+        'idCate' => ($idCate == null) ? 'tat-ca':$idCate,
+        'tinh-trang'=>'tinh-trang-cu',
+        'gia'=>$gia,
+        'sapxep' => $sapxep
+      ])}}"
       @if(isset($tinhtrang) && $tinhtrang == 'tinh-trang-cu')
       style="color: red;"
       @endif
