@@ -1,13 +1,19 @@
 <div class="find-price">
 	<ul class="list-price active">
+		
 		@foreach($categories as $child)
 		<li>
 			<a class="price-ranger" 
-			href="" 
+			href="{{route('searchtindang', [
+        'hienthi' => $hienthi,
+        'text' => ($textSearch == null) ? 'tim-kiem':$textSearch,
+        'idCate' => $child->id,
+        'sapxep' => 'gia-cao-nhat'
+      ])}}" 
 		    
 			>{{$child->name}}</a>
 		</li>
-		@endforeach
+		@endforeach	
 		
 	</ul>
 

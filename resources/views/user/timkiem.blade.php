@@ -39,7 +39,11 @@
 
           <div class="price">
             <div class="title" style="font-size: 12px;">Bạn đang muốn tìm gì?</div>
-            @include('user.timkiem.muon-tim-gi')
+            @if(isset($hienthi) && $hienthi == 'tin-dang')
+            @include('user.timkiem.muon-tim-gi-tindang')
+            @else
+            @include('user.timkiem.muon-tim-gi-sanpham')
+            @endif
           </div>
           <div class="filter-stop"></div>   
         </div>          
@@ -64,8 +68,10 @@
                         <div class="title-category">
                            <h1 class="title-box">
                               
-                              @if(isset($coutPro))
-                              ({{$coutPro}})
+                              @if(isset($countPro))
+                              ({{$countPro}})
+                              @else
+                              (0)
                               @endif
                                 
                               @if(isset($textSearch))
@@ -82,7 +88,7 @@
                         <div class="row-no-padding pagination-box">
                            @include('user.timkiem.phantrang')
                            <div class="sorting">
-                              @include('user.timkiem.sort-timkiem-sanpham')
+                              @include('user.timkiem.sort-timkiem-tintuc')
                            </div>
                         </div>
                         
@@ -139,7 +145,11 @@
                                 </div>
                                 @endforeach
                             </div>
+                            
                         </div>
+                        <div class="row-no-padding">
+                             @include('user.timkiem.phantrang')
+                            </div>
                         @else
                           <div class="text-center mt-2">
                             <h4>Không tìm thấy sản phẩm nào, vui lòng thử lại với từ khóa khác!</h4>

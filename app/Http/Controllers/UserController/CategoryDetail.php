@@ -39,7 +39,7 @@ class CategoryDetail extends Controller
 			->where('products.status',1)
 			->where('products.adminCheck',1)
             ->select('products.*','users.name as tenchushop')
-            ->paginate(9);            
+            ->paginate(20);            
   		return view('user.chitietdanhmuc',compact('categoryParent', 'categoryCurrent', 'childCate','products','place','hienthi', 'tinhtrang', 'gia', 'sapxep'));
 	}  
 

@@ -99,8 +99,18 @@
                                     @endforeach
                                     </div>
                                 </div>
-                                <input type="text" class="input-search form-control " name="text" placeholder="Tìm kiếm..." aria-label="" aria-describedby="basic-addon1">
-                                <input type="hidden" id="categoryParent_id" name="category_id" value="">
+                                <input type="text" class="input-search form-control " name="text" placeholder="Tìm kiếm..." aria-label="" aria-describedby="basic-addon1"
+                                @if(isset($textSearch))
+                                 value="{{$textSearch}}"
+                                 @endif
+
+                                 >
+                                <input type="hidden" id="categoryParent_id" name="category_id"
+                                
+                                 @if(isset($idCate))
+                                 value="{{$idCate}}"
+                                 @endif
+                                 >
                                 
                                 
                                 <button class="btnsearch" type="submit">TÌM KIẾM</button>

@@ -6,7 +6,12 @@
       @endif
       >
     <label for="post" class="find_radio_lb"><a class="type-ranger" 
-      href="" 
+      href="{{route('searchtindang', [
+        'hienthi' => $hienthi,
+        'text' => $textSearch = 'tim-kiem',
+        'idCate' => $idCate ='tat-ca',
+        'sapxep' => 'gia-cao-nhat'
+      ])}}" 
       @if(isset($hienthi) && $hienthi == 'tin-dang')
       style="color: red;"
       @endif
