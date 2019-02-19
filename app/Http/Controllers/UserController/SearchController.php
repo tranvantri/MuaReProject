@@ -23,10 +23,10 @@ class SearchController extends Controller
 			$idPlace = 1;
 		}
 		$place = Places::find($idPlace);
-    	$cateParent = $req->categoryParent_id;
+    	$idCate = $req->category_id;
     	$textSearch = $req->text;
 
-    	if(is_null($cateParent)){ // truong hop tat ca danh muc
+    	if(is_null($idCate)){ // truong hop tat ca danh muc
     		$products = DB::table('tindang')
     		->join('users','users.id','tindang.idUser')
     		->where('tindang.idPlace',$idPlace)
@@ -41,15 +41,45 @@ class SearchController extends Controller
     		->join('categories','categories.id','tindang.idCate')
     		->where('tindang.idPlace',$idPlace)  
     		->distinct('categories.id')  		
-    		->select('categories.id')
+    		->select('categories.*')
     		->get();
-    	}else{
+    	}else{ //tìm kiem theo danh muc
+    		$products = DB::table('tindang')
+    		->join('categories', function ($join) use ($idCate){
+    			$join->on('categories.id','tindang.idCate')
+    			->where('categories.id', $idCate);
+    		})
+    		->join('users','users.id','tindang.idUser')
+    		->where('tindang.idPlace',$idPlace)
+    		->when($textSearch, function($query) use ($textSearch){ //thuc hien khi text search khac null
+    			return $query->where('tindang.name','like',$textSearch);
+    		})
+    		->select('tindang.*','users.name as tenschushop', 'users.id as idchushop')
+    		->get();
+    		$coutPro = count($products);
 
+    		$cateinput = Categories::find($idCate);
+    		$categories= '';
+    		if($cateinput->idParent == 0){
+    			$categories = Categories::where('idParent', $cateinput->id)->get();
+    		}else{
+    			$categories = $cateinput;
+    		}
+    		echo '<pre>';
+    		var_dump($categories);
+    		echo '</pre>';
+
+    		// $categories = DB::table('tindang')
+    		// ->join('categories','categories.id','tindang.idCate')
+    		// ->where('tindang.idPlace',$idPlace)  
+    		// ->distinct('categories.id')  		
+    		// ->select('categories.*')
+    		// ->get();
     	}
     	
     	
 
-        return view('user.timkiem',compact('products', 'place', 'hienthi', 'sapxep', 'textSearch','coutPro'));
+        return view('user.timkiem',compact('products', 'place', 'categories', 'hienthi', 'sapxep', 'textSearch','coutPro'));
     }
 
 

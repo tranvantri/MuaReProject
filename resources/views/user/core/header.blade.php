@@ -85,15 +85,22 @@
                                   <button type="button" data-toggle="dropdown" class="btn-tatca catename">
                                     Tất cả 
                                   </button>
-                                  <div class="dropdown-menu" style="border-radius: 0px;border-top: 0px;font-size: 12px;">
+                                  <div class="dropdown-menu" style="border-radius: 0px;border-top: 0px;font-size: 12px;padding-top: 0; padding-bottom: 0;">
                                     <a class="dropdown-item" title="Tất cả" data="" href="">Tất cả</a>
                                     @foreach($cates as $child)
-                                    <a class="dropdown-item" style="cursor: pointer;" title="{{$child->name}}" data="{{$child->id}}" >{{$child->name}}</a>
+                                    <a class="dropdown-item" style="cursor: pointer;font-weight: bold;font-size: 12px;padding-top: 0; padding-bottom: 0;" 
+                                    title="{{$child->name}}" data="{{$child->id}}" >{{$child->name}}</a>
+                                    @foreach($catesChilds as $cateChild)
+                                    @if($cateChild->idParent == $child->id)
+                                        <a class="dropdown-item" style="cursor: pointer;margin-left: 10px;font-size: 12px;padding-top: 0; padding-bottom: 0;"
+                                         title="{{$cateChild->name}}" data="{{$cateChild->id}}" >{{$cateChild->name}}</a>
+                                    @endif
+                                    @endforeach
                                     @endforeach
                                     </div>
                                 </div>
                                 <input type="text" class="input-search form-control " name="text" placeholder="Tìm kiếm..." aria-label="" aria-describedby="basic-addon1">
-                                <input type="hidden" id="categoryParent_id" name="categoryParent_id" value="">
+                                <input type="hidden" id="categoryParent_id" name="category_id" value="">
                                 
                                 
                                 <button class="btnsearch" type="submit">TÌM KIẾM</button>

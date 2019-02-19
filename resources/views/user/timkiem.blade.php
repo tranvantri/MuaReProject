@@ -23,16 +23,25 @@
         </div> 
         <div class="filter-stop"></div>   
         <div class="find" id="filter-fix" style="position: unset;width: unset;top: unset;">
+          @if(isset($hienthi) && $hienthi == 'san-pham')
           <p class="title-blur">lọc theo</p>
           <div class="quality filter">
             <p class="title">Tình trạng</p>
             @include('user.timkiem.sort-tinhtrang')
             
           </div>
+          
           <div class="price">
             <div class="title">Giá (vnđ)</div>
             @include('user.timkiem.sort-price')
           </div>
+          @endif
+
+          <div class="price">
+            <div class="title" style="font-size: 12px;">Bạn đang muốn tìm gì?</div>
+            @include('user.timkiem.muon-tim-gi')
+          </div>
+          <div class="filter-stop"></div>   
         </div>          
 
       </div>
