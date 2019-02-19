@@ -19,20 +19,21 @@
         <div class="item-content-v">
           <div class="row">
             <div class="box-images-v col-md-6">
-
-
+      
               <!-- hình ảnh của sản phẩm -->
-              <div class="xzoom-container">
+              
+              <div class="xzoom-container" onmouseover="showZoomImgPro();" onmouseout="hideZoomImgPro()">
                 <img class="xzoom" id="expandedImg" style="width: 430px" src="{{$child->images}}"
                 xoriginal="{{$child->images}}" alt="{{$child->name}}" />
+                <div id="myresult-v" class="img-zoom-result-v" ></div>
               </div>
-
+              
               <!-- Hình ảnh nhỏ của sp -->
               <div class="scroll-small-img-v">
                 <div class="list-img-wrap-v" id="abc123">
                   <div class="list-small-img-v">
                     <div>
-                      <img src="{{$child->images}}" alt="{{$child->name}}"
+                      <img src="{{$child->images}}" 
                       width="75px" height="75px" onclick="showPicture(this);"/>
                     </div>
                     <div>
