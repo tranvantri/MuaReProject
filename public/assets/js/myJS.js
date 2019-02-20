@@ -289,11 +289,6 @@ $(document).ready(function() {
     }
   };
 
-	$('#sorting_select').on('change', function() {
-	  var url = this.value;
-	  window.location.href = url;
-	});
-    
     /* Image Zoom for product Modal */
     function imageZoom(imgID, resultID) {
           var img, lens, result, cx, cy;
@@ -366,6 +361,7 @@ $(document).ready(function() {
     document.getElementById('step3-bar').style.pointerEvents = 'none';
         
     document.getElementById("step1-to-step2").addEventListener("click", function(){
+        alert("aaa");
         document.getElementById("step2").classList.add('active');
         document.getElementById("step1").classList.remove('active');
         document.getElementById("step3").classList.remove('active');
@@ -429,21 +425,6 @@ $(document).ready(function() {
         }
         
     }    
-    function showPicture(imgs) {
-    	var expandImg = document.getElementById("expandedImg");
-	// var imgText = document.getElementById("imgtext");
-	expandImg.src = imgs.src;
-	// imgText.innerHTML = imgs.alt;
-	// expandImg.parentElement.style.display = "block";
-	}
-	function scrollleft() {
-		var elmnt = document.getElementById("abc123");
-		elmnt.scrollLeft += 50;
-	}
-	function scrollright() {
-		var elmnt1 = document.getElementById("abc123");
-		elmnt1.scrollLeft -= 50;
-	}
 
   document.getElementById("span-reply").onclick = function() {
     if (
