@@ -180,6 +180,7 @@ $(document).ready(function() {
 	  window.location.href = url;
 	});
     
+    /* Image Zoom for product Modal */
     function imageZoom(imgID, resultID) {
           var img, lens, result, cx, cy;
           img = document.getElementById(imgID);
@@ -239,47 +240,63 @@ $(document).ready(function() {
         }
 	// Initiate zoom effect:
     imageZoom("myimage", "myresult");
-    //hover on myimage -> show myresult
-    function showZoomImg() {
-      document.getElementById("myresult-div").style.display = "block";
-    }
-    function hideZoomImg() {
-      document.getElementById("myresult-div").style.display = "none";
-    }
     
+    //Reponsive product model for Ipad (other devices the same size with Ipad)
     if(screen.width > 800 && screen.width < 1200){
         document.getElementById("modal-productview").setAttribute("style","height: auto;");
     } else {
        document.getElementById("modal-productview").setAttribute("style","height: 100%;"); 
     }
-    /* Comment part */
-    var divs = document.getElementsByTagName('div');
-                                
-                    function hidecmtinput(commentid){
-                        //ẩn tất cả các input dùng để nhập cmt vào của khách hàng, trừ input chính của sản phẩm (click -> show)
-                        for (var i = 0, l = divs.length; i < l; i++) {
-                                    if (divs[i].getAttribute('class') == 'input-reply' && divs[i].getAttribute('id') != commentid) 
-                                        if (divs[i].style.display == 'none') divs[i].style.display = 'none';
-                                        else divs[i].style.display = 'none';
-                                }
-                    }
-                    function showcmtinput(fullname, fatherfullname, commentid) {
-                        if(fullname == null) fullname = 'Khách';
-                        if(fatherfullname == null) fatherfullname = 'Khách';
-                        hidecmtinput(commentid); //ẩn tất cả input để nhập cmt khi ng dùng click vào input mới (show 1 cái thôi)
-                        for (var i = 0, l = divs.length; i < l; i++) {
-                                    if (divs[i].getAttribute('class') == 'input-reply' && divs[i].getAttribute('id') == commentid) 
-                                        if (divs[i].style.display == 'none') {
-                                            divs[i].style.display = '';
-                                            var divchild = divs[i].children;
-                                            var divchildchild = divchild[0].children;
-                                            divchildchild[0].setAttribute('placeholder','@'+fatherfullname+':');
-                                        }
-                                        else divs[i].style.display = 'none';
-                                }
-                     }
-    /* END comment part */
-	
+    document.getElementById('step1-bar').style.pointerEvents = 'none';
+    document.getElementById('step2-bar').style.pointerEvents = 'none';
+    document.getElementById('step3-bar').style.pointerEvents = 'none';
+        
+    document.getElementById("step1-to-step2").addEventListener("click", function(){
+        document.getElementById("step2").classList.add('active');
+        document.getElementById("step1").classList.remove('active');
+        document.getElementById("step3").classList.remove('active');
+        
+        document.getElementById("step2-bar").classList.add('active');
+        document.getElementById("step1-bar").classList.remove('active');
+        document.getElementById("step3-bar").classList.remove('active');
+    }); 
+    document.getElementById("step2-to-step1").addEventListener("click", function(){
+        document.getElementById("step1").classList.add('active');
+        document.getElementById("step2").classList.remove('active');
+        document.getElementById("step3").classList.remove('active');
+        
+        document.getElementById("step1-bar").classList.add('active');
+        document.getElementById("step2-bar").classList.remove('active');
+        document.getElementById("step3-bar").classList.remove('active');
+    });
+    document.getElementById("step2-to-step3").addEventListener("click", function(){
+        document.getElementById("step3").classList.add('active');
+        document.getElementById("step1").classList.remove('active');
+        document.getElementById("step2").classList.remove('active');
+        
+        document.getElementById("step3-bar").classList.add('active');
+        document.getElementById("step1-bar").classList.remove('active');
+        document.getElementById("step2-bar").classList.remove('active');
+    });
+    document.getElementById("step3-to-step2").addEventListener("click", function(){
+        document.getElementById("step2").classList.add('active');
+        document.getElementById("step1").classList.remove('active');
+        document.getElementById("step3").classList.remove('active');
+        
+        document.getElementById("step2-bar").classList.add('active');
+        document.getElementById("step1-bar").classList.remove('active');
+        document.getElementById("step3-bar").classList.remove('active');
+    });
+    document.getElementById("btn-confirm-order").addEventListener("click", function(){
+        document.getElementById("step2").classList.add('active');
+        document.getElementById("step1").classList.remove('active');
+        document.getElementById("step3").classList.remove('active');
+        
+        document.getElementById("step2-bar").classList.add('active');
+        document.getElementById("step1-bar").classList.remove('active');
+        document.getElementById("step3-bar").classList.remove('active');
+    });
+    
 	// trang quan ly don hang
 	document.getElementById("span-tuychon").onclick = function () {
         if(document.getElementById("a-phanhoi").style.display == 'none'){
@@ -316,8 +333,35 @@ $(document).ready(function() {
 
 });
 
+/* Comment part */
+    var divs = document.getElementsByTagName('div');
 
-	
+                function hidecmtinput(commentid){
+                    //ẩn tất cả các input dùng để nhập cmt vào của khách hàng, trừ input chính của sản phẩm (click -> show)
+                    for (var i = 0, l = divs.length; i < l; i++) {
+                                if (divs[i].getAttribute('class') == 'input-reply' && divs[i].getAttribute('id') != commentid) 
+                                    if (divs[i].style.display == 'none') divs[i].style.display = 'none';
+                                    else divs[i].style.display = 'none';
+                            }
+                }
+                function showcmtinput(fullname, fatherfullname, commentid) {
+                    if(fullname == null) fullname = 'Khách';
+                    if(fatherfullname == null) fatherfullname = 'Khách';
+                    hidecmtinput(commentid); //ẩn tất cả input để nhập cmt khi ng dùng click vào input mới (show 1 cái thôi)
+                    for (var i = 0, l = divs.length; i < l; i++) {
+                                if (divs[i].getAttribute('class') == 'input-reply' && divs[i].getAttribute('id') == commentid) 
+                                    if (divs[i].style.display == 'none') {
+                                        divs[i].style.display = '';
+                                        var divchild = divs[i].children;
+                                        var divchildchild = divchild[0].children;
+                                        divchildchild[0].setAttribute('placeholder','@'+fatherfullname+':');
+                                    }
+                                    else divs[i].style.display = 'none';
+                            }
+                 }
+/* END comment part */
+
+
 	                          
 	   
     
