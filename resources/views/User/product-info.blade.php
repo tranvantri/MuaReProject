@@ -19,20 +19,21 @@
         <div class="item-content-v">
           <div class="row">
             <div class="box-images-v col-md-6">
-
-
+      
               <!-- hình ảnh của sản phẩm -->
-              <div class="xzoom-container">
+              
+              <div class="xzoom-container" onmouseover="showZoomImgPro();" onmouseout="hideZoomImgPro()">
                 <img class="xzoom" id="expandedImg" style="width: 430px" src="{{$child->images}}"
                 xoriginal="{{$child->images}}" alt="{{$child->name}}" />
+                <div id="myresult-v" class="img-zoom-result-v" ></div>
               </div>
-
+              
               <!-- Hình ảnh nhỏ của sp -->
               <div class="scroll-small-img-v">
                 <div class="list-img-wrap-v" id="abc123">
                   <div class="list-small-img-v">
                     <div>
-                      <img src="{{$child->images}}" alt="{{$child->name}}"
+                      <img src="{{$child->images}}" 
                       width="75px" height="75px" onclick="showPicture(this);"/>
                     </div>
                     <div>
@@ -59,12 +60,20 @@
               <div class="view-caring-v">
                 <div class="social-v">
                   <div class="view-saved-v">
-                    <span class="glyphicon glyphicon-saved" aria-hidden="true"><i class="far fa-save"></i></span>
+                    <span class="glyphicon glyphicon-saved" aria-hidden="true"><i class="fas fa-shopping-cart"></i></span>
                     <a href="https://www.facebook.com/saved/" target="_blank" class="btn btn-white save-facebook__list">Xem
                     sản phẩm đã lưu</a>
                   </div>
                 </div>
+                <div class="social-v">
+                  <div class="view-saved-v">
+                    <span class="glyphicon glyphicon-saved" aria-hidden="true"><i class="far fa-save"></i></span>
+                    <a href="https://www.facebook.com/saved/" target="_blank" class="btn btn-white save-facebook__list">Lưu
+                    vào Facebook</a>
+                  </div>
+                </div>
               </div>
+              
 
             </div>
 
@@ -170,7 +179,7 @@
 
         <!-- Đề xuất sản phẩm -->
         <div id="title-product-related-v"><span>NGƯỜI BÁN KHÁC ĐỀ XUẤT CHO BẠN</span></div>
-        <div class="products_related_parent-v">
+        <!-- <div class="products_related_parent-v">
         @foreach($product_offer as $childOffer)
             <div class="offer-category-v">          
               <div class="colum-offer-category-v">
@@ -196,12 +205,48 @@
               </div>
             </div>
          @endforeach
-        </div>
+        </div> -->
+        
+        <div class="promoteProduct row owl-carousel">
+        @foreach($product_offer as $childOffer)	
+<div class="motkhoi col-lg-3 col-md-4 col-sm-6">
+	<div class="card item">		
+		<div class="wrap-img">
+			<a href="">
+				<img class="card-img-top" src="{{$childOffer->images}}" alt="">
+			</a>
+			<div class="qv-button-container"> <a href="{{ route('sanpham', $childOffer->id)}}" title="{{$childOffer->name}}"><i class="fas fa-eye"></i></a></div>											
+		</div>		
+
+		<div class="card-body info">
+			<div class="info-inner">
+				<div class="title_products_related">
+					<a href="{{ route('sanpham', $childOffer->id)}}" title="{{$childOffer->name}}" class="OverlayPopup" data-size="l" data-id="popupItem">{{$childOffer->name}}</a>
+				</div>
+				<!--item-title-->
+				<div class="item-content">
+					<div class="price-box">
+						<p class="special-price"> <span class="price"> {{number_format($childOffer->price,0)}}đ </span> </p>
+					</div>
+				</div>
+				<!--item-content-->
+
+      </div>
+      
+		</div>
+		
+	</div>			
+	
+</div>
+
+@endforeach
+
+				</div>
         <!-- Kết thúc Đề xuất sản phẩm -->
 
         <!-- Sản phẩm ngẫu nhiên -->
         <div id="title-product-related-v"><span>CÓ THỂ BẠN QUAN TÂM</span></div>
-        <div class="products_related_parent-v">
+        <!-- <div class="products_related_parent-v">
 
           @foreach($randPro as $childRand)
           <div class="offer-category-v">
@@ -228,7 +273,42 @@
           </div>
           @endforeach
           
-        </div>
+        </div> -->
+        <div class="promoteProduct row owl-carousel">
+        @foreach($randPro as $childRand)	
+<div class="motkhoi col-lg-3 col-md-4 col-sm-6">
+	<div class="card item">		
+		<div class="wrap-img">
+			<a href="">
+				<img class="card-img-top" src="{{$childRand->images}}" alt="">
+			</a>
+			<div class="qv-button-container"> <a href="{{ route('sanpham', $childRand->id)}}" title="{{$childRand->name}}"><i class="fas fa-eye"></i></a></div>											
+		</div>		
+
+		<div class="card-body info">
+			<div class="info-inner">
+				<div class="title_products_related">
+					<a href="{{ route('sanpham', $childRand->id)}}" title="{{$childRand->name}}" class="OverlayPopup" data-size="l" data-id="popupItem">{{$childRand->name}}</a>
+				</div>
+				<!--item-title-->
+				<div class="item-content">
+					<div class="price-box">
+						<p class="special-price"> <span class="price"> {{number_format($childRand->price,0)}}đ </span> </p>
+					</div>
+				</div>
+				<!--item-content-->
+
+      </div>
+      
+		</div>
+		
+	</div>			
+	
+</div>
+
+@endforeach
+
+				</div>
         <!-- Kết thúc Sản phẩm ngẫu nhiên -->
 
       </div>
@@ -246,7 +326,7 @@
 
             <div class="register-date-v">
               <span><i class="far fa-clock"></i>
-                Thành viên từ {{$child->ngayTaoChuShop ?? '1/1/2019'}}
+                Thành viên từ {{date('d-m-Y', strtotime($child->ngayTaoChuShop)) ?? '1/1/2019'}}
               </span>
             </div>
             <div class="register-date-v sms">
