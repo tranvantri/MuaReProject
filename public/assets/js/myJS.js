@@ -175,9 +175,9 @@ $(document).ready(function() {
 
   //set cookie cho dia diem
 
-  $(document).on("click", "div.dropdown-menu a.dropdown-item", function(event) {
+  $(document).on("click", "div.dropdown-menu.place a.dropdown-item", function(event) {
     event.preventDefault();
-    var idPlace = $(this).attr("href");
+    var idPlace = $(this).attr("data");
     $.ajax({
       url: "set-cookie/" + idPlace,
       type: "get"
