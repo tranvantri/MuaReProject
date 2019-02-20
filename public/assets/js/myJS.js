@@ -1,26 +1,4 @@
 $(document).ready(function() {
-  // Responnse giao dien trang chu
-  $(window).resize(function() {
-    if ($(window).width() <= 1200) {
-      // trang chu
-      $(".content-left").removeClass("col-lg-9 col-md-9");
-      $(".content-left").addClass("col-lg-12 col-md-12");
-    } else {
-      // trang chu
-      $(".content-left").addClass("col-lg-9 col-md-9");
-      $(".content-left").removeClass("col-lg-12 col-md-12");
-    }
-
-    if ($(window).width() <= 1200) {
-      // console.log("<=1200");
-      // trang chi tiet danh muc
-      $("#search-zone")
-        .parent()
-        .hide();
-      $("#search-zone")
-        .parent()
-        .removeClass("col-lg-3 col-md-3");
-
 	// Responnse giao dien trang chu
 	$(window).resize(function(){
 		if($(window).width()<=1200){
@@ -267,7 +245,6 @@ $(document).ready(function() {
     document.getElementById('step3-bar').style.pointerEvents = 'none';
         
     document.getElementById("step1-to-step2").addEventListener("click", function(){
-        alert("aaa");
         document.getElementById("step2").classList.add('active');
         document.getElementById("step1").classList.remove('active');
         document.getElementById("step3").classList.remove('active');
