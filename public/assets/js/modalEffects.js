@@ -39,9 +39,48 @@ var ModalEffects = (function() {
 			});
 
 		} );
+        
+        /*var overlay2 = document.querySelector( '.md-overlay2' );
+        
+        [].slice.call( document.querySelectorAll( '.md-trigger2' ) ).forEach( function( el, i ) {
+
+			var modal = document.querySelector( '#' + el.getAttribute( 'data-modal2' ) ),
+				close = modal.querySelector( '.md-close2' );
+
+			function removeModal( hasPerspective ) {
+				classie.remove( modal, 'md-show2' );
+
+				if( hasPerspective ) {
+					classie.remove( document.documentElement, 'md-perspective' );
+				}
+			}
+
+			function removeModalHandler() {
+				removeModal( classie.has( el, 'md-setperspective' ) ); 
+			}
+
+			el.addEventListener( 'click', function( ev ) {
+				classie.add( modal, 'md-show2' );
+				overlay2.removeEventListener( 'click', removeModalHandler );
+				overlay2.addEventListener( 'click', removeModalHandler );
+
+				if( classie.has( el, 'md-setperspective' ) ) {
+					setTimeout( function() {
+						classie.add( document.documentElement, 'md-perspective' );
+					}, 25 );
+				}
+			});
+
+			close.addEventListener( 'click', function( ev ) {
+				ev.stopPropagation();
+				removeModalHandler();
+			});
+
+		} );*/
 
 	}
 
 	init();
 
 })();
+
