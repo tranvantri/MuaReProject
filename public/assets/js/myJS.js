@@ -283,13 +283,16 @@ $(document).ready(function() {
     });
     
     document.getElementById("btn-confirm-order").addEventListener("click", function(){
-        document.getElementById("step2").classList.add('active');
-        document.getElementById("step1").classList.remove('active');
-        document.getElementById("step3").classList.remove('active');
+        //document.getElementById("md-overlay-id").style.visibility = 'hidden';
+       //document.getElementById("modal-productview").style.visibility = 'hidden';
+        $('#md-overlay-id').hide();
+        $('#modal-productview').hide();
         
-        document.getElementById("step2-bar").classList.add('active');
-        document.getElementById("step1-bar").classList.remove('active');
-        document.getElementById("step3-bar").classList.remove('active');
+    });
+    
+    $(".img-rounded").click(function(){
+        $('#md-overlay-id').show();
+        $('#modal-productview').show();
     });
     
 	// trang quan ly don hang

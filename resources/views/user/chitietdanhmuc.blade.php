@@ -554,7 +554,7 @@
                      <h5 class="avgprice-order-L" style="margin-top: 0px;">Tổng tiền: 4,000,000 VNĐ</h5>
                       <div style="margin: 44px 10px 10px 10px;">
                         <button id="step3-to-step2" class="btn order-btn1">QUAY LẠI</button>
-                        <button id="btn-confirm-order" class="btn order-btn2" data-toggle="modal" data-target="#modal-confirmorder">ĐỒNG Ý VÀ ĐẶT HÀNG</button>
+                        <button id="btn-confirm-order" class="btn order-btn2" data-toggle="modal" data-target="#modal-confirmorder" data-dismiss="modal">ĐỒNG Ý VÀ ĐẶT HÀNG</button>
                       </div>
                   </div>
                </div>
@@ -567,7 +567,7 @@
           </div>
         </div>
       </div>
-    <div class="md-overlay"></div>
+    <div id="md-overlay-id" class="md-overlay"></div>
     <div id="md-overlay2-id" class="md-overlay2"></div>
     <!-- Handle show/hide ORDER MODAL (cause technology failt) -->
     <!--<script type="text/javascript">
@@ -592,27 +592,17 @@
       <div class="modal fade" id="modal-confirmorder">
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
-
-            <!-- Modal Header -->
-            <div class="modal-header">
-              <h4 class="modal-title">Modal Heading</h4>
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-
             <!-- Modal body -->
-            <div class="modal-body">
-              Modal body..
+            <div class="modal-body" style="text-align: center;">
+                <img src="https://media.giphy.com/media/PijzuUzUhm7hcWinGn/giphy.gif" alt="Yes" width="120" height="120">
+                <p style="padding: 8px 4px 0 4px;font-size: 15px;">Tạo đơn hàng thành công, chủ shop sẽ liên hệ với bạn để xác nhận đơn hàng.</p>
+                <button class="btn-ok" type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
             </div>
-
-            <!-- Modal footer -->
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-
           </div>
         </div>
       </div>
       <!-- END Confirm order modal -->
+      
     @if(isset($hienthi) && $hienthi == 'san-pham') {{-- xet loai hien thi --}}
       <div id="products-L" class="col-lg-10 col-md-10"><!-- nội dung các bài đăng -->             
                     <div id="view-post" class="view-post">

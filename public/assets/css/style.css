@@ -3556,6 +3556,19 @@ output {
 }
 /* END Modal - order view */
 
+/* Modal - confirm order */
+#modal-confirmorder{
+    z-index: 1300;
+}
+#modal-confirmorder .btn-ok{
+    border-radius: 20px;
+    font-size: 18px;
+    padding: 10px 36px;
+    color: white;
+    background: #5eaaad;
+}
+/* END Modal - confirm order*/
+
 /* Effect 1: Fade in and scale up */
 .md-effect-1 .md-content {
   -webkit-transform: scale(0.7);
