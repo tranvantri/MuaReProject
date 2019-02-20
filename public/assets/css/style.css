@@ -3257,9 +3257,10 @@ output {
             position: fixed;
             top: 45%;
             left: 50%;
-            width: 80%;
+    right: 5%;
+            width: auto; /*80%*/
             max-width: 890px;
-            min-width: 320px;
+            min-width: 330px;
             height: auto;
             z-index: 1100;
             visibility: hidden;
@@ -3298,7 +3299,7 @@ output {
 /*Model - product view */
         #modal-productview {
             margin: 60px auto 20px auto;
-            width: 90%; /*hiá»ƒn thá»‹ 70% lÃ  cÃ¢n báº±ng khi thu nhá»�*/
+            width: 80%; /*hiá»ƒn thá»‹ 70% lÃ  cÃ¢n báº±ng khi thu nhá»�*/
             height: 100%;
             padding: 10px;
             background: #fff;
@@ -3413,7 +3414,9 @@ output {
 /*Model - order view */
 .md-modal2 {
     top: 8%;
+    bottom: 6%;
     left: 2%;
+    right: 4%;
      z-index: 1200;
             /*position: fixed;
             top: 28%;
@@ -3463,6 +3466,7 @@ output {
 }
 #modal-orderview {
     height: auto;
+    width: 100%;
     overflow-y:auto;
     /*margin: 0 !important;
     padding: 0 !important;*/

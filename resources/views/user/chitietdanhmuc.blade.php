@@ -58,7 +58,7 @@
 
       ?>
     
-      <script>
+      <script type="text/javascript">
           //hover on myimage -> show myresult
 /* Show/hide khi hover ảnh trên product modal - đồng thời kiểm tra loại thiết bị đang sử dụng để căn chỉnh suitble size */
           document.getElementById("myresult-div").style.display = "none";
@@ -353,10 +353,10 @@
                      <a id="step1-bar" class="nav-link active" data-toggle="tab" href="#step1">Thông tin sản phẩm</a>
                   </li>
                   <li class="nav-item">
-                     <a id="step2-bar" class="nav-link disable" data-toggle="tab" href="#step2">Nơi nhận hàng</a>
+                     <a id="step2-bar" class="nav-link" data-toggle="tab" href="#step2">Nơi nhận hàng</a>
                   </li>
                   <li class="nav-item">
-                     <a id="step3-bar" class="nav-link disable" data-toggle="tab" href="#step3">Xác nhận đơn hàng</a>
+                     <a id="step3-bar" class="nav-link" data-toggle="tab" href="#step3">Xác nhận đơn hàng</a>
                   </li>
                </ul>
                <!-- Tab panes -->
@@ -364,7 +364,7 @@
                   <div id="step1" class="container tab-pane active" style="padding-right: 0; padding-left: 0;">
                     <br>
                       <!-- List product in your order modal-->
-                    <div style="overflow-y: auto;max-height: 274px;">
+                    <div style="overflow-y: auto;max-height: 274px;max-height: 400px;height: auto;">
                      <div class="product-in-order-L">
                         <img class="lazy-image avatar" data-original="https://muare.vn/images/avatars/avatar_male_s.png?v=2" src="https://static8.muarecdn.com/zoom,80/100_100/muare/images/2019/02/16/5010043_40.jpg" alt="Order US UK GER" width="72px" height="72px" style="display: inline;float: left;padding-right: 10px;">
                         <a href="#" class="product-name-L">Order US UK GER – Order US UK GER</a>
@@ -435,7 +435,7 @@
                           </tr>
                           <tr>
                             <td colspan="1" width="18%">Thông tin thêm:</td>
-                            <td><textarea type="text" class="input-step2" placeholder="Nhập vào thông tin thêm (nếu có): màu sắc, size, thời gian giao hàng..." style="width: 60%;min-width: 170px;"></textarea></td>
+                            <td><textarea type="text" class="input-step2" placeholder="Nhập vào thông tin thêm (nếu có)" style="width: 60%;min-width: 170px;"></textarea></td>
                           </tr>
                         </tbody>
                       </table>
@@ -570,8 +570,8 @@
     <div class="md-overlay"></div>
     <div id="md-overlay2-id" class="md-overlay2"></div>
     <!-- Handle show/hide ORDER MODAL (cause technology failt) -->
-    <script type="text/javascript">
-       /*document.getElementById("md-overlay2-id").style.visibility = 'hidden';
+    <!--<script type="text/javascript">
+       document.getElementById("md-overlay2-id").style.visibility = 'hidden';
        document.getElementById("modal-orderview").style.visibility = 'hidden'; 
         
        document.getElementById("btn_left2").onclick = function() {
@@ -584,9 +584,9 @@
        document.getElementById("md-overlay2-id").addEventListener("click", function(){
            document.getElementById("md-overlay2-id").style.visibility = 'hidden';
            document.getElementById("modal-orderview").style.visibility = 'hidden';
-       });*/
+       });
         
-    </script>
+    </script>-->
     
       <!-- Confirm order modal -->
       <div class="modal fade" id="modal-confirmorder">

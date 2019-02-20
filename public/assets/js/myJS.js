@@ -240,10 +240,11 @@ $(document).ready(function() {
     } else {
        document.getElementById("modal-productview").setAttribute("style","height: 100%;"); 
     }
+
     document.getElementById('step1-bar').style.pointerEvents = 'none';
     document.getElementById('step2-bar').style.pointerEvents = 'none';
     document.getElementById('step3-bar').style.pointerEvents = 'none';
-        
+    
     document.getElementById("step1-to-step2").addEventListener("click", function(){
         document.getElementById("step2").classList.add('active');
         document.getElementById("step1").classList.remove('active');
@@ -280,6 +281,7 @@ $(document).ready(function() {
         document.getElementById("step1-bar").classList.remove('active');
         document.getElementById("step3-bar").classList.remove('active');
     });
+    
     document.getElementById("btn-confirm-order").addEventListener("click", function(){
         document.getElementById("step2").classList.add('active');
         document.getElementById("step1").classList.remove('active');
