@@ -52,7 +52,61 @@ $(document).ready(function() {
 		}
 
 	});
-      
+    
+    /* Hiển thị popover cho notifications/user/$ icon khi đã đăng nhập trên header */
+    $("[data-toggle=popover-notifications]").popover({
+        html : true,
+        content: function() {
+          var content = $(this).attr("data-popover-content");
+          return $(content).children(".content-notifications-L").html();
+        }
+        /*title: function() {
+          var title = $(this).attr("data-popover-content");
+          return $(title).children(".heading-notifications").html();
+        }*/
+    });
+    $("[data-toggle=popover-profile]").popover({
+        html : true,
+        content: function() {
+          var content = $(this).attr("data-popover-content");
+          return $(content).children(".content-profile-L").html();
+        }
+    });
+    $("[data-toggle=popover-yourcoin]").popover({
+        html : true,
+        content: function() {
+          var content = $(this).attr("data-popover-content");
+          return $(content).children(".content-yourcoin-L").html();
+        }
+    });
+    /* hide all popover when focus out */
+    $("html").on("mouseup", function (e) {
+        var l = $(e.target);
+        if (l[0].className.indexOf("popover-yourcoin") == -1) {
+            $(".popover").each(function () {
+                $(this).popover("hide");
+            });
+        }
+    });
+    /*$('body').on('click', function (e) {
+        //did not click a popover toggle, or icon in popover toggle, or popover
+        if ($(e.target).data('toggle') !== 'popover-yourcoin'
+            && $(e.target).parents('[data-toggle="popover-yourcoin"]').length === 0
+            && $(e.target).parents('.popover-yourcoin.in').length === 0) { 
+            $('[data-toggle="popover-yourcoin"]').popover('hide');
+        }
+        if ($(e.target).data('toggle') !== 'popover-profile'
+            && $(e.target).parents('[data-toggle="popover-profile"]').length === 0
+            && $(e.target).parents('.popover-profile.in').length === 0) { 
+            $('[data-toggle="popover-profile"]').popover('hide');
+        }
+        if ($(e.target).data('toggle') !== 'popover-notifications'
+            && $(e.target).parents('[data-toggle="popover-notifications"]').length === 0
+            && $(e.target).parents('.popover-notifications.in').length === 0) { 
+            $('[data-toggle="popover-notifications"]').popover('hide');
+        }
+    });*/
+   
   // owl-carousel sản phẩm độc đáo
   if ($(".promoteProduct.row.owl-carousel").length) {
     $(".promoteProduct.row.owl-carousel").owlCarousel({
@@ -181,8 +235,8 @@ $(document).ready(function() {
           /*create lens:*/
           lens = document.createElement("DIV");
           lens.setAttribute("class", "img-zoom-lens");
-          /*img.setAttribute("opacity","0.2");
-                  lens.setAttribute("opacity","0.6");*/
+          /*img.setAttribute("style","opacity: 0.2;");
+                  lens.setAttribute("style","opacity: 1;");*/
           /*insert lens:*/
           img.parentElement.insertBefore(lens, img);
           /*calculate the ratio between result DIV and lens:*/
@@ -312,7 +366,8 @@ $(document).ready(function() {
             document.getElementById("input-reply-customer").style.display = 'none';
         }
         
-    }    
+    }
+    
 });
 
 /* Comment part */
