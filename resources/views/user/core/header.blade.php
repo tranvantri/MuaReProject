@@ -18,18 +18,18 @@
                                 Hà Nội
                             @endif
                         </button>
-                        <div class="dropdown-menu hoverable">
+                        <div class="dropdown-menu hoverable place">
                             @if(Cookie::get('place') != null)
                                 @foreach($places as $child) 
                                     <a class="dropdown-item 
                                     @if($child->id == Cookie::get('place'))
                                     active
                                     @endif
-                                    " href="{{$child->id}}">{{$child->name}}</a>
+                                    " data="{{$child->id}}">{{$child->name}}</a>
                                 @endforeach
                             @else
                                 @foreach($places as $child) 
-                                    <a class="dropdown-item" href="{{$child->id}}">{{$child->name}}</a>
+                                    <a class="dropdown-item" data="{{$child->id}}">{{$child->name}}</a>
                                 @endforeach
                             @endif                        
                         </div>
@@ -78,22 +78,42 @@
                         <a class="logo" title="Tìm là có, ngó là mua, vừa là bán" href="https://muare.vn"><img src="https://static8.muarecdn.com/original/muare/images/2018/05/25/4657344_new-logo.png" alt="Tìm là có, ngó là mua, vừa là bán"></a>
                     </div>
                     <div class="col-lg-7 " style="margin-top: 1%;">
-                            <form>
+                            <form action="search" method="get">
+                                {{-- {{ csrf_field() }} --}}
                             <div class="input-group-prepend" style="height: 29px;">
                                 <div class="searchtypes dropdown">
-                                  <button type="button" data-toggle="dropdown" class="btn-tatca">
-                                    Tất cả &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+                                  <button type="button" data-toggle="dropdown" class="btn-tatca catename">
+                                    Tất cả 
                                   </button>
-                                  <div class="dropdown-menu" style="border-radius: 0px;border-top: 0px;font-size: 12px;">
+                                  <div class="dropdown-menu" style="border-radius: 0px;border-top: 0px;font-size: 12px;padding-top: 0; padding-bottom: 0;">
+                                    <a class="dropdown-item" title="Tất cả" data="" href="">Tất cả</a>
                                     @foreach($cates as $child)
-                                    <a class="dropdown-item" href="{{str_slug($child->name)}}/{{$child->id}}">{{$child->name}}</a>
+                                    <a class="dropdown-item" style="cursor: pointer;font-weight: bold;font-size: 12px;padding-top: 0; padding-bottom: 0;" 
+                                    title="{{$child->name}}" data="{{$child->id}}" >{{$child->name}}</a>
+                                    @foreach($catesChilds as $cateChild)
+                                    @if($cateChild->idParent == $child->id)
+                                        <a class="dropdown-item" style="cursor: pointer;margin-left: 10px;font-size: 12px;padding-top: 0; padding-bottom: 0;"
+                                         title="{{$cateChild->name}}" data="{{$cateChild->id}}" >{{$cateChild->name}}</a>
+                                    @endif
+                                    @endforeach
                                     @endforeach
                                     </div>
                                 </div>
+                                <input type="text" class="input-search form-control " name="text" placeholder="Tìm kiếm..." aria-label="" aria-describedby="basic-addon1"
+                                @if(isset($textSearch))
+                                 value="{{$textSearch}}"
+                                 @endif
+
+                                 >
+                                <input type="hidden" id="categoryParent_id" name="category_id"
                                 
-                                <input type="text" class="input-search form-control " placeholder="Tìm kiếm..." aria-label="" aria-describedby="basic-addon1">
+                                 @if(isset($idCate))
+                                 value="{{$idCate}}"
+                                 @endif
+                                 >
                                 
-                                <button class="btnsearch" type="button">TÌM KIẾM</button>
+                                
+                                <button class="btnsearch" type="submit">TÌM KIẾM</button>
                             </div>
                             </form>
                     </div>
@@ -101,9 +121,24 @@
                         
                         <div class="row">
                             <div class="col-lg-12">
-                                <a href="{{Route('loginUser')}}" class="btn-login" style="color: #ff6c00;font-weight: bold;">Đăng nhập<span style="color: #a7a6a6"> | </span></a>
-                                <a href="{{Route('loginUser')}}" class="btn-login" style="color: black;font-weight: bold;">Đăng ký</a>
-                                 <a href="#"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAABPAAAATwBTZvJDgAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAG3SURBVDiNrdOxa1NRFMfx73nEVsVBoQpOWUoVNQFxFkf9AxQa6eJiN3Ez0SWTieDgLKJFtD5ox0JxMrUiDhJq21ctsR2kBCUWSpG2Ma/35yDBokleXvBM9x7O/XDOvVwbytwf6LdGEkC73tbO5oHVz9M36vQYXh+NOckeOcd1mbu5//CP1+mReyd6BROGrgi3Gvh3vgGkh++e3w1dFrjWK/pXyM5kCvO9nvb+TZmQVU6PFAb/EwjgZszpQi+gtUqeGi6c9YxyTCtsyEu27HDJz84B6zE7W1j2b1XbjGySeBMHlDQGbe8QgJkYXj3s43lHUFCKAU59enp7vSO4dLL+AWyjK072pLlsP3I+70CzUZZBdeDrzsto8Hd0cY/2rFTKh81dolOpzJs1ubdmPGhXU1fi1d59R/Bodbv8/Xj/oYXx7CSYortt81P2RipTfCi0bNb61V3DasFE9kv34NXCEYkKqAyck2wSwEyXMXuPSCqsp4OJ/E+IfhTM844B7xZf5C6C1QI/Nxr4uVGw2uJ49hKw4vYdTDbrI8H5we2KwWYqU1wTevxnNBtLZYprMm18HNpaaeZ/AaZCpwGRuyJPAAAAAElFTkSuQmCC" style="margin-top: -8px;" class="btn-login"><abbr style="color: black;font-weight: bold;">Giỏ Hàng</abbr></a>
+                                <!-- CHƯA ĐĂNG NHẬP NHÉ -->
+                                <div class="hidden" id="you-re-guest">
+                                    <a href="{{Route('loginUser')}}" class="btn-login" style="color: #ff6c00;font-weight: bold;">Đăng nhập<span style="color: #a7a6a6"> | </span></a>
+                                    <a href="{{Route('loginUser')}}" class="btn-login" style="color: black;font-weight: bold;">Đăng ký</a>
+                                    <a href="#"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAABPAAAATwBTZvJDgAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAG3SURBVDiNrdOxa1NRFMfx73nEVsVBoQpOWUoVNQFxFkf9AxQa6eJiN3Ez0SWTieDgLKJFtD5ox0JxMrUiDhJq21ctsR2kBCUWSpG2Ma/35yDBokleXvBM9x7O/XDOvVwbytwf6LdGEkC73tbO5oHVz9M36vQYXh+NOckeOcd1mbu5//CP1+mReyd6BROGrgi3Gvh3vgGkh++e3w1dFrjWK/pXyM5kCvO9nvb+TZmQVU6PFAb/EwjgZszpQi+gtUqeGi6c9YxyTCtsyEu27HDJz84B6zE7W1j2b1XbjGySeBMHlDQGbe8QgJkYXj3s43lHUFCKAU59enp7vSO4dLL+AWyjK072pLlsP3I+70CzUZZBdeDrzsto8Hd0cY/2rFTKh81dolOpzJs1ubdmPGhXU1fi1d59R/Bodbv8/Xj/oYXx7CSYortt81P2RipTfCi0bNb61V3DasFE9kv34NXCEYkKqAyck2wSwEyXMXuPSCqsp4OJ/E+IfhTM844B7xZf5C6C1QI/Nxr4uVGw2uJ49hKw4vYdTDbrI8H5we2KwWYqU1wTevxnNBtLZYprMm18HNpaaeZ/AaZCpwGRuyJPAAAAAElFTkSuQmCC" style="margin-top: -8px;" class="btn-login"><abbr style="color: black;font-weight: bold;">Giỏ Hàng</abbr></a>
+                                </div>
+                                
+                                <!-- ĐĂNG NHẬP RỒI NHÉ -->
+                                <div id="you-re-user">
+                                    &#160;
+                                    <a data-placement="bottom" data-popover-content="#notifications-L" data-toggle="popover-notifications" data-trigger="click" tabindex="0"><i class="fas fa-bell" style="font-size: 20px;cursor: pointer;padding: 2px;color: #2c5987;"></i></a>
+                                    &#160;&#160;
+                                    <a data-placement="bottom" data-popover-content="#profile-L" data-toggle="popover-profile" data-trigger="click" tabindex="0"><i class="fas fa-user" style="font-size: 20px;cursor: pointer;padding: 2px;color: #2c5987;"></i></a>
+                                    &#160;&#160;
+                                    <a data-placement="bottom" data-popover-content="#yourcoin-L" data-toggle="popover-yourcoin" data-trigger="click" tabindex="0"><i class="fas fa-dollar-sign" style="font-size: 21px;cursor: pointer;padding: 2px;color: #2c5987;"></i></a>
+                                    <a href="#" style="float: right;margin-top: 3px;"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAABPAAAATwBTZvJDgAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAG3SURBVDiNrdOxa1NRFMfx73nEVsVBoQpOWUoVNQFxFkf9AxQa6eJiN3Ez0SWTieDgLKJFtD5ox0JxMrUiDhJq21ctsR2kBCUWSpG2Ma/35yDBokleXvBM9x7O/XDOvVwbytwf6LdGEkC73tbO5oHVz9M36vQYXh+NOckeOcd1mbu5//CP1+mReyd6BROGrgi3Gvh3vgGkh++e3w1dFrjWK/pXyM5kCvO9nvb+TZmQVU6PFAb/EwjgZszpQi+gtUqeGi6c9YxyTCtsyEu27HDJz84B6zE7W1j2b1XbjGySeBMHlDQGbe8QgJkYXj3s43lHUFCKAU59enp7vSO4dLL+AWyjK072pLlsP3I+70CzUZZBdeDrzsto8Hd0cY/2rFTKh81dolOpzJs1ubdmPGhXU1fi1d59R/Bodbv8/Xj/oYXx7CSYortt81P2RipTfCi0bNb61V3DasFE9kv34NXCEYkKqAyck2wSwEyXMXuPSCqsp4OJ/E+IfhTM844B7xZf5C6C1QI/Nxr4uVGw2uJ49hKw4vYdTDbrI8H5we2KwWYqU1wTevxnNBtLZYprMm18HNpaaeZ/AaZCpwGRuyJPAAAAAElFTkSuQmCC" style="margin-top: -8px;" class="btn-login"><abbr style="color: black;font-weight: bold;">&#160;Giỏ Hàng</abbr></a>
+                                </div>
+                                 
                         <!-- End giỏ hàng -->
                             </div>
                            
@@ -111,6 +146,122 @@
                     </div>
                 </div>
             </div>
+            
+            <!-- Content for 3 Popovers are notifications, profile & money -->
+            <div class="hidden" id="notifications-L">
+               <!--<div class="heading-notifications">
+                  <p style="float: left;color: pink;">THÔNG BÁO</p>
+                  <p style="float: right;">ĐÁNH DẤU ĐÃ ĐỌC</p>
+                  </div>-->
+               <div class="content-notifications-L" style="min-width: 400px;">
+                  <div class="heading-notifications-L">
+                     <p style="float: left;">THÔNG BÁO</p>
+                     <p style="float: right;">ĐÁNH DẤU ĐÃ ĐỌC</p>
+                  </div>
+                  <hr style="margin-left: -10px;margin-right: -10px;margin-bottom: 10px;">
+                  <div class="body-notifications-L">
+                     <!-- Notify n?-->
+                     <div class="item-notifications-L">
+                        <p class="p-bodynotification-L">Có người vừa đặt mua sản phẩm của bạn</p>
+                        <p class="notification-time-L">03/12/1997, lúc 00:00</p>
+                     </div>
+                     <hr style="margin: 10px 0;">
+                     <div class="item-notifications-L">
+                        <p class="p-bodynotification-L">Có người vừa bình luận tin đăng của bạn</p>
+                        <p class="notification-time-L">03/12/1997, lúc 00:00</p>
+                     </div>
+                     <hr style="margin: 10px 0;">
+                     <div class="item-notifications-L">
+                        <p class="p-bodynotification-L">Xin chúc mừng! Tin đăng của bạn vừa được duyệt để hiển thị. Cảm ơn tomiot đã tham gia vào cộng đồng mua bán muare.vn</p>
+                        <p class="notification-time-L">03/12/1997, lúc 00:00</p>
+                     </div>
+                     <hr style="margin: 10px 0;">
+                     <div class="item-notifications-L">
+                        <p class="p-bodynotification-L">Rất tiếc! Tin đăng (ID: 4825196) của TK tomiot không được duyệt để hiển thị trên muare.vn. Vui lòng liên hệ 024-73095555, máy lẻ 255 / 117 / 162 để biết thêm thông tin chi tiết.</p>
+                        <p class="notification-time-L">03/12/1997, lúc 00:00</p>
+                     </div>
+                     <hr style="margin: 10px 0;">
+                  </div>
+                  <hr style="margin-left: -10px;margin-right: -10px;margin-bottom: 6px;">
+                  <div class="footer-notifications-L">
+                     <a href="#" style="float: left;">Xem tất cả</a>
+                     <a href="#" style="float: right;">Thiết lập</a>
+                  </div>
+               </div>
+            </div>
+            
+            <div class="hidden" id="profile-L">
+               <div class="content-profile-L" style="min-width: 300px;">
+                  <div class="heading-profile-L">
+                     <img src="https://static8.muarecdn.com/zoom,80/90_90/muare/avatars/l/733/733265_1547649471.png?1547649471" class="rounded-circle" alt="Cinque Terre" width="90" height="90"
+                          style="float: left;">
+                     <div class="profileheader-info-L">
+                        <p><b>Cẩm Sục Linda Tới</b></p>
+                        <p><b>Cấp độ: 1 (84%)</b></p>
+                        <div class="progress">
+                          <div class="progress-bar bg-danger" style="width:50%;"></div>
+                        </div>
+                        <p style="padding-top: 10px;">ID tài khoản: <b style="color:red;">733265</b></p>
+                     </div>
+                  </div>
+                  <hr style="margin-left: -10px;margin-right: -10px;margin-top: 94px;margin-bottom: 0px;">
+                  <div class="body-profile-L">
+                     <table class="table-borderless" width="100%">
+                        <thead>
+                          <tr>
+                            <th colspan="1"></th>
+                            <th colspan="1"></th>
+                            <th colspan="1"></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td><a href="#">Quản lý kho hàng</a></td>
+                            <td></td>
+                            <td><a href="#">Gian hàng của tôi</a></td>
+                          </tr>
+                          <tr>
+                            <td><a href="#">Quản lý tin đăng</a></td>
+                            <td></td>
+                            <td><a href="#">Thiết lập cửa hàng</a></td>
+                          </tr>
+                          <tr>
+                            <td><a href="#">Quản lý ví Muare</a></td>
+                            <td></td>
+                            <td><a href="#">Thay đổi thông tin</a></td>
+                          </tr>
+                          <tr>
+                            <td><a href="#">Quản lý đơn hàng</a></td>
+                            <td></td>
+                            <td><a href="#">Đăng xuất</a></td>
+                          </tr>
+                          <tr>
+                            <td><a href="#">Quản lý sự kiện</a></td>
+                            <td></td>
+                            <td></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                  </div>
+               </div>
+            </div>
+            
+            <div class="hidden" id="yourcoin-L">
+               <div class="content-yourcoin-L" style="min-width: 200px;">
+                  <div class="body-yourcoin-L">
+                     <btn class="btn">Mua Xu</btn>
+                     <p>Xu chính: <b style="color: #3f82bb;font-weight: 500;">1232</b></p>
+                     <p>Xu KM: <b style="color: #3f82bb;font-weight: 500;">1232</b></p>
+                     <div class="hover-p-yourcoin">
+                         <p><a href="#">Lịch sử nạp tiền</a></p>
+                         <p><a href="#">Lịch sử dùng xu</a></p>
+                         <p><a href="#">Nhập mã KM</a></p>
+                     </div>
+                     
+                  </div>
+               </div>
+            </div>
+            <!-- Content for 3 Popovers -->
             
             <!-- CONTRACT HEADER: Hà Nội - Liên hệ quảng cáo - Hỗ trợ -->
             <div id="menu-header">
@@ -122,12 +273,12 @@
                           <div class="dropdown-menu" style="font-size: 14px;">
                             @foreach($cates as $child)
                                 <div class="dropdown-submenu">
-                                    <a class="dropdown-item dropdown-itemlv1" tabindex="-1" href="{{str_slug($child->name)}}/{{$child->id}}">{{$child->name}}</a> 
+                                    <a class="dropdown-item dropdown-itemlv1" tabindex="-1" href="danh-muc/{{str_slug($child->name)}}/{{$child->id}}">{{$child->name}}</a> 
                                         <div class="dropdown-menu">
                                             @foreach($catesChilds as $itemcate)
                                                 @if($child->id == $itemcate->idParent)
                                                 <a class="dropdown-item dropd-itemlv2" tabindex="-1" 
-                                                href="{{str_slug($itemcate->name)}}/{{$itemcate->id}}">{{$itemcate->name}}</a>
+                                                href="danh-muc/{{str_slug($itemcate->name)}}/{{$itemcate->id}}">{{$itemcate->name}}</a>
                                                 @endif
                                             @endforeach
                                         </div>                 

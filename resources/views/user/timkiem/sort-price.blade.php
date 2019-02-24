@@ -2,29 +2,138 @@
 	<ul class="list-price active">
 		<li>
 			<a class="price-ranger" 
-			href="" 
-		    
+			href="{{route('searchproduct', [
+        'hienthi' => 'san-pham',
+        'text' => ($textSearch == null) ? 'tim-kiem':$textSearch,
+        'idCate' => ($idCate == null) ? 'tat-ca':$idCate,
+        'tinh-trang'=>$tinhtrang,
+        'gia'=>'gia-tot',
+        'sapxep' => $sapxep
+      ])}}" 
+		    @if(isset($gia) && $gia == 'gia-tot')
+			style="color: red;"
+			@endif 
 			>Tất cả giá</a>
 		</li>
 		<li>
 			<a class="price-ranger" 
-			href="" 
-		    
-			>Tất cả giá</a>
+			href="{{route('searchproduct', [
+        'hienthi' => 'san-pham',
+        'text' => ($textSearch == null) ? 'tim-kiem':$textSearch,
+        'idCate' => ($idCate == null) ? 'tat-ca':$idCate,
+        'tinh-trang'=>$tinhtrang,
+        'gia'=>'0-200000',
+        'sapxep' => $sapxep
+      ])}}" 
+		    @if(isset($gia) && $gia == '0-200000')
+			style="color: red;"
+			@endif
+			>≤ 200.000đ</a>
 		</li>
 		<li>
 			<a class="price-ranger" 
-			href="" 
-		    
-			>Tất cả giá</a>
+			href="{{route('searchproduct', [
+        'hienthi' => 'san-pham',
+        'text' => ($textSearch == null) ? 'tim-kiem':$textSearch,
+        'idCate' => ($idCate == null) ? 'tat-ca':$idCate,
+        'tinh-trang'=>$tinhtrang,
+        'gia'=>'200000-500000',
+        'sapxep' => $sapxep
+      ])}}" 
+		    @if(isset($gia) && $gia == '200000-500000')
+			style="color: red;"
+			@endif
+			>200.000đ - 500.000đ</a>
 		</li>
 		<li>
 			<a class="price-ranger" 
-			href="" 
-		    
-			>Tất cả giá</a>
+			href="{{route('searchproduct', [
+        'hienthi' => 'san-pham',
+        'text' => ($textSearch == null) ? 'tim-kiem':$textSearch,
+        'idCate' => ($idCate == null) ? 'tat-ca':$idCate,
+        'tinh-trang'=>$tinhtrang,
+        'gia'=>'500000-2000000',
+        'sapxep' => $sapxep
+      ])}}" 
+		      @if(isset($gia) && $gia == '500000-2000000')
+			style="color: red;"
+			@endif
+			>500.000đ - 2.000.000đ</a>
 		</li>
-		
+		<li>
+			<a class="price-ranger" 
+			href="{{route('searchproduct', [
+        'hienthi' => 'san-pham',
+        'text' => ($textSearch == null) ? 'tim-kiem':$textSearch,
+        'idCate' => ($idCate == null) ? 'tat-ca':$idCate,
+        'tinh-trang'=>$tinhtrang,
+        'gia'=>'2000000-5000000',
+        'sapxep' => $sapxep
+      ])}}" 
+		        @if(isset($gia) && $gia == '2000000-5000000')
+			style="color: red;"
+			@endif
+			>2.000.000đ - 5.000.000đ</a></li>
+		<li>
+			<a class="price-ranger" 
+			href="{{route('searchproduct', [
+        'hienthi' => 'san-pham',
+        'text' => ($textSearch == null) ? 'tim-kiem':$textSearch,
+        'idCate' => ($idCate == null) ? 'tat-ca':$idCate,
+        'tinh-trang'=>$tinhtrang,
+        'gia'=>'5000000-10000000',
+        'sapxep' => $sapxep
+      ])}}" 
+		       @if(isset($gia) && $gia == '5000000-10000000')
+			style="color: red;"
+			@endif
+			>5.000.000đ - 10.000.000đ</a>
+		</li>
+		<li>
+			<a class="price-ranger" 
+			href="{{route('searchproduct', [
+        'hienthi' => 'san-pham',
+        'text' => ($textSearch == null) ? 'tim-kiem':$textSearch,
+        'idCate' => ($idCate == null) ? 'tat-ca':$idCate,
+        'tinh-trang'=>$tinhtrang,
+        'gia'=>'10000000-20000000',
+        'sapxep' => $sapxep
+      ])}}" 
+		      @if(isset($gia) && $gia == '10000000-20000000')
+			style="color: red;"
+			@endif
+			>10.000.000đ - 20.000.000đ</a>
+		</li>
+		<li>
+			<a class="price-ranger" 
+			href="{{route('searchproduct', [
+        'hienthi' => 'san-pham',
+        'text' => ($textSearch == null) ? 'tim-kiem':$textSearch,
+        'idCate' => ($idCate == null) ? 'tat-ca':$idCate,
+        'tinh-trang'=>$tinhtrang,
+        'gia'=>'20000000-50000000',
+        'sapxep' => $sapxep
+      ])}}" 
+		      @if(isset($gia) && $gia == '20000000-50000000')
+			style="color: red;"
+			@endif
+			>20.000.000đ - 50.000.000đ</a>
+		</li>
+		<li class="custom-price"">
+			<a class="price-ranger" 
+			href="{{route('searchproduct', [
+        'hienthi' => 'san-pham',
+        'text' => ($textSearch == null) ? 'tim-kiem':$textSearch,
+        'idCate' => ($idCate == null) ? 'tat-ca':$idCate,
+        'tinh-trang'=>$tinhtrang,
+        'gia'=>'50000000-2000000000',
+        'sapxep' => $sapxep
+      ])}}" 
+		       @if(isset($gia) && $gia == '50000000-2000000000')
+			style="color: red;"
+			@endif
+			>≥ 50.000.000đ</a>
+		</li>
 	</ul>
 
 	{{-- <div class="price-b2">

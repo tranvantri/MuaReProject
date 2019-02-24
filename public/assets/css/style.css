@@ -52,7 +52,7 @@ button {
 }*/
 
 /*****************HEADER********************************/
-/*CONTRACT HEADER: HÃƒÂ  NÃ¡Â»â„¢i - LiÃƒÂªn hÃ¡Â»â€¡ quÃ¡ÂºÂ£ng cÃƒÂ¡o - HÃ¡Â»â€” trÃ¡Â»Â£*/
+/*CONTRACT HEADER: HÃƒÆ’Ã‚  NÃƒÂ¡Ã‚Â»Ã¢â€žÂ¢i - LiÃƒÆ’Ã‚Âªn hÃƒÂ¡Ã‚Â»Ã¢â‚¬Â¡ quÃƒÂ¡Ã‚ÂºÃ‚Â£ng cÃƒÆ’Ã‚Â¡o - HÃƒÂ¡Ã‚Â»Ã¢â‚¬â€ trÃƒÂ¡Ã‚Â»Ã‚Â£*/
 #navigationbar #contract-header {
   background-color: rgb(44, 89, 135); /* #2c5987 */
   width: 100%;
@@ -73,7 +73,7 @@ button {
 .iconstyle {
   padding: 6px;
 }
-/*LiÃƒÂªn hÃ¡Â»â€¡ quÃ¡ÂºÂ£ng cÃƒÂ¡o*/
+/*LiÃƒÆ’Ã‚Âªn hÃƒÂ¡Ã‚Â»Ã¢â‚¬Â¡ quÃƒÂ¡Ã‚ÂºÃ‚Â£ng cÃƒÆ’Ã‚Â¡o*/
 .cheader-item2 {
   padding-left: 100px;
   padding-right: 40px;
@@ -82,12 +82,12 @@ button {
   vertical-align: bottom;
 }
 /*Adjusting: show dropdown's items on hover*/
-/*HÃ¡Â»â€” trÃ¡Â»Â£ on header*/
+/*HÃƒÂ¡Ã‚Â»Ã¢â‚¬â€ trÃƒÂ¡Ã‚Â»Ã‚Â£ on header*/
 .support-header {
   color: rgb(102, 102, 102);
   text-align: left;
 }
-/*header2 part of HÃ¡Â»â€” trÃ¡Â»Â£ on header*/
+/*header2 part of HÃƒÂ¡Ã‚Â»Ã¢â‚¬â€ trÃƒÂ¡Ã‚Â»Ã‚Â£ on header*/
 .header2-support-item {
   padding: 8px;
 }
@@ -140,9 +140,11 @@ button {
   background: none;
   font-size: 12px;
   width: 100%;
-  height: 100%;
+  height: 80%;
   text-align: left;
   padding: 6px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 #logo-header .btnsearch {
@@ -157,7 +159,7 @@ button {
 }
 
 /* MENU-HEADER */
-/*CONTRACT HEADER: HÃƒÂ  NÃ¡Â»â„¢i - LiÃƒÂªn hÃ¡Â»â€¡ quÃ¡ÂºÂ£ng cÃƒÂ¡o - HÃ¡Â»â€” trÃ¡Â»Â£*/
+/*CONTRACT HEADER: HÃƒÆ’Ã‚  NÃƒÂ¡Ã‚Â»Ã¢â€žÂ¢i - LiÃƒÆ’Ã‚Âªn hÃƒÂ¡Ã‚Â»Ã¢â‚¬Â¡ quÃƒÂ¡Ã‚ÂºÃ‚Â£ng cÃƒÆ’Ã‚Â¡o - HÃƒÂ¡Ã‚Â»Ã¢â‚¬â€ trÃƒÂ¡Ã‚Â»Ã‚Â£*/
 #navigationbar #menu-header {
   background-color: rgb(44, 89, 135); /* #2c5987 */
   width: 100%;
@@ -275,7 +277,124 @@ button {
   text-transform: uppercase;
 }
 
-/****************END HEADER*****************/
+/* Khi đã đăng nhập thay đổi chữ "Đăng ký" "Đăng nhập" trên header thành icon notifications/user/$ */
+/* === notifications icon on header === */
+.heading-notifications-L{
+    font-size: 12px;
+    font-weight: bold;
+    color: #403f3f;
+    line-height: 22px;
+    letter-spacing: 0.02em;
+    padding-bottom: 12px;
+}
+.body-notifications-L{
+    overflow-y: auto;
+    max-height: 240px;
+}
+.p-bodynotification-L{
+    font-family: "Open Sans", Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    padding: 0;
+    margin: 0;
+}
+.notification-time-L{
+    font-size: 11px;
+    color: #7b7777;
+    padding: 3px 0 0 0;
+    margin: 0;
+}
+.footer-notifications-L{
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 22px;
+    padding: 0 3px 22px 3px;
+}
+/* === scrollbar of this notifications */
+/* width */
+.body-notifications-L::-webkit-scrollbar {
+  width: 10px;
+}
+/* Track */
+.body-notifications-L::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+/* Handle */
+.body-notifications-L::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+/* Handle on hover */
+.body-notifications-L::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+.item-notifications-L{
+    cursor: pointer;
+}
+/* === END notifications icon on header === */
+
+/* === User icon on header === */
+.heading-profile-L{
+    padding: 8px;
+    font-size: 13px;
+}
+.profileheader-info-L {
+    float: left;
+    padding: 8px 8px 8px 16px;
+}
+.profileheader-info-L p{
+    line-height: 6px;
+}
+.body-profile-L{
+    padding: 8px 4px 4px 8px;
+    font-size: 13px;
+}
+.body-profile-L table tr td{
+    text-align: left;
+    line-height: 20px;
+}
+/* === END User icon on header === */
+
+/* === Money icon on header === */
+.body-yourcoin-L{
+    padding: 10px 10px 0px 10px;
+}
+.body-yourcoin-L btn{
+    transition: box-shadow 0.3s;
+    background: #ff6600;
+    padding: 6px 40px;
+    font-size: 14px;
+    border: 1px solid #ff6600;
+    color: #fff;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+.body-yourcoin-L btn:hover{
+    background: rgb(253, 128, 50);
+    border: 1px solid #fd8032;
+    box-shadow: 0 0 11px rgba(237, 99, 7,0.4);
+}
+.body-yourcoin-L p, .hover-p-yourcoin p{
+    font-size: 15px;
+    font-weight: 400;
+    padding: 0;
+    margin: 0;
+    line-height: 36px;
+    transition: box-shadow 0.3s;
+}
+.hover-p-yourcoin p:hover{
+    background: #ff7214;
+    box-shadow: 0 0 11px rgba(237, 99, 7,0.4);
+    margin-left: -21px;
+    margin-right: -21px;
+    margin-bottom: -8px;
+    padding: 4px 10px;
+}
+.hover-p-yourcoin p a:hover{
+    color: #fff;
+    text-decoration: none;
+}
+/* === END Money icon on header === */
+/* =========== END icon notifications/user/$ */
+/*****************************END HEADER*****************/
 
 /*************Section All category*****************/
 
@@ -875,7 +994,7 @@ h2.title-box {
   border-bottom: 1px solid #ccc;
   padding-bottom: 5px;
 }
-/*Trang TrÃ†Â°Ã¡Â»â€ºc - Trang sau - Tin up mÃ¡Â»â€ºi nhÃ¡ÂºÂ¥t*/
+/*Trang TrÃƒâ€ Ã‚Â°ÃƒÂ¡Ã‚Â»Ã¢â‚¬Âºc - Trang sau - Tin up mÃƒÂ¡Ã‚Â»Ã¢â‚¬Âºi nhÃƒÂ¡Ã‚ÂºÃ‚Â¥t*/
 .pagination-box {
   padding: 0;
   line-height: 0;
@@ -906,7 +1025,7 @@ h2.title-box {
   border: 1px solid #ccc;
 }
 /* TOP VIP */
-/* cÃƒÂ¡i cÃ¡Â»Â¥c TOP VIP gÃƒÂ³c trÃƒÂ¡i Ã„â€˜Ã¡Â»Â Ã„â€˜Ã¡Â»Â*/
+/* cÃƒÆ’Ã‚Â¡i cÃƒÂ¡Ã‚Â»Ã‚Â¥c TOP VIP gÃƒÆ’Ã‚Â³c trÃƒÆ’Ã‚Â¡i Ãƒâ€žÃ¢â‚¬ËœÃƒÂ¡Ã‚Â»Ã‚Â Ãƒâ€žÃ¢â‚¬ËœÃƒÂ¡Ã‚Â»Ã‚Â*/
 .row.post-items.border-items {
   margin-left: 0;
   margin-right: 0;
@@ -1042,7 +1161,7 @@ table .td-info .price .my-price {
   display: inline;
   line-height: 20px;
 }
-/* KHUNG SÃ¡ÂºÂ¢N PHÃ¡ÂºÂ¨M BÃƒÅ N DÃ†Â¯Ã¡Â»Å¡I KHUNG TOP VIP*/
+/* KHUNG SÃƒÂ¡Ã‚ÂºÃ‚Â¢N PHÃƒÂ¡Ã‚ÂºÃ‚Â¨M BÃƒÆ’Ã… N DÃƒâ€ Ã‚Â¯ÃƒÂ¡Ã‚Â»Ã…Â¡I KHUNG TOP VIP*/
 .img-rounded {
   border-radius: 6px;
 }
@@ -1107,7 +1226,7 @@ table .td-info .user-post .username .username-h4 a {
   vertical-align: middle;
 }
 .post-date-ad {
-  /*postdate cho mÃ¡ÂºÂ¥y phÃ¡ÂºÂ§n khung quÃ¡ÂºÂ£ng cÃƒÂ¡o TOP VIP....*/
+  /*postdate cho mÃƒÂ¡Ã‚ÂºÃ‚Â¥y phÃƒÂ¡Ã‚ÂºÃ‚Â§n khung quÃƒÂ¡Ã‚ÂºÃ‚Â£ng cÃƒÆ’Ã‚Â¡o TOP VIP....*/
   display: table-cell;
   vertical-align: bottom;
   padding-left: 25px;
@@ -1403,7 +1522,7 @@ table .td-info .user-post .username .username-h4 a {
 
 /*************************************TRANG MUA QUANG BAO************************************/
 
-/* COLLSLAP ĐẦU TIÊN Báo giá dịch vụ trên Muare*/
+/* COLLSLAP Äáº¦U TIÃŠN BÃ¡o giÃ¡ dá»‹ch vá»¥ trÃªn Muare*/
 .icon-ad-L {
   font-size: 18px;
   color: #ffa202;
@@ -1485,8 +1604,8 @@ table .td-info .user-post .username .username-h4 a {
   box-shadow: 2px 0px 0px 0px #ffff6d;
 }
 
-/* COLLSLAP THỨ 2 - Báo giá quảng cáo trên Muare*/
-/* canh giữa img */
+/* COLLSLAP THá»¨ 2 - BÃ¡o giÃ¡ quáº£ng cÃ¡o trÃªn Muare*/
+/* canh giá»¯a img */
 .center {
   display: block;
   margin-left: auto;
@@ -1522,7 +1641,7 @@ table .td-info .user-post .username .username-h4 a {
   margin-bottom: 5px;
   margin-top: -2px;
 }
-/* table báo giá chi tiết */
+/* table bÃ¡o giÃ¡ chi tiáº¿t */
 .baogiatable-L {
   width: 100%;
 }
@@ -1544,7 +1663,7 @@ table .td-info .user-post .username .username-h4 a {
   border-bottom: 0.8px solid #5d5d5d;
   box-shadow: 0px 1.5px 0px 0px #a2a2a2;
 }
-/* THong tin cua nhân viên tư vấn*/
+/* THong tin cua nhÃ¢n viÃªn tÆ° váº¥n*/
 .nvtuvan-frame-L {
   font-size: 13px;
   background: #ebf5ff;
@@ -1569,7 +1688,7 @@ table .td-info .user-post .username .username-h4 a {
   bottom: -7px;
   left: 25px;
 }
-/*hÃƒÂ¬nh Ã¡ÂºÂ£nh thu nhÃ¡Â»Â*/
+/*hÃƒÆ’Ã‚Â¬nh ÃƒÂ¡Ã‚ÂºÃ‚Â£nh thu nhÃƒÂ¡Ã‚Â»Ã‚Â*/
 .chip {
   display: inline-block;
   padding: 10px 0 10px 0;
@@ -1936,7 +2055,7 @@ table .td-info .user-post .username .username-h4 a {
 
 /* ------------------------END footer*/
 
-/* ------------------------------------ Trang chi tiÃ¡ÂºÂ¿t sÃ¡ÂºÂ£n phÃ¡ÂºÂ©m  ---------------------------  */
+/* ------------------------------------ Trang chi tiÃƒÂ¡Ã‚ÂºÃ‚Â¿t sÃƒÂ¡Ã‚ÂºÃ‚Â£n phÃƒÂ¡Ã‚ÂºÃ‚Â©m  ---------------------------  */
 .service-title-tomiot {
   line-height: 30px;
   border: 1px solid #ddd;
@@ -2290,7 +2409,7 @@ table .td-info .user-post .username .username-h4 a {
   color: #000;
   font-size: 12px;
 }
-/* Káº¿t thÃºc trang chi tiáº¿t sáº£n pháº©m */
+/* KÃ¡ÂºÂ¿t thÃƒÂºc trang chi tiÃ¡ÂºÂ¿t sÃ¡ÂºÂ£n phÃ¡ÂºÂ©m */
 
 /**************************TAT CA TIN DANG******************************/
 .large-title-2-Tr {
@@ -2853,7 +2972,7 @@ table .td-info .user-post .username .username-h4 a {
   margin-left: 13px;
   margin-bottom: 12px;
 }
-/*TIN ĐĂNG/SẢN PHẨM TAB*/
+/*TIN ÄÄ‚NG/Sáº¢N PHáº¨M TAB*/
 .tab-pane-L {
   /*background: #f0efef !important;
     padding: 24px 8px;
@@ -2897,6 +3016,13 @@ table .td-info .user-post .username .username-h4 a {
   font-size: 14px;
   font-family: Roboto;
   font-weight: bold;
+}
+.comment-L .comment-body-L .content-cmt-L {
+  font-size: 14px;
+  font-family: Roboto;
+  color: #939191;
+  padding: 0px;
+  margin: 0px;
 }
 .comment-L .comment-body-L .content-L {
   font-size: 14px;
@@ -2943,7 +3069,7 @@ table .td-info .user-post .username .username-h4 a {
 }
 
 .comment-L ul.comments-list {
-  border-left: 1px solid#999999;
+  border-left: 1px solid #c3c3c3; /*c3c3c3*/
   margin: 0px 0px 8px 50px !important;
 }
 .comment-L .input-reply {
@@ -3246,13 +3372,14 @@ output {
 /****************Hieu ung cua so chi tiet sp Nifty model window effect*/
 .md-modal {
             position: fixed;
-            top: 30%;
+            top: 45%;
             left: 50%;
-            width: 80%;
-            max-width: 860px;
-            min-width: 320px;
+    right: 5%;
+            width: auto; /*80%*/
+            max-width: 890px;
+            min-width: 330px;
             height: auto;
-            z-index: 2000;
+            z-index: 1100;
             visibility: hidden;
             -webkit-backface-visibility: hidden;
             -moz-backface-visibility: hidden;
@@ -3276,7 +3403,7 @@ output {
             left: 0;
             z-index: 1000;
             opacity: 0;
-            background: rgba(143,27,15,0.8);
+            background: rgba(59, 56, 56, 0.8);
             -webkit-transition: all 0.3s;
             -moz-transition: all 0.3s;
             transition: all 0.3s;
@@ -3286,14 +3413,17 @@ output {
             opacity: 1;
             visibility: visible;
         }
-
+/*Model - product view */
         #modal-productview {
             margin: 60px auto 20px auto;
-            width: 100%; /*hiá»ƒn thá»‹ 70% lÃ  cÃ¢n báº±ng khi thu nhá»�*/
+            width: 80%; /*hiá»ƒn thá»‹ 70% lÃ  cÃ¢n báº±ng khi thu nhá»�*/
+            height: 100%;
             padding: 10px;
             background: #fff;
             background-color: #fff;
             color: black;
+            overflow-y: auto;
+            
         }
           .img-zoom-container{
                 /*height: 400px;*/
@@ -3316,36 +3446,268 @@ output {
               /*set the size of the lens:*/
               width: 180px;
               height: 180px;
+              cursor: zoom-in;
             }
-
+            #myresult-div{
+                opacity: 1 !important;
+                z-index: 1101;
+            }
             .img-zoom-result {
+                opacity: 1 !important;
               border: 1px solid #d4d4d4;
               /*set the size of the result div:*/
               width: 400px;
               height: 400px;
             }
+            /* product - info */
+            #modal-productinfo-L{
+                position: absolute;
+              top: 0;
+              left: 0;
+                width: 96%;
+            }
+            #modal-productinfo-L .productinfo-content{
+                height: 200px;
+                overflow-y: scroll;
+            }
+          #modal-productinfo-L .productinfo-title {
+              font-weight: bold;
+              font-size: 18px;
+              color: #1b3896;
+              margin-bottom: 6px;
+          }
+          #modal-productinfo-L .productinfo-seller {
+              margin-bottom: 8px;
+              font-size: 13px;
+          }
+          #modal-productinfo-L .productinfo-price {
+              color: #fff;
+              font-size: 20px;
+              background: #ea2349;
+              padding: 4px 8px;
+              float: left;
+              border-radius: 4px;
+          }
+          #modal-productinfo-L .productinfo-order {
+              color: #fff;
+              font-size: 15px;
+              font-weight: bold;
+              background: #ffb823;
+              padding: 8px 12px;
+              float: right;
+              border-radius: 4px;
+          }
+          #modal-productinfo-L .productinfo-phone {
+              width: 98%;
+              background: #18b132;
+              border-radius: 30px;
+              text-align: center;
+              display: inline-block;
+          }
+          #modal-productinfo-L .productinfo-phone-text {
+              color: #fff;
+              font-size: 19px;
+              font-weight: bold;
+              text-align: center;
+            vertical-align: middle;
+              margin-top: 2.7%;
+              margin-right: 5%;
+              margin-bottom: 0px;
+          }
+          #modal-productinfo-L .productinfo-attention {
+              font-size: 15px;
+              font-weight: bold;
+              color: #656262;
+              margin: 8px 0 4px 0;
+          }
+          #modal-productinfo-L .productinfo-atchild {
+              font-size: 13px;
+              color: #676363;
+              font-style: italic;
+              margin-left: 16px;
+            list-style-type: circle;
+          }
+/* END Modal - product view */
+
+/*Model - order view */
+.md-modal2 {
+    top: 8%;
+    bottom: 6%;
+    left: 2%;
+    right: 4%;
+     z-index: 1200;
+            /*position: fixed;
+            top: 28%;
+            left: 50%;
+            width: 80%;
+            max-width: 790px !important;
+            min-width: 320px;
+            visibility: hidden;*/
+           
+            /*-webkit-backface-visibility: hidden;
+            -moz-backface-visibility: hidden;
+            backface-visibility: hidden;
+            -webkit-transform: translateX(-50%) translateY(-50%);
+            -moz-transform: translateX(-50%) translateY(-50%);
+            -ms-transform: translateX(-50%) translateY(-50%);
+            transform: translateX(-50%) translateY(-50%);*/
+}
+        /*.md-overlay2 {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            visibility: hidden;
+            top: 0;
+            left: 0;
+            z-index: 1200;
+            opacity: 0;
+            background: rgba(59, 56, 56, 0.5);
+            -webkit-transition: all 0.1s;
+            -moz-transition: all 0.1s;
+            transition: all 0.1s;
+        }
+
+        .md-show ~ .md-overlay2 {
+            opacity: 1;
+            visibility: visible;
+        }*/
+/*.modal:nth-of-type(even) {
+    z-index: 1201 !important;
+}
+.modal-backdrop.show:nth-of-type(even) {
+    z-index: 1200 !important;
+}*/
+.modal-backdrop.show {
+    opacity: 0.5 !important;
+    position: fixed;
+    z-index: 1199 !important;
+}
+#modal-orderview {
+    height: auto;
+    width: 100%;
+    overflow-y:auto;
+    /*margin: 0 !important;
+    padding: 0 !important;*/
+           /* margin: 60px auto 20px auto;
+            
+            padding: 10px;
+            background: #fff;
+            background-color: #fff;
+            color: black;
+            overflow-y: auto;
+            -webkit-transition: all 0.1s;
+            -moz-transition: all 0.1s;
+            transition: all 0.1s;*/
+}
+    /* step1 */
+#modal-orderview .product-in-order-L{
+    padding: 0 8px;
+}
+#modal-orderview .price-order-L {
+  font-size: 13px;
+  padding: 8px 0 8px 0;
+}
+#modal-orderview .input-numbsproduct{
+    border: 1px solid #d1cece;
+    width: 32px;
+    padding: 2px;
+    font-size: 14px;
+    text-align: center;
+}
+#modal-orderview h5{
+    display: inline-block;
+    float: right;
+    padding-right: 0;
+    color: #333333;
+    margin: 8px 10px 0 10px;
+}
+#modal-orderview .order-btn1{
+    float: left;
+    font-size: 13.5px;
+    font-weight: bold;
+    border-radius: 0;
+    color: #333333;
+    padding: 6px 16px;
+}
+#modal-orderview .order-btn2{
+    float: right;
+    font-size: 13.5px;
+    font-weight: bold;
+    border-radius: 0;
+    color: #fff;
+    background: #ff8000;
+    padding: 6px 16px;
+}
+    /* step 2*/
+#modal-orderview #step2 table tr td{
+    padding: 6px;
+}
+#modal-orderview .input-step2{
+    border: 1px solid #a0a0a0;
+    padding: 3px 8px;
+    border-radius: 2px;
+    float: left;
+}
+
+/*step 3*/
+#modal-orderview #step3 p {
+    padding: 0;margin: 0;
+    font-size: 13.5px;
+    line-height: 1.6em;
+    letter-spacing: 0.01em;
+}
+#modal-orderview #step3 b{
+    font-weight: bold;
+}
+#modal-orderview #step3 table tr td {
+    font-size: 13.5px;
+    line-height: 1.6em;
+    text-align: left;
+}
+#modal-orderview #step3 #ordertable-L th,td{
+    text-align: center;
+    padding: 4px;
+}
+#modal-orderview #step3 #ordertable-L td{
+    text-align: center;
+    padding: 4px;
+}
+/* END Modal - order view */
+
+/* Modal - confirm order */
+#modal-confirmorder{
+    z-index: 1300;
+}
+#modal-confirmorder .btn-ok{
+    border-radius: 20px;
+    font-size: 18px;
+    padding: 10px 36px;
+    color: white;
+    background: #5eaaad;
+}
+/* END Modal - confirm order*/
 
 /* Effect 1: Fade in and scale up */
 .md-effect-1 .md-content {
-	-webkit-transform: scale(0.7);
-	-moz-transform: scale(0.7);
-	-ms-transform: scale(0.7);
-	transform: scale(0.7);
-	opacity: 0;
-	-webkit-transition: all 0.3s;
-	-moz-transition: all 0.3s;
-	transition: all 0.3s;
+  -webkit-transform: scale(0.7);
+  -moz-transform: scale(0.7);
+  -ms-transform: scale(0.7);
+  transform: scale(0.7);
+  opacity: 0;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
 }
 
 .md-show.md-effect-1 .md-content {
-	-webkit-transform: scale(1);
-	-moz-transform: scale(1);
-	-ms-transform: scale(1);
-	transform: scale(1);
-	opacity: 1;
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  opacity: 1;
 }
 
-
+/* TRANG NÀO ĐÂY ???? */
 .textarea_tomiot{
   line-height: 1.5; 
   border-radius: 5px; 

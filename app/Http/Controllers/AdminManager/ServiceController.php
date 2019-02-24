@@ -1,34 +1,38 @@
 <?php
 namespace App\Http\Controllers\AdminManager;
 use Illuminate\Http\Request;
-use App\TinDang;
+use App\Services;
 use App\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\QueryException;
 use App\Http\Controllers\Controller;
-class TinDangController extends Controller
+class ServiceController extends Controller
 {
     public function getList()
     {
-        $tindang = DB::table('tindang')
-            ->join('categories', 'tindang.idCate','=','categories.id')          
-            ->join('users','tindang.idUser','=','Users.id')
-            ->select('tindang.*', 'users.id as idchushop', 'categories.name as namecate')->get();
-        return view('admin.tindang.list',compact('tindang'));
+        $services = DB::table('services')
+            ->join('categories', 'services.idCate','=','categories.id')          
+            ->join('users','services.idUser','=','Users.id')
+            ->select('services.*', 'users.id as idchushop', 'categories.name as namecate')->get();
+        return view('admin.service.list',compact('services'));
     }
     
     public function getEnable($id, $option)
     {
-        $tindang = TinDang::find($id);       
+        $service = Services::find($id);     
+        $thongbao='';  
         if($option == 0){
-            $tindang->adminCheck = 0;  //chua duyet            
+            $service->adminCheck = 0;  //chua duyet   
+            $thongbao="chưa duyệt";
         }elseif($option == 1){
-            $tindang->adminCheck = 1;  //da duyet
+            $service->adminCheck = 1;  //da duyet
+            $thongbao="đã duyệt";            
         }else{
-            $tindang->adminCheck = 2;//khoas
+            $service->adminCheck = 2;//khoas
+            $thongbao="khóa";            
         }
-        $tindang->save();    
-        return redirect('admin/tindang/list');        
+        $service->save();    
+        return redirect('admin/service/list')->with("thongbao", "Đã chỉnh sửa trạng thái của ".$service->name." thành ".$thongbao);        
     }
 
     // public function getInforUser($id){
@@ -42,14 +46,14 @@ class TinDangController extends Controller
     //     ';
     // }
 
-    public function getInforTinDang($id){
-        $tindang = DB::table('tindang')
-        ->join('categories', 'tindang.idCate','=','categories.id')
-        ->join('places', 'tindang.idPlace','=','places.id')
-        ->where('tindang.id', $id)
-        ->select('tindang.*', 'categories.name as namecate', 'places.name as nameplace')->get();
+    public function getInforService($id){
+        $service = DB::table('services')
+        ->join('categories', 'services.idCate','=','categories.id')
+        ->join('places', 'services.idPlace','=','places.id')
+        ->where('services.id', $id)
+        ->select('services.*', 'categories.name as namecate', 'places.name as nameplace')->get();
 
-        foreach($tindang as $child){
+        foreach($service as $child){
             $trangthai = '';
             $tinhtrang = '';
             if($child->status == 1){
@@ -57,13 +61,13 @@ class TinDangController extends Controller
             }else{
                 $trangthai = 'Ngừng hoạt động';
             }
-            if($child->statusTinDang == 1){
+            if($child->statusService == 1){
                 $tinhtrang = 'Mới';
-            }elseif($child->statusTinDang == 2){
+            }elseif($child->statusService == 2){
                  $tinhtrang = '90%';
-            }elseif($child->statusTinDang == 3){
+            }elseif($child->statusService == 3){
                  $tinhtrang = '80%';
-            }elseif($child->statusTinDang == 4){
+            }elseif($child->statusService == 4){
                  $tinhtrang = 'Cũ';
             }
             

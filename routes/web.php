@@ -40,6 +40,19 @@ Route::group(['namespace' => 'AdminManager'], function() {
            
         });
 
+        /* Dich vu*/
+        Route::group(['prefix' => 'service'], function() {
+            Route::get('list', 'ServiceController@getList');
+            Route::get('add', 'ServiceController@getAdd');
+            Route::post('add', 'ServiceController@postAdd');
+            Route::get('edit/{id}', 'ServiceController@getEdit');
+            Route::post('edit/{id}', 'ServiceController@postEdit');
+            Route::get('enable/{id}/{option}', 'ServiceController@getEnable');
+            Route::get('view-info-user/{id}', 'ProductController@getInforUser');
+            Route::get('view-info-service/{id}', 'ServiceController@getInforService');
+           
+        });
+
 
 
 
@@ -131,8 +144,10 @@ Route::group(['namespace' => 'UserController' , 'middleware'=>'userCheckLogout']
     Route::get('/danh-muc/{name}/{id}', 'CategoryDetail@getDanhMuc');
 
     Route::get('/danh-muc/{nameCate}/{idCate}/{hienthi}/{tinhtrang}/{gia}/{sapxep}/uy-tin-chat-luong', 'CategoryDetail@getCustomCategory')->name('danhmuc');
-
+    //search
     Route::get('/search', 'SearchController@getIndex');
+    Route::get('/search/{hienthi}/{text}/{idCate}/{sapxep}', 'SearchController@getSearchPost')->name('searchtindang');
+    Route::get('/search/{hienthi}/{text}/{idCate}/{tinhtrang}/{gia}/{sapxep}', 'SearchController@getSearchProduct')->name('searchproduct');
 
     /*bỏ*/
     // Route::get('/chi-tiet-san-pham/{id}', ['as'=>'chitietsanpham','uses'=>'ProductController@getProduct']);

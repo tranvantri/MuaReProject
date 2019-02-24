@@ -30,7 +30,29 @@
   height: 430px;
   display: inline-block;
 }
-
+.img-zoom-lens-pro-v {
+  position: absolute;
+  /*set the size of the lens:*/
+  width: 150px;
+  height: 200px;
+  border: 1px solid #555;
+  cursor: crosshair;
+}
+#vinh123{
+  position: absolute;
+}
+.img-zoom-result-v {
+  border: 1px solid #d4d4d4;
+  /*set the size of the result div:*/
+  position: absolute; 
+  overflow: hidden; 
+  opacity: 1; 
+  z-index: 9999; 
+  width: 430px; 
+  height: 430px; 
+  top: 0px; 
+  left: 450px;
+}
 .scroll-small-img-v {
   position: relative;
   width: 100%;
@@ -106,7 +128,9 @@
 .view-caring-v {
   text-align: center;
   padding-top: 10px;
+  display: flex;
 }
+
 .view-saved-v {
   padding: 0 5px;
   border: 1px solid #4166b3;
@@ -241,6 +265,7 @@
   padding-top: 15px;
   background-color: #f4f7f8;
   margin-bottom: 15px;
+  width: 300px;
 }
 
 .row-no-padding-v.box-right-v .seller-details-v .basic-info-v {
