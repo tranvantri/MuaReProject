@@ -41,6 +41,15 @@
                 
                 <!-- /.nav-second-level -->
             </li>
+            <li>
+                <a href="admin/service/list"><i class="fa fa-cube fa-fw"></i>Duyệt dịch vụ <span class="
+                notifi">{{$dichvuchuaduyet}}</span><span class="fa arrow"></span></a>
+                
+                <!-- /.nav-second-level -->
+            </li>
+
+
+
             
 
             <li>
