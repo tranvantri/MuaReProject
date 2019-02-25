@@ -30,7 +30,7 @@
           <div class="show">
             <p class="title-blur">hiển thị theo</p>
             @include('user.chitietdanhmuc.sort-view')
-          </ul>
+          
         </div> 
         <div class="filter-stop"></div>   
         <div class="find" id="filter-fix" style="position: unset;width: unset;top: unset;">
@@ -79,8 +79,6 @@
         }
           
       </script>
-        
-      
       
      <div class="md-modal md-effect-1" id="modal-productview">
        <div class="row">
@@ -604,7 +602,10 @@
       <!-- END Confirm order modal -->
       
     @if(isset($hienthi) && $hienthi == 'san-pham') {{-- xet loai hien thi --}}
-      <div id="products-L" class="col-lg-10 col-md-10"><!-- nội dung các bài đăng -->             
+      <div id="products-L" class="col-lg-10 col-md-10"><!-- nội dung các bài đăng -->   
+          <div id="app">
+            <example-component></example-component>
+        </div>
                     <div id="view-post" class="view-post">
                         <div class="title-category">
                            <h1 class="title-box">
@@ -1081,7 +1082,8 @@ span.price-int {
               </div> {{-- vung tim kiem --}}
               @endif  {{-- end xet loai hien thi --}}
 
-            </div>
+      </div>
+    </div>
         </section>
 
         @endsection
