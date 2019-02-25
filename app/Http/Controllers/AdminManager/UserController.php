@@ -61,16 +61,17 @@ class UserController extends Controller
     }
     public function getEnable($id)
     {
-        $user = User::find($id);       
+        $user = User::find($id);   
+        $thongbao = '';    
         if($user->status == 1){
-            $user->status = 0;  
-            $user->save();    
-            return redirect('admin/user/list')->with('thongbao','Đã tắt hoạt động người dùng '. $user->name);
+            $user->status = 0; 
+            $thongbao = 'tắt'; 
+            
         }else{
             $user->status = 1;  
-            $user->save();
-            return redirect('admin/user/list')->with('thongbao','Đã bật hoạt động người dùng '. $user->name);
+            $thongbao='bật';
         }
-        
+        $user->save();    
+        return redirect('admin/user/list')->with('thongbao','Đã '.$thongbao.' hoạt động người dùng '. $user->name);        
     }
 }
