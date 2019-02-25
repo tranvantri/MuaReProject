@@ -40,6 +40,19 @@ Route::group(['namespace' => 'AdminManager'], function() {
            
         });
 
+        /* Dich vu*/
+        Route::group(['prefix' => 'service'], function() {
+            Route::get('list', 'ServiceController@getList');
+            Route::get('add', 'ServiceController@getAdd');
+            Route::post('add', 'ServiceController@postAdd');
+            Route::get('edit/{id}', 'ServiceController@getEdit');
+            Route::post('edit/{id}', 'ServiceController@postEdit');
+            Route::get('enable/{id}/{option}', 'ServiceController@getEnable');
+            Route::get('view-info-user/{id}', 'ProductController@getInforUser');
+            Route::get('view-info-service/{id}', 'ServiceController@getInforService');
+           
+        });
+
 
 
 
@@ -97,8 +110,6 @@ Route::group(['namespace' => 'AdminManager'], function() {
 
 });
 
-
-
 Route::group(['namespace' => 'AdminAuth'], function() {
 
     Route::group(['prefix' => 'authadmin','middleware'=>'adminCheckLogin'], function()
@@ -143,9 +154,8 @@ Route::group(['namespace' => 'UserController' , 'middleware'=>'userCheckLogout']
 
     Route::get('/chi-tiet-tin-dang/{id}',['as'=>'chitiettindang','uses'=>'ServiceController@getTinDang']);
 
-    Route::get('/dang-tin-dich-vu', function () {
-        return view('user.dangtindichvu');
-    });
+    Route::get('/dang-tin-dich-vu',['as'=>'getdangtindichvu','uses'=>'PostController@getUploadServices']);
+    Route::post('/dang-tin-dich-vu',['as'=>'postdangtindichvu','uses'=>'PostController@postUploadServices']);
 
 
     Route::get('/dang-tin-san-pham',['as'=>'getdangtinsanpham','uses'=>'PostController@postProduct']);
@@ -167,8 +177,6 @@ Route::group(['namespace' => 'UserController' , 'middleware'=>'userCheckLogout']
     Route::get('/tat-ca-tin-dang',['as'=>'tatcatindang','uses'=>'ServiceController@viewAllServices']); // 
 
     Route::get('/user-quan-ly-kho-hang',['as'=>'userquanlykhohang','uses'=>'UserPageController@getUserQuanLyKhoHang']);
-
-    
 
     Route::get('/mua-quang-cao', function () {
         return view('user.muaquangcao');
