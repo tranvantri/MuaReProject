@@ -95,9 +95,53 @@
                         <div class="row-no-padding" style="padding: 0;">
                             <div class="product-list-L">
                                 @foreach($products as $childPro)
-                                <div >
-                                    {{-- Làm giúp t cái giao diên --}}
-                                    sđá
+                                <div class="col-lg-4 col-md-4 col-sm-4 item-L" style="float: left;">
+                                    <div> <!-- SẢN PHẨM THỨ ? -->
+                                        <div class="avatar-sp-L">
+                                            <a id="avatar-sp-L2" title="name" data-title="Load sản phẩm" data-size="l" data-id="popupItem" class="md-trigger img-rounded OverlayPopup" data-modal="modal-productview">
+                                            <img class="lazy-image" src="anh" alt="name" width="180px" height="180px" style="display: inline;">
+                                            </a>
+                                            <!--<script src="/public/assets/js/classie.js"></script>
+                                            <script src="/public/assets/js/modalEffects.js"></script>-->
+                                        </div>
+
+                                        <div class="title-sp-L">
+                                            <h2 class="item-title-h2">
+                                                <a href="#" title="name" data-title="Load sản phẩm" data-size="l" data-id="popupItem" class="img-rounded OverlayPopup" data-item="224062">
+                                                    name
+                                                </a>
+                                            </h2>
+                                        </div>
+                                        <div class="desc-sp-L">
+                                            <h3 class="item-desc-h3">
+                                                mota
+                                            </h3>
+                                        </div>
+                                        <div class="user-post-L">
+                                            <div class="username-sp-L">bán bởi <span class="name">tenchushop</span>
+                                                <div class="box-arrow-L">
+                                                    <div class="user-info-L">
+                                                        <div class="user-name-L">
+                                                            <img class="lazy-image" src="https://static8.muarecdn.com/zoom,80/30_30/muare/avatars/l/29/29055_1475477187.jpg?1475477187" title="GioKayVaLa" width="40px" height="40px">
+                                                            <span>tenchushop</span>
+                                                        </div>
+                                                        <div class="user-shop-L">
+                                                            <ul>
+                                                                <li><span>Cửa hàng: </span><a href="https://muare.vn/shop/GioKayVaLa/29055">tenchushop</a></li>
+
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="post-date-L"></div>
+                                        </div>
+                                        <div class="price-sp-L">
+                                            <div class="product-price-L">  đ </div>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    
                                 </div>
                                 @endforeach
                             </div>
