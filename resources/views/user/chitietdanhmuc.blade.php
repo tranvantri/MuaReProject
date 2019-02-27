@@ -604,7 +604,7 @@
     @if(isset($hienthi) && $hienthi == 'san-pham') {{-- xet loai hien thi --}}
       <div id="products-L" class="col-lg-10 col-md-10"><!-- nội dung các bài đăng -->   
           <div id="app">
-            <example-component :key="somevalueunderyourcontrol" @click="updateComponent"></example-component>
+            <example-component></example-component>
         </div>
                     <div id="view-post" class="view-post">
                         <div class="title-category">
