@@ -608,6 +608,8 @@
           <div id="app">
               <example-component></example-component>
           </div>
+          <script src="./js/app.js"></script>
+
                     <div id="view-post" class="view-post">
                         <div class="title-category">
                            <h1 class="title-box">
