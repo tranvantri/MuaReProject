@@ -297,6 +297,10 @@
                                             <div class="description">
                                                 <span>Gian hàng đang cập nhật...</span>
                                             </div>
+                                            <div id="app">
+                                                <example-component></example-component>
+                                                <modal-shoppingcart></modal-shoppingcart>
+                                            </div>
                                             <div class="static">
                                                 <div class="item-s">
                                                     <div class="icon-s">
