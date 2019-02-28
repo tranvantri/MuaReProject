@@ -6,7 +6,7 @@
 <script src="assets/js/myJS.js"></script>
 <script src="assets/js/classie.js"></script>
 <script src="assets/js/modalEffects.js"></script>
-<script src="./js/app.js"></script>
+
 
 <!--
 <script src="assets/js/modernizr.custom.js"></script>

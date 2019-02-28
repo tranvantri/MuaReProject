@@ -5,7 +5,9 @@
       class="btn btn-primary"
       data-toggle="modal"
       data-target="#exampleModal"
-    >Launch demo modal</button>
+    >
+      Launch demo modal
+    </button>
 
     <!-- Modal -->
     <div
@@ -20,15 +22,36 @@
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body">
-            <cart-info></cart-info>
+            <div
+              class="scroll-pane"
+              style="width: 100%;max-height: 300px;overflow: auto;"
+            >
+              <cart-info></cart-info>
+              <cart-info></cart-info>
+              <cart-info></cart-info>
+              <cart-info></cart-info>
+              <cart-info></cart-info>
+              <cart-info></cart-info>
+            </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
             <button type="button" class="btn btn-primary">Save changes</button>
           </div>
         </div>
@@ -38,9 +61,9 @@
 </template>
 
 <script>
-export default {
-  mounted() {
-    console.log("Component mounted.");
-  }
-};
+  export default {
+    mounted() {
+      console.log("Component mounted.");
+    }
+  };
 </script>
