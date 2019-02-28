@@ -32,7 +32,7 @@
             </button>
           </div>
           <div class="modal-body">
-            <div
+            <!--<div
               class="scroll-pane"
               style="width: 100%;max-height: 300px;overflow: auto;"
             >
@@ -42,7 +42,7 @@
               <cart-info></cart-info>
               <cart-info></cart-info>
               <cart-info></cart-info>
-            </div>
+            </div>-->
           </div>
           <div class="modal-footer">
             <button

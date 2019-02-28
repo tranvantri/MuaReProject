@@ -5,7 +5,7 @@
 </template>
 
 <script>
-    vm.$forceUpdate();
+    //vm.$forceUpdate();
     export default {
         mounted() {
             console.log('Component mounted.')

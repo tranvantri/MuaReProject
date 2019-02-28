@@ -15,9 +15,9 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
-Vue.component('modal-shoppingcart', require('./components/modal-shoppingcart.vue'));
-Vue.component('cart-info', require('./components/cart-info.vue'));
+Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('modal-shoppingcart', require('./components/modal-shoppingcart.vue').default);
+Vue.component('cart-info', require('./components/cart-info.vue').default);
 const app = new Vue({
     el: '#app'
 });
