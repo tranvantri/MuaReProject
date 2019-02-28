@@ -1,5 +1,4 @@
 <template>
-  <p>XIn chao 123</p>
   <div class="flex-container" style="display:flex;padding: 10px;border-bottom: 1px solid #dcdcdc;">
     <div
       style="flex-basis: 100px; border: 1px solid #e1e1e1; text-align: center;"
