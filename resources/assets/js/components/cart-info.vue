@@ -1,5 +1,5 @@
 <template>
-  <p>XIn chao</p>
+  <p>XIn chao 123</p>
 </template>
 
 <script>
