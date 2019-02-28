@@ -1,3 +1,4 @@
+
 .main-container {
   background-color: #fff;
   min-height: 400px;
@@ -462,4 +463,27 @@
   overflow: hidden;
   text-indent: -9999px;
   text-align: left;
+}
+/* Modal login */
+.modal-content-v{
+  background-color: transparent;
+  border: none;
+}
+.login-group{
+  background-color: white;
+  opacity: 0.9;
+}
+.close-1 {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #fff;
+  position: absolute;
+  opacity: 1;
+  z-index: 9999;
+  top: 0px;
+  right: -10px;
+}
+.close-login-v{
+  float: right;
 }

@@ -604,12 +604,12 @@
       <!-- END Confirm order modal -->
       
     @if(isset($hienthi) && $hienthi == 'san-pham') {{-- xet loai hien thi --}}
-      <div id="products-L" class="col-lg-10 col-md-10"><!-- nội dung các bài đăng -->   
+
+      <div id="products-L" class="col-lg-10 col-md-10"><!-- nội dung các bài đăng -->     
           <div id="app">
-              <example-component></example-component>
+              <modal-shoppingcart></modal-shoppingcart>
           </div>
           <script src="./js/app.js"></script>
-
                     <div id="view-post" class="view-post">
                         <div class="title-category">
                            <h1 class="title-box">
