@@ -69,8 +69,8 @@ class TinDangController extends Controller
             
 
             echo '
-                <div><label>Mã: </label><span> '.$child->id.'</span></div>                
-                <div><label>Tiêu đề: </label><span> '.$child->name.'</span></div>                
+                <div><label>Mã sản phẩm: </label><span> '.$child->id.'</span></div>                
+                <div><label>Tên sản phẩm: </label><span> '.$child->name.'</span></div>                
                 <div><label>Giá: </label><span> '.number_format($child->price,0).'đ</span></div>                
                 <div><label>Danh mục: </label><span> '.$child->namecate.'</span></div>                
                 <div><label>Trạng thái: </label><span> '.$trangthai.'</span></div>                

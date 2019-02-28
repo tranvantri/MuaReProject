@@ -118,17 +118,17 @@ $(document).ready(function() {
       responsive: {
         0: {
           items: 2,
-          nav: false,
+          nav: true,
           loop: true
         },
         600: {
           items: 3,
-          nav: false,
+          nav: true,
           loop: true
         },
         1000: {
           items: 4,
-          nav: false,
+          nav: true,
           loop: true
         }
       }

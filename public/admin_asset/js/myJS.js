@@ -811,37 +811,6 @@ $(document).ready(function() {
     	});        
 	});
 
-	//ajax lấy info dich vu
-	$(document).on('click', "button.view-info-service", function() {
-	    var idService = $(this).attr('data');
-	    var inforService = $('#info-service');
-	    var loadding = $('#loadding2');
-	    var error = $('#error2');
-	    inforService.hide();
-	    loadding.show();
-	    error.hide();
-	    
-	    $.ajax({
-	    	type: "get",
-	    	url: 'admin/service/view-info-service/'+ idService, 
-	    	success: function(data){
-	            inforService.html(data);      
-	            setTimeout(function() {
-				    inforService.show();
-				    loadding.hide();
-				}, 800);	            
-	            
-        	},
-        	error: function() {
-        		setTimeout(function() {
-	            	loadding.hide();
-		        	error.show();
-				}, 800);
-        		
-		    },
-    	});        
-	});
-
 
 
 });

@@ -4,7 +4,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Tin đăng
+                <h1 class="page-header">Dịch vụ
                     <small>Danh sách</small>
                     {{-- <small><a href="admin/product/add" class="btn btn-success btn-them"><i class="fa fa-plus"></i> Thêm sản phẩm</a></small> --}}
                 </h1>
@@ -20,8 +20,8 @@
             <table class="table table-striped table-bordered table-hover table-list" id="dataTables-example">
                 <thead>
                     <tr align="center" style="font-size: 12px">
-                        <th>Mã</th>
-                        <th>Tiêu đề</th>
+                        <th>MãDV</th>
+                        <th>TênDV</th>
                         <th>Ảnh mẫu</th>
                         <th>Danh mục</th>        
                         <th>Trạng thái</th>                                        

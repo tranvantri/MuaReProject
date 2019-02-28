@@ -1,13 +1,12 @@
 @extends('user.layouts.index')
 @section('title')
-    <title>Đăng tin dịch vụ</title>
+<title>Đăng tin dịch vụ</title>
 @endsection
 @section('content')
 	 <section class="content mt-5 mb-5">
 
         <div class="container">
-            <form action="dang-tin-dich-vu" class="post-form-Tr" enctype="multipart/form-data" method="post"  accept-charset="UTF-8">
-                <input name="_token" type="hidden" value="{{ csrf_token() }}"/>
+            <form action="" class="post-form-Tr" enctype="multipart/form-data" method="post">
                 <div class="row">
                     <div class="post-attr-Tr">
                         <div class="title-name-box-Tr">
@@ -19,7 +18,7 @@
                             <div class="row-attr-Tr row">
                                 <label class="col-md-2">Tiêu đề</label>
                                 <div class="col-md-10">
-                                    <input class="form-control" type="text" id="postTitle" name="postTitle" maxlength="100" placeholder="Nhập tiêu đề tin đăng dịch vụ vào đây (tối đa 100 ký tự)">
+                                    <input class="form-control" type="text" id="postTitle" name="postTitle" value="" maxlength="100" placeholder="Nhập tiêu đề tin đăng vào đây (tối đa 100 ký tự)">
                                     
                                 </div>                                                
                             </div>
@@ -30,7 +29,7 @@
                             <div class="row-attr-Tr row">
                                 <label class="col-md-2">Nội dung</label>
                                 <div class="col-md-10">
-                                    <textarea class="form-control" placeholder="Nhập nội dung tin đăng dịch vụ ( chú ý tối đa 2000  ký tự )" name="postDescription" rows="10" id="postDescription"></textarea>
+                                    <textarea class="form-control" placeholder="Nhập nội dung tin đăng ( chú ý tối đa 2000  ký tự )" name="postDescription" rows="10" id="postDescription"></textarea>
                                    
                                 </div>    
                             </div>                                                                        
@@ -51,15 +50,18 @@
                                 </label>
                                 <div class="forum-thread-infor-Tr form-horizontal col-md-8">
                                     <select id="chon-danh-muc-multi-Tr" name="cateIdPost" class="form-control select-thread-infor-Tr select2-hidden-accessible">
-                                        @foreach($cateParents as $childParent)
-                                        <optgroup label="{{$childParent->name}}">
-                                            @foreach($cateChilds as $child)
-                                                @if($childParent->id == $child->idParent)
-                                               <option value="{{$child->id}}">{{$child->name}}</option>
-                                                @endif
-                                            @endforeach
+                                        <optgroup label="Languages">
+                                                <option value="cp">C++</option>
+                                               <option value="cs">C#</option>
+                                               <option value="oc">Object C</option>
+                                               <option value="c">C</option>
                                         </optgroup>
-                                        @endforeach
+                                        <optgroup label="Scripts">
+                                                <option value="js">JavaScript</option>
+                                                <option value="php">PHP</option>
+                                                <option value="asp">ASP</option>
+                                                <option value="jsp">JSP</option>
+                                        </optgroup>
                                     </select>                                
                                 </div>
 
@@ -67,10 +69,11 @@
                             <div class="row-attr-Tr row">
                                 <label class="col-md-4">Tại khu vực:</label>
                                 <div class="col-md-4">
-                                    <select id="location-post-Tr" name="location_post" class="form-control">
-                                        @foreach($places as $e)
-                                        <option value="{{$e->id}}">{{$e->name}}</option>
-                                        @endforeach
+                                    <select id="location-post-Tr" name="location-post" class="form-control">
+                                        <option value="1">Hà Nội</option>
+                                        <option value="2">Hải Phòng</option>
+                                        <option value="3">Đà Nẵng</option>
+                                        <option value="4">TP.HCM</option>
                                     </select>
                                     
                                 </div>
@@ -113,28 +116,28 @@
                             <div class="row-attr-Tr row">
                                 <label class="col-md-3">Tên của tôi là:</label>
                                 <div class="col-md-9">
-                                    <input class="form-control" type="text" id="" name="nameUser" value="" maxlength="100" placeholder="Họ và tên" required />
+                                    <input class="form-control" type="text" id="" name="" value="" maxlength="100" placeholder="Họ và tên">
                                     
                                 </div>                                                
                             </div>
                             <div class="row-attr-Tr row">
                                 <label class="col-md-3">Số điện thoại của tôi là:</label>
                                 <div class="col-md-9">
-                                    <input class="form-control" type="text" id="" name="phoneUser" value="" maxlength="15" placeholder="Số điện thoại liên hệ" required>
+                                    <input class="form-control" type="text" id="" name="" value="" maxlength="100" placeholder="Số điện thoại liên hệ">
                                     
                                 </div>                                                
                             </div>
                             <div class="row-attr-Tr row">
                                 <label class="col-md-3">Email của tôi là:</label>
                                 <div class="col-md-9">
-                                    <input class="form-control" type="email" id="" name="emailUser" value="" maxlength="100" placeholder="Email liên hệ" required />
+                                    <input class="form-control" type="text" id="" name="" value="" maxlength="100" placeholder="Email liên hệ">
                                     
                                 </div>                                                
                             </div>
                             <div class="row-attr-Tr row">
                                 <label class="col-md-3">Bạn có thể đến xem hàng tại</label>
                                 <div class="col-md-9">
-                                    <input class="form-control" type="text" id="postTitle" name="addressUser" maxlength="100" placeholder="Địa chỉ cửa hàng" required />                                    
+                                    <input class="form-control" type="text" id="postTitle" name="postTitle" value="" maxlength="100" placeholder="Đại chỉ cửa hàng/ shop">                                    
                                 </div>                                                
                             </div>
                         </div>                                       
@@ -157,8 +160,7 @@
                     </div>
                 </div>
                 <div class="postSubmit-Tr row">
-                   
-                    <button class="btn btn-warning btn-otp-Tr">Đăng tin</button>
+                    <a class="btn btn-warning btn-otp-Tr"> Đăng tin</a>
                 </div>
 
             </form>
