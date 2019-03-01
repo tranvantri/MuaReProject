@@ -1,5 +1,5 @@
 <template>
-  <div class="flex-container" style="display:flex;padding: 10px;border-bottom: 1px solid #dcdcdc;" >
+  <div class="flex-container" style="display:flex;padding: 10px;border-bottom: 1px solid #dcdcdc;">
     <div style="flex-basis: 100px; border: 1px solid #e1e1e1; text-align: center;">
       <img
         class="mrf-img-view"
@@ -14,15 +14,16 @@
         <div style="flex-grow:3">
           Số lượng: &nbsp;
           <input
-            type="text"
-            style="width: 30px;border: 0.5px solid grey;text-align: center;"
+            type="number"
+            style="width: 40px;border: 0.5px solid grey;text-align: center;"
             maxlength="3"
-            value=""
-            v-model="postProduct.quantity"
+            value
+            v-model="postProduct.inventory"
           >
         </div>
         <div style="flex-grow:3">Giá: &nbsp;{{postProduct.price}} đ</div>
-        <div class style="flex-grow:3;">Thành tiền: &nbsp;
+        <div class style="flex-grow:3;">
+          Thành tiền: &nbsp;
           <span class="text-danger" style="font-weight: bold;">8.000.000 đ</span>
         </div>
       </div>
@@ -31,13 +32,18 @@
       <span>
         <i class="fas fa-trash-alt text-danger"></i>
       </span>
+      <button @click="addProductToCart(postProduct)">Add</button>
     </div>
   </div>
 </template>
 
 <script>
-import shop from "../api/shop";
 export default {
-   props: ['postProduct'],
+  props: ["postProduct"],
+  methods: {
+    addProductToCart(product) {
+      this.$store.dispatch("addProductToCart", product);
+    }
+  }
 };
 </script>
