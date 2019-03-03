@@ -6,6 +6,7 @@
 <script src="assets/js/myJS.js"></script>
 <script src="assets/js/classie.js"></script>
 <script src="assets/js/modalEffects.js"></script>
+<script src="assets/js/glm-ajax.js"></script>
 
 
 <!--
