@@ -18,6 +18,10 @@ window.Vue = require('vue');
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('modal-shoppingcart', require('./components/modal-shoppingcart.vue').default);
 Vue.component('cart-info', require('./components/cart-info.vue').default);
+Vue.component('comment-vue', require('./components/comment/CommentVue.vue').default);
+Vue.component('single-comment', require('./components/comment/SingleComment.vue').default);
+Vue.component('comments', require('./components/comment/Comments.vue').default);
+
 const app = new Vue({
     el: '#app'
 });

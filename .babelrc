@@ -1,0 +1,14 @@
+{ "presets": [
+        [
+            "env",
+            {
+                "targets": {
+                    "browsers": [
+                        "last 2 versions"
+                    ]
+                }
+            },
+            "vuejs"
+        ]
+    ],
+    "plugins": ["@babel/plugin-syntax-dynamic-import","@babel/plugin-transform-runtime"] }
