@@ -205,6 +205,7 @@ class PostController extends Controller
 							'statusService' => 1,
 						)
 			);
+			
 
 			return Redirect::to('https://www.google.com');
 			//return redirect()->route('chitiettindang', ['id' => $new_service_user->id]); 
