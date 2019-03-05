@@ -144,4 +144,85 @@ class PostController extends Controller
 	}
 
 
+		if(isset($user)){
+			// postTitle
+			$postTitle = strip_tags($request->input('postTitle', 'Lỗi tên dịch vụ'));
+			// postDescription
+			$postDescription = strip_tags($request->input('postDescription', 'Lỗi mô tả dịch vụ'));	
+			// price
+			$price = strip_tags($request->input('price', 'Lỗi giá dịch vụ'));
+			//cateIdPost
+			$cateIdPost = strip_tags($request->input('cateIdPost', -1));
+			//location-post
+			$location_post = strip_tags($request->input('location_post', -1));
+			$date_added = Carbon::now('Asia/Ho_Chi_Minh');
+
+			$newService = DB::table('services')->insertGetId(array(
+							'name' => $postTitle, 
+							'description' => $postDescription, 
+							'images' => 'Null', //
+							'address' => $location_post,
+							'price' => $price,
+							'idPlace' => $location_post,
+							'status' => 1,
+							'date_added' => $date_added,
+							'idUser' => $user->id,
+							'idCate' => $cateIdPost,
+							'adminCheck' => 0,
+							'statusService' => 1,
+						)
+			);
+			
+
+			return Redirect::to('https://www.google.com');
+			//return redirect()->route('chitiettindang', ['id' => $new_service_user->id]); 
+		}
+		else{
+
+			/*Thêm user vào bảng Users*/
+			$idUser = DB::table('users')->insertGetId(array(
+					'name' => $nameUser, 
+					'phone' => $phoneUser, 
+					'email' => $emailUser, 
+					'address' => $addressUser,
+					'password' => Hash::make($phoneUser),
+					'username' => $phoneUser,
+					'status' => 1,
+					'adminCheck' => 1,
+					'provider' => Null,
+					'provider_id' => Null,
+				)
+			);
+			// postTitle
+			$postTitle = strip_tags($request->input('postTitle', 'Lỗi tên dịch vụ'));
+			// postDescription
+			$postDescription = strip_tags($request->input('postDescription', 'Lỗi mô tả dịch vụ'));	
+			// price
+			$price = strip_tags($request->input('price', 'Lỗi giá dịch vụ'));
+			//cateIdPost
+			$cateIdPost = strip_tags($request->input('cateIdPost', -1));
+			//location-post
+			$location_post = strip_tags($request->input('location_post', -1));
+			$date_added = Carbon::now('Asia/Ho_Chi_Minh');
+
+			$newService = DB::table('services')->insertGetId(array(
+							'name' => $postTitle, 
+							'description' => $postDescription, 
+							'images' => 'Null', //
+							'address' => $location_post,
+							'price' => $price,
+							'idPlace' => $location_post,
+							'status' => 1,
+							'date_added' => $date_added,
+							'idUser' => $idUser,
+							'idCate' => $cateIdPost,
+							'adminCheck' => 0,
+							'statusService' => 1,
+						)
+			);
+
+			return Redirect::to('https://www.fb.com');
+
+		}
+	}
 }

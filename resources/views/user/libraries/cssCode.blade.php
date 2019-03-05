@@ -1,3 +1,4 @@
+<base href="{{asset('')}}">
 <link rel="stylesheet" href="assets/css/resetCSS/reset.css">
 <link rel="stylesheet" href="assets/css/w3/w3.css">
 
