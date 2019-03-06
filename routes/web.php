@@ -141,8 +141,12 @@ Route::group(['namespace' => 'UserController' , 'middleware'=>'userCheckLogout']
     /*bỏ*/
     // Route::get('/chi-tiet-san-pham/{id}', ['as'=>'chitietsanpham','uses'=>'ProductController@getProduct']);
 
-    Route::get('/chi-tiet-san-pham/{id}',['as'=>'chitietsanpham','uses'=>'ServiceController@getTinDang']);
-    Route::get('/chi-tiet-tin-dang/{id}',['as'=>'chitiettindang','uses'=>'PostController@getTinDang']);
+    Route::get('/chi-tiet-san-pham/{id}',
+               ['as'=>'chitietsanpham','uses'=>'ServiceController@getTinDang']);
+
+    // trả về chi tiet dich vu theo id của url
+    Route::get('/dich-vu/{id}',
+               ['as'=>'chitietdichvu','uses'=>'PostController@getDichVu']);
 
     Route::get('/dang-tin-dich-vu', function () {
         return view('user.dangtindichvu');
@@ -158,7 +162,7 @@ Route::group(['namespace' => 'UserController' , 'middleware'=>'userCheckLogout']
     });
 
 
-    Route::get('/gian-hang-cua-nguoi-dung/{id}', ['as'=>'gianhangcuanguoidung','uses'=>"UserPageController@getView"]); // xong
+    Route::get('/gian-hang-cua-nguoi-dung/{id}', ['as'=>'gianhangcuanguoidung','uses'=>"UserPageController@getView"]); // xong, cần lấy id của user đã đăng nhập
 
     Route::get('/quan-ly-don-hang',['as'=>'quanlydonhang','uses'=>'UserPageController@getQuanLyDonHang']); // chưa xong, cần phần giỏ hàng
 
