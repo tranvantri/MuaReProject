@@ -300,7 +300,7 @@
                                             <div id="app">
                                             
                                                 <example-component></example-component>
-                                                <modal-shoppingcart></modal-shoppingcart>
+                                                <modal-shopping></modal-shopping>
                                                 <script src="./js/app.js"></script>
                                             </div>
                                             <div class="static">
