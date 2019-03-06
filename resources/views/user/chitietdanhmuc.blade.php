@@ -132,7 +132,104 @@
           </div>
           <!-- Comment part -->
        </div>
-       <!-- COMMENT PART -->
+       <!------------------------ COMMENT PART ----------------------------->
+        <script type="text/javascript">
+        $(document).ready(function(){
+
+        $.get("CategoryDetail", function(responseJson) {          // Execute Ajax GET request on URL of "someservlet" and execute the following function with Ajax response JSON...
+ 		        //var $table = $("<table>").appendTo($("#somediv")); // Create HTML <table> element and append it to HTML DOM element with ID "somediv".
+ 		        if (responseJson.check == "fail") {
+		                    //$('#message').text("List isEmpty! Name not found!");
+		                    //$('#message').css('color', 'red');
+		                  	alert("Loaddata failed!");
+		                    return;
+		        }
+                       
+            
+ 		        var $div = document.getElementById("comment-part-L");
+ 		        $.each(responseJson, function(index, product) {    // Iterate over the JSON array.
+ 		            $("<div>").appendTo($div).addClass('')                     // Create HTML <tr> element, set its text content with currently iterated item and append it to the <table>.
+ 		                .append($("<br/>")        // Create HTML <td> element, set its text content with id of currently iterated product and append it to the <tr>.
+                        .append($("<hr>"))
+                        .append($("<p>")).text("Bình luận (0)")
+                        .append($("<div>").addClass('input-group-L').css('width','100%')
+                               .append($("<input>").setAttribute('type', 'text').addClass("form-control comment_comment item-comment-input").setAttribute('placeholder', 'Nhập bình luận tại đây'))
+                               )
+                        .append($("<div>").setAttribute('id',"qlcomment")
+                               .append($("<div>").addClass("tab-content tab-content-L")
+                                      .append($("<div>").setAttribute('id', 'menu1').addClass('tab-pane active tab-pane-L qlcomment-menu1').setAttribute('role', 'tabpanel')
+                                            //  Product's comment
+                                             .append($('<ul>').css('list-style-type','none')
+                                                    .append($('<li>').addClass('comment-L')
+                                                          .append($('<a>').addClass('pull-left')
+                                                                 .append($('<img>').addClass('lazy-image avatar').setAttribute('src','https://muare.vn/images/avatars/avatar_male_s.png?v=2'))
+                                                                 )
+                                                            //Phần comment
+                                                          .append($('<div>').addClass('comment-body-L')
+                                                                 .append($('<div>').addClass('comment-heading-L')
+                                                                         .append($('<span>').addClass('post_title_L')
+                                                                                .append($('<span>').addClass('user-L').text("Khách"))
+                                                                                .append($('<abbr>').text("đã trả lời bình luận tại sản phẩm"))
+                                                                                .append($('<a>').addClass('show-item OverlayPopup').text("sandwich kinh đô"))
+                                                                                )
+                                                                        )
+                                                                  .append($('<p>').addClass('content-L').text("còn hàng k?"))
+                                                                  .append($('<div>').addClass('span-reply')
+                                                                         .append($('<span>').addClass('reply-L').text("Trả lời").click(function(){
+ 		                		           	                                  showcmtinput(null,null,'comment-thu-1'); 
+                                                                              event.preventDefault();
+ 		                				                                     })
+                                                                         )
+                                                                 )
+                                                           ) //END comment 
+                                                         //sub-comment
+                                                        .append($('<ul>').addClass('comments-list')
+                                                         .append($('<ul>').css('list-style-type','none')
+                                                                .append($('<li>').addClass('comment-L')
+                                                                      .append($('<a>').addClass('pull-left')
+                                                                             .append($('<img>').addClass('lazy-image avatar').setAttribute('src','https://muare.vn/images/avatars/avatar_male_s.png?v=2'))
+                                                                             )
+                                                                        //Phần comment
+                                                                      .append($('<div>').addClass('comment-body-L')
+                                                                             .append($('<div>').addClass('comment-heading-L')
+                                                                                     .append($('<span>').addClass('post_title_L')
+                                                                                            .append($('<span>').addClass('user-L').text("Khách"))
+                                                                                            .append($('<abbr>').text("đã trả lời bình luận tại sản phẩm"))
+                                                                                            .append($('<a>').addClass('show-item OverlayPopup').text("sandwich kinh đô"))
+                                                                                            )
+                                                                                    )
+                                                                              .append($('<span>').addClass('content-cmt-L').text("Trả lời @TenKhach"))
+                                                                              .append($('<p>').addClass('content-L').text("còn hàng k?"))
+                                                                              .append($('<div>').addClass('span-reply')
+                                                                                     .append($('<span>').addClass('reply-L').text("Trả lời").click(function(){
+                                                                                          showcmtinput(null,null,'comment-thu-1'); 
+                                                                                          event.preventDefault();
+                                                                                         })
+                                                                                     )
+                                                                             )
+                                                                       )
+                                                                )
+                                                         )
+                                                        //Reply Input will show-hide when click any reply
+                                                        .append($('<div>').addClass('input-reply').css('margin-left','16px')
+                                                               .append($('<div>').addClass('input-group-L').css('width','100%')
+                                                                      .append($('<input>').addClass("form-control comment_comment item-comment-input").setAttribute('type','text').setAttribute('placeholder','Nhập trả lời tại đây và enter'))
+                                                                      )
+                                                               ) //END Reply Input 
+                                                        )//END sub-comment
+                                                    )
+                                             ) //  END Product's comment
+                                      )
+                               )
+ 		        });
+ 		    });
+        
+        
+        
+        
+        }
+        </script>
+         
        <div id="comment-part-L">
           <br/>
           <hr>
@@ -141,54 +238,53 @@
              <input type="text" class="form-control comment_comment item-comment-input" placeholder="Nhập bình luận tại đây">
           </div>
           <div id="qlcomment">
-             <div class="tab-content tab-content-L" style="background: white !important;">
-                <div id="menu1" class="tab-pane active tab-pane-L" id="post_cmt" role="tabpanel" 
-                   style="background: white !important;margin: 0 !important;padding: 0 !important;">
+             <div class="tab-content tab-content-L qlcomment-menu12">
+                <div id="menu1" class="tab-pane active tab-pane-L qlcomment-menu1" id="post_cmt" role="tabpanel" >
                    <input type="hidden" name="userAvatar" value="https://static8.muarecdn.com/zoom,80/90_90/muare/avatars/l/733/733265_1547649471.png?1547649471">
                    <input type="hidden" name="userName" value="tomiot">
                    <!-- Product's comment -->
                    <ul style="list-style-type: none;">
-                      <li class="comment-L" data-id="2444">
+                      <li class="comment-L">
                          <a class="pull-left" href="#">
-                         <img class="lazy-image avatar" data-original="https://muare.vn/images/avatars/avatar_male_s.png?v=2" src="https://muare.vn/images/avatars/avatar_male_s.png?v=2" alt="" width="35px" height="35px" style="display: inline;">
+                         <img class="lazy-image avatar" src="https://muare.vn/images/avatars/avatar_male_s.png?v=2" alt="">
                          </a>
                          <div class="comment-body-L">
                             <div class="comment-heading-L">
-                               <span class="post_title_L"><span class="user-L">Khách</span> đã trả lời bình luận tại sản phẩm <a href="https://muare.vn/products/sandwich-kinh-do.224170" data-title="Load sản phẩm" data-size="l" data-id="popupItem" class="show-item OverlayPopup" item-data="224170">sandwich kinh đô</a></span>
+                               <span class="post_title_L"><span class="user-L">Khách</span><abbr> đã trả lời bình luận tại sản phẩm </abbr><a href="#" class="show-item OverlayPopup">sandwich kinh đô</a></span>
                             </div>
                             <p class="content-L">còn hàng k?</p>
                             <div class="span-reply">
                                <span class="reply-L" onclick="showcmtinput(null,null,'comment-thu-1')">Trả lời</span>
-                               <span id="span-tuychon" class="option-L dropdown dropdown-L" style="display: none;">
+                               <!--<span id="span-tuychon" class="option-L dropdown dropdown-L" style="display: none;">
                                   Tùy chọn
                                   <div id="a-phanhoi" class="dropdown-content" style="display: none;">
                                      <a class="add_feeback saved" data-type="product" data-feeback="63">Đã thêm phản hồi</a>
                                   </div>
-                               </span>
+                               </span>-->
                             </div>
                          </div>
                          <!-- PUT COMMENT HERE -->
                          <ul class="comments-list">
                             <!-- Product's comment -->
                             <ul style="list-style-type: none;">
-                               <li class="comment-L" data-id="2444">
+                               <li class="comment-L">
                                   <a class="pull-left" href="#">
-                                  <img class="lazy-image avatar" data-original="https://muare.vn/images/avatars/avatar_male_s.png?v=2" src="https://muare.vn/images/avatars/avatar_male_s.png?v=2" alt="" width="35px" height="35px" style="display: inline;">
+                                  <img class="lazy-image avatar" src="https://muare.vn/images/avatars/avatar_male_s.png?v=2" alt="">
                                   </a>
                                   <div class="comment-body-L">
                                      <div class="comment-heading-L">
-                                        <span class="post_title_L"><span class="user-L">Khách</span> đã trả lời bình luận tại sản phẩm <a href="https://muare.vn/products/sandwich-kinh-do.224170" data-title="Load sản phẩm" data-size="l" data-id="popupItem" class="show-item OverlayPopup" item-data="224170">sandwich kinh đô</a></span>
+                                        <span class="post_title_L"><span class="user-L">Khách</span><abbr> đã trả lời bình luận tại sản phẩm </abbr><a href="#" class="show-item OverlayPopup" >sandwich kinh đô</a></span>
                                      </div>
-                                     <span class="content-cmt-L">@TenKhach: <span>Comment cha là gì?</span></span>
+                                     <span class="content-cmt-L">Trả lời @TenKhach</span>
                                      <p class="content-L">còn hàng k?</p>
                                      <div>
                                         <span class="reply-L" onclick="showcmtinput(null,null,'comment-thu-1')">Trả lời</span>
-                                        <span id="span-tuychon" class="option-L dropdown dropdown-L" style="display: none;">
+                                        <!--<span id="span-tuychon" class="option-L dropdown dropdown-L" style="display: none;">
                                            Tùy chọn
                                            <div id="a-phanhoi" class="dropdown-content" style="display: none;">
                                               <a class="add_feeback saved" data-type="product" data-feeback="63">Đã thêm phản hồi</a>
                                            </div>
-                                        </span>
+                                        </span>-->
                                      </div>
                                   </div>
                                </li>
@@ -196,9 +292,9 @@
                             <!-- END - Product's comment -->
                             <!-- Khi load dữ liệu thì Gán id của thằng comment vào cái id của div bên dưới này nè, để khi click vào 1 comment cụ thể - hoặc comment con của nó thì đều
                                hiển thị ra cái input này để nhập cmt vào -->
-                            <div id="comment-thu-1" class="input-reply" style="display: none;margin-left: 16px;">
+                            <div class="input-reply" style="margin-left: 16px;">
                                <div class="input-group-L" style="width: 100%;">
-                                  <input type="text" class="form-control comment_comment item-comment-input" data-type="comment" data-itemid="224170" placeholder="Nhập trả lời tại đây và enter" reply-id="2444">
+                                  <input type="text" class="form-control comment_comment item-comment-input" placeholder="Nhập trả lời tại đây và enter">
                                </div>
                             </div>
                          </ul>
@@ -206,91 +302,7 @@
                       </li>
                    </ul>
                    <!-- END - Product's comment -->    
-                   <!-- Product's comment -->
-                   <ul style="list-style-type: none;">
-                      <li class="comment-L" data-id="2444">
-                         <a class="pull-left" href="#">
-                         <img class="lazy-image avatar" data-original="https://muare.vn/images/avatars/avatar_male_s.png?v=2" src="https://muare.vn/images/avatars/avatar_male_s.png?v=2" alt="" width="35px" height="35px" style="display: inline;">
-                         </a>
-                         <div class="comment-body-L">
-                            <div class="comment-heading-L">
-                               <span class="post_title_L"><span class="user-L">Khách</span> đã trả lời bình luận tại sản phẩm <a href="https://muare.vn/products/sandwich-kinh-do.224170" data-title="Load sản phẩm" data-size="l" data-id="popupItem" class="show-item OverlayPopup" item-data="224170">sandwich kinh đô</a></span>
-                            </div>
-                            <p class="content-L">còn hàng k?</p>
-                            <div class="span-reply">
-                               <span class="reply-L" onclick="showcmtinput(null,null,'comment-thu-2')">Trả lời</span>
-                               <span id="span-tuychon" class="option-L dropdown dropdown-L" style="display: none;">
-                                  Tùy chọn
-                                  <div id="a-phanhoi" class="dropdown-content" style="display: none;">
-                                     <a class="add_feeback saved" data-type="product" data-feeback="63">Đã thêm phản hồi</a>
-                                  </div>
-                               </span>
-                            </div>
-                         </div>
-                         <!-- PUT COMMENT HERE -->
-                         <ul class="comments-list">
-                            <!-- Product's comment -->
-                            <ul style="list-style-type: none;">
-                               <li class="comment-L" data-id="2444">
-                                  <a class="pull-left" href="#">
-                                  <img class="lazy-image avatar" data-original="https://muare.vn/images/avatars/avatar_male_s.png?v=2" src="https://muare.vn/images/avatars/avatar_male_s.png?v=2" alt="" width="35px" height="35px" style="display: inline;">
-                                  </a>
-                                  <div class="comment-body-L">
-                                     <div class="comment-heading-L">
-                                        <span class="post_title_L"><span class="user-L">Khách</span> đã trả lời bình luận tại sản phẩm <a href="https://muare.vn/products/sandwich-kinh-do.224170" data-title="Load sản phẩm" data-size="l" data-id="popupItem" class="show-item OverlayPopup" item-data="224170">sandwich kinh đô</a></span>
-                                     </div>
-                                     <span class="content-cmt-L">@TenKhach: <span>Comment cha là gì?</span></span>
-                                     <p class="content-L">còn hàng k?</p>
-                                     <div>
-                                        <span class="reply-L" onclick="showcmtinput(null,null,'comment-thu-2')">Trả lời</span>
-                                        <span id="span-tuychon" class="option-L dropdown dropdown-L" style="display: none;">
-                                           Tùy chọn
-                                           <div id="a-phanhoi" class="dropdown-content" style="display: none;">
-                                              <a class="add_feeback saved" data-type="product" data-feeback="63">Đã thêm phản hồi</a>
-                                           </div>
-                                        </span>
-                                     </div>
-                                  </div>
-                               </li>
-                            </ul>
-                            <!-- END - Product's comment -->
-                            <!-- Product's comment -->
-                            <ul style="list-style-type: none;">
-                               <li class="comment-L" data-id="2444">
-                                  <a class="pull-left" href="#">
-                                  <img class="lazy-image avatar" data-original="https://muare.vn/images/avatars/avatar_male_s.png?v=2" src="https://muare.vn/images/avatars/avatar_male_s.png?v=2" alt="" width="35px" height="35px" style="display: inline;">
-                                  </a>
-                                  <div class="comment-body-L">
-                                     <div class="comment-heading-L">
-                                        <span class="post_title_L"><span class="user-L">Khách</span> đã trả lời bình luận tại sản phẩm <a href="https://muare.vn/products/sandwich-kinh-do.224170" data-title="Load sản phẩm" data-size="l" data-id="popupItem" class="show-item OverlayPopup" item-data="224170">sandwich kinh đô</a></span>
-                                     </div>
-                                     <span class="content-cmt-L">@TenKhach: <span>Comment cha là gì?</span></span>
-                                     <p class="content-L">còn hàng k?</p>
-                                     <div>
-                                        <span class="reply-L" onclick="showcmtinput(null,null,'comment-thu-2')">Trả lời</span>
-                                        <span id="span-tuychon" class="option-L dropdown dropdown-L" style="display: none;">
-                                           Tùy chọn
-                                           <div id="a-phanhoi" class="dropdown-content" style="display: none;">
-                                              <a class="add_feeback saved" data-type="product" data-feeback="63">Đã thêm phản hồi</a>
-                                           </div>
-                                        </span>
-                                     </div>
-                                  </div>
-                               </li>
-                            </ul>
-                            <!-- END - Product's comment -->
-                            <!-- Khi load dữ liệu thì Gán id của thằng comment vào cái id của div bên dưới này nè, để khi click vào 1 comment cụ thể - hoặc comment con của nó thì đều
-                               hiển thị ra cái input này để nhập cmt vào -->
-                            <div id="comment-thu-2" class="input-reply" style="display: none;margin-left: 16px;">
-                               <div class="input-group-L" style="width: 100%;">
-                                  <input type="text" class="form-control comment_comment item-comment-input" data-type="comment" data-itemid="224170" placeholder="Nhập trả lời tại đây và enter" reply-id="2444">
-                               </div>
-                            </div>
-                         </ul>
-                         <!-- END - PUT COMMENT HERE -->
-                      </li>
-                   </ul>
-                   <!-- END - Product's comment -->      
+                       
                 </div>
                 <div id="menu2" class="tab-pane fade tab-pane-L" id="comment_item" role="tabpanel">
                    <!-- This div no use because Lazy to design UI for this so just use a few used divs...ahihi-->
@@ -606,10 +618,6 @@
     @if(isset($hienthi) && $hienthi == 'san-pham') {{-- xet loai hien thi --}}
 
       <div id="products-L" class="col-lg-10 col-md-10"><!-- nội dung các bài đăng -->     
-          <div id="app">
-              <modal-shoppingcart></modal-shoppingcart>
-          </div>
-          <script src="./js/app.js"></script>
                     <div id="view-post" class="view-post">
                         <div class="title-category">
                            <h1 class="title-box">

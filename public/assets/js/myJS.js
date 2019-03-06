@@ -373,27 +373,30 @@ $(document).ready(function() {
 /* Comment part */
     var divs = document.getElementsByTagName('div');
 
-                function hidecmtinput(commentid){
+                /*function hidecmtinput(commentid){
                     //ẩn tất cả các input dùng để nhập cmt vào của khách hàng, trừ input chính của sản phẩm (click -> show)
                     for (var i = 0, l = divs.length; i < l; i++) {
-                                if (divs[i].getAttribute('class') == 'input-reply' && divs[i].getAttribute('id') != commentid) 
+                                if (divs[i].getAttribute('class') == 'input-reply')
                                     if (divs[i].style.display == 'none') divs[i].style.display = 'none';
                                     else divs[i].style.display = 'none';
                             }
-                }
+                }*/
                 function showcmtinput(fullname, fatherfullname, commentid) {
                     if(fullname == null) fullname = 'Khách';
                     if(fatherfullname == null) fatherfullname = 'Khách';
-                    hidecmtinput(commentid); //ẩn tất cả input để nhập cmt khi ng dùng click vào input mới (show 1 cái thôi)
+                    //hidecmtinput(commentid); //ẩn tất cả input để nhập cmt khi ng dùng click vào input mới (show 1 cái thôi)
                     for (var i = 0, l = divs.length; i < l; i++) {
-                                if (divs[i].getAttribute('class') == 'input-reply' && divs[i].getAttribute('id') == commentid) 
-                                    if (divs[i].style.display == 'none') {
-                                        divs[i].style.display = '';
+                                if (divs[i].getAttribute('class') == 'input-reply'){
+                                    if (divs[i].style.display == 'block') {
+                                        divs[i].style.display = 'none';
+                                    }
+                                    else{
+                                        divs[i].style.display = 'block';
                                         var divchild = divs[i].children;
                                         var divchildchild = divchild[0].children;
                                         divchildchild[0].setAttribute('placeholder','@'+fatherfullname+':');
                                     }
-                                    else divs[i].style.display = 'none';
+                                }
                             }
                  }
 /* END comment part */

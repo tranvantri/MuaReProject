@@ -1282,7 +1282,14 @@ table .td-info .user-post .username .username-h4 a {
   background-position: 0 -60px;
   cursor: pointer;
 }
-
+.qlcomment-menu12{
+    background: white !important;
+}
+.qlcomment-menu1{
+    background: white !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
 /***************KHO SAN PHAM***************/
 /* TRANG KHO SAN PHAM */
 .product-list-L {
@@ -2997,6 +3004,11 @@ table .td-info .user-post .username .username-h4 a {
 .pull-left {
   float: left !important;
 }
+.pull-left img {
+    width: 35px;
+    height: 35px;
+    display: inline;
+}
 .comment-L .comment-body-L {
   margin-left: 50px;
 }
@@ -3072,9 +3084,10 @@ table .td-info .user-post .username .username-h4 a {
   border-left: 1px solid #c3c3c3; /*c3c3c3*/
   margin: 0px 0px 8px 50px !important;
 }
-.comment-L .input-reply {
+.comment-L ul.comments-list .input-reply {
   /*display: none;*/
   padding: 0px 0px 15px;
+    display: none;
 }
 .input-group-L {
   position: relative;
