@@ -136,7 +136,7 @@
         <script type="text/javascript">
         $(document).ready(function(){
 
-        $.get("CategoryDetail", function(responseJson) {          // Execute Ajax GET request on URL of "someservlet" and execute the following function with Ajax response JSON...
+        $.get("CategoryDetail.php", function(responseJson) {          // Execute Ajax GET request on URL of "someservlet" and execute the following function with Ajax response JSON...
  		        //var $table = $("<table>").appendTo($("#somediv")); // Create HTML <table> element and append it to HTML DOM element with ID "somediv".
  		        if (responseJson.check == "fail") {
 		                    //$('#message').text("List isEmpty! Name not found!");
@@ -148,7 +148,7 @@
             
  		        var $div = document.getElementById("comment-part-L");
  		        $.each(responseJson, function(index, product) {    // Iterate over the JSON array.
- 		            $("<div>").appendTo($div).addClass('')                     // Create HTML <tr> element, set its text content with currently iterated item and append it to the <table>.
+ 		            $("<div>").appendTo($div)                     // Create HTML <tr> element, set its text content with currently iterated item and append it to the <table>.
  		                .append($("<br/>")        // Create HTML <td> element, set its text content with id of currently iterated product and append it to the <tr>.
                         .append($("<hr>"))
                         .append($("<p>")).text("Bình luận (0)")
@@ -222,7 +222,7 @@
                                       )
                                )
  		        });
- 		    });
+ 		    }); //END $.each(responseJson, function(index, product)
         
         
         
