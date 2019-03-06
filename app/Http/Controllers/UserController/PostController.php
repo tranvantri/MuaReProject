@@ -27,8 +27,8 @@ class PostController extends Controller
 	public function addNewProduct(Request $request){
 
 		//- Kiem tra User
-			// nếu chưa có thì tạo mới
-			// đã có rồi thì lấy id của user đó
+		// nếu chưa có thì tạo mới
+		// đã có rồi thì lấy id của user đó
 	    $name = strip_tags($request->input('name', 'Lỗi tên User'));
 	    $phone = strip_tags($request->input('phone', 'Lỗi sdt'));
 	    $email = strip_tags($request->input('email', 'Lỗi Email'));
@@ -47,20 +47,20 @@ class PostController extends Controller
 	    }
 	    else{
 	    	/*Thêm user vào bảng Users*/
-    	   $idUser = DB::table('users')->insertGetId(array(
-			    	'name' => $name, 
-			    	'phone' => $phone, 
-			    	'email' => $email, 
-			    	'address' => $addressUser,
-			    	'password' => Hash::make($phone),
-			    	'username' => $phone,
-			    	'status' => 1,
-			    	'adminCheck' => 1,
-			    	'provider' => Null,
-			    	'provider_id' => Null,
-			    )
-			);
-			$this->createService($request,$idUser);
+   		$idUser = DB::table('users')->insertGetId(array(
+		    	'name' => $name, 
+		    	'phone' => $phone, 
+		    	'email' => $email, 
+		    	'address' => $addressUser,
+		    	'password' => Hash::make($phone),
+		    	'username' => $phone,
+		    	'status' => 1,
+		    	'adminCheck' => 1,
+		    	'provider' => Null,
+		    	'provider_id' => Null,
+		    )
+		);
+		$this->createService($request,$idUser);
 	    	$this->createProduct($request,$idUser);
 	    	$new_service_user = DB::table('tindang')->where('status',1)->where('idUser',$idUser)->orderBy('id', 'desc')->first();
 	    	return redirect()->route('chitiettindang', ['id' => $new_service_user->id]); 
@@ -143,86 +143,25 @@ class PostController extends Controller
 		);
 	}
 
+	// đầu ra: trang chitiet dich vu
+	public function getDichVu($id){
+		$services = DB::table('services')->join('users', 'users.id', '=', 'services.idUser')
+            ->where('id',$id)->where('status',1)->where('adminCheck',1)
+            ->get();
 
-		if(isset($user)){
-			// postTitle
-			$postTitle = strip_tags($request->input('postTitle', 'Lỗi tên dịch vụ'));
-			// postDescription
-			$postDescription = strip_tags($request->input('postDescription', 'Lỗi mô tả dịch vụ'));	
-			// price
-			$price = strip_tags($request->input('price', 'Lỗi giá dịch vụ'));
-			//cateIdPost
-			$cateIdPost = strip_tags($request->input('cateIdPost', -1));
-			//location-post
-			$location_post = strip_tags($request->input('location_post', -1));
-			$date_added = Carbon::now('Asia/Ho_Chi_Minh');
+        $services_category = DB::table('services')->join('categories','categories.id','=','services.idCate')
+            ->where('services.id',$id)->where('services.adminCheck',1)
+            ->select('categories.name as nameCate','categories.id as idCate')->first();
 
-			$newService = DB::table('services')->insertGetId(array(
-							'name' => $postTitle, 
-							'description' => $postDescription, 
-							'images' => 'Null', //
-							'address' => $location_post,
-							'price' => $price,
-							'idPlace' => $location_post,
-							'status' => 1,
-							'date_added' => $date_added,
-							'idUser' => $user->id,
-							'idCate' => $cateIdPost,
-							'adminCheck' => 0,
-							'statusService' => 1,
-						)
-			);
-			
+        $services_relate = DB::table('services')->join('categories','categories.id','=','services.idCate')->join('users', 'users.id', '=', 'products.idUser')->where('categories.id',$services_category->idCate)->where('services.adminCheck',1)->inRandomOrder()->limit(3)->select('services.*','users.name as nameChuShop')->get();
 
-			return Redirect::to('https://www.google.com');
-			//return redirect()->route('chitiettindang', ['id' => $new_service_user->id]); 
-		}
-		else{
 
-			/*Thêm user vào bảng Users*/
-			$idUser = DB::table('users')->insertGetId(array(
-					'name' => $nameUser, 
-					'phone' => $phoneUser, 
-					'email' => $emailUser, 
-					'address' => $addressUser,
-					'password' => Hash::make($phoneUser),
-					'username' => $phoneUser,
-					'status' => 1,
-					'adminCheck' => 1,
-					'provider' => Null,
-					'provider_id' => Null,
-				)
-			);
-			// postTitle
-			$postTitle = strip_tags($request->input('postTitle', 'Lỗi tên dịch vụ'));
-			// postDescription
-			$postDescription = strip_tags($request->input('postDescription', 'Lỗi mô tả dịch vụ'));	
-			// price
-			$price = strip_tags($request->input('price', 'Lỗi giá dịch vụ'));
-			//cateIdPost
-			$cateIdPost = strip_tags($request->input('cateIdPost', -1));
-			//location-post
-			$location_post = strip_tags($request->input('location_post', -1));
-			$date_added = Carbon::now('Asia/Ho_Chi_Minh');
+        $randPro = DB::table('products')->where('products.status',1)->inRandomOrder()->limit(6)->get();
 
-			$newService = DB::table('services')->insertGetId(array(
-							'name' => $postTitle, 
-							'description' => $postDescription, 
-							'images' => 'Null', //
-							'address' => $location_post,
-							'price' => $price,
-							'idPlace' => $location_post,
-							'status' => 1,
-							'date_added' => $date_added,
-							'idUser' => $idUser,
-							'idCate' => $cateIdPost,
-							'adminCheck' => 0,
-							'statusService' => 1,
-						)
-			);
 
-			return Redirect::to('https://www.fb.com');
-
-		}
+        return view('user.chitiettindang',compact('services','services_category',
+            'services_relate','randPro'));
 	}
+
+		
 }

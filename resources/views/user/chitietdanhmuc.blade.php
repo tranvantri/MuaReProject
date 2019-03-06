@@ -1,9 +1,10 @@
 @extends('user.layouts.index')
 @section('title')
-  <title>Muare - Danh mục
+  <title>
     @if($categoryParent->name)
     {{$categoryParent->name}}
     @endif
+
   </title>
 @endsection
 @section('content')
@@ -643,11 +644,8 @@
                                             <a title="{{$childPro->name}}" data-title="Load sản phẩm" data-size="l" data-id="popupItem" class="md-trigger img-rounded OverlayPopup" data-modal="modal-productview">
                                             <img class="lazy-image" src="{{$childPro->images}}" alt="{{$childPro->name}}" width="180px" height="180px" style="display: inline;">
                                             </a>
-                                            <!--<script src="/public/assets/js/classie.js"></script>
-                                            <script src="/public/assets/js/modalEffects.js"></script>-->
+
                                         </div>
-                                      
-                                        
                                         
                                         <div class="title-sp-L">
                                             <h2 class="item-title-h2">
@@ -688,6 +686,16 @@
                                     
                                 </div>
                                 @endforeach
+
+                                {{--@foreach($params as $child)--}}
+                                        {{--{{$child->id}}<br>--}}
+                                        {{--{{$child->value}}--}}
+                                {{--@endforeach--}}
+
+                                <?php
+                                    echo ($comments);
+                                ?>
+
                             </div>
                         </div>
                         @else

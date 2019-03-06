@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Database\QueryException;
 use Cookie;
+
+
 class CategoryDetail extends Controller
 {
 	public function getDanhMuc($name, $id){
@@ -29,7 +31,7 @@ class CategoryDetail extends Controller
 		$products = DB::table('products')
 			->join('categories', function ($join) use ($id){
 				$join->on('products.idCate','=','categories.id')
-				->where('categories.idParent','=', $id);
+				->where('categories.idParent','=', $id); // lấy sp có idCate = $id truyền vào
 			})			
 			->join('place_product', function($join) use ($idPlace){
 				$join->on('products.id', '=', 'place_product.idProduct')
@@ -39,9 +41,13 @@ class CategoryDetail extends Controller
 			->where('products.status',1)
 			->where('products.adminCheck',1)
             ->select('products.*','users.name as tenchushop')
-            ->paginate(20);            
+            ->paginate(20);
+
+
+
+
   		return view('user.chitietdanhmuc',compact('categoryParent', 'categoryCurrent', 'childCate','products','place','hienthi', 'tinhtrang', 'gia', 'sapxep'));
-	}  
+	}
 
 	public function getCustomCategory($nameCate, $idCate, $hienthi, $tinhtrang, $gia, $sapxep){
 		$categoryCurrent = Categories::find($idCate);//lay danh muc
@@ -52,14 +58,6 @@ class CategoryDetail extends Controller
 		else{
 			$idPlace = 1;//mac dinh laf id cua HaNoi
 		}
-		
-
-		// echo $nameCate ."</br>";
-		// echo $idCate ."</br>";
-		// echo $hienthi ."</br>";
-		// echo $tinhtrang ."</br>";
-		// echo $gia ."</br>";
-		// echo $sapxep ."</br>";
 
 		switch($hienthi){
 			case 'tin-dang':
@@ -90,13 +88,17 @@ class CategoryDetail extends Controller
 				if($categoryCurrent->idParent == 0){//neu danh muc la danh muc cha
 					$categoryParent = $categoryCurrent;//gan cho de dung
 					$place = Places::find($idPlace);
-					$childCate = DB::table('categories')->where('idParent', $categoryCurrent->id)->where('enable',1)->get();
+					$childCate = DB::table('categories')
+                        ->where('idParent', $categoryCurrent->id)
+                        ->where('enable',1)->get();
+
 					$products = DB::table('tindang')
 					->join('categories', function ($join) use ($categoryCurrent){
 						$join->on('tindang.idCate','=','categories.id')
 						->where('categories.idParent','=', $categoryCurrent->id);//lay all sp thuoc danh muc cha
 					})			
 					->join('users','tindang.idUser','=','Users.id')
+
 					->where('tindang.status',1)
 					->where('tindang.adminCheck',1)
 					->where('tindang.idPlace',$idPlace)
@@ -151,7 +153,9 @@ class CategoryDetail extends Controller
 					})
 					->orderBy($sortBy,$dir)
 		            ->select('tindang.*','users.name as tenchushop')
-		            ->paginate(20);            
+		            ->paginate(20);
+
+
 		  			return view('user.chitietdanhmuc',compact('categoryParent', 'categoryCurrent', 'childCate','products','place','hienthi', 'tinhtrang', 'gia', 'sapxep'));
 				}else{					
 					$categoryParent = Categories::find($categoryCurrent->idParent);//gan cho de dung
@@ -217,7 +221,8 @@ class CategoryDetail extends Controller
 					})					
 					->orderBy($sortBy,$dir)					
 		            ->select('tindang.*','users.name as tenchushop')
-		            ->paginate(20);            
+		            ->paginate(20);
+
 		  			return view('user.chitietdanhmuc',compact('categoryParent','categoryCurrent', 'childCate','products','place','hienthi', 'tinhtrang', 'gia', 'sapxep'));
 				}
 				break;
@@ -318,7 +323,8 @@ class CategoryDetail extends Controller
 					})
 					->orderBy($sortBy,$dir)
 		            ->select('services.*','users.name as tenchushop')
-		            ->paginate(20);            
+		            ->paginate(20);
+
 		  			return view('user.chitietdanhmuc',compact('categoryParent', 'categoryCurrent', 'childCate','products','place','hienthi', 'tinhtrang', 'gia', 'sapxep'));
 				}else{					
 					$categoryParent = Categories::find($categoryCurrent->idParent);//gan cho de dung
@@ -388,7 +394,8 @@ class CategoryDetail extends Controller
 					})					
 					->orderBy($sortBy,$dir)					
 		            ->select('services.*','users.name as tenchushop')
-		            ->paginate(20);            
+		            ->paginate(20);
+
 		  			return view('user.chitietdanhmuc',compact('categoryParent','categoryCurrent', 'childCate','products','place','hienthi', 'tinhtrang', 'gia', 'sapxep'));
 				}
 				break;
@@ -488,8 +495,18 @@ class CategoryDetail extends Controller
 					})
 					->orderBy($sortBy,$dir)
 		            ->select('products.*','users.name as tenchushop')
-		            ->paginate(20);            
-		  			return view('user.chitietdanhmuc',compact('categoryParent', 'categoryCurrent', 'childCate','products','place','hienthi', 'tinhtrang', 'gia', 'sapxep'));
+		            ->paginate(20);
+
+
+                    $comments = DB::table('comment_product')
+                        ->join('products','products.id','=','comment_product.idProduct')
+                        ->join('comments','comment_product.idComment','=','comments.id')
+                        ->where('products.id',1)
+                        ->select('comments.id as idComment', 'comments.value as noidungComment', 'comments.idParent as idCha')
+                        ->first();
+                    $comments = json_encode($comments);
+
+		  			return view('user.chitietdanhmuc',compact('categoryParent', 'categoryCurrent', 'childCate','products','place','hienthi', 'tinhtrang', 'gia', 'sapxep','comments'));
 				}else{					
 					$categoryParent = Categories::find($categoryCurrent->idParent);//gan cho de dung
 					$place = Places::find($idPlace);
