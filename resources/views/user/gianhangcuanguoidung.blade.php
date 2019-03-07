@@ -16,7 +16,7 @@
                     <div class="cover">
                         <div class="image-cover">
                             <img src="assets/images/gianhangcuchuoing/banner-default.png" class="cover_shop"
-                                data-original="assets/images/gianhangcuchuoing/banner-default.png" style="top: 0px"
+                                data-original="assets/images/gianhangcuchuoing/banner-default.png" style="width: 100%"
                                 alt="banner" />
                         </div>
                         <div class="shop-name">
@@ -26,7 +26,8 @@
 
                     </div>
                     <div class="shop-info">
-                        <div class="info-left">
+                        <div class="row">
+                        <div class="info-left col-md-3">
                             <div class="owner">
                                 <div class="o-avatar">
                                     <img class="lazy-image"
@@ -286,7 +287,7 @@
                             </div>
                         </div>
 
-                        <div class="info-right">
+                        <div class="info-right col-md-9">
                             <div class="khung">
                                 <div class="gioi-thieu">
                                     <div class="o-desc no_slider">
@@ -297,12 +298,12 @@
                                             <div class="description">
                                                 <span>Gian hàng đang cập nhật...</span>
                                             </div>
-                                            <div id="app">
+                                            <!-- <div id="app">
                                             
                                                 <example-component></example-component>
                                                 <modal-shopping></modal-shopping>
                                                 <script src="./js/app.js"></script>
-                                            </div>
+                                            </div> -->
                                             <div class="static">
                                                 <div class="item-s">
                                                     <div class="icon-s">
@@ -362,12 +363,13 @@
                             </div>
                         </div>
                     </div>
+                    </div>
                     <div class="shop-row">
                         <h2 class="row-title">{{$soluongService}} Tin đăng của shop</h2>
 
                         <div class="list-post row">
                             @foreach($services as $childService)
-                            <div class="shop-post col-xs-6">
+                            <div class="shop-post col-md-6">
 
                                 <div class="img-post">
 
@@ -523,17 +525,17 @@
 
                         <!-- Hiển thị các sản phẩm của User -->
 
-                        @foreach($products as $childProduct)
+                        
                         <div class="list-items">
-                            <div class="shop-item col-xs-15">
-                                <div class="img-item show-item" item-data="221991">
+                                @foreach($products as $childProduct)
+                            <div class="shop-item">
                                     <div class="avatar">
                                         <a title="{{$childProduct->name}}"
                                             href="{{ route('sanpham', $childProduct->id) }}" data-title="Load sản phẩm"
                                             data-size="l" data-id="popupItem" class="OverlayPopup">
                                             <img class="lazy-image" data-original="{{$childProduct->name}}"
                                                 src="{{$childProduct->images}}" alt="{{$childProduct->name}}"
-                                                style="display: inline; width: 200px; height: 200px; border-radius: 10px; " />
+                                                style="width: 150px; height: 150px; border-radius: 10px; " />
                                         </a>
                                         <div class="sale-state"></div>
                                     </div>
@@ -550,10 +552,11 @@
                                         </div>
                                         <div class="price-item">{{number_format($childProduct->price,0)}} đ</div>
                                     </div>
-                                </div>
+                
                             </div>
+                            @endforeach
                         </div>
-                        @endforeach
+                        
                         <!-- Kết thúc foreach của Hiển thị sản phẩm -->
 
                     </div>
