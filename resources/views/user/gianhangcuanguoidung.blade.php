@@ -50,7 +50,7 @@
                                                 <div class="modal-content modal-content-v">
                                                     <div class="modal-body col-xs-12">
                                                         <div class="row close-login-v">
-                                                            <button type="button" class="close-1" data-dismiss="modal"
+                                                            <button type="button" class="close-login-btn" data-dismiss="modal"
                                                                 aria-label="Close">×</button>
                                                         </div>
                                                         <div class="row">
