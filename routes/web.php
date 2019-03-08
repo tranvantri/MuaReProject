@@ -138,11 +138,12 @@ Route::group(['namespace' => 'UserController' , 'middleware'=>'userCheckLogout']
     Route::get('/search/{hienthi}/{text}/{idCate}/{sapxep}', 'SearchController@getSearchPost')->name('searchtindang');
     Route::get('/search/{hienthi}/{text}/{idCate}/{tinhtrang}/{gia}/{sapxep}', 'SearchController@getSearchProduct')->name('searchproduct');
 
-    /*bỏ*/
-    // Route::get('/chi-tiet-san-pham/{id}', ['as'=>'chitietsanpham','uses'=>'ProductController@getProduct']);
-
     Route::get('/chi-tiet-tin-dang/{id}',
                ['as'=>'chitiettindang','uses'=>'ServiceController@getTinDang']);
+
+
+    // tra về chi tiet san pham theo id
+    Route::get('/san-pham/{id}',['as'=>'sanpham','uses'=>'ProductController@viewProduct']);
 
     // trả về chi tiet dich vu theo id của url
     Route::get('/dich-vu/{id}',
@@ -166,7 +167,6 @@ Route::group(['namespace' => 'UserController' , 'middleware'=>'userCheckLogout']
 
     Route::get('/quan-ly-don-hang',['as'=>'quanlydonhang','uses'=>'UserPageController@getQuanLyDonHang']); // chưa xong, cần phần giỏ hàng
 
-    Route::get('/san-pham/{id}',['as'=>'sanpham','uses'=>'ProductController@viewProduct']);
 
 
     Route::get('/tat-ca-tin-dang',['as'=>'tatcatindang','uses'=>'ServiceController@viewAllServices']); // 

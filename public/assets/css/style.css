@@ -1804,6 +1804,9 @@ table .td-info .user-post .username .username-h4 a {
 .imgTinDangMoiNhat img {
   border-radius: 10px;
 }
+.owl-nav{
+  display: none;
+}
 
 .post-address {
   margin: 0;
