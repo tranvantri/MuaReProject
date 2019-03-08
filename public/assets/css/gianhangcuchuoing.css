@@ -1,4 +1,3 @@
-
 .main-container {
   background-color: #fff;
   min-height: 400px;
@@ -11,7 +10,6 @@
   padding-top: 0 !important;
 }
 .page-shop .cover {
-  height: 250px;
   width: 100%;
   position: relative;
 }
@@ -38,6 +36,7 @@
 .info-left {
   width: 300px;
   display: table-cell;
+  padding-left: 20px;
 }
 .page-shop .shop-info .info-left .owner {
   display: table;
@@ -136,7 +135,7 @@
 .page-shop .shop-info .info-right {
   display: table-cell;
   width: auto;
-  padding-left: 10px;
+  padding-left: 20px;
   vertical-align: top;
 }
 .page-shop .shop-info .info-right .khung {
@@ -277,6 +276,7 @@
   text-transform: uppercase;
   border-bottom: 1px solid #ccc;
   padding-bottom: 10px;
+  padding-left: 10px;
   margin-bottom: 15px;
   margin-top: 30px;
 }
@@ -303,20 +303,22 @@
   display: table-cell;
   vertical-align: top;
   border-radius: 10px;
+  margin-left: 20px;
 }
 .page-shop .shop-row .list-post .shop-post .img-post img {
   width: 100%;
   height: 100%;
+  margin-left: 20px;
   border-radius: 10px;
   -webkit-box-shadow: 0 1px 20px #b5aeae;
   box-shadow: 0 1px 20px #b5aeae;
 }
 .page-shop .shop-row .list-post .shop-post .info-post {
-  padding-right: 75px;
+  padding-right: 0px;
   font-size: 12px;
   display: table-cell;
   vertical-align: top;
-  padding-left: 10px;
+  padding-left: 30px;
 }
 .page-shop .shop-row .list-post .shop-post .info-post .title-post {
   overflow: hidden;
@@ -375,6 +377,11 @@
   margin-bottom: 10px;
   font-size: 13px;
 }
+@media only screen and (max-width: 600px) {
+  .page-shop .shop-row .filter-item .filter-category select {
+    float: right;
+  }
+}
 .page-shop .shop-row .filter-item .filter-category {
   display: inline-block;
   float: left;
@@ -397,9 +404,13 @@
 }
 .page-shop .shop-row .list-items {
   width: 100%;
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
 .page-shop .shop-row .list-items .shop-item {
-  margin-bottom: 20px;
 }
 .col-xs-15 {
   width: 18%;
@@ -465,15 +476,15 @@
   text-align: left;
 }
 /* Modal login */
-.modal-content-v{
+.modal-content-v {
   background-color: transparent;
   border: none;
 }
-.login-group{
+.login-group {
   background-color: white;
   opacity: 0.9;
 }
-.close-1 {
+.close-login-btn {
   width: 30px;
   height: 30px;
   border-radius: 50%;
@@ -481,9 +492,9 @@
   position: absolute;
   opacity: 1;
   z-index: 9999;
-  top: 0px;
+  top: 10px;
   right: -10px;
 }
-.close-login-v{
+.close-login-v {
   float: right;
 }

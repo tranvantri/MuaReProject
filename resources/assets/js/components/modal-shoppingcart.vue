@@ -5,9 +5,7 @@
       class="btn btn-primary"
       data-toggle="modal"
       data-target="#exampleModal"
-    >
-      Launch demo modal
-    </button>
+    >Add to cart</button>
 
     <!-- Modal -->
     <div
@@ -22,36 +20,28 @@
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-            <button
-              type="button"
-              class="close"
-              data-dismiss="modal"
-              aria-label="Close"
-            >
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body">
-            <!--<div
-              class="scroll-pane"
-              style="width: 100%;max-height: 300px;overflow: auto;"
-            >
-              <cart-info></cart-info>
-              <cart-info></cart-info>
-              <cart-info></cart-info>
-              <cart-info></cart-info>
-              <cart-info></cart-info>
-              <cart-info></cart-info>
-            </div>-->
+            <div class="scroll-pane" style="width: 100%;max-height: 300px;overflow: auto;">
+              <img
+                v-if="loading"
+                src="https://i.imgur.com/JfPpwOA.gif"
+                style="display: block; margin-left: auto; margin-right: auto;"
+              >
+              <cart-info
+                v-else
+                v-for="product in products"
+                :key="product.id"
+                v-bind:postProduct="product"
+              >
+              </cart-info>
+            </div>
           </div>
           <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-dismiss="modal"
-            >
-              Close
-            </button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             <button type="button" class="btn btn-primary">Save changes</button>
           </div>
         </div>
@@ -61,9 +51,28 @@
 </template>
 
 <script>
-  export default {
-    mounted() {
-      console.log("Component mounted.");
+import shop from "../api/shop";
+// import store from "../store/index";
+export default {
+  data() {
+    return {
+      loading: false
+    };
+  },
+  computed: {
+    products() {
+      console.log("Test");
+      return this.$store.getters.availableProducts;
     }
-  };
+  },
+  methods: {
+    addProductToCart(product) {
+      this.$store.dispatch("addProductToCart", product);
+    }
+  },
+  created() {
+    this.loading = true;
+    this.$store.dispatch("fetchProducts").then(() => (this.loading = 0));
+  }
+};
 </script>
