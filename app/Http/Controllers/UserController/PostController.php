@@ -151,6 +151,11 @@ class PostController extends Controller
             ->select('users.id as idChuShop', 'services.*','users.email as emailChuShop','users.phone as phoneChuShop','users.address as addressChuShop','users.name as tenChuShop','users.avatar as avatarChuShop','users.username as username')
             ->get();
 
+		$countService = $services->count();
+        if($countService == 0){
+            return redirect()->route('trangchu');
+        }
+
         $services_category = DB::table('services')->join('categories','categories.id','=','services.idCate')
             ->where('services.id',$id)->where('services.adminCheck',1)
             ->select('categories.name as nameCate','categories.id as idCate')->first();
@@ -173,7 +178,8 @@ class PostController extends Controller
             ->select('products.*','categories.id as idCate','categories.name as nameCate')->get();
 
         return view('user.chitietdichvu',compact('services','services_category',
-            'services_relate','randPro','product_user'));
+                'services_relate','randPro','product_user'));
+
 	}
 
 		

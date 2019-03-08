@@ -141,8 +141,8 @@ Route::group(['namespace' => 'UserController' , 'middleware'=>'userCheckLogout']
     /*bỏ*/
     // Route::get('/chi-tiet-san-pham/{id}', ['as'=>'chitietsanpham','uses'=>'ProductController@getProduct']);
 
-    Route::get('/chi-tiet-san-pham/{id}',
-               ['as'=>'chitietsanpham','uses'=>'ServiceController@getTinDang']);
+    Route::get('/chi-tiet-tin-dang/{id}',
+               ['as'=>'chitiettindang','uses'=>'ServiceController@getTinDang']);
 
     // trả về chi tiet dich vu theo id của url
     Route::get('/dich-vu/{id}',

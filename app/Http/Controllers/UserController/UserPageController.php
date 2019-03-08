@@ -19,17 +19,17 @@ class UserPageController extends Controller
     	// truyền id của khách hàng đã đăng nhập vào đây -------------
     	$user = DB::table('users')->where('adminCheck',1)->where('users.id',$id)->get();
 
-    	$services = DB::table('tindang')
+    	$tindang = DB::table('tindang')
     				->join('places','places.id','=','tindang.idPlace')
     				->where('tindang.adminCheck',1)->where('tindang.idUser',$id)->where('places.enable',1)
     				->select('tindang.*','places.name as namePlace','places.id as idPlace')
     				->get();
-    	$soluongService = $services->count();
+    	$soluongTinDang = $tindang->count();
 
     	$products =  DB::table('products')->where('adminCheck',1)->where('idUser',$id)->get();
     	$soluongProducts = $products->count();
 
-    	return view('user.gianhangcuanguoidung',compact('user','services','soluongService','products','soluongProducts'));
+    	return view('user.gianhangcuanguoidung',compact('user','tindang','soluongTinDang','products','soluongProducts'));
     }
 
     // Trang quản lý đơn hàng

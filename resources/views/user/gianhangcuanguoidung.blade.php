@@ -7,7 +7,7 @@
 <section class="main-container col1-layout home-content-container">
     <div class="container">
         <div class="row">
-            <div class="mrfoot"">
+            <div class="mrfoot">
             <div class=" no-sidebar">
                 @foreach($user as $childUser)
                 <input type="hidden" name="user_login" class="user_login" value="0" />
@@ -15,7 +15,7 @@
                 <div class="page-shop">
                     <div class="cover">
                         <div class="image-cover">
-                            <img src="assets/images/gianhangcuchuoing/banner-default.png" class="cover_shop"
+                            <img src="assets/images/gianhangcuchuoing/banner-defchitiettindangault.png" class="cover_shop"
                                 data-original="assets/images/gianhangcuchuoing/banner-default.png" style="top: 0px"
                                 alt="banner" />
                         </div>
@@ -310,7 +310,7 @@
                                                     </div>
                                                     <div class="s-content">
                                                         <div class="count">
-                                                            {{$soluongService}}
+                                                            {{$soluongTinDang}}
                                                         </div>
                                                         Tin đăng
                                                     </div>
@@ -363,39 +363,39 @@
                         </div>
                     </div>
                     <div class="shop-row">
-                        <h2 class="row-title">{{$soluongService}} Tin đăng của shop</h2>
+                        <h2 class="row-title">{{$soluongTinDang}} Tin đăng của shop</h2>
 
                         <div class="list-post row">
-                            @foreach($services as $childService)
+                            @foreach($tindang as $childTinDang)
                             <div class="shop-post col-xs-6">
 
                                 <div class="img-post">
 
-                                    <a title="{{$childService->name}}"
-                                        href="{{ route('chitiettindang', $childService->id) }}"
+                                    <a title="{{$childTinDang->name}}"
+                                        href="{{ route('chitiettindang', $childTinDang->id) }}"
                                         data-title="Load sản phẩm" data-size="l" data-id="popupItem"
                                         class="OverlayPopup">
-                                        <img class="lazy-images" src="{{$childService->images}}"
-                                            alt="{{$childService->name}}" />
+                                        <img class="lazy-images" src="{{$childTinDang->images}}"
+                                            alt="{{$childTinDang->name}}" />
                                     </a>
                                 </div>
                                 <!--img-post-->
                                 <div class="info-post">
                                     <div class="title-post">
                                         <h2 class="title-post-h2">
-                                            <a title="{{$childService->name}}"
-                                                href="{{ route('chitiettindang', $childService->id) }}">
-                                                {{$childService->name}}
+                                            <a title="{{$childTinDang->name}}"
+                                                href="{{ route('chitiettindang', $childTinDang->id) }}">
+                                                {{$childTinDang->name}}
                                             </a>
                                         </h2>
                                     </div>
                                     <div class="location-post">
-                                        <h3 class="add-h3" title="{{$childService->namePlace}}">
-                                            {{$childService->namePlace}}
+                                        <h3 class="add-h3" title="{{$childTinDang->namePlace}}">
+                                            {{$childTinDang->namePlace}}
                                         </h3>
                                     </div>
                                     <div class="price-post">
-                                        Giá từ: <span>{{ number_format($childService->price,0)}} đ </span>
+                                        Giá từ: <span>{{ number_format($childTinDang->price,0)}} đ </span>
                                     </div>
                                 </div>
 
