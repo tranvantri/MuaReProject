@@ -264,7 +264,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <span class="chat_shop chat user shop-chat" data-id="{{$childUser->email}}"
+                                        <span class="chat_shop chat user shop-chat " data-id="{{$childUser->email}}"
                                             data-name="{{$childUser->username ?? $childUser->name}}"
                                             data-avatar="{{$childUser->avatar ??'assets/images/chitietsanpham/avatar_male.png'}}">CHAT
                                             VỚI SHOP</span>
