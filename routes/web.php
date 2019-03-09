@@ -125,7 +125,6 @@ Route::group(['namespace' => 'UserController' , 'middleware'=>'userCheckLogout']
 	Route::get('/home',['as'=>'trangchu','uses'=>'HomePageController@getHomePage']); 
 
     //set Cookie
-    
     Route::get('/set-cookie/{id}', 'PlacesController@setCookie');
 
     //chitietdanhmuc
@@ -141,7 +140,6 @@ Route::group(['namespace' => 'UserController' , 'middleware'=>'userCheckLogout']
     Route::get('/chi-tiet-tin-dang/{id}',
                ['as'=>'chitiettindang','uses'=>'ServiceController@getTinDang']);
 
-
     // tra về chi tiet san pham theo id
     Route::get('/san-pham/{id}',['as'=>'sanpham','uses'=>'ProductController@viewProduct']);
 
@@ -153,7 +151,6 @@ Route::group(['namespace' => 'UserController' , 'middleware'=>'userCheckLogout']
         return view('user.dangtindichvu');
     });
 
-
     Route::get('/dang-tin-san-pham',['as'=>'getdangtinsanpham','uses'=>'PostController@postProduct']);
     Route::post('/dang-tin-san-pham',['as'=>'postdangtinsanpham','uses'=>'PostController@addNewProduct']);
 
@@ -161,7 +158,6 @@ Route::group(['namespace' => 'UserController' , 'middleware'=>'userCheckLogout']
     Route::get('/dang-tin-chung', function () {
         return view('user.dangtinchung');
     });
-
 
     Route::get('/gian-hang-cua-nguoi-dung/{id}', ['as'=>'gianhangcuanguoidung','uses'=>"UserPageController@getView"]); // xong, cần lấy id của user đã đăng nhập
 

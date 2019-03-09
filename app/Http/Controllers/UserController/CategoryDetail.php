@@ -498,9 +498,8 @@ class CategoryDetail extends Controller
 		            ->paginate(20);
 
 
-                    $comments = DB::table('comment_product')
-                        ->join('products','products.id','=','comment_product.idProduct')
-                        ->join('comments','comment_product.idComment','=','comments.id')
+                    $comments = DB::table('comments')
+                        ->join('products','products.id','=','comments.idProduct')
                         ->where('products.id',1)
                         ->select('comments.id as idComment', 'comments.value as noidungComment', 'comments.idParent as idCha')
                         ->first();
