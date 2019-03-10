@@ -87,9 +87,6 @@
               <a class="basic-info-name-v"
                  href="{{ route('gianhangcuanguoidung',$child->idChuShop) }}">{{$child->usernameChuShop ?? 'username'}} </a>
 
-
-
-
               (thành viên từ {{$child->ngayTaoChuShop ?? '1/1/2019'}})
               <div class="item-des-v">
                 <div class="item-des-content-v">
@@ -104,10 +101,9 @@
                 </div>
                 <div class="list-tags-v"> </div>
               </div>
-              <button class="order-v" data-toggle="modal" data-target="#modalThemSanPham"></button>
 
-              @include('user.chitietsanpham.modalThemSanPham')
-
+                @include('user.modal.modalProductInfo')
+              <button class="order-v" data-toggle="modal" data-target="#modal-productview" data-modal="modal-productview"></button>
 
 
 

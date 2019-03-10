@@ -3169,7 +3169,7 @@ output {
     padding-left: 10px;
     border-right: 1px solid #ddd;
     padding-right: 10px;
-    white-space: nowrap;
+    white-space: normal;
 }
 .post-info-v .vi-tri-v span {
   font-size: 12px;
@@ -3208,8 +3208,8 @@ output {
   width: 19px;
   height: 19px;
   display: inline-block;
-  background: url(../images/quan-ly-tin-dang/my-post.png)
-    no-repeat scroll 0 -95px;
+  /*background: url(../images/quan-ly-tin-dang/my-post.png)*/
+    /*no-repeat scroll 0 -95px;*/
   vertical-align: middle;
 }
 .cel-v.view-v {

@@ -7,6 +7,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Database\QueryException;
 use Cookie;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use App\Quotation;
+
+
 class UserPageController extends Controller
 {
     // Trang Gian hàng của người dùng
@@ -14,22 +18,27 @@ class UserPageController extends Controller
 	Đầu vào: id của khách hàng
 	Đầu ra: thông tin của User
     */
-    public function getView($id){
+    public function getView(){
+        if(Auth::id()) {
+            $id = Auth::id();
+            // truyền id của khách hàng đã đăng nhập vào đây -------------
+            $user = DB::table('users')->where('adminCheck', 1)->where('users.id', $id)->get();
 
-    	// truyền id của khách hàng đã đăng nhập vào đây -------------
-    	$user = DB::table('users')->where('adminCheck',1)->where('users.id',$id)->get();
+            $tindang = DB::table('tindang')
+                ->join('places', 'places.id', '=', 'tindang.idPlace')
+                ->where('tindang.adminCheck', 1)->where('tindang.idUser', $id)->where('places.enable', 1)
+                ->select('tindang.*', 'places.name as namePlace', 'places.id as idPlace')
+                ->get();
+            $soluongTinDang = $tindang->count();
 
-    	$tindang = DB::table('tindang')
-    				->join('places','places.id','=','tindang.idPlace')
-    				->where('tindang.adminCheck',1)->where('tindang.idUser',$id)->where('places.enable',1)
-    				->select('tindang.*','places.name as namePlace','places.id as idPlace')
-    				->get();
-    	$soluongTinDang = $tindang->count();
+            $products = DB::table('products')->where('adminCheck', 1)->where('idUser', $id)->get();
+            $soluongProducts = $products->count();
 
-    	$products =  DB::table('products')->where('adminCheck',1)->where('idUser',$id)->get();
-    	$soluongProducts = $products->count();
-
-    	return view('user.gianhangcuanguoidung',compact('user','tindang','soluongTinDang','products','soluongProducts'));
+            return view('user.gianhangcuanguoidung', compact('user', 'tindang', 'soluongTinDang', 'products', 'soluongProducts'));
+        }
+        else{
+            return redirect('login');
+        }
     }
 
     // Trang quản lý đơn hàng
@@ -43,17 +52,47 @@ class UserPageController extends Controller
     // dau vao: id cua user
     // dau ra: thong tin cua san pham cua user
     public function getUserQuanLyKhoHang(){
-        // thông tin các sản phẩm user bán, truyền id của khách hàng = 1. Yêu cầu lấy id của Auth:id() đã đăng nhập
-        $products = DB::table('products')->where('adminCheck',1)->where('idUser',1)->get();
-        $soluongProducts = $products->count();
-        
-        $cateParent = DB::table('categories')->where('enable',1)->where('idParent',0)->get();
-        $cateChild = DB::table('categories')->where('enable',1)->where('idParent','<>',0)->get();
+        if(Auth::id()) {
+            $id = Auth::id();
+            $products = DB::table('products')->where('adminCheck',1)->where('idUser',$id)->get();
+            $soluongProducts = $products->count();
 
-        //$place_product = DB::table('products')->join('place_product','place_product.idProduct','=','products.id')->where('adminCheck',1)->where('idUser',1)->select('products.*','place_product.idPlace as placeProduct')->get();
+            $cateParent = DB::table('categories')->where('enable',1)->where('idParent',0)->get();
+            $cateChild = DB::table('categories')->where('enable',1)->where('idParent','<>',0)->get();
+            $place_product = DB::table('products')->join('place_product','place_product.idProduct','=','products.id')->where('products.adminCheck',1)->where('products.idUser',$id)->select('place_product.*')->get();
 
-        $place_product = DB::table('products')->join('place_product','place_product.idProduct','=','products.id')->where('products.adminCheck',1)->where('products.idUser',1)->select('place_product.*')->get();
-
-        return view('user.userquanlykhohang',compact('products','soluongProducts','cateParent','cateChild','place_product'));
+            return view('user.userquanlykhohang',compact('products','soluongProducts','cateParent','cateChild','place_product'));
+        }
+        else{
+            return redirect('login');
+        }
     }
+
+    public function viewUserQuanLyTinDang(){
+        if(Auth::id())
+        {
+            $id = Auth::id();
+            $tindang = DB::table('tindang')
+                ->join('categories','categories.id','=','tindang.idCate')
+                ->join('places','places.id','=','tindang.idPlace')
+                ->where('status',1)
+                ->where('adminCheck',1)
+                ->where('idUser',$id)
+                ->select('tindang.*','categories.name as tenDanhMuc','places.name as diadiem')
+                ->get();
+
+            return view('user.quan-ly-tin-dang',compact('tindang'));
+
+        }
+        else{
+            return redirect('login');
+        }
+    }
+
+    //    xóa tin đăng
+    public function xoaTinDang(Request $request){
+        DB::table('tindang')->where('id',$request->idTinDang)->delete();
+        return redirect('quan-ly-tin-dang')->with('thongbao','Xóa thành công tin đăng');
+    }
+
 }
