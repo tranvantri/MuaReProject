@@ -80,301 +80,21 @@
         }
           
       </script>
-        
-      
-      
-     <div class="md-modal md-effect-1" id="modal-productview">
-       <div class="row">
-          <!--Image Zoom & Imagelist-->
-          <div class="col-lg-6 col-md-6 col-sm-6">
-             <div class="img-zoom-container" onmouseover="showZoomImg()" onmouseout="hideZoomImg()">
-                <img class="img-zoom" id="myimage" src="https://static8.muarecdn.com/zoom/430_430/muare/images/2019/01/30/5004798_giay-bong-da-205n-black-gold-1-360x360.jpg" xoriginal="https://static8.muarecdn.com/thumb_w/1000/muare/images/2019/01/30/5004798_giay-bong-da-205n-black-gold-1-360x360.jpg" width="400" height="400" >
-             </div>
-          </div>
-          <!-- Product Info -->
-          <div class="col-lg-6 col-md-6 col-sm-6">
-             <!-- Result when zoom image-->
-             <div id="myresult-div" class="img-zoom-container">
-                <div id="myresult" class="img-zoom-result"></div>
-             </div>
-             <!-- product info -->
-             <div id="modal-productinfo-L">
-                <p class="productinfo-title">Xe ba bánh đẩy trẻ em 218</p>
-                <p class="productinfo-seller">Người bán <i class="fas fa-check"></i> <a href="#">thegioixecuabe1</a> (thành viên từ 03/01/2019)</p>
-                <p class="productinfo-content">Được sản xuất trên dây chuyền công nghệ cao mua 1 được 2 xe đẩy trẻ em 218 vừa có thể làm xe đẩy cho bé khi còn nhỏ , vừa làm chiếc xe đạp rất tiện lợi phù hợp cho các bé từ 1-5 tuổi giúp giảm chi phí cho bố mẹ khi mua đồ cho bé . 
-                   Xe đẩy cho bé gấp gọn có mái che SJBB218 thiết kế phối hợp giữa xe đẩy và xe ba bánh có bàn đạp , rất đa năng phù hợp với nhiều giai đoạn phát triển của bé . Tay đẩy phía sau xe thuận lợi cho việc bố mẹ điều khiển hướng xe 
-                   Phần khung của xe được làm từ chất liệu kim loại chắc chắn ,vỏ bọc sử dụng chất liệu nhựa cao cấp không mùi , không chứa các chất độc hại gây ảnh hưởng đến sức khỏe của bé . 
-                   Mái che giúp chắn nắng , gió và hạn chế các tác động có hại từ môi trường . 
-                   Thiết kế phần khoang ngồi rộng rãi , có tựa lưng chống mỏi khung đai nhựa bao quanh chỗ ngồi giúp bảo vệ và tạo sự thoải mái cho bé
-                   Đặc biệt xe 3 bánh đẩy cao cấp còn thiết kế ghế ngồi xoay 2 chiều bố mẹ có thể vừa đẩy vừa nói chuyện với bé . 
-                   Xe có 3 bánh chắc chắn sử dụng chất liệu cao su giúp xe cân bằng và chống trơn trượt . Xe dễ dàng gấp gọn để cất giữ hoặc mang theo khi đi du lịch .
-                </p>
-                <!-- Price & Order Button -->
-                <div>
-                   <p class="productinfo-price">1.550.000đ</p>
 
-                   <a id="btn_left2" class="md-trigger2" data-modal2="modal-orderview" data-toggle="modal" data-target="#modal-orderview"><button class="productinfo-order"><i class="fas fa-cart-arrow-down"></i> <abbr style="font-style: normal !important;">&#160;|&#160;</abbr> Đặt hàng</button></a>
 
-                </div>
-                <div class="productinfo-phone">
-                   <img style="float: left;" src="data:image/png;base64,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">
-                   <p class="productinfo-phone-text">ẤN ĐỂ XEM SỐ</p>
-                </div>
-                <!-- Attention about product -->
-                <div>
-                   <p class="productinfo-attention">LƯU Ý KHI MUA HÀNG:</p>
-                   <ul class="productinfo-atchild">
-                      <li>KHÔNG trả tiền trước khi nhận hàng.</li>
-                      <li>KIỂM TRA hàng cẩn thận, đặc biệt với hàng đắt tiền.</li>
-                   </ul>
-                </div>
-             </div>
-             <!--
-                <button class="md-close">Close me!</button>
-                -->
-          </div>
-          <!-- Comment part -->
-       </div>
-       <!-- COMMENT PART -->
-       <div id="comment-part-L">
-          <br/>
-          <hr>
-          <p>Bình luận (0)</p>
-          <div class="input-group-L" style="width: 100%;">
-             <input type="text" class="form-control comment_comment item-comment-input" placeholder="Nhập bình luận tại đây">
-          </div>
-          <div id="qlcomment">
-             <div class="tab-content tab-content-L" style="background: white !important;">
-                <div id="menu1" class="tab-pane active tab-pane-L" id="post_cmt" role="tabpanel" 
-                   style="background: white !important;margin: 0 !important;padding: 0 !important;">
-                   <input type="hidden" name="userAvatar" value="https://static8.muarecdn.com/zoom,80/90_90/muare/avatars/l/733/733265_1547649471.png?1547649471">
-                   <input type="hidden" name="userName" value="tomiot">
-                   <!-- Product's comment -->
-                   <ul style="list-style-type: none;">
-                      <li class="comment-L" data-id="2444">
-                         <a class="pull-left" href="#">
-                         <img class="lazy-image avatar" data-original="https://muare.vn/images/avatars/avatar_male_s.png?v=2" src="https://muare.vn/images/avatars/avatar_male_s.png?v=2" alt="" width="35px" height="35px" style="display: inline;">
-                         </a>
-                         <div class="comment-body-L">
-                            <div class="comment-heading-L">
-                               <span class="post_title_L"><span class="user-L">Khách</span> đã trả lời bình luận tại sản phẩm <a href="https://muare.vn/products/sandwich-kinh-do.224170" data-title="Load sản phẩm" data-size="l" data-id="popupItem" class="show-item OverlayPopup" item-data="224170">sandwich kinh đô</a></span>
-                            </div>
-                            <p class="content-L">còn hàng k?</p>
-                            <div class="span-reply">
-                               <span class="reply-L" onclick="showcmtinput(null,null,'comment-thu-1')">Trả lời</span>
-                               <span id="span-tuychon" class="option-L dropdown dropdown-L" style="display: none;">
-                                  Tùy chọn
-                                  <div id="a-phanhoi" class="dropdown-content" style="display: none;">
-                                     <a class="add_feeback saved" data-type="product" data-feeback="63">Đã thêm phản hồi</a>
-                                  </div>
-                               </span>
-                            </div>
-                         </div>
-                         <!-- PUT COMMENT HERE -->
-                         <ul class="comments-list">
-                            <!-- Product's comment -->
-                            <ul style="list-style-type: none;">
-                               <li class="comment-L" data-id="2444">
-                                  <a class="pull-left" href="#">
-                                  <img class="lazy-image avatar" data-original="https://muare.vn/images/avatars/avatar_male_s.png?v=2" src="https://muare.vn/images/avatars/avatar_male_s.png?v=2" alt="" width="35px" height="35px" style="display: inline;">
-                                  </a>
-                                  <div class="comment-body-L">
-                                     <div class="comment-heading-L">
-                                        <span class="post_title_L"><span class="user-L">Khách</span> đã trả lời bình luận tại sản phẩm <a href="https://muare.vn/products/sandwich-kinh-do.224170" data-title="Load sản phẩm" data-size="l" data-id="popupItem" class="show-item OverlayPopup" item-data="224170">sandwich kinh đô</a></span>
-                                     </div>
-                                     <span class="content-cmt-L">@TenKhach: <span>Comment cha là gì?</span></span>
-                                     <p class="content-L">còn hàng k?</p>
-                                     <div>
-                                        <span class="reply-L" onclick="showcmtinput(null,null,'comment-thu-1')">Trả lời</span>
-                                        <span id="span-tuychon" class="option-L dropdown dropdown-L" style="display: none;">
-                                           Tùy chọn
-                                           <div id="a-phanhoi" class="dropdown-content" style="display: none;">
-                                              <a class="add_feeback saved" data-type="product" data-feeback="63">Đã thêm phản hồi</a>
-                                           </div>
-                                        </span>
-                                     </div>
-                                  </div>
-                               </li>
-                            </ul>
-                            <!-- END - Product's comment -->
-                            <!-- Khi load dữ liệu thì Gán id của thằng comment vào cái id của div bên dưới này nè, để khi click vào 1 comment cụ thể - hoặc comment con của nó thì đều
-                               hiển thị ra cái input này để nhập cmt vào -->
-                            <div id="comment-thu-1" class="input-reply" style="display: none;margin-left: 16px;">
-                               <div class="input-group-L" style="width: 100%;">
-                                  <input type="text" class="form-control comment_comment item-comment-input" data-type="comment" data-itemid="224170" placeholder="Nhập trả lời tại đây và enter" reply-id="2444">
-                               </div>
-                            </div>
-                         </ul>
-                         <!-- END - PUT COMMENT HERE -->
-                      </li>
-                   </ul>
-                   <!-- END - Product's comment -->    
-                   <!-- Product's comment -->
-                   <ul style="list-style-type: none;">
-                      <li class="comment-L" data-id="2444">
-                         <a class="pull-left" href="#">
-                         <img class="lazy-image avatar" data-original="https://muare.vn/images/avatars/avatar_male_s.png?v=2" src="https://muare.vn/images/avatars/avatar_male_s.png?v=2" alt="" width="35px" height="35px" style="display: inline;">
-                         </a>
-                         <div class="comment-body-L">
-                            <div class="comment-heading-L">
-                               <span class="post_title_L"><span class="user-L">Khách</span> đã trả lời bình luận tại sản phẩm <a href="https://muare.vn/products/sandwich-kinh-do.224170" data-title="Load sản phẩm" data-size="l" data-id="popupItem" class="show-item OverlayPopup" item-data="224170">sandwich kinh đô</a></span>
-                            </div>
-                            <p class="content-L">còn hàng k?</p>
-                            <div class="span-reply">
-                               <span class="reply-L" onclick="showcmtinput(null,null,'comment-thu-2')">Trả lời</span>
-                               <span id="span-tuychon" class="option-L dropdown dropdown-L" style="display: none;">
-                                  Tùy chọn
-                                  <div id="a-phanhoi" class="dropdown-content" style="display: none;">
-                                     <a class="add_feeback saved" data-type="product" data-feeback="63">Đã thêm phản hồi</a>
-                                  </div>
-                               </span>
-                            </div>
-                         </div>
-                         <!-- PUT COMMENT HERE -->
-                         <ul class="comments-list">
-                            <!-- Product's comment -->
-                            <ul style="list-style-type: none;">
-                               <li class="comment-L" data-id="2444">
-                                  <a class="pull-left" href="#">
-                                  <img class="lazy-image avatar" data-original="https://muare.vn/images/avatars/avatar_male_s.png?v=2" src="https://muare.vn/images/avatars/avatar_male_s.png?v=2" alt="" width="35px" height="35px" style="display: inline;">
-                                  </a>
-                                  <div class="comment-body-L">
-                                     <div class="comment-heading-L">
-                                        <span class="post_title_L"><span class="user-L">Khách</span> đã trả lời bình luận tại sản phẩm <a href="https://muare.vn/products/sandwich-kinh-do.224170" data-title="Load sản phẩm" data-size="l" data-id="popupItem" class="show-item OverlayPopup" item-data="224170">sandwich kinh đô</a></span>
-                                     </div>
-                                     <span class="content-cmt-L">@TenKhach: <span>Comment cha là gì?</span></span>
-                                     <p class="content-L">còn hàng k?</p>
-                                     <div>
-                                        <span class="reply-L" onclick="showcmtinput(null,null,'comment-thu-2')">Trả lời</span>
-                                        <span id="span-tuychon" class="option-L dropdown dropdown-L" style="display: none;">
-                                           Tùy chọn
-                                           <div id="a-phanhoi" class="dropdown-content" style="display: none;">
-                                              <a class="add_feeback saved" data-type="product" data-feeback="63">Đã thêm phản hồi</a>
-                                           </div>
-                                        </span>
-                                     </div>
-                                  </div>
-                               </li>
-                            </ul>
-                            <!-- END - Product's comment -->
-                            <!-- Product's comment -->
-                            <ul style="list-style-type: none;">
-                               <li class="comment-L" data-id="2444">
-                                  <a class="pull-left" href="#">
-                                  <img class="lazy-image avatar" data-original="https://muare.vn/images/avatars/avatar_male_s.png?v=2" src="https://muare.vn/images/avatars/avatar_male_s.png?v=2" alt="" width="35px" height="35px" style="display: inline;">
-                                  </a>
-                                  <div class="comment-body-L">
-                                     <div class="comment-heading-L">
-                                        <span class="post_title_L"><span class="user-L">Khách</span> đã trả lời bình luận tại sản phẩm <a href="https://muare.vn/products/sandwich-kinh-do.224170" data-title="Load sản phẩm" data-size="l" data-id="popupItem" class="show-item OverlayPopup" item-data="224170">sandwich kinh đô</a></span>
-                                     </div>
-                                     <span class="content-cmt-L">@TenKhach: <span>Comment cha là gì?</span></span>
-                                     <p class="content-L">còn hàng k?</p>
-                                     <div>
-                                        <span class="reply-L" onclick="showcmtinput(null,null,'comment-thu-2')">Trả lời</span>
-                                        <span id="span-tuychon" class="option-L dropdown dropdown-L" style="display: none;">
-                                           Tùy chọn
-                                           <div id="a-phanhoi" class="dropdown-content" style="display: none;">
-                                              <a class="add_feeback saved" data-type="product" data-feeback="63">Đã thêm phản hồi</a>
-                                           </div>
-                                        </span>
-                                     </div>
-                                  </div>
-                               </li>
-                            </ul>
-                            <!-- END - Product's comment -->
-                            <!-- Khi load dữ liệu thì Gán id của thằng comment vào cái id của div bên dưới này nè, để khi click vào 1 comment cụ thể - hoặc comment con của nó thì đều
-                               hiển thị ra cái input này để nhập cmt vào -->
-                            <div id="comment-thu-2" class="input-reply" style="display: none;margin-left: 16px;">
-                               <div class="input-group-L" style="width: 100%;">
-                                  <input type="text" class="form-control comment_comment item-comment-input" data-type="comment" data-itemid="224170" placeholder="Nhập trả lời tại đây và enter" reply-id="2444">
-                               </div>
-                            </div>
-                         </ul>
-                         <!-- END - PUT COMMENT HERE -->
-                      </li>
-                   </ul>
-                   <!-- END - Product's comment -->      
-                </div>
-                <div id="menu2" class="tab-pane fade tab-pane-L" id="comment_item" role="tabpanel">
-                   <!-- This div no use because Lazy to design UI for this so just use a few used divs...ahihi-->
-                </div>
-             </div>
-             <!--<script language="javascript">
-                var divs = document.getElementsByTagName('div');
 
-                function hidecmtinput(commentid){
-                    //ẩn tất cả các input dùng để nhập cmt vào của khách hàng, trừ input chính của sản phẩm (click -> show)
-                    for (var i = 0, l = divs.length; i < l; i++) {
-                                if (divs[i].getAttribute('class') == 'input-reply' && divs[i].getAttribute('id') != commentid) 
-                                    if (divs[i].style.display == 'none') divs[i].style.display = 'none';
-                                    else divs[i].style.display = 'none';
-                            }
-                }
-                function showcmtinput(fullname, fatherfullname, commentid) {
-                    if(fullname == null) fullname = 'Khách';
-                    if(fatherfullname == null) fatherfullname = 'Khách';
-                    hidecmtinput(commentid); //ẩn tất cả input để nhập cmt khi ng dùng click vào input mới (show 1 cái thôi)
-                    for (var i = 0, l = divs.length; i < l; i++) {
-                                if (divs[i].getAttribute('class') == 'input-reply' && divs[i].getAttribute('id') == commentid) 
-                                    if (divs[i].style.display == 'none') {
-                                        divs[i].style.display = '';
-                                        var divchild = divs[i].children;
-                                        var divchildchild = divchild[0].children;
-                                        divchildchild[0].setAttribute('placeholder','@'+fatherfullname+':');
-                                    }
-                                    else divs[i].style.display = 'none';
-                            }
-                 }
-           
+        @include('user.core.modalChiTietSanPham')
 
-             </script>-->
-          </div>
-       </div>
-       <!-- END COMMENT PART -->
-    </div>
-    
-      <!--<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-        Open modal
-      </button>-->
+        @include('user.core.modalDatHang')
 
-      <!-- The Modal -->
-        @include modalDatHang
+
     <div id="md-overlay-id" class="md-overlay"></div>
     <div id="md-overlay2-id" class="md-overlay2"></div>
-    <!-- Handle show/hide ORDER MODAL (cause technology failt) -->
-    <!--<script type="text/javascript">
-       document.getElementById("md-overlay2-id").style.visibility = 'hidden';
-       document.getElementById("modal-orderview").style.visibility = 'hidden'; 
-        
-       document.getElementById("btn_left2").onclick = function() {
-           document.getElementById("modal-orderview").style.visibility = 'inherit';
-           document.getElementById("md-overlay2-id").setAttribute('opacity','1');
-           document.getElementById("md-overlay2-id").style.visibility = 'visible';
-           
-       };
-        
-       document.getElementById("md-overlay2-id").addEventListener("click", function(){
-           document.getElementById("md-overlay2-id").style.visibility = 'hidden';
-           document.getElementById("modal-orderview").style.visibility = 'hidden';
-       });
-        
-    </script>-->
     
-      <!-- Confirm order modal -->
-      <div class="modal fade" id="modal-confirmorder">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <!-- Modal body -->
-            <div class="modal-body" style="text-align: center;">
-                <img src="https://media.giphy.com/media/PijzuUzUhm7hcWinGn/giphy.gif" alt="Yes" width="120" height="120">
-                <p style="padding: 8px 4px 0 4px;font-size: 15px;">Tạo đơn hàng thành công, chủ shop sẽ liên hệ với bạn để xác nhận đơn hàng.</p>
-                <button class="btn-ok" type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
-            </div>
-          </div>
-        </div>
-      </div>
+      <!-- Confirm order modal  - thong bao đa dat hang thanh cong-->
+        @include('user.chitietdanhmuc.modalConfirmMuaHang')
       <!-- END Confirm order modal -->
-      
+
     @if(isset($hienthi) && $hienthi == 'san-pham') {{-- xet loai hien thi --}}
 
       <div id="products-L" class="col-lg-10 col-md-10"><!-- nội dung các bài đăng -->     
@@ -408,19 +128,21 @@
                         
                         <div class="row-no-padding" style="padding: 0;">
                             <div class="product-list-L">
+
                                 @foreach($products as $childPro)
                                 <div class="col-lg-4 col-md-4 col-sm-4 item-L" style="float: left;">
                                     <div> <!-- SẢN PHẨM THỨ ? -->
                                         <div class="avatar-sp-L">
-                                            <a title="{{$childPro->name}}" data-title="Load sản phẩm" data-size="l" data-id="popupItem" class="md-trigger img-rounded OverlayPopup" data-modal="modal-productview">
+                                            <a title="{{$childPro->name}}" data-title="Load sản phẩm" data-size="l" data-id="{{$childPro->id}}" class="md-trigger img-rounded OverlayPopup" data-modal="modal-productview">
                                             <img class="lazy-image" src="{{$childPro->images}}" alt="{{$childPro->name}}" width="180px" height="180px" style="display: inline;">
+
                                             </a>
 
                                         </div>
-                                        
+
                                         <div class="title-sp-L">
                                             <h2 class="item-title-h2">
-                                                <a href="#" title="{{$childPro->name}}" data-title="Load sản phẩm" data-size="l" data-id="popupItem" class="img-rounded OverlayPopup" data-item="224062">
+                                                <a href="#" title="{{$childPro->name}}" data-id="popupItem" class="img-rounded OverlayPopup">
                                                     {{$childPro->name}}
                                                 </a>
                                             </h2>
@@ -432,20 +154,6 @@
                                         </div>
                                         <div class="user-post-L">
                                             <div class="username-sp-L">bán bởi <span class="name">{{$childPro->tenchushop}}</span>
-                                                <div class="box-arrow-L">
-                                                    <div class="user-info-L">
-                                                        <div class="user-name-L">
-                                                            <img class="lazy-image" src="https://static8.muarecdn.com/zoom,80/30_30/muare/avatars/l/29/29055_1475477187.jpg?1475477187" title="GioKayVaLa" width="40px" height="40px">
-                                                            <span>{{$childPro->tenchushop}}</span>
-                                                        </div>
-                                                        <div class="user-shop-L">
-                                                            <ul>
-                                                                <li><span>Cửa hàng: </span><a href="https://muare.vn/shop/GioKayVaLa/29055">{{$childPro->tenchushop}}</a></li>
-
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
                                             </div>
                                             <div class="post-date-L">{{date("d/m/Y", strtotime($childPro->date_added))}}, lúc {{date("H:m", strtotime($childPro->date_added))}}</div>
                                         </div>
@@ -458,10 +166,9 @@
                                 </div>
                                 @endforeach
 
-                                {{--@foreach($params as $child)--}}
-                                        {{--{{$child->id}}<br>--}}
-                                        {{--{{$child->value}}--}}
-                                {{--@endforeach--}}
+
+
+
 
                                 <?php
                                     echo ($comments);
