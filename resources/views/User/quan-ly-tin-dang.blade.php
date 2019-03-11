@@ -68,28 +68,6 @@
                                                                     <span>Chỉnh sửa</span>
                                                                 </a>
                                                         </div>
-                                                        <div class="cel-v view-v">
-                                                            <div>
-                                                                <span title="Tổng số lượt xem"><i class="fas fa-eye"></i> {{$child->view}}</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="cel-v create-date-v">
-                                                                <div>
-
-                                                                    <span title="Đăng lúc {{ date("H:i:s",strtotime($child->date_added)) }}">
-                                                                        <i class="far fa-clock"></i> đăng vào {{date('d-m-Y', strtotime($child->date_added))}}</span>
-                                                                </div>
-                                                        </div>
-                                                        <div class="cel-v edit-button-v comment-v">
-                                                                <a href="">
-                                                                    <span><i class="far fa-comment"></i> Bình luận</span>
-                                                                </a>
-                                                        </div>
-                                                        <div class="cel-v edit-button-v comment-v">
-                                                                <a href="">
-                                                                    <span><i class="far fa-comment-dots"></i> Bình luận mới</span>
-                                                                </a>
-                                                        </div>
                                                         <div class="cel-v delete-button-v">
                                                             <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
                                                                     data-target="#myModal{{$child->id}}"><i class="fas fa-trash"></i></button>
@@ -127,6 +105,31 @@
 
 
 
+                                                        </div>
+                                                        
+                                                    </div>
+                                                    <div class="tool-table-v">
+                                                        <div class="cel-v view-v">
+                                                            <div style="padding-top: 4px;">
+                                                                <span title="Tổng số lượt xem"><i class="fas fa-eye"></i> {{$child->view}}</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="cel-v create-date-v">
+                                                                <div>
+
+                                                                    <span title="Đăng lúc {{ date("H:i:s",strtotime($child->date_added)) }}">
+                                                                        <i class="far fa-clock"></i> đăng vào {{date('d-m-Y', strtotime($child->date_added))}}</span>
+                                                                </div>
+                                                        </div>
+                                                        <div class="cel-v edit-button-v comment-v">
+                                                                <a href="">
+                                                                    <span><i class="far fa-comment"></i> Bình luận</span>
+                                                                </a>
+                                                        </div>
+                                                        <div class="cel-v edit-button-v comment-v">
+                                                                <a href="">
+                                                                    <span><i class="far fa-comment-dots"></i> Bình luận mới</span>
+                                                                </a>
                                                         </div>
                                                     </div>
                                                 </div>

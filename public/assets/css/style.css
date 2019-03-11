@@ -3164,15 +3164,18 @@ output {
 /*************************KET THUC TRANG QUAN LY DON HANG**************************************/
 /*************************TRANG QUAN LY TIN DANG**************************************/
 .post-info-v{
-    width: auto;
     vertical-align: top;
     padding-left: 10px;
     border-right: 1px solid #ddd;
     padding-right: 10px;
-    white-space: normal;
 }
 .post-info-v .vi-tri-v span {
   font-size: 12px;
+}
+.post-info-v .title-v {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .post-info-v .vi-tri-v span:last-child {
   color: #ff8000;
@@ -3182,11 +3185,12 @@ output {
   font-weight: bold;
 }
 .post-info-v .tool-table-v {
-  display: table;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   width: 100%;
 }
 .post-info-v .tool-table-v .cel-v {
-  display: table-cell;
   vertical-align: middle;
 }
 .edit-button-v {
@@ -3217,6 +3221,7 @@ output {
   float: left;
   margin-left: 10px;
   padding: 3px;
+  text-align: center;
 }
 .edit-button-v span:last-child {
   font-size: 12px;
