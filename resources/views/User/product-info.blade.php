@@ -30,30 +30,29 @@
               
               <!-- Hình ảnh nhỏ của sp -->
               <div class="scroll-small-img-v">
-                <div class="list-img-wrap-v" id="abc123">
-                  <div class="list-small-img-v">
-                    <div>
-                      <img src="{{$child->images}}" 
-                      width="75px" height="75px" onclick="showPicture(this);"/>
+                <div class="list-img-wrap-v owl-carousel" >
+                  
+                    <div style="padding: 0 10px;">
+                      <img class="img-thumbnail img-small" src="{{$child->images}}" 
+                        onclick="showPicture(this);"/>
                     </div>
-                    <div>
-                      <img src="https://static8.muarecdn.com/zoom,90/75_75/muare/images/2019/01/16/4994071_a76.jpg"
-                      width="75px" height="75px" onclick="showPicture(this);"/>
+                    <div style="padding: 0 10px;">
+                      <img class="img-thumbnail img-small" src="https://static8.muarecdn.com/zoom,90/75_75/muare/images/2019/01/16/4994071_a76.jpg"
+                        onclick="showPicture(this);"/>
                     </div>
-                    <div>
-                      <img src="{{$child->images}}"
-                      width="75px" height="75px" onclick="showPicture(this);"/>
+                    <div style="padding: 0 10px;">
+                      <img class="img-thumbnail img-small" src="{{$child->images}}"
+                        onclick="showPicture(this);"/>
                     </div>
 
 
                   </div>
-                </div>
-                <div class="scroll-v scroll-left-v"onclick="scrollright();" >
+                {{-- <div class="scroll-v scroll-left-v" onclick="scrollright();" >
                   <span class="icon-scroll-left-v" ></span>
                 </div>
                 <div class="scroll-v scroll-right-v"  onclick="scrollleft();">
                   <span class="icon-scroll-right-v"></span>
-                </div>
+                </div> --}}
               </div>
               <!-- Kết thúc hình ảnh của sản phẩm -->
 
