@@ -134,6 +134,35 @@ $(document).ready(function() {
       }
     });
   }
+
+
+  // owl-carousel 
+  if ($(".list-img-wrap-v.owl-carousel").length) {
+    $(".list-img-wrap-v.owl-carousel").owlCarousel({
+      loop: true,
+      autoplayHoverPause: true,
+      autoplay: true,
+      autoplayTimeout: 3000,
+      responsiveClass: true,
+      responsive: {
+        0: {
+          items: 2,
+          // nav: true,
+          loop: true
+        },
+        600: {
+          items: 3,
+          // nav: true,
+          loop: true
+        },
+        1000: {
+          items: 4,
+          // nav: true,
+          loop: true
+        }
+      }
+    });
+  }
   //khi load trang login, hide muc đăng ký đi
 
   $("#dangkysection").hide();
@@ -409,7 +438,7 @@ function showPicture(imgs) {
 	var imgResult = document.getElementById("myresult-v");
   // var imgText = document.getElementById("imgtext");
 	imgResult.style.backgroundImage= "url('" + imgs.src + "')";
-	console.log(imgResult.style.backgroundImage);
+	// console.log(imgResult.style.backgroundImage);
 	
   // imgText.innerHTML = imgs.alt;
   // expandImg.parentElement.style.display = "block";
@@ -448,7 +477,7 @@ function imageZoom1(imgID, resultID) {
   cy = result.offsetHeight / lens.offsetHeight;
   /*set background properties for the result DIV:*/
 	result.style.backgroundImage = "url('" + img.src + "')";
-	console.log(img.src);
+	// console.log(img.src);
   result.style.backgroundSize = img.width * cx + "px " + img.height * cy + "px";
   /*execute a function when someone moves the cursor over the image, or the lens:*/
   lens.addEventListener("mousemove", moveLens);
