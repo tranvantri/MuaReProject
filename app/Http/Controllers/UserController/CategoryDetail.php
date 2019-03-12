@@ -8,10 +8,12 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Database\QueryException;
 use Cookie;
+header("Content-Type: application/json");
 
 
 class CategoryDetail extends Controller
-{
+{   
+    
 	public function getDanhMuc($name, $id){
 		$categoryParent = Categories::find($id);
 		$categoryCurrent = $categoryParent;
@@ -43,12 +45,48 @@ class CategoryDetail extends Controller
             ->select('products.*','users.name as tenchushop')
             ->paginate(20);
 
-
-
-
   		return view('user.chitietdanhmuc',compact('categoryParent', 'categoryCurrent', 'childCate','products','place','hienthi', 'tinhtrang', 'gia', 'sapxep'));
 	}
-
+    public static function myJson($comments) {
+        $params = array();
+        //$content = $comments->getContent();
+        if (!empty($content)) {
+          // 2nd param to get as array
+          $params = json_decode($comments, TRUE);
+        }
+        // Process $params...
+        //return echo $params;
+    }
+    public function getComment(Request $request)
+    {
+        //$number = htmlspecialchars($_GET["idProduct"]);
+        $idPro = $request->idProduct;          
+        $comments = DB::table('comments')
+                        ->join('products','products.id','=','comments.idProduct')
+                        ->join('users','users.id','=','comments.idUser')
+                        ->where('products.id',$idPro)
+                        ->select('comments.id as idComment', 'comments.value as content', 'comments.idParent as idParent', 'users.avatar as userAvatar', 'users.name as userName', 'comments.idProduct as idProduct','products.name as productName', 'users.id as idUser', 'comments.idBlock as idBlock', 'comments.date_added as date_added')
+                        ->get();
+                    //$this->myJson($comments);
+                header("Content-type: application/json");
+                $comments = json_encode($comments);
+                echo  $comments;
+    }
+    public function getSubComment(Request $request)
+    {
+        //$number = htmlspecialchars($_GET["idProduct"]);
+        $idUser = $request->idUser;          
+        $comments = DB::table('comments')
+                        ->join('products','products.id','=','comments.idProduct')
+                        ->join('users','users.id','=','comments.idUser')
+                        ->where('comments.idBlock',$idUser)
+                        ->select('comments.id as idComment', 'comments.value as content', 'comments.idParent as idParent', 'users.avatar as userAvatar', 'users.name as userName', 'comments.idProduct as idProduct','products.name as productName','users.id as idUser','comments.idBlock as idBlock', 'comments.date_added as date_added')
+                        ->get();
+                    //$this->myJson($comments);
+                header("Content-type: application/json");
+                $comments = json_encode($comments);
+                echo  $comments;
+    }
 	public function getCustomCategory($nameCate, $idCate, $hienthi, $tinhtrang, $gia, $sapxep){
 		$categoryCurrent = Categories::find($idCate);//lay danh muc
 		$idPlace = 1;
@@ -496,17 +534,35 @@ class CategoryDetail extends Controller
 					->orderBy($sortBy,$dir)
 		            ->select('products.*','users.name as tenchushop')
 		            ->paginate(20);
-
-
-                    $comments = DB::table('comment_product')
-                        ->join('products','products.id','=','comment_product.idProduct')
-                        ->join('comments','comment_product.idComment','=','comments.id')
+                    
+                    /*$number = 1;
+                    //$number = htmlspecialchars($_GET["number"]);
+                    if(is_numeric($number) && $number > 0){
+                        /*echo "<table>";
+                        for($i=0; $i<11; $i++){
+                            echo "<tr>";
+                                echo "<td>$number x $i</td>";
+                                echo "<td>=</td>";
+                                echo "<td>" . $number * $i . "</td>";
+                            echo "</tr>";
+                        }
+                        echo "</table>";
+                        $comments = DB::table('comments')
+                        ->join('products','products.id','=','comments.idProduct')
                         ->where('products.id',1)
-                        ->select('comments.id as idComment', 'comments.value as noidungComment', 'comments.idParent as idCha')
-                        ->first();
+                        ->select('comments.id as idComment', 'comments.value as content', 'comments.idParent as idParent', 'comments.idProduct as idProduct')
+                        ->get();
+                    //$this->myJson($comments);
+                    header("Content-type: application/json");
                     $comments = json_encode($comments);
-
-		  			return view('user.chitietdanhmuc',compact('categoryParent', 'categoryCurrent', 'childCate','products','place','hienthi', 'tinhtrang', 'gia', 'sapxep','comments'));
+                    echo $comments;
+                    echo json_encode(array('status' => 'ok'));
+                    //echo json_encode(array('foo' => 'bar'));
+                    //    exit;
+                    }*/
+                    
+                    
+		  			return view('user.chitietdanhmuc',compact('categoryParent', 'categoryCurrent', 'childCate','products','place','hienthi', 'tinhtrang', 'gia', 'sapxep'));
 				}else{					
 					$categoryParent = Categories::find($categoryCurrent->idParent);//gan cho de dung
 					$place = Places::find($idPlace);

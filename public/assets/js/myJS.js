@@ -350,16 +350,19 @@ $(document).ready(function() {
     });
     
 	// trang quan ly don hang
-	document.getElementById("span-tuychon").onclick = function () {
-        if(document.getElementById("a-phanhoi").style.display == 'none'){
-            document.getElementById("a-phanhoi").style.display = 'block'; 
-        } else {
-            document.getElementById("a-phanhoi").style.display = 'none';
-        }
-        
-    }    
-    
-    document.getElementById("span-reply").onclick = function () {
+    if($("#span-tuychon").length){
+        document.getElementById("span-tuychon").onclick = function () {
+            if(document.getElementById("a-phanhoi").style.display == 'none'){
+                document.getElementById("a-phanhoi").style.display = 'block'; 
+            } else {
+                document.getElementById("a-phanhoi").style.display = 'none';
+            }
+
+        }  
+    }
+	  
+    if($("#span-reply").length){
+        document.getElementById("span-reply").onclick = function () {
         if(document.getElementById("input-reply-customer").style.display == 'none'){
             document.getElementById("input-reply-customer").style.display = 'block'; 
         } else {
@@ -367,26 +370,281 @@ $(document).ready(function() {
         }
         
     }
+    }
+    
+    // For todays date;
+    Date.prototype.today = function () { 
+        return ((this.getDate() < 10)?"0":"") + this.getDate() +"/"+(((this.getMonth()+1) < 10)?"0":"") + (this.getMonth()+1) +"/"+ this.getFullYear();
+    }
+    // For the time now
+    Date.prototype.timeNow = function () {
+         return ((this.getHours() < 10)?"0":"") + this.getHours() +":"+ ((this.getMinutes() < 10)?"0":"") + this.getMinutes();
+    }
+    Date.prototype.monthyearNow = function () {
+         return (((this.getMonth()+1) < 10)?"0":"") + (this.getMonth()+1) +"/"+ this.getFullYear();;
+    }
+    //Return true if 28 or false-29 in feb
+    /*function isLeapYear(year) { 
+        return new Date(year, 2, 0).getDate() > 28; 
+    } */
+    //analysis current time with comments's time to show between space
+    function current_cmt_time(time){
+        var now = new Date();
+        var nowday = ((now.getDate() < 10)?"0":"") + now.getDate();
+        var nowhour = ((now.getHours() < 10)?"0":"") + now.getHours();
+        var nowminute = ((now.getMinutes() < 10)?"0":"") + now.getMinutes();
+        var datetime = "" + new Date().timeNow() + ' ' +new Date().today();
+        var firstM = 0;
+        var i, cmtDay, cmtMonth;
+        //analysis current time with comments's time to show between space
+                        for(i = 0;i<time.length;i++){
+                            if(time[i] == '/') {
+                                firstM = i; 
+                                break;
+                            }
+                        }
+                        cmtminute = time.substring(3,5);
+                        cmthour = time.substring(0,2);
+                        cmtday = time.substring(firstM-2,firstM);
+                        cmtMonthYear = time.substring(firstM+1,time.length);
+                        //cmtYear = product.date_added.substring(firstM+4,product.date_added.length);
+                        if(now.monthyearNow() == cmtMonthYear){
+                            if(nowday != cmtday){
+                                datetime = (parseInt(nowday) - parseInt(cmtday)).toString() + " ngày trước";
+                            }
+                            else if(nowhour != cmthour){
+                                if((nowminute - cmtminute) >= 0){
+                                    datetime = (parseInt(nowhour) - parseInt(cmthour)).toString() + " giờ trước"; 
+                                }else{
+                                    if((parseInt(nowhour) - parseInt(cmthour) - 1).toString() == '0'){
+                                        datetime = ((60 - parseInt(cmtminute))+ parseInt(nowminute)).toString() + " phút trước";
+                                    }
+                                    else datetime = (parseInt(nowhour) - parseInt(cmthour) - 1).toString() + " giờ trước";
+                                }
+                                    
+                            } else if (nowhour == cmthour){
+                                datetime = (parseInt(nowminute) - parseInt(cmtminute)).toString() + " phút trước";
+                            }
+                        } else {
+                            datetime = time;
+                        }
+                    //
+        return datetime
+    }
+    $(document).on("click", "div.avatar-sp-L", function(event) {
+        event.preventDefault();
+        console.log("dad");
+        var idPro = $(this).attr("dataIDProduct");
+        //console.log(idPro);
+        $.ajax({
+                  type: "GET",
+                  url: "getProductComment",
+                  //contentType: "application/x-www-form-urlencoded",
+                  async: false,
+                contentType: "application/json",
+                dataType: "json",
+                data: { idProduct : idPro },
+                    
+                /*done: function(results) {
+                    // Uhm, maybe I don't even need this?
+                    JSON.parse(results);
+                    return results;
+                },
+                fail: function( jqXHR, textStatus, errorThrown ) {
+                    alert( 'Could not get posts, server response: ' + textStatus + ': ' + errorThrown );
+                }
+               }).responseJSON; // <-- this instead of .responseText*/
+                    
+                  success: function (response) {
+                    var $div = document.getElementById("comment-part-L");
+                    var createInput = true;
+                    var createSubInput = true;
+                $.each(response, function(index, product) {    // Iterate over the JSON array.
+    		        	$("#comment-part-L > br").remove();
+                        $("#comment-part-L > hr").remove();
+                        $("#comment-part-L > p").remove();
+                        $("#comment-part-L > div").remove();
+      		 	});
+                
+ 		        $.each(response, function(index, product) {
+                    
+                        var datetime = current_cmt_time(product.date_added);
+                    
+ 		                if(createInput){ //create orinal comment input
+                            createInput = false;
+                        $("<div>").appendTo($div)
+                        .append($("<br/>"))        // Create HTML <td> element, set its text content with id of currently iterated product and append it to the <tr>.
+                        .append($("<hr>"))
+                        .append($("<p>").text("Bình luận (0)"))
+                        .append($("<div>").addClass('input-group-L').css('width','100%')
+                               .append($("<input>").attr('type', 'text').addClass("form-control comment_comment item-comment-input").attr('placeholder', 'Nhập bình luận tại đây'))
+                               )
+                        .append($("<div>").attr('id',"qlcomment")
+                               .append($("<div>").addClass("tab-content tab-content-L")
+                                      .append($("<div>").attr('id','menu1').addClass('tab-pane active tab-pane-L qlcomment-menu1').attr('role','tabpanel')
+                                            //  Product's comment
+                                             .append($('<ul>').css('list-style-type','none')
+                                                    .append($('<li>').addClass('comment-L comment-call-L'))))
+                                      .append($("<div>").attr('id', 'menu2').addClass('tab-pane fade tab-pane-L').attr('role', 'tabpanel'))
+                                      ))
+                            }
+                                                    if(product.idParent == '0')
+                                                     { 
+                                                         createSubInput = true;
+                                                            $("<div>").appendTo(document.getElementsByClassName("comment-call-L"))
+                                                          .append($('<a>').addClass('pull-left')
+                                                                 .append($('<img>').addClass('lazy-image avatar').attr('src','https://muare.vn/images/avatars/avatar_male_s.png?v=2'))
+                                                                 )
+                                                            //Phần comment
+                                                          .append($('<div>').addClass('comment-body-L')
+                                                                 .append($('<div>').addClass('comment-heading-L')
+                                                                         .append($('<span>').addClass('post_title_L')
+                                                                                .append($('<span>').addClass('user-L').text(product.userName))
+                                                                                .append($('<abbr>').text(" đã bình luận về sản phẩm "))
+                                                                                .append($('<span>').css('float','right').css('font-size','13px')
+                                                                                       .append($('<i>').addClass('far fa-clock').text(' '+datetime))
+                                                                                       )
+                                                                                )
+                                                                        )
+                                                                  .append($('<p>').addClass('content-L').text(product.content))
+                                                                  .append($('<div>').addClass('span-reply')
+                                                                         .append($('<span>').addClass('reply-L').text("Trả lời").click(function(){
+ 		                		           	                                  showcmtinput(null,null,'comment-thu-1', product.idComment); 
+                                                                              event.preventDefault();
+ 		                				                                     })
+                                                                         )
+                                                                 )
+                                                                  
+                                                           ) //END comment 
+                                                         var idToShowInput = product.idComment;
+                                                          var idUser = product.idUser;
+                                                     var userName = product.userName;
+                                                        $.ajax({
+                                                          type: "GET",
+                                                          url: "getSubComment",
+                                                          //contentType: "application/x-www-form-urlencoded",
+                                                          async: false,
+                                                        contentType: "application/json",
+                                                        dataType: "json",
+                                                        data: { idUser : idUser },
+                                                        success: function (response2) {
+                                                            //alert(response2)
+                                                            $.each(response2, function(index, sub) {
+                                                        var datetime = current_cmt_time(sub.date_added);
+                                                        $("<div>").appendTo(document.getElementsByClassName("comment-call-L"))
+                                                              .append($('<ul>').addClass('comments-list')
+                                                         .append($('<ul>').css('list-style-type','none')
+                                                                .append($('<li>').addClass('comment-L')
+                                                                      .append($('<a>').addClass('pull-left')
+                                                                             .append($('<img>').addClass('lazy-image avatar').attr('src','https://muare.vn/images/avatars/avatar_male_s.png?v=2'))
+                                                                             )
+                                                                        //Phần comment
+                                                                      .append($('<div>').addClass('comment-body-L')
+                                                                             .append($('<div>').addClass('comment-heading-L')
+                                                                                     .append($('<span>').addClass('post_title_L')
+                                                                                            .append($('<span>').addClass('user-L').text(sub.userName))
+                                                                                             .append($('<abbr>').text(" Trả lời @"+userName))
+                                                                                             .append($('<span>').css('float','right').css('font-size','13px')
+                                                                                       .append($('<i>').addClass('far fa-clock').text(' '+datetime))
+                                                                                       )
+                                                                                            )
+                                                                                    )
+                                                                              
+                                                                              .append($('<p>').addClass('content-L').text(sub.content))
+                                                                              .append($('<div>').addClass('span-reply')
+                                                                                     .append($('<span>').addClass('reply-L').text("Trả lời").click(function(){
+                                                                                          showcmtinput(null,null,'comment-thu-1',idToShowInput); 
+                                                                                          event.preventDefault();
+                                                                                         })
+                                                                                     )
+                                                                             )
+                                                                       )
+                                                                )
+                                                         ))//END sub-comment
+                                                        //Reply Input will show-hide when click any reply
+                                                        /*if(createSubInput && index == (response2.length-1)){
+                                                            alert(index);
+                                                            createSubInput = false;
+                                                            $("<div>").appendTo(document.getElementsByClassName("comments-list"))
+                                                            .append($('<div>').addClass('input-reply').css('margin-left','16px')
+                                                               .append($('<div>').addClass('input-group-L').css('width','100%')
+                                                                      .append($('<input>').addClass("form-control comment_comment item-comment-input").attr('type','text').attr('placeholder','Nhập trả lời tại đây và enter'))
+                                                                      )
+                                                               ) //END Reply Input 
+                                                        }*/
+                                                            });
+                                                          },
+                                                          error: function () {
+                                                          },
+                                                          complete: function (response) {
+                                                          }
+                                                        });  // end Ajax   */
+                                                    }
+                                                    else {//sub-comment
+                                                     
+                                                       
+                                                      
+                                                     } //END check idParent
+                                                    //)
+                                             //) //  END Product's comment
+                                              
+                                              
+                                      //) //END menu1 tab
+                                      //.append($("<div>").attr('id', 'menu2').addClass('tab-pane fade tab-pane-L').attr('role', 'tabpanel'))
+                               //)
+                            //) //END div id = qlcomment
+                                                    if(createSubInput){ //create comment input when click tra loi
+                                                            //alert(idToShowInput);
+                                                            createSubInput = false;
+                                                            $("<div>").appendTo(document.getElementsByClassName("comment-call-L"))
+                                                            .append($('<div>').attr('id','idinput'+idToShowInput).addClass('input-reply').css('margin','8px 0px 10px 50px').css('display','none')
+                                                               .append($('<div>').addClass('input-group-L').css('width','100%')
+                                                                      .append($('<input>').addClass("form-control comment_comment item-comment-input").attr('type','text').attr('placeholder','Nhập trả lời tại đây và enter'))
+                                                                      )
+                                                               ) //END Reply Input 
+                                                        }
+                    firstM = 0;
+                    i = 0;
+ 		        });//END $.each(responseJson, function(index, product)*/
+                    //OnSuccess(response)
+                  },
+                  error: function () {
+                    alert("error");  
+                    //OnError(response)
+                  },
+                  complete: function (response) {
+                    // Handle the complete event
+                    //alert("ajax completed " + JSON.stringify(response));
+                  }
+                });  // end Ajax   
+        
+        
+      });
+    
     
 });
 
 /* Comment part */
     var divs = document.getElementsByTagName('div');
 
-                /*function hidecmtinput(commentid){
+                function hidecmtinput(commentid){
                     //ẩn tất cả các input dùng để nhập cmt vào của khách hàng, trừ input chính của sản phẩm (click -> show)
                     for (var i = 0, l = divs.length; i < l; i++) {
-                                if (divs[i].getAttribute('class') == 'input-reply')
-                                    if (divs[i].style.display == 'none') divs[i].style.display = 'none';
-                                    else divs[i].style.display = 'none';
+                                if (divs[i].getAttribute('class') == 'input-reply'){
+                                    //alert(divs[i].getAttribute('id'));
+                                    //if (divs[i].style.display == 'none') divs[i].style.display = 'none';
+                                    //else
+                                    //divs[i].style.display = 'none';
                             }
-                }*/
-                function showcmtinput(fullname, fatherfullname, commentid) {
+                    }
+                }
+                function showcmtinput(fullname, fatherfullname, commentid, idToShowInput) {
                     if(fullname == null) fullname = 'Khách';
                     if(fatherfullname == null) fatherfullname = 'Khách';
                     //hidecmtinput(commentid); //ẩn tất cả input để nhập cmt khi ng dùng click vào input mới (show 1 cái thôi)
                     for (var i = 0, l = divs.length; i < l; i++) {
-                                if (divs[i].getAttribute('class') == 'input-reply'){
+                                if (divs[i].getAttribute('class') == 'input-reply' && divs[i].getAttribute('id') == ('idinput'+idToShowInput)){
+                                    //alert(divs[i].getAttribute('id'));
                                     if (divs[i].style.display == 'block') {
                                         divs[i].style.display = 'none';
                                     }
@@ -506,3 +764,4 @@ function imageZoom1(imgID, resultID) {
   }
 }
 //END JS product-info
+

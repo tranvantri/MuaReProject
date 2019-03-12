@@ -3022,6 +3022,8 @@ table .td-info .user-post .username .username-h4 a {
   font-family: Roboto;
   font-weight: bold;
   color: #000000;
+    float: left;
+    margin-right: 4px;
 }
 .comment-L .comment-body-L .comment-heading-L .post_title_L a {
   color: #176093;
@@ -3087,7 +3089,6 @@ table .td-info .user-post .username .username-h4 a {
 .comment-L ul.comments-list .input-reply {
   /*display: none;*/
   padding: 0px 0px 15px;
-    display: none;
 }
 .input-group-L {
   position: relative;
