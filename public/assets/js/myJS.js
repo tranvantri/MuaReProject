@@ -143,24 +143,24 @@ $(document).ready(function() {
       autoplayHoverPause: true,
       autoplay: true,
       autoplayTimeout: 3000,
-      // responsiveClass: true,
-      // responsive: {
-      //   0: {
-      //     items: 2,
-      //     nav: true,
-      //     loop: true
-      //   },
-      //   600: {
-      //     items: 3,
-      //     nav: true,
-      //     loop: true
-      //   },
-      //   1000: {
-      //     items: 4,
-      //     nav: true,
-      //     loop: true
-      //   }
-      // }
+      responsiveClass: true,
+      responsive: {
+        0: {
+          items: 2,
+          // nav: true,
+          loop: true
+        },
+        600: {
+          items: 3,
+          // nav: true,
+          loop: true
+        },
+        1000: {
+          items: 4,
+          // nav: true,
+          loop: true
+        }
+      }
     });
   }
   //khi load trang login, hide muc đăng ký đi
