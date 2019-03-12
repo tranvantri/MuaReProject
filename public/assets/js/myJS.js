@@ -431,6 +431,7 @@ $(document).ready(function() {
 
 //JS product-info
 imageZoom1("expandedImg", "myresult-v");
+hideZoomImgPro();
 function showPicture(imgs) {
 	var expandImg = document.getElementById("expandedImg");
   // var imgText = document.getElementById("imgtext");
@@ -469,7 +470,7 @@ function imageZoom1(imgID, resultID) {
   /*create lens:*/
   lens = document.createElement("DIV");
 	lens.setAttribute("class", "img-zoom-lens-pro-v");
-	lens.setAttribute("id", "img-zoom-lens-pro-v");
+  lens.setAttribute("id", "img-zoom-lens-pro-v");  
   /*insert lens:*/
   img.parentElement.insertBefore(lens, img);
   /*calculate the ratio between result DIV and lens:*/
