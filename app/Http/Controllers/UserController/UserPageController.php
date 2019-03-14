@@ -91,8 +91,8 @@ class UserPageController extends Controller
 
     //    xóa tin đăng
     public function xoaTinDang(Request $request){
-        DB::table('tindang')->where('id',$request->idTinDang)->delete();
-        return redirect('quan-ly-tin-dang')->with('thongbao','Xóa thành công tin đăng');
+        DB::table('tindang')->where('id',$request->idTinDang)->update(array('status' => -1));
+        return redirect('quan-ly-tin-dang')->with('thongbao','Xóa tin đăng thành công');
     }
 
 }
