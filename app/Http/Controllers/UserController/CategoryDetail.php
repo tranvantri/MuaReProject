@@ -503,6 +503,8 @@ class CategoryDetail extends Controller
                         ->where('products.id',1)
                         ->select('comments.id as idComment', 'comments.value as noidungComment', 'comments.idParent as idCha')
                         ->first();
+
+                    
                     $comments = json_encode($comments);
 
 		  			return view('user.chitietdanhmuc',compact('categoryParent', 'categoryCurrent', 'childCate','products','place','hienthi', 'tinhtrang', 'gia', 'sapxep','comments'));
