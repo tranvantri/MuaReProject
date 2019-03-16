@@ -13,7 +13,7 @@
                        @include('user.core.menu-left-user-quanly')
                     </section>
                     <!-- Kết  thúc menu left quản trị -->
-                        <div class="col-md-10 ">
+                        <div class="col-md-9  col-lg-10 col-sm-8 ">
                             <div class="row">
                                 <div id="thong_bao_tomiot" class="col-md-9">
                                     <p>Hiện đang có {{$soluongProducts}} sản phẩm trong kho</p>

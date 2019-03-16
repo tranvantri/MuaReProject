@@ -145,22 +145,41 @@ class PostController extends Controller
 
 	// đầu ra: trang chitiet dich vu
 	public function getDichVu($id){
+	    // thong tin cua dich vu theo id
 		$services = DB::table('services')->join('users', 'users.id', '=', 'services.idUser')
-            ->where('id',$id)->where('status',1)->where('adminCheck',1)
+            ->where('services.id',$id)->where('services.status',1)->where('services.adminCheck',1)
+            ->select('users.id as idChuShop', 'services.*','users.email as emailChuShop','users.phone as phoneChuShop','users.address as addressChuShop','users.name as tenChuShop','users.avatar as avatarChuShop','users.username as username')
             ->get();
+
+		$countService = $services->count();
+        if($countService == 0){
+            return redirect()->route('trangchu');
+        }
 
         $services_category = DB::table('services')->join('categories','categories.id','=','services.idCate')
             ->where('services.id',$id)->where('services.adminCheck',1)
             ->select('categories.name as nameCate','categories.id as idCate')->first();
 
-        $services_relate = DB::table('services')->join('categories','categories.id','=','services.idCate')->join('users', 'users.id', '=', 'products.idUser')->where('categories.id',$services_category->idCate)->where('services.adminCheck',1)->inRandomOrder()->limit(3)->select('services.*','users.name as nameChuShop')->get();
+        $services_relate = DB::table('services')
+                            ->join('categories','categories.id','=','services.idCate')
+                            ->join('users', 'users.id', '=', 'services.idUser')
+                            ->where('categories.id',$services_category->idCate)
+                            ->where('services.adminCheck',1)->inRandomOrder()->limit(3)
+                            ->select('services.*','users.name as nameChuShop')->get();
 
 
         $randPro = DB::table('products')->where('products.status',1)->inRandomOrder()->limit(6)->get();
 
+        $getService = DB::table('services')->where('id', $id)->first();
+        $product_user = DB::table('products')->join('users','users.id','=','products.idUser')
+            ->join('categories','categories.id','=','products.idCate')
+            ->where('products.adminCheck',1)->where('users.adminCheck',1)
+            ->where('users.id',$getService->idUser)->where('products.id','<>',$id)
+            ->select('products.*','categories.id as idCate','categories.name as nameCate')->get();
 
-        return view('user.chitiettindang',compact('services','services_category',
-            'services_relate','randPro'));
+        return view('user.chitietdichvu',compact('services','services_category',
+                'services_relate','randPro','product_user'));
+
 	}
 
 		

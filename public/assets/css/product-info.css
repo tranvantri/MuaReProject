@@ -56,13 +56,13 @@
 .scroll-small-img-v {
   position: relative;
   width: 100%;
-  height: 75px;
+  height: 92px;
   margin-top: 10px;
   width: 100%;
 }
 .list-img-wrap-v {
   background: #fff;
-  height: 75px;
+  height: 92px;
   position: relative;
   width: 100%;
   text-align: center;
@@ -546,3 +546,19 @@ ul.nav-tabs > li.active > a {
   color: #ec3030;
   font-weight: 400;
 }
+
+.img-small{
+  margin-right: 5px;
+  width: 80px; 
+  height: 90px;
+}
+
+/*.list-img-wrap-v.owl-carousel .owl-stage{
+  width: 500px !important;
+}
+
+.list-img-wrap-v.owl-carousel .owl-item{
+  width: 80px!important;
+}*/
+
+

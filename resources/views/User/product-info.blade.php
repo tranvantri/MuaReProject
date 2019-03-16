@@ -30,30 +30,29 @@
               
               <!-- Hình ảnh nhỏ của sp -->
               <div class="scroll-small-img-v">
-                <div class="list-img-wrap-v" id="abc123">
-                  <div class="list-small-img-v">
-                    <div>
-                      <img src="{{$child->images}}" 
-                      width="75px" height="75px" onclick="showPicture(this);"/>
+                <div class="list-img-wrap-v owl-carousel" >
+                  
+                    <div style="padding: 0 10px;">
+                      <img class="img-thumbnail img-small" src="{{$child->images}}" 
+                        onclick="showPicture(this);"/>
                     </div>
-                    <div>
-                      <img src="https://static8.muarecdn.com/zoom,90/75_75/muare/images/2019/01/16/4994071_a76.jpg"
-                      width="75px" height="75px" onclick="showPicture(this);"/>
+                    <div style="padding: 0 10px;">
+                      <img class="img-thumbnail img-small" src="https://static8.muarecdn.com/zoom,90/75_75/muare/images/2019/01/16/4994071_a76.jpg"
+                        onclick="showPicture(this);"/>
                     </div>
-                    <div>
-                      <img src="{{$child->images}}"
-                      width="75px" height="75px" onclick="showPicture(this);"/>
+                    <div style="padding: 0 10px;">
+                      <img class="img-thumbnail img-small" src="{{$child->images}}"
+                        onclick="showPicture(this);"/>
                     </div>
 
 
                   </div>
-                </div>
-                <div class="scroll-v scroll-left-v"onclick="scrollright();" >
+                {{-- <div class="scroll-v scroll-left-v" onclick="scrollright();" >
                   <span class="icon-scroll-left-v" ></span>
                 </div>
                 <div class="scroll-v scroll-right-v"  onclick="scrollleft();">
                   <span class="icon-scroll-right-v"></span>
-                </div>
+                </div> --}}
               </div>
               <!-- Kết thúc hình ảnh của sản phẩm -->
 
@@ -84,7 +83,9 @@
               </h1>
               Người bán
               <span title="Đã kích hoạt SMS"><i class="fas fa-check"></i></span>
-              <a class="basic-info-name-v" href="{{$child->idChuShop}}">{{$child->usernameChuShop ?? 'username'}} </a>
+              <a class="basic-info-name-v"
+                 href="{{ route('gianhangcuanguoidung',$child->idChuShop) }}">{{$child->usernameChuShop ?? 'username'}} </a>
+
               (thành viên từ {{$child->ngayTaoChuShop ?? '1/1/2019'}})
               <div class="item-des-v">
                 <div class="item-des-content-v">
@@ -99,10 +100,9 @@
                 </div>
                 <div class="list-tags-v"> </div>
               </div>
-              <button class="order-v" data-toggle="modal" data-target="#modalThemSanPham"></button>
 
-              @include('user.chitietsanpham.modalThemSanPham')
-
+                @include('user.modal.modalProductInfo')
+              <button class="order-v" data-toggle="modal" data-target="#modal-productview" data-modal="modal-productview"></button>
 
 
 
@@ -179,40 +179,13 @@
 
         <!-- Đề xuất sản phẩm -->
         <div id="title-product-related-v"><span>NGƯỜI BÁN KHÁC ĐỀ XUẤT CHO BẠN</span></div>
-        <!-- <div class="products_related_parent-v">
-        @foreach($product_offer as $childOffer)
-            <div class="offer-category-v">          
-              <div class="colum-offer-category-v">
-                <div class="details-v">
-                  <div class="avatar-v">
-                    <a href="{{ route('sanpham', $childOffer->id)}}"
-                  title="{{$childOffer->name}}">
-                    <img class="image" src="{{$childOffer->images}}"
-                    alt="{{$childOffer->name}}"></a>
-                  </div>
-                </div>
-                <div class="title_products_related-v">
-                  <h2>
-                    <a class="item_name-v" href="{{ route('sanpham', $childOffer->id)}}"
-                    title="{{$childOffer->name}}" data-title="Load sản phẩm" data-size="l"
-                    data-id="popupItem">{{$childOffer->name}}</a>
-                  </h2>
-                </div>
-
-                <div class="price_products_related-v">
-                  <span><b>{{number_format($childOffer->price,0)}} đ</b></span>
-                </div> 
-              </div>
-            </div>
-         @endforeach
-        </div> -->
         
         <div class="promoteProduct row owl-carousel">
         @foreach($product_offer as $childOffer)	
 <div class="motkhoi col-lg-3 col-md-4 col-sm-6">
 	<div class="card item">		
 		<div class="wrap-img">
-			<a href="">
+			<a href="{{ route('sanpham', $childOffer->id)}}">
 				<img class="card-img-top" src="{{$childOffer->images}}" alt="">
 			</a>
 			<div class="qv-button-container"> <a href="{{ route('sanpham', $childOffer->id)}}" title="{{$childOffer->name}}"><i class="fas fa-eye"></i></a></div>											
@@ -223,14 +196,12 @@
 				<div class="title_products_related">
 					<a href="{{ route('sanpham', $childOffer->id)}}" title="{{$childOffer->name}}" class="OverlayPopup" data-size="l" data-id="popupItem">{{$childOffer->name}}</a>
 				</div>
-				<!--item-title-->
+
 				<div class="item-content">
 					<div class="price-box">
 						<p class="special-price"> <span class="price"> {{number_format($childOffer->price,0)}}đ </span> </p>
 					</div>
 				</div>
-				<!--item-content-->
-
       </div>
       
 		</div>
@@ -246,41 +217,13 @@
 
         <!-- Sản phẩm ngẫu nhiên -->
         <div id="title-product-related-v"><span>CÓ THỂ BẠN QUAN TÂM</span></div>
-        <!-- <div class="products_related_parent-v">
-
-          @foreach($randPro as $childRand)
-          <div class="offer-category-v">
-            <div class="colum-offer-category-v">
-              <div class="details-v">
-                <div class="avatar-v">
-                  <a href="{{ route('sanpham', $childRand->id)}}"
-                  title="{{$childRand->name}}"><img class="image" src="{{$childRand->images}}"
-                  alt="{{$childRand->name}}"></a>
-                </div>
-              </div>
-              <div class="title_products_related-v">
-                <h2>
-                  <a class="item_name-v" href="{{ route('sanpham', $childRand->id)}}"
-                  title="{{$childRand->name}}" data-title="Load sản phẩm"
-                  data-size="l" data-id="popupItem">{{$childRand->name}}</a>
-                </h2>
-              </div>
-
-              <div class="price_products_related-v">
-                <span><b>{{number_format($childRand->price,0)}} đ</b></span>
-              </div>
-            </div>
-          </div>
-          @endforeach
-          
-        </div> -->
         <div class="promoteProduct row owl-carousel">
         @foreach($randPro as $childRand)	
 <div class="motkhoi col-lg-3 col-md-4 col-sm-6">
 	<div class="card item">		
 		<div class="wrap-img">
-			<a href="">
-				<img class="card-img-top" src="{{$childRand->images}}" alt="">
+			<a href="{{ route('sanpham', $childRand->id)}}">
+				<img class="card-img-top" style="width: 159px; height: 159px;" src="{{$childRand->images}}" alt="">
 			</a>
 			<div class="qv-button-container"> <a href="{{ route('sanpham', $childRand->id)}}" title="{{$childRand->name}}"><i class="fas fa-eye"></i></a></div>											
 		</div>		
@@ -296,8 +239,6 @@
 						<p class="special-price"> <span class="price"> {{number_format($childRand->price,0)}}đ </span> </p>
 					</div>
 				</div>
-				<!--item-content-->
-
       </div>
       
 		</div>
@@ -321,7 +262,7 @@
           <div class="basic-info-main-v">
             <div class="basic-info-title-v">Được bán bởi</div>
             <h2>
-              <a class="basic-info-name-v" href="{{$child->usernameChuShop}}">{{$child->usernameChuShop??'user404'}}</a>
+              <a class="basic-info-name-v" href="{{ route('gianhangcuanguoidung',$child->idChuShop) }}">{{$child->usernameChuShop??'user404'}}</a>
             </h2>
 
             <div class="register-date-v">

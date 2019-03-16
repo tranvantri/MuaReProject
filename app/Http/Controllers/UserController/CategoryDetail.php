@@ -597,32 +597,6 @@ class CategoryDetail extends Controller
 		            ->select('products.*','users.name as tenchushop')
 		            ->paginate(20);
                     
-                    /*$number = 1;
-                    //$number = htmlspecialchars($_GET["number"]);
-                    if(is_numeric($number) && $number > 0){
-                        /*echo "<table>";
-                        for($i=0; $i<11; $i++){
-                            echo "<tr>";
-                                echo "<td>$number x $i</td>";
-                                echo "<td>=</td>";
-                                echo "<td>" . $number * $i . "</td>";
-                            echo "</tr>";
-                        }
-                        echo "</table>";
-                        $comments = DB::table('comments')
-                        ->join('products','products.id','=','comments.idProduct')
-                        ->where('products.id',1)
-                        ->select('comments.id as idComment', 'comments.value as content', 'comments.idParent as idParent', 'comments.idProduct as idProduct')
-                        ->get();
-                    //$this->myJson($comments);
-                    header("Content-type: application/json");
-                    $comments = json_encode($comments);
-                    echo $comments;
-                    echo json_encode(array('status' => 'ok'));
-                    //echo json_encode(array('foo' => 'bar'));
-                    //    exit;
-                    }*/
-                    
                     
 		  			return view('user.chitietdanhmuc',compact('categoryParent', 'categoryCurrent', 'childCate','products','place','hienthi', 'tinhtrang', 'gia', 'sapxep'));
 				}else{					

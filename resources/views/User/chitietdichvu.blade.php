@@ -22,9 +22,9 @@
         <div class="row">
           <div class="col-md-10">
             <b><strong><p style="margin-bottom: 0rem;">{{$child->name}}</p></strong></b>
-            @foreach($service_category as $childCate)
-              <p class="timePost_tomiot">Cập nhật: {{$child->date_added }} - <a href="{{$childCate->idCate}}">{{$childCate->nameCate}}</a></p>
-            @endforeach
+            {{--@foreach($services_category as $childCate)--}}
+              <p class="timePost_tomiot">Cập nhật: {{$child->date_added }} - <a href="{{$services_category->idCate}}">{{$services_category->nameCate}}</a></p>
+            {{--@endforeach--}}
           </div>
           <div class="col-md-2">
             <p>ID Tin: {{$child->id}} </p>
@@ -55,7 +55,7 @@
           <div id="table_product_tomiot">
 
             <div id="img_shop_tomiot">
-              <img id="hinh_anh_shop_tomiot" src="{{$child->images ?? 'assets/images/chitietsanpham/hinh_anh_1.jpg'}}" alt="">
+              <img id="hinh_anh_shop_tomiot" src="{{$child->images}}" alt="{{$child->name}}">
             </div>
 
             <div id="thong_tin_san_pham_tomiot">
@@ -89,7 +89,7 @@
             <div class="danhsach_sp_lien_quan_tomiot">
               <div class="list_item_tomiot row">
                 <!-- Hiện sản phẩm tin đăng liên quan -->
-                @foreach($service_relate as $childRelate)
+                @foreach($services_relate as $childRelate)
                 <div class="col-md-4 sp_lien_quan_tomiot">
                   <div class="avatar_splq_tomiot">
                     <img class="img_splq_tomiot" src="assets/images/chitietsanpham/logo_muare.png" alt="">
@@ -185,7 +185,7 @@
     <div class="noi_dung_tin_khac_tomiot">
       <ul>
 
-        @foreach($service_user as $childpc)
+        @foreach($product_user as $childpc)
         <li>
           <div class="post-title">
             <h3 class="post-title-h3">
@@ -221,7 +221,7 @@
       <div class="nguoi_ban_de_xuat_tomiot col-md-12">
         <div class="row">
 
-          @foreach($randSer as $childPro)
+          @foreach($randPro as $childPro)
             <div class="col-md-2">
               <img class="image_spdx_tomiot" src="{{$childPro->images}}" alt="">
               <a style="max-height: 1.4em;   " class="thu_gon_text_chitietsanpham_tomiot ds_cac_sp_de_xuat_tomiot " href="#">{{$childPro->name}}</a>

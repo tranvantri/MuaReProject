@@ -7,7 +7,7 @@
 <section class="main-container col1-layout home-content-container">
     <div class="container">
         <div class="row">
-            <div class="mrfoot"">
+            <div class="mrfoot">
             <div class=" no-sidebar">
                 @foreach($user as $childUser)
                 <input type="hidden" name="user_login" class="user_login" value="0" />
@@ -16,7 +16,7 @@
                     <div class="cover">
                         <div class="image-cover">
                             <img src="assets/images/gianhangcuchuoing/banner-default.png" class="cover_shop"
-                                data-original="assets/images/gianhangcuchuoing/banner-default.png" style="top: 0px"
+                                data-original="assets/images/gianhangcuchuoing/banner-default.png" style="width: 100%"
                                 alt="banner" />
                         </div>
                         <div class="shop-name">
@@ -26,7 +26,8 @@
 
                     </div>
                     <div class="shop-info">
-                        <div class="info-left">
+                        <div class="row">
+                        <div class="info-left col-md-3">
                             <div class="owner">
                                 <div class="o-avatar">
                                     <img class="lazy-image"
@@ -49,7 +50,7 @@
                                                 <div class="modal-content modal-content-v">
                                                     <div class="modal-body col-xs-12">
                                                         <div class="row close-login-v">
-                                                            <button type="button" class="close-1" data-dismiss="modal"
+                                                            <button type="button" class="close-login-btn" data-dismiss="modal"
                                                                 aria-label="Close">×</button>
                                                         </div>
                                                         <div class="row">
@@ -263,7 +264,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <span class="chat_shop chat user shop-chat" data-id="{{$childUser->email}}"
+                                        <span class="chat_shop chat user shop-chat " data-id="{{$childUser->email}}"
                                             data-name="{{$childUser->username ?? $childUser->name}}"
                                             data-avatar="{{$childUser->avatar ??'assets/images/chitietsanpham/avatar_male.png'}}">CHAT
                                             VỚI SHOP</span>
@@ -286,7 +287,7 @@
                             </div>
                         </div>
 
-                        <div class="info-right">
+                        <div class="info-right col-md-9">
                             <div class="khung">
                                 <div class="gioi-thieu">
                                     <div class="o-desc no_slider">
@@ -297,12 +298,12 @@
                                             <div class="description">
                                                 <span>Gian hàng đang cập nhật...</span>
                                             </div>
-                                            <div id="app">
+                                            <!-- <div id="app">
                                             
                                                 <example-component></example-component>
-                                                <modal-shoppingcart></modal-shoppingcart>
+                                                <modal-shopping></modal-shopping>
                                                 <script src="./js/app.js"></script>
-                                            </div>
+                                            </div> -->
                                             <div class="static">
                                                 <div class="item-s">
                                                     <div class="icon-s">
@@ -310,7 +311,7 @@
                                                     </div>
                                                     <div class="s-content">
                                                         <div class="count">
-                                                            {{$soluongService}}
+                                                            {{$soluongTinDang}}
                                                         </div>
                                                         Tin đăng
                                                     </div>
@@ -362,40 +363,41 @@
                             </div>
                         </div>
                     </div>
+                    </div>
                     <div class="shop-row">
-                        <h2 class="row-title">{{$soluongService}} Tin đăng của shop</h2>
+                        <h2 class="row-title">{{$soluongTinDang}} Tin đăng của shop</h2>
 
                         <div class="list-post row">
-                            @foreach($services as $childService)
-                            <div class="shop-post col-xs-6">
+                            @foreach($tindang as $childTinDang)
+                            <div class="shop-post col-md-6">
 
                                 <div class="img-post">
 
-                                    <a title="{{$childService->name}}"
-                                        href="{{ route('chitiettindang', $childService->id) }}"
+                                    <a title="{{$childTinDang->name}}"
+                                        href="{{ route('chitiettindang', $childTinDang->id) }}"
                                         data-title="Load sản phẩm" data-size="l" data-id="popupItem"
                                         class="OverlayPopup">
-                                        <img class="lazy-images" src="{{$childService->images}}"
-                                            alt="{{$childService->name}}" />
+                                        <img class="lazy-images" src="{{$childTinDang->images}}"
+                                            alt="{{$childTinDang->name}}" />
                                     </a>
                                 </div>
                                 <!--img-post-->
                                 <div class="info-post">
                                     <div class="title-post">
                                         <h2 class="title-post-h2">
-                                            <a title="{{$childService->name}}"
-                                                href="{{ route('chitiettindang', $childService->id) }}">
-                                                {{$childService->name}}
+                                            <a title="{{$childTinDang->name}}"
+                                                href="{{ route('chitiettindang', $childTinDang->id) }}">
+                                                {{$childTinDang->name}}
                                             </a>
                                         </h2>
                                     </div>
                                     <div class="location-post">
-                                        <h3 class="add-h3" title="{{$childService->namePlace}}">
-                                            {{$childService->namePlace}}
+                                        <h3 class="add-h3" title="{{$childTinDang->namePlace}}">
+                                            {{$childTinDang->namePlace}}
                                         </h3>
                                     </div>
                                     <div class="price-post">
-                                        Giá từ: <span>{{ number_format($childService->price,0)}} đ </span>
+                                        Giá từ: <span>{{ number_format($childTinDang->price,0)}} đ </span>
                                     </div>
                                 </div>
 
@@ -523,17 +525,17 @@
 
                         <!-- Hiển thị các sản phẩm của User -->
 
-                        @foreach($products as $childProduct)
+                        
                         <div class="list-items">
-                            <div class="shop-item col-xs-15">
-                                <div class="img-item show-item" item-data="221991">
+                                @foreach($products as $childProduct)
+                            <div class="shop-item">
                                     <div class="avatar">
                                         <a title="{{$childProduct->name}}"
                                             href="{{ route('sanpham', $childProduct->id) }}" data-title="Load sản phẩm"
                                             data-size="l" data-id="popupItem" class="OverlayPopup">
                                             <img class="lazy-image" data-original="{{$childProduct->name}}"
                                                 src="{{$childProduct->images}}" alt="{{$childProduct->name}}"
-                                                style="display: inline; width: 200px; height: 200px; border-radius: 10px; " />
+                                                style="width: 150px; height: 150px; border-radius: 10px; " />
                                         </a>
                                         <div class="sale-state"></div>
                                     </div>
@@ -550,10 +552,11 @@
                                         </div>
                                         <div class="price-item">{{number_format($childProduct->price,0)}} đ</div>
                                     </div>
-                                </div>
+                
                             </div>
+                            @endforeach
                         </div>
-                        @endforeach
+                        
                         <!-- Kết thúc foreach của Hiển thị sản phẩm -->
 
                     </div>
