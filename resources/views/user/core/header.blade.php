@@ -123,10 +123,14 @@
                             <div class="col-lg-12">
                                 <!-- CHƯA ĐĂNG NHẬP NHÉ -->
 <<<<<<< HEAD
+<<<<<<< HEAD
 
                                 @if(!Auth::id())
                                 <div class="" id="you-re-guest">
 
+=======
+                                <div class="hidden" id="you-re-guest">
+>>>>>>> parent of ab92e75... Sửa giao diện search, menu chọn tìm kiếm
 =======
                                 <div class="hidden" id="you-re-guest">
 >>>>>>> parent of ab92e75... Sửa giao diện search, menu chọn tìm kiếm

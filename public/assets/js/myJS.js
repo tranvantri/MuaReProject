@@ -372,6 +372,7 @@ $(document).ready(function() {
         $('#modal-productview').hide();
         
     });
+<<<<<<< HEAD
     
     $(".img-rounded").click(function(){
         $('#md-overlay-id').show();
@@ -734,6 +735,15 @@ $(document).ready(function() {
       }
   }    
 =======
+=======
+    
+    $(".img-rounded").click(function(){
+        $('#md-overlay-id').show();
+        $('#modal-productview').show();
+    });
+    
+	// trang quan ly don hang
+>>>>>>> parent of ab92e75... Sửa giao diện search, menu chọn tìm kiếm
 	document.getElementById("span-tuychon").onclick = function () {
         if(document.getElementById("a-phanhoi").style.display == 'none'){
             document.getElementById("a-phanhoi").style.display = 'block'; 
@@ -742,6 +752,9 @@ $(document).ready(function() {
         }
         
     }    
+<<<<<<< HEAD
+>>>>>>> parent of ab92e75... Sửa giao diện search, menu chọn tìm kiếm
+=======
 >>>>>>> parent of ab92e75... Sửa giao diện search, menu chọn tìm kiếm
     
     document.getElementById("span-reply").onclick = function () {
@@ -751,8 +764,13 @@ $(document).ready(function() {
             document.getElementById("input-reply-customer").style.display = 'none';
         }
 <<<<<<< HEAD
+<<<<<<< HEAD
       }
 
+=======
+        
+    }
+>>>>>>> parent of ab92e75... Sửa giao diện search, menu chọn tìm kiếm
 =======
         
     }
