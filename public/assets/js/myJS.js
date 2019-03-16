@@ -1,7 +1,5 @@
 $(document).ready(function() {
 	// Responnse giao dien trang chu
-
-
 	$(window).resize(function(){
 		if($(window).width()<=1200){
 			// trang chu
@@ -209,11 +207,6 @@ $(document).ready(function() {
     }
   });
 
-  $('.back-to-top').click(function(){ 
-        $("html, body").animate({ scrollTop: 0 }, 700); 
-        return false; 
-    });
-
   // multi select
   if ($("#chon-danh-muc-multi-Tr").length) {
     $("#chon-danh-muc-multi-Tr").fSelect();
@@ -263,56 +256,7 @@ $(document).ready(function() {
     window.location.href = url;
   });
 
-  //Set id category cho search
-  $(document).on('click', '.searchtypes a.dropdown-item', function(event) {
-    event.preventDefault();
-    /* Act on the event */
-    var categoryParent_id = $(this).attr('data');
-    var categoryParent_name = $(this).html();
-    $('#categoryParent_id').val(categoryParent_id) ;
-    if(categoryParent_id == 'all'){
-      $('.searchtypes button.catename').html('Tất cả');
-    }else{
-      $('.searchtypes button.catename').html(categoryParent_name);
-    }
-  });
-
     /* Image Zoom for product Modal */
-
-    function moveLens(e) {
-            var pos, x, y;
-            /*prevent any other actions that may occur when moving over the image:*/
-            e.preventDefault();
-            /*get the cursor's x and y positions:*/
-            pos = getCursorPos(e);
-            /*calculate the position of the lens:*/
-            x = pos.x - (lens.offsetWidth / 2);
-            y = pos.y - (lens.offsetHeight / 2);
-            /*prevent the lens from being positioned outside the image:*/
-            if (x > img.width - lens.offsetWidth) {x = img.width - lens.offsetWidth;}
-            if (x < 0) {x = 0;}
-            if (y > img.height - lens.offsetHeight) {y = img.height - lens.offsetHeight;}
-            if (y < 0) {y = 0;}
-            /*set the position of the lens:*/
-            lens.style.left = x + "px";
-            lens.style.top = y + "px";
-            /*display what the lens "sees":*/
-            result.style.backgroundPosition = "-" + (x * cx) + "px -" + (y * cy) + "px";
-          }
-
-    function getCursorPos(e) {
-            var a, x = 0, y = 0;
-            e = e || window.event;
-            /*get the x and y positions of the image:*/
-            a = img.getBoundingClientRect();
-            /*calculate the cursor's x and y coordinates, relative to the image:*/
-            x = e.pageX - a.left;
-            y = e.pageY - a.top;
-            /*consider any page scrolling:*/
-            x = x - window.pageXOffset;
-            y = y - window.pageYOffset;
-            return {x : x, y : y};
-          }
     function imageZoom(imgID, resultID) {
           var img, lens, result, cx, cy;
           img = document.getElementById(imgID);
@@ -336,8 +280,39 @@ $(document).ready(function() {
           /*and also for touch screens:*/
           lens.addEventListener("touchmove", moveLens);
           img.addEventListener("touchmove", moveLens);
-          
-          
+          function moveLens(e) {
+            var pos, x, y;
+            /*prevent any other actions that may occur when moving over the image:*/
+            e.preventDefault();
+            /*get the cursor's x and y positions:*/
+            pos = getCursorPos(e);
+            /*calculate the position of the lens:*/
+            x = pos.x - (lens.offsetWidth / 2);
+            y = pos.y - (lens.offsetHeight / 2);
+            /*prevent the lens from being positioned outside the image:*/
+            if (x > img.width - lens.offsetWidth) {x = img.width - lens.offsetWidth;}
+            if (x < 0) {x = 0;}
+            if (y > img.height - lens.offsetHeight) {y = img.height - lens.offsetHeight;}
+            if (y < 0) {y = 0;}
+            /*set the position of the lens:*/
+            lens.style.left = x + "px";
+            lens.style.top = y + "px";
+            /*display what the lens "sees":*/
+            result.style.backgroundPosition = "-" + (x * cx) + "px -" + (y * cy) + "px";
+          }
+          function getCursorPos(e) {
+            var a, x = 0, y = 0;
+            e = e || window.event;
+            /*get the x and y positions of the image:*/
+            a = img.getBoundingClientRect();
+            /*calculate the cursor's x and y coordinates, relative to the image:*/
+            x = e.pageX - a.left;
+            y = e.pageY - a.top;
+            /*consider any page scrolling:*/
+            x = x - window.pageXOffset;
+            y = y - window.pageYOffset;
+            return {x : x, y : y};
+          }
         }
 	// Initiate zoom effect:
     imageZoom("myimage", "myresult");
@@ -349,81 +324,54 @@ $(document).ready(function() {
        document.getElementById("modal-productview").setAttribute("style","height: 100%;"); 
     }
 
-
-    if($('#step1-bar').length){
-      document.getElementById('step1-bar').style.pointerEvents = 'none';
-    }
-    if($('#step2-bar').length){
-      document.getElementById('step2-bar').style.pointerEvents = 'none';
-    }
-    if($('#step3-bar').length){
-      document.getElementById('step3-bar').style.pointerEvents = 'none';
-    }
+    document.getElementById('step1-bar').style.pointerEvents = 'none';
+    document.getElementById('step2-bar').style.pointerEvents = 'none';
+    document.getElementById('step3-bar').style.pointerEvents = 'none';
     
-
-
-
+    document.getElementById("step1-to-step2").addEventListener("click", function(){
+        document.getElementById("step2").classList.add('active');
+        document.getElementById("step1").classList.remove('active');
+        document.getElementById("step3").classList.remove('active');
+        
+        document.getElementById("step2-bar").classList.add('active');
+        document.getElementById("step1-bar").classList.remove('active');
+        document.getElementById("step3-bar").classList.remove('active');
+    }); 
+    document.getElementById("step2-to-step1").addEventListener("click", function(){
+        document.getElementById("step1").classList.add('active');
+        document.getElementById("step2").classList.remove('active');
+        document.getElementById("step3").classList.remove('active');
+        
+        document.getElementById("step1-bar").classList.add('active');
+        document.getElementById("step2-bar").classList.remove('active');
+        document.getElementById("step3-bar").classList.remove('active');
+    });
+    document.getElementById("step2-to-step3").addEventListener("click", function(){
+        document.getElementById("step3").classList.add('active');
+        document.getElementById("step1").classList.remove('active');
+        document.getElementById("step2").classList.remove('active');
+        
+        document.getElementById("step3-bar").classList.add('active');
+        document.getElementById("step1-bar").classList.remove('active');
+        document.getElementById("step2-bar").classList.remove('active');
+    });
+    document.getElementById("step3-to-step2").addEventListener("click", function(){
+        document.getElementById("step2").classList.add('active');
+        document.getElementById("step1").classList.remove('active');
+        document.getElementById("step3").classList.remove('active');
+        
+        document.getElementById("step2-bar").classList.add('active');
+        document.getElementById("step1-bar").classList.remove('active');
+        document.getElementById("step3-bar").classList.remove('active');
+    });
     
-    
-    if($('#step1-to-step2').length){
-      document.getElementById("step1-to-step2").addEventListener("click", function(){
-          document.getElementById("step2").classList.add('active');
-          document.getElementById("step1").classList.remove('active');
-          document.getElementById("step3").classList.remove('active');
-          
-          document.getElementById("step2-bar").classList.add('active');
-          document.getElementById("step1-bar").classList.remove('active');
-          document.getElementById("step3-bar").classList.remove('active');
-      }); 
-    }
-
-    if($('#step2-to-step1').length){
-      document.getElementById("step2-to-step1").addEventListener("click", function(){
-          document.getElementById("step1").classList.add('active');
-          document.getElementById("step2").classList.remove('active');
-          document.getElementById("step3").classList.remove('active');
-          
-          document.getElementById("step1-bar").classList.add('active');
-          document.getElementById("step2-bar").classList.remove('active');
-          document.getElementById("step3-bar").classList.remove('active');
-      }); 
-    }
-    
-    
-    if($('#step2-to-step3').length){
-        document.getElementById("step2-to-step3").addEventListener("click", function(){
-          document.getElementById("step3").classList.add('active');
-          document.getElementById("step1").classList.remove('active');
-          document.getElementById("step2").classList.remove('active');
-          
-          document.getElementById("step3-bar").classList.add('active');
-          document.getElementById("step1-bar").classList.remove('active');
-          document.getElementById("step2-bar").classList.remove('active');
-      });
-    }
-
-    if($('#step3-to-step2').length){
-        document.getElementById("step3-to-step2").addEventListener("click", function(){
-          document.getElementById("step2").classList.add('active');
-          document.getElementById("step1").classList.remove('active');
-          document.getElementById("step3").classList.remove('active');
-          
-          document.getElementById("step2-bar").classList.add('active');
-          document.getElementById("step1-bar").classList.remove('active');
-          document.getElementById("step3-bar").classList.remove('active');
-      });
-    }
-    
-    
-    if($('#btn-confirm-order').length){
-      document.getElementById("btn-confirm-order").addEventListener("click", function(){
-          //document.getElementById("md-overlay-id").style.visibility = 'hidden';
-         //document.getElementById("modal-productview").style.visibility = 'hidden';
-          $('#md-overlay-id').hide();
-          $('#modal-productview').hide();
-          
-      });
-    }
+    document.getElementById("btn-confirm-order").addEventListener("click", function(){
+        //document.getElementById("md-overlay-id").style.visibility = 'hidden';
+       //document.getElementById("modal-productview").style.visibility = 'hidden';
+        $('#md-overlay-id').hide();
+        $('#modal-productview').hide();
+        
+    });
     
     $(".img-rounded").click(function(){
         $('#md-overlay-id').show();
@@ -431,6 +379,7 @@ $(document).ready(function() {
     });
     
 	// trang quan ly don hang
+<<<<<<< HEAD
 
     if($("#span-tuychon").length){
         document.getElementById("span-tuychon").onclick = function () {
@@ -784,19 +733,30 @@ $(document).ready(function() {
           
       }
   }    
-    
-
-    if($('#span-reply').length){
-        document.getElementById("span-reply").onclick = function () {
-            if(document.getElementById("input-reply-customer").style.display == 'none'){
-                document.getElementById("input-reply-customer").style.display = 'block'; 
-            } else {
-                document.getElementById("input-reply-customer").style.display = 'none';
-            }
-            
+=======
+	document.getElementById("span-tuychon").onclick = function () {
+        if(document.getElementById("a-phanhoi").style.display == 'none'){
+            document.getElementById("a-phanhoi").style.display = 'block'; 
+        } else {
+            document.getElementById("a-phanhoi").style.display = 'none';
         }
+        
+    }    
+>>>>>>> parent of ab92e75... Sửa giao diện search, menu chọn tìm kiếm
+    
+    document.getElementById("span-reply").onclick = function () {
+        if(document.getElementById("input-reply-customer").style.display == 'none'){
+            document.getElementById("input-reply-customer").style.display = 'block'; 
+        } else {
+            document.getElementById("input-reply-customer").style.display = 'none';
+        }
+<<<<<<< HEAD
       }
 
+=======
+        
+    }
+>>>>>>> parent of ab92e75... Sửa giao diện search, menu chọn tìm kiếm
     
 });
 
