@@ -9,6 +9,152 @@
 @endsection
 @section('content')
 
+<script type="text/javascript">
+    /*var $div = document.getElementById("comment-part-L");
+ 		        $.each(responseJson, function(index, product) {    // Iterate over the JSON array.
+ 		            $("<div>").appendTo($div)                     // Create HTML <tr> element, set its text content with currently iterated item and append it to the <table>.
+ 		                .append($("<br/>"))        // Create HTML <td> element, set its text content with id of currently iterated product and append it to the <tr>.
+                        .append($("<hr>"))
+                        .append($("<p>").text("Bình luận (0)"))
+                        .append($("<div>").addClass('input-group-L').css('width','100%')
+                               .append($("<input>").setAttribute('type', 'text').addClass("form-control comment_comment item-comment-input").setAttribute('placeholder', 'Nhập bình luận tại đây'))
+                               )
+                        .append($("<div>").setAttribute('id',"qlcomment")
+                               .append($("<div>").addClass("tab-content tab-content-L")
+                                      .append($("<div>").setAttribute('id', 'menu1').addClass('tab-pane active tab-pane-L qlcomment-menu1').setAttribute('role', 'tabpanel')
+                                            //  Product's comment
+                                             .append($('<ul>').css('list-style-type','none')
+                                                    .append($('<li>').addClass('comment-L')
+                                                          .append($('<a>').addClass('pull-left')
+                                                                 .append($('<img>').addClass('lazy-image avatar').setAttribute('src','https://muare.vn/images/avatars/avatar_male_s.png?v=2'))
+                                                                 )
+                                                            //Phần comment
+                                                          .append($('<div>').addClass('comment-body-L')
+                                                                 .append($('<div>').addClass('comment-heading-L')
+                                                                         .append($('<span>').addClass('post_title_L')
+                                                                                .append($('<span>').addClass('user-L').text("Khách"))
+                                                                                .append($('<abbr>').text("đã trả lời bình luận tại sản phẩm"))
+                                                                                .append($('<a>').addClass('show-item OverlayPopup').text("sandwich kinh đô"))
+                                                                                )
+                                                                        )
+                                                                  .append($('<p>').addClass('content-L').text("còn hàng k?"))
+                                                                  .append($('<div>').addClass('span-reply')
+                                                                         .append($('<span>').addClass('reply-L').text("Trả lời").click(function(){
+ 		                		           	                                  showcmtinput(null,null,'comment-thu-1'); 
+                                                                              event.preventDefault();
+ 		                				                                     })
+                                                                         )
+                                                                 )
+                                                           ) //END comment 
+                                                         //sub-comment
+                                                        .append($('<ul>').addClass('comments-list')
+                                                         .append($('<ul>').css('list-style-type','none')
+                                                                .append($('<li>').addClass('comment-L')
+                                                                      .append($('<a>').addClass('pull-left')
+                                                                             .append($('<img>').addClass('lazy-image avatar').setAttribute('src','https://muare.vn/images/avatars/avatar_male_s.png?v=2'))
+                                                                             )
+                                                                        //Phần comment
+                                                                      .append($('<div>').addClass('comment-body-L')
+                                                                             .append($('<div>').addClass('comment-heading-L')
+                                                                                     .append($('<span>').addClass('post_title_L')
+                                                                                            .append($('<span>').addClass('user-L').text("Khách"))
+                                                                                            .append($('<abbr>').text("đã trả lời bình luận tại sản phẩm"))
+                                                                                            .append($('<a>').addClass('show-item OverlayPopup').text("sandwich kinh đô"))
+                                                                                            )
+                                                                                    )
+                                                                              .append($('<span>').addClass('content-cmt-L').text("Trả lời @TenKhach"))
+                                                                              .append($('<p>').addClass('content-L').text("còn hàng k?"))
+                                                                              .append($('<div>').addClass('span-reply')
+                                                                                     .append($('<span>').addClass('reply-L').text("Trả lời").click(function(){
+                                                                                          showcmtinput(null,null,'comment-thu-1'); 
+                                                                                          event.preventDefault();
+                                                                                         })
+                                                                                     )
+                                                                             )
+                                                                       )
+                                                                )
+                                                         )
+                                                        //Reply Input will show-hide when click any reply
+                                                        .append($('<div>').addClass('input-reply').css('margin-left','16px')
+                                                               .append($('<div>').addClass('input-group-L').css('width','100%')
+                                                                      .append($('<input>').addClass("form-control comment_comment item-comment-input").setAttribute('type','text').setAttribute('placeholder','Nhập trả lời tại đây và enter'))
+                                                                      )
+                                                               ) //END Reply Input 
+                                                        )//END sub-comment
+                                                    )
+                                             ) //  END Product's comment
+                                      ) //END menu1 tab
+                                      .append($("<div>").setAttribute('id', 'menu2').addClass('tab-pane fade tab-pane-L').setAttribute('role', 'tabpanel'))
+                               )
+                            ) //END div id = qlcomment
+ 		        });//END $.each(responseJson, function(index, product)*/
+        //LOAD COMMENT WITH AJAX JQUERY
+             //$(document).ready(function(){
+//            function loadcomment(){
+//                alert("a");
+//                var comments = $.ajax({
+//                  type: "GET",
+//                  url: "/app/Http/Controllers/UserController/CategoryDetail.php",
+//                  //contentType: "application/x-www-form-urlencoded",
+//                  async: false,
+//                contentType: "application/json",
+//                dataType: "json",
+//               //data: { number : '1' },
+//                    
+//                /*done: function(results) {
+//                    // Uhm, maybe I don't even need this?
+//                    JSON.parse(results);
+//                    return results;
+//                },
+//                fail: function( jqXHR, textStatus, errorThrown ) {
+//                    alert( 'Could not get posts, server response: ' + textStatus + ': ' + errorThrown );
+//                }
+//               }).responseJSON; // <-- this instead of .responseText*/
+//                    
+//                  success: function (response) {
+//                      //alert("a1"+response);
+//                      //JSON.parse(response);
+//                      //var json = response.responseText.evalJSON();
+//                    //alert(json);
+//                    //return response;
+//                      alert("ajax completed2 " + JSON.stringify(response));
+//                    //OnSuccess(response)
+//                  },
+//                  error: function () {
+//                      //data = $.evalJSON(response.responseText);
+//                    //alert(data);  
+//                      //alert("a2");
+//                    //OnError(response)
+//                  },
+//                  complete: function (response) {
+//                    // Handle the complete event
+//                    alert("ajax completed " + JSON.stringify(response));
+//                  }
+//                });  // end Ajax     
+//                
+//                $.each(comments, function() {
+//                    alert("comment thu: "+this.value);
+//                    $('#comment-part-L').append( $('<option</option>').text(this.name).val(this.id) );
+//                });
+//                /*$.get("/CategoryDetail.php",  {number: 1}, function(responseJson) {          // Execute Ajax GET request on URL of "someservlet" and execute the following function with Ajax response JSON...
+// 		        //var $table = $("<table>").appendTo($("#somediv")); // Create HTML <table> element and append it to HTML DOM element with ID "somediv".
+//                alert("Loaddata succeed!");
+//                $("#comment-part-L").html(responseJson);
+// 		        if (responseJson.check == "fail") {
+//		                    //$('#message').text("List isEmpty! Name not found!");
+//		                    //$('#message').css('color', 'red');
+//		                  	alert("Loaddata failed!");
+//		                    return;
+//		        }
+//                       
+//                alert("Loaddata succeed!");
+// 		        
+//        
+//        });*/
+//                } //END loadcomment()
+//             //});
+        </script>
+
 <section class="content mt-2">
   <div class="container">
     <div class="row">
@@ -196,7 +342,8 @@
                                 <div class="col-lg-4 col-md-4 col-sm-4 item-L" style="float: left;">
                                     <div> <!-- SẢN PHẨM THỨ ? -->
 
-                                        <div class="avatar-sp-L">
+                                        <div class="avatar-sp-L" dataIDProduct="{{$childPro->id}}">
+
                                             <a title="{{$childPro->name}}" data-title="Load sản phẩm" data-size="l" data-id="{{$childPro->id}}" class="md-trigger img-rounded OverlayPopup" data-modal="modal-productview">
 
                                             <img class="lazy-image" src="{{$childPro->images}}" alt="{{$childPro->name}}" width="180px" height="180px" style="display: inline;">
@@ -636,6 +783,7 @@ span.price-int {
               </div> {{-- vung tim kiem --}}
               @endif  {{-- end xet loai hien thi --}}
 
-            <!--</div>
-        </section>-->
+            </div>
+        <!--</section>-->
+
         @endsection

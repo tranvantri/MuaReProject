@@ -769,6 +769,7 @@ $(document).ready(function() {
     }
     $(document).on("click", "div.avatar-sp-L", function (event) {
         idPro = $(this).attr("dataIDProduct")
+        //alert(dataIDProduct);
           loadcomment(idPro);
       });
     
