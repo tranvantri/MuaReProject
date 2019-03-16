@@ -143,7 +143,7 @@ class CategoryDetail extends Controller
             $userId = "Bình luận không thành công2!"; //not login
             header("Content-type: application/json");
             $userId = json_encode($userId);
-            echo  $userId;
+            echo  $userId;//
         }
 
 
