@@ -122,33 +122,17 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <!-- CHƯA ĐĂNG NHẬP NHÉ -->
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 
                                 @if(!Auth::id())
                                 <div class="" id="you-re-guest">
 
-=======
-                                <div class="hidden" id="you-re-guest">
->>>>>>> parent of ab92e75... Sửa giao diện search, menu chọn tìm kiếm
-=======
-                                <div class="hidden" id="you-re-guest">
->>>>>>> parent of ab92e75... Sửa giao diện search, menu chọn tìm kiếm
-=======
-                                <div class="hidden" id="you-re-guest">
->>>>>>> parent of 654e13d... Done
-=======
-                                <div class="hidden" id="you-re-guest">
->>>>>>> parent of ab92e75... Sửa giao diện search, menu chọn tìm kiếm
                                     <a href="{{Route('loginUser')}}" class="btn-login" style="color: #ff6c00;font-weight: bold;">Đăng nhập<span style="color: #a7a6a6"> | </span></a>
                                     <a href="{{Route('loginUser')}}" class="btn-login" style="color: black;font-weight: bold;">Đăng ký</a>
                                     <a href="#"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAABPAAAATwBTZvJDgAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAG3SURBVDiNrdOxa1NRFMfx73nEVsVBoQpOWUoVNQFxFkf9AxQa6eJiN3Ez0SWTieDgLKJFtD5ox0JxMrUiDhJq21ctsR2kBCUWSpG2Ma/35yDBokleXvBM9x7O/XDOvVwbytwf6LdGEkC73tbO5oHVz9M36vQYXh+NOckeOcd1mbu5//CP1+mReyd6BROGrgi3Gvh3vgGkh++e3w1dFrjWK/pXyM5kCvO9nvb+TZmQVU6PFAb/EwjgZszpQi+gtUqeGi6c9YxyTCtsyEu27HDJz84B6zE7W1j2b1XbjGySeBMHlDQGbe8QgJkYXj3s43lHUFCKAU59enp7vSO4dLL+AWyjK072pLlsP3I+70CzUZZBdeDrzsto8Hd0cY/2rFTKh81dolOpzJs1ubdmPGhXU1fi1d59R/Bodbv8/Xj/oYXx7CSYortt81P2RipTfCi0bNb61V3DasFE9kv34NXCEYkKqAyck2wSwEyXMXuPSCqsp4OJ/E+IfhTM844B7xZf5C6C1QI/Nxr4uVGw2uJ49hKw4vYdTDbrI8H5we2KwWYqU1wTevxnNBtLZYprMm18HNpaaeZ/AaZCpwGRuyJPAAAAAElFTkSuQmCC" style="margin-top: -8px;" class="btn-login"><abbr style="color: black;font-weight: bold;">Giỏ Hàng</abbr></a>
                                 </div>
-                                
+                                @else
                                 <!-- ĐĂNG NHẬP RỒI NHÉ -->
-                                <div id="you-re-user">
+                                <div class="hidden" id="you-re-user">
                                     &#160;
                                     <a data-placement="bottom" data-popover-content="#notifications-L" data-toggle="popover-notifications" data-trigger="click" tabindex="0"><i class="fas fa-bell" style="font-size: 20px;cursor: pointer;padding: 2px;color: #2c5987;"></i></a>
                                     &#160;&#160;
@@ -157,7 +141,7 @@
                                     <a data-placement="bottom" data-popover-content="#yourcoin-L" data-toggle="popover-yourcoin" data-trigger="click" tabindex="0"><i class="fas fa-dollar-sign" style="font-size: 21px;cursor: pointer;padding: 2px;color: #2c5987;"></i></a>
                                     <a href="#" style="float: right;margin-top: 3px;"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAABPAAAATwBTZvJDgAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAG3SURBVDiNrdOxa1NRFMfx73nEVsVBoQpOWUoVNQFxFkf9AxQa6eJiN3Ez0SWTieDgLKJFtD5ox0JxMrUiDhJq21ctsR2kBCUWSpG2Ma/35yDBokleXvBM9x7O/XDOvVwbytwf6LdGEkC73tbO5oHVz9M36vQYXh+NOckeOcd1mbu5//CP1+mReyd6BROGrgi3Gvh3vgGkh++e3w1dFrjWK/pXyM5kCvO9nvb+TZmQVU6PFAb/EwjgZszpQi+gtUqeGi6c9YxyTCtsyEu27HDJz84B6zE7W1j2b1XbjGySeBMHlDQGbe8QgJkYXj3s43lHUFCKAU59enp7vSO4dLL+AWyjK072pLlsP3I+70CzUZZBdeDrzsto8Hd0cY/2rFTKh81dolOpzJs1ubdmPGhXU1fi1d59R/Bodbv8/Xj/oYXx7CSYortt81P2RipTfCi0bNb61V3DasFE9kv34NXCEYkKqAyck2wSwEyXMXuPSCqsp4OJ/E+IfhTM844B7xZf5C6C1QI/Nxr4uVGw2uJ49hKw4vYdTDbrI8H5we2KwWYqU1wTevxnNBtLZYprMm18HNpaaeZ/AaZCpwGRuyJPAAAAAElFTkSuQmCC" style="margin-top: -8px;" class="btn-login"><abbr style="color: black;font-weight: bold;">&#160;Giỏ Hàng</abbr></a>
                                 </div>
-                                 
+                                 @endif
                         <!-- End giỏ hàng -->
                             </div>
                            
@@ -167,6 +151,7 @@
             </div>
             
             <!-- Content for 3 Popovers are notifications, profile & money -->
+            @if(Auth::id())
             <div class="hidden" id="notifications-L">
                <!--<div class="heading-notifications">
                   <p style="float: left;color: pink;">THÔNG BÁO</p>
@@ -215,12 +200,12 @@
                      <img src="https://static8.muarecdn.com/zoom,80/90_90/muare/avatars/l/733/733265_1547649471.png?1547649471" class="rounded-circle" alt="Cinque Terre" width="90" height="90"
                           style="float: left;">
                      <div class="profileheader-info-L">
-                        <p><b>Cẩm Sục Linda Tới</b></p>
+                        <p><b>{{Auth::user()->name}}</b></p>
                         <p><b>Cấp độ: 1 (84%)</b></p>
                         <div class="progress">
                           <div class="progress-bar bg-danger" style="width:50%;"></div>
                         </div>
-                        <p style="padding-top: 10px;">ID tài khoản: <b style="color:red;">733265</b></p>
+                        <p style="padding-top: 10px;">ID tài khoản: <b style="color:red;">{{Auth::user()->id}}</b></p>
                      </div>
                   </div>
                   <hr style="margin-left: -10px;margin-right: -10px;margin-top: 94px;margin-bottom: 0px;">
@@ -281,7 +266,7 @@
                </div>
             </div>
             <!-- Content for 3 Popovers -->
-            
+            @endif
             <!-- CONTRACT HEADER: Hà Nội - Liên hệ quảng cáo - Hỗ trợ -->
             <div id="menu-header">
                 <div style="width: 84%;margin-left: 8%;margin-right: 8%;">
