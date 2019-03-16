@@ -32,7 +32,7 @@ class SearchController extends Controller
     			$query->where('tindang.name','like','%'.$textSearch.'%');
     		})
     		->orderBy('tindang.id','desc')
-    		->select('tindang.*','users.name as tenschushop', 'users.id as idchushop')
+    		->select('tindang.*','users.name as tenchushop', 'users.id as idchushop')
     		->paginate(20);  
     		$countPro = count($products);
 
@@ -54,7 +54,7 @@ class SearchController extends Controller
     			$query->where('tindang.name','like','%'.$textSearch.'%');
     		})
     		->orderBy('tindang.id','desc')
-    		->select('tindang.*','users.name as tenschushop', 'users.id as idchushop')
+    		->select('tindang.*','users.name as tenchushop', 'users.id as idchushop')
     		->paginate(20);  
     		$countPro = count($products);
 

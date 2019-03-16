@@ -91,11 +91,12 @@
                               @include('user.timkiem.sort-timkiem-tintuc')
                            </div>
                         </div>
-                        
+                        @foreach($products as $childPro)
                         <div class="row-no-padding" style="padding: 0;">
-                            <div class="product-list-L">
-                                @foreach($products as $childPro)
-                                <div class="col-lg-4 col-md-4 col-sm-4 item-L" style="float: left;">
+                             <div class="row product-list-L">                                
+                                <div class="col-lg-2 col-md-2 col-sm-2 ">
+                                     <!-- SẢN PHẨM THỨ ? -->
+                                <!--<div class="col-lg-4 col-md-4 col-sm-4 item-L" style="float: left;">-->
                                     <div> <!-- SẢN PHẨM THỨ ? -->
                                         <div class="avatar-sp-L">
                                             <a id="avatar-sp-L2" title="name" data-title="Load sản phẩm" data-size="l" data-id="popupItem" class="md-trigger img-rounded OverlayPopup" data-modal="modal-productview">
