@@ -126,6 +126,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
                                 @if(!Auth::id())
                                 <div class="" id="you-re-guest">
@@ -139,6 +140,9 @@
 =======
                                 <div class="hidden" id="you-re-guest">
 >>>>>>> parent of 654e13d... Done
+=======
+                                <div class="hidden" id="you-re-guest">
+>>>>>>> parent of ab92e75... Sửa giao diện search, menu chọn tìm kiếm
 =======
                                 <div class="hidden" id="you-re-guest">
 >>>>>>> parent of ab92e75... Sửa giao diện search, menu chọn tìm kiếm
