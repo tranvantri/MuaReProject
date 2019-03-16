@@ -176,7 +176,7 @@
           <div class="show">
             <p class="title-blur">hiển thị theo</p>
             @include('user.chitietdanhmuc.sort-view')
-          </ul>
+          <!--</ul>-->
         </div> 
         <div class="filter-stop"></div>   
         <div class="find" id="filter-fix" style="position: unset;width: unset;top: unset;">
@@ -291,7 +291,7 @@
       </button>-->
 
       
-      </script>
+      <!--</script>-->
 
 
 
@@ -342,8 +342,8 @@
                                 <div class="col-lg-4 col-md-4 col-sm-4 item-L" style="float: left;">
                                     <div> <!-- SẢN PHẨM THỨ ? -->
 
-                                        <div class="avatar-sp-L">
-                                            <a title="{{$childPro->name}}" data-title="Load sản phẩm" data-size="l" data-id="{{$childPro->id}}" class="md-trigger img-rounded OverlayPopup" data-modal="modal-productview">
+                                        <div class="avatar-sp-L" dataIDProduct="{{$childPro->id}}">
+                                            <a title="{{$childPro->name}}" data-id="{{$childPro->id}}" class="md-trigger img-rounded OverlayPopup" data-modal="modal-productview">
 
                                             <img class="lazy-image" src="{{$childPro->images}}" alt="{{$childPro->name}}" width="180px" height="180px" style="display: inline;">
 
@@ -783,6 +783,6 @@ span.price-int {
               @endif  {{-- end xet loai hien thi --}}
 
             </div>
-        </section>
+        <!--</section>-->
 
         @endsection

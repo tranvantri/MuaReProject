@@ -279,7 +279,32 @@ $(document).ready(function() {
 
     /* Image Zoom for product Modal */
 
-    function moveLens(e) {
+    
+    function imageZoom(imgID, resultID) {
+          var img, lens, result, cx, cy;
+          img = document.getElementById(imgID);
+          result = document.getElementById(resultID);
+          /*create lens:*/
+          lens = document.createElement("DIV");
+          lens.setAttribute("class", "img-zoom-lens");
+          /*img.setAttribute("style","opacity: 0.2;");
+                  lens.setAttribute("style","opacity: 1;");*/
+          /*insert lens:*/
+          img.parentElement.insertBefore(lens, img);
+          /*calculate the ratio between result DIV and lens:*/
+          cx = result.offsetWidth / lens.offsetWidth;
+          cy = result.offsetHeight / lens.offsetHeight;
+          /*set background properties for the result DIV:*/
+          result.style.backgroundImage = "url('" + img.src + "')";
+          result.style.backgroundSize = (img.width * cx) + "px " + (img.height * cy) + "px";
+          /*execute a function when someone moves the cursor over the image, or the lens:*/
+          lens.addEventListener("mousemove", moveLens);
+          img.addEventListener("mousemove", moveLens);
+          /*and also for touch screens:*/
+          lens.addEventListener("touchmove", moveLens);
+          img.addEventListener("touchmove", moveLens);
+          
+          function moveLens(e) {
             var pos, x, y;
             /*prevent any other actions that may occur when moving over the image:*/
             e.preventDefault();
@@ -313,31 +338,6 @@ $(document).ready(function() {
             y = y - window.pageYOffset;
             return {x : x, y : y};
           }
-    function imageZoom(imgID, resultID) {
-          var img, lens, result, cx, cy;
-          img = document.getElementById(imgID);
-          result = document.getElementById(resultID);
-          /*create lens:*/
-          lens = document.createElement("DIV");
-          lens.setAttribute("class", "img-zoom-lens");
-          /*img.setAttribute("style","opacity: 0.2;");
-                  lens.setAttribute("style","opacity: 1;");*/
-          /*insert lens:*/
-          img.parentElement.insertBefore(lens, img);
-          /*calculate the ratio between result DIV and lens:*/
-          cx = result.offsetWidth / lens.offsetWidth;
-          cy = result.offsetHeight / lens.offsetHeight;
-          /*set background properties for the result DIV:*/
-          result.style.backgroundImage = "url('" + img.src + "')";
-          result.style.backgroundSize = (img.width * cx) + "px " + (img.height * cy) + "px";
-          /*execute a function when someone moves the cursor over the image, or the lens:*/
-          lens.addEventListener("mousemove", moveLens);
-          img.addEventListener("mousemove", moveLens);
-          /*and also for touch screens:*/
-          lens.addEventListener("touchmove", moveLens);
-          img.addEventListener("touchmove", moveLens);
-          
-          
         }
 	// Initiate zoom effect:
     imageZoom("myimage", "myresult");
@@ -769,34 +769,9 @@ $(document).ready(function() {
     }
     $(document).on("click", "div.avatar-sp-L", function (event) {
         idPro = $(this).attr("dataIDProduct")
+        //alert(dataIDProduct);
           loadcomment(idPro);
       });
-    
-
-
-  if($('#span-tuychon').length){
-  	document.getElementById("span-tuychon").onclick = function () {
-          if(document.getElementById("a-phanhoi").style.display == 'none'){
-              document.getElementById("a-phanhoi").style.display = 'block'; 
-          } else {
-              document.getElementById("a-phanhoi").style.display = 'none';
-          }
-          
-      }
-  }    
-    
-
-    if($('#span-reply').length){
-        document.getElementById("span-reply").onclick = function () {
-            if(document.getElementById("input-reply-customer").style.display == 'none'){
-                document.getElementById("input-reply-customer").style.display = 'block'; 
-            } else {
-                document.getElementById("input-reply-customer").style.display = 'none';
-            }
-            
-        }
-      }
-
     
 });
 
