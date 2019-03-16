@@ -1288,16 +1288,26 @@ table .td-info .user-post .username .username-h4 a {
 .product-list-L {
   float: left;
   width: 100%;
+  border-bottom: 1px solid #9b959536;
 }
 .item-L {
   padding: 15px 20px 15px 15px;
   min-height: 320px;
 }
 .avatar-sp-L {
-  padding-bottom: 5px;
+  /*padding-bottom: 5px;
   display: inline-block;
-  position: relative;
+  position: relative;*/
+  width: 100%;
 }
+
+.avatar-sp-L img.lazy-image{
+  width: 100%;
+    height: 100%;
+    border: 1px solid #cccccc75;
+}
+
+
 /**/
 .title-sp-L {
   padding-bottom: 5px;
