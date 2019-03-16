@@ -373,11 +373,15 @@ $(document).ready(function() {
         
     });
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> parent of ab92e75... Sửa giao diện search, menu chọn tìm kiếm
     
     $(".img-rounded").click(function(){
         $('#md-overlay-id').show();
         $('#modal-productview').show();
     });
+<<<<<<< HEAD
     
 	// trang quan ly don hang
 <<<<<<< HEAD
@@ -703,6 +707,27 @@ $(document).ready(function() {
     }
 >>>>>>> parent of ab92e75... Sửa giao diện search, menu chọn tìm kiếm
 =======
+        
+    }
+>>>>>>> parent of ab92e75... Sửa giao diện search, menu chọn tìm kiếm
+=======
+    
+	// trang quan ly don hang
+	document.getElementById("span-tuychon").onclick = function () {
+        if(document.getElementById("a-phanhoi").style.display == 'none'){
+            document.getElementById("a-phanhoi").style.display = 'block'; 
+        } else {
+            document.getElementById("a-phanhoi").style.display = 'none';
+        }
+        
+    }    
+    
+    document.getElementById("span-reply").onclick = function () {
+        if(document.getElementById("input-reply-customer").style.display == 'none'){
+            document.getElementById("input-reply-customer").style.display = 'block'; 
+        } else {
+            document.getElementById("input-reply-customer").style.display = 'none';
+        }
         
     }
 >>>>>>> parent of ab92e75... Sửa giao diện search, menu chọn tìm kiếm
