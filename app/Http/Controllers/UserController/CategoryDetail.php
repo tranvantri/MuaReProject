@@ -1,6 +1,6 @@
 <?php
 namespace App\Http\Controllers\UserController;
-use Auth;
+
 use Illuminate\Http\Request;
 use App\Categories;
 use App\Places;
@@ -47,26 +47,15 @@ class CategoryDetail extends Controller
 
   		return view('user.chitietdanhmuc',compact('categoryParent', 'categoryCurrent', 'childCate','products','place','hienthi', 'tinhtrang', 'gia', 'sapxep'));
 	}
-
-    public function getUserId(Request $request)
-    {
-        if(Auth::id())
-        {
-            // userId là id của User đã đăng nhập
-            $userId = Auth::id();
-            header("Content-type: application/json");
-            $userId = json_encode($userId);
-            echo  $userId;
+    public static function myJson($comments) {
+        $params = array();
+        //$content = $comments->getContent();
+        if (!empty($content)) {
+          // 2nd param to get as array
+          $params = json_decode($comments, TRUE);
         }
-        else{
-        // chưa đăng nhập, điều hướng về trang login
-            //return redirect('/login');
-            $userId = 0; //not login
-            header("Content-type: application/json");
-            $userId = json_encode($userId);
-            echo  $userId;
-            
-        }
+        // Process $params...
+        //return echo $params;
     }
     public function getComment(Request $request)
     {
@@ -76,7 +65,7 @@ class CategoryDetail extends Controller
                         ->join('products','products.id','=','comments.idProduct')
                         ->join('users','users.id','=','comments.idUser')
                         ->where('products.id',$idPro)
-                        ->select('comments.id as idComment', 'comments.value as content', 'comments.idParent as idParent', 'users.avatar as userAvatar', 'users.name as userName', 'comments.idProduct as idProduct','products.name as productName', 'users.id as idUser', 'comments.idBlock as idBlock', 'comments.date_added as date_added', 'comments.parentName as parentName')
+                        ->select('comments.id as idComment', 'comments.value as content', 'comments.idParent as idParent', 'users.avatar as userAvatar', 'users.name as userName', 'comments.idProduct as idProduct','products.name as productName', 'users.id as idUser', 'comments.idBlock as idBlock', 'comments.date_added as date_added')
                         ->get();
                     //$this->myJson($comments);
                 header("Content-type: application/json");
@@ -91,63 +80,12 @@ class CategoryDetail extends Controller
                         ->join('products','products.id','=','comments.idProduct')
                         ->join('users','users.id','=','comments.idUser')
                         ->where('comments.idBlock',$idUser)
-                        ->select('comments.id as idComment', 'comments.value as content', 'comments.idParent as idParent', 'users.avatar as userAvatar', 'users.name as userName', 'comments.idProduct as idProduct','products.name as productName','users.id as idUser','comments.idBlock as idBlock', 'comments.date_added as date_added', 'comments.parentName as parentName')
+                        ->select('comments.id as idComment', 'comments.value as content', 'comments.idParent as idParent', 'users.avatar as userAvatar', 'users.name as userName', 'comments.idProduct as idProduct','products.name as productName','users.id as idUser','comments.idBlock as idBlock', 'comments.date_added as date_added')
                         ->get();
                     //$this->myJson($comments);
                 header("Content-type: application/json");
                 $comments = json_encode($comments);
                 echo  $comments;
-    }
-    public function postSubComment(Request $request)
-    {
-        $idUser = $request->idUser_post; 
-        $value = $request->content_post; 
-        $date_added = $request->date_post; 
-        $idParent = $request->idParent_post; 
-        $parentName = $request->parentName_post; 
-        $idProduct = $request->idProduct_post; 
-        $idBlock = $request->idBlock_post;
-        
-        if(Auth::id())
-        {
-            // userId là id của User đã đăng nhập
-            $userId = Auth::user()->id;
-            if($userId == $idUser){
-                $idComment = DB::table('comments')->insertGetId(
-                [
-                'value' => $value,
-                'idUser' => $idUser,
-                'idProduct' => $idProduct,
-                'idService' => 0,
-                'idParent' => $idParent,
-                'date_added' => $date_added,
-                'parentName' => $parentName,
-                'idBlock' => $idBlock
-                ]
-                );
-                
-                $userId = 0; //succeed post
-                header("Content-type: application/json");
-                $userId = json_encode($userId);
-                echo  $userId;
-            } else {
-                $userId = "Bình luận không thành công!"; //not login
-                header("Content-type: application/json");
-                $userId = json_encode($userId);
-                echo  $userId;
-            }
-        }
-        else{
-        // chưa đăng nhập, điều hướng về trang login
-            //return redirect('/login');
-            $userId = "Bình luận không thành công2!"; //not login
-            header("Content-type: application/json");
-            $userId = json_encode($userId);
-            echo  $userId;
-        }
-
-
-        
     }
 	public function getCustomCategory($nameCate, $idCate, $hienthi, $tinhtrang, $gia, $sapxep){
 		$categoryCurrent = Categories::find($idCate);//lay danh muc
