@@ -122,15 +122,17 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <!-- CHƯA ĐĂNG NHẬP NHÉ -->
+
                                 @if(!Auth::id())
                                 <div class="" id="you-re-guest">
+
                                     <a href="{{Route('loginUser')}}" class="btn-login" style="color: #ff6c00;font-weight: bold;">Đăng nhập<span style="color: #a7a6a6"> | </span></a>
                                     <a href="{{Route('loginUser')}}" class="btn-login" style="color: black;font-weight: bold;">Đăng ký</a>
                                     <a href="#"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAABPAAAATwBTZvJDgAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAG3SURBVDiNrdOxa1NRFMfx73nEVsVBoQpOWUoVNQFxFkf9AxQa6eJiN3Ez0SWTieDgLKJFtD5ox0JxMrUiDhJq21ctsR2kBCUWSpG2Ma/35yDBokleXvBM9x7O/XDOvVwbytwf6LdGEkC73tbO5oHVz9M36vQYXh+NOckeOcd1mbu5//CP1+mReyd6BROGrgi3Gvh3vgGkh++e3w1dFrjWK/pXyM5kCvO9nvb+TZmQVU6PFAb/EwjgZszpQi+gtUqeGi6c9YxyTCtsyEu27HDJz84B6zE7W1j2b1XbjGySeBMHlDQGbe8QgJkYXj3s43lHUFCKAU59enp7vSO4dLL+AWyjK072pLlsP3I+70CzUZZBdeDrzsto8Hd0cY/2rFTKh81dolOpzJs1ubdmPGhXU1fi1d59R/Bodbv8/Xj/oYXx7CSYortt81P2RipTfCi0bNb61V3DasFE9kv34NXCEYkKqAyck2wSwEyXMXuPSCqsp4OJ/E+IfhTM844B7xZf5C6C1QI/Nxr4uVGw2uJ49hKw4vYdTDbrI8H5we2KwWYqU1wTevxnNBtLZYprMm18HNpaaeZ/AaZCpwGRuyJPAAAAAElFTkSuQmCC" style="margin-top: -8px;" class="btn-login"><abbr style="color: black;font-weight: bold;">Giỏ Hàng</abbr></a>
                                 </div>
                                 @else
                                 <!-- ĐĂNG NHẬP RỒI NHÉ -->
-                                <div id="you-re-user">
+                                <div class="hidden" id="you-re-user">
                                     &#160;
                                     <a data-placement="bottom" data-popover-content="#notifications-L" data-toggle="popover-notifications" data-trigger="click" tabindex="0"><i class="fas fa-bell" style="font-size: 20px;cursor: pointer;padding: 2px;color: #2c5987;"></i></a>
                                     &#160;&#160;

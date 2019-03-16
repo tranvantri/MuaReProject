@@ -1,6 +1,6 @@
 <?php
 namespace App\Http\Controllers\UserController;
-
+use Auth;
 use Illuminate\Http\Request;
 use App\Categories;
 use App\Places;
@@ -8,10 +8,12 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Database\QueryException;
 use Cookie;
+header("Content-Type: application/json");
 
 
 class CategoryDetail extends Controller
-{
+{   
+    
 	public function getDanhMuc($name, $id){
 		$categoryParent = Categories::find($id);
 		$categoryCurrent = $categoryParent;
@@ -43,12 +45,110 @@ class CategoryDetail extends Controller
             ->select('products.*','users.name as tenchushop')
             ->paginate(20);
 
-
-
-
   		return view('user.chitietdanhmuc',compact('categoryParent', 'categoryCurrent', 'childCate','products','place','hienthi', 'tinhtrang', 'gia', 'sapxep'));
 	}
 
+    public function getUserId(Request $request)
+    {
+        if(Auth::id())
+        {
+            // userId là id của User đã đăng nhập
+            $userId = Auth::id();
+            header("Content-type: application/json");
+            $userId = json_encode($userId);
+            echo  $userId;
+        }
+        else{
+        // chưa đăng nhập, điều hướng về trang login
+            //return redirect('/login');
+            $userId = 0; //not login
+            header("Content-type: application/json");
+            $userId = json_encode($userId);
+            echo  $userId;
+            
+        }
+    }
+    public function getComment(Request $request)
+    {
+        //$number = htmlspecialchars($_GET["idProduct"]);
+        $idPro = $request->idProduct;          
+        $comments = DB::table('comments')
+                        ->join('products','products.id','=','comments.idProduct')
+                        ->join('users','users.id','=','comments.idUser')
+                        ->where('products.id',$idPro)
+                        ->select('comments.id as idComment', 'comments.value as content', 'comments.idParent as idParent', 'users.avatar as userAvatar', 'users.name as userName', 'comments.idProduct as idProduct','products.name as productName', 'users.id as idUser', 'comments.idBlock as idBlock', 'comments.date_added as date_added', 'comments.parentName as parentName')
+                        ->get();
+                    //$this->myJson($comments);
+                header("Content-type: application/json");
+                $comments = json_encode($comments);
+                echo  $comments;
+    }
+    public function getSubComment(Request $request)
+    {
+        //$number = htmlspecialchars($_GET["idProduct"]);
+        $idUser = $request->idUser;          
+        $comments = DB::table('comments')
+                        ->join('products','products.id','=','comments.idProduct')
+                        ->join('users','users.id','=','comments.idUser')
+                        ->where('comments.idBlock',$idUser)
+                        ->select('comments.id as idComment', 'comments.value as content', 'comments.idParent as idParent', 'users.avatar as userAvatar', 'users.name as userName', 'comments.idProduct as idProduct','products.name as productName','users.id as idUser','comments.idBlock as idBlock', 'comments.date_added as date_added', 'comments.parentName as parentName')
+                        ->get();
+                    //$this->myJson($comments);
+                header("Content-type: application/json");
+                $comments = json_encode($comments);
+                echo  $comments;
+    }
+    public function postSubComment(Request $request)
+    {
+        $idUser = $request->idUser_post; 
+        $value = $request->content_post; 
+        $date_added = $request->date_post; 
+        $idParent = $request->idParent_post; 
+        $parentName = $request->parentName_post; 
+        $idProduct = $request->idProduct_post; 
+        $idBlock = $request->idBlock_post;
+        
+        if(Auth::id())
+        {
+            // userId là id của User đã đăng nhập
+            $userId = Auth::user()->id;
+            if($userId == $idUser){
+                $idComment = DB::table('comments')->insertGetId(
+                [
+                'value' => $value,
+                'idUser' => $idUser,
+                'idProduct' => $idProduct,
+                'idService' => 0,
+                'idParent' => $idParent,
+                'date_added' => $date_added,
+                'parentName' => $parentName,
+                'idBlock' => $idBlock
+                ]
+                );
+                
+                $userId = 0; //succeed post
+                header("Content-type: application/json");
+                $userId = json_encode($userId);
+                echo  $userId;
+            } else {
+                $userId = "Bình luận không thành công!"; //not login
+                header("Content-type: application/json");
+                $userId = json_encode($userId);
+                echo  $userId;
+            }
+        }
+        else{
+        // chưa đăng nhập, điều hướng về trang login
+            //return redirect('/login');
+            $userId = "Bình luận không thành công2!"; //not login
+            header("Content-type: application/json");
+            $userId = json_encode($userId);
+            echo  $userId;
+        }
+
+
+        
+    }
 	public function getCustomCategory($nameCate, $idCate, $hienthi, $tinhtrang, $gia, $sapxep){
 		$categoryCurrent = Categories::find($idCate);//lay danh muc
 		$idPlace = 1;
@@ -496,18 +596,9 @@ class CategoryDetail extends Controller
 					->orderBy($sortBy,$dir)
 		            ->select('products.*','users.name as tenchushop')
 		            ->paginate(20);
-
-
-                    $comments = DB::table('comments')
-                        ->join('products','products.id','=','comments.idProduct')
-                        ->where('products.id',1)
-                        ->select('comments.id as idComment', 'comments.value as noidungComment', 'comments.idParent as idCha')
-                        ->first();
-
                     
-                    $comments = json_encode($comments);
-
-		  			return view('user.chitietdanhmuc',compact('categoryParent', 'categoryCurrent', 'childCate','products','place','hienthi', 'tinhtrang', 'gia', 'sapxep','comments'));
+                    
+		  			return view('user.chitietdanhmuc',compact('categoryParent', 'categoryCurrent', 'childCate','products','place','hienthi', 'tinhtrang', 'gia', 'sapxep'));
 				}else{					
 					$categoryParent = Categories::find($categoryCurrent->idParent);//gan cho de dung
 					$place = Places::find($idPlace);

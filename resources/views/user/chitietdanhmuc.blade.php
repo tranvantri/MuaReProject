@@ -9,6 +9,151 @@
 @endsection
 @section('content')
 
+<script type="text/javascript">
+    /*var $div = document.getElementById("comment-part-L");
+ 		        $.each(responseJson, function(index, product) {    // Iterate over the JSON array.
+ 		            $("<div>").appendTo($div)                     // Create HTML <tr> element, set its text content with currently iterated item and append it to the <table>.
+ 		                .append($("<br/>"))        // Create HTML <td> element, set its text content with id of currently iterated product and append it to the <tr>.
+                        .append($("<hr>"))
+                        .append($("<p>").text("Bình luận (0)"))
+                        .append($("<div>").addClass('input-group-L').css('width','100%')
+                               .append($("<input>").setAttribute('type', 'text').addClass("form-control comment_comment item-comment-input").setAttribute('placeholder', 'Nhập bình luận tại đây'))
+                               )
+                        .append($("<div>").setAttribute('id',"qlcomment")
+                               .append($("<div>").addClass("tab-content tab-content-L")
+                                      .append($("<div>").setAttribute('id', 'menu1').addClass('tab-pane active tab-pane-L qlcomment-menu1').setAttribute('role', 'tabpanel')
+                                            //  Product's comment
+                                             .append($('<ul>').css('list-style-type','none')
+                                                    .append($('<li>').addClass('comment-L')
+                                                          .append($('<a>').addClass('pull-left')
+                                                                 .append($('<img>').addClass('lazy-image avatar').setAttribute('src','https://muare.vn/images/avatars/avatar_male_s.png?v=2'))
+                                                                 )
+                                                            //Phần comment
+                                                          .append($('<div>').addClass('comment-body-L')
+                                                                 .append($('<div>').addClass('comment-heading-L')
+                                                                         .append($('<span>').addClass('post_title_L')
+                                                                                .append($('<span>').addClass('user-L').text("Khách"))
+                                                                                .append($('<abbr>').text("đã trả lời bình luận tại sản phẩm"))
+                                                                                .append($('<a>').addClass('show-item OverlayPopup').text("sandwich kinh đô"))
+                                                                                )
+                                                                        )
+                                                                  .append($('<p>').addClass('content-L').text("còn hàng k?"))
+                                                                  .append($('<div>').addClass('span-reply')
+                                                                         .append($('<span>').addClass('reply-L').text("Trả lời").click(function(){
+ 		                		           	                                  showcmtinput(null,null,'comment-thu-1'); 
+                                                                              event.preventDefault();
+ 		                				                                     })
+                                                                         )
+                                                                 )
+                                                           ) //END comment 
+                                                         //sub-comment
+                                                        .append($('<ul>').addClass('comments-list')
+                                                         .append($('<ul>').css('list-style-type','none')
+                                                                .append($('<li>').addClass('comment-L')
+                                                                      .append($('<a>').addClass('pull-left')
+                                                                             .append($('<img>').addClass('lazy-image avatar').setAttribute('src','https://muare.vn/images/avatars/avatar_male_s.png?v=2'))
+                                                                             )
+                                                                        //Phần comment
+                                                                      .append($('<div>').addClass('comment-body-L')
+                                                                             .append($('<div>').addClass('comment-heading-L')
+                                                                                     .append($('<span>').addClass('post_title_L')
+                                                                                            .append($('<span>').addClass('user-L').text("Khách"))
+                                                                                            .append($('<abbr>').text("đã trả lời bình luận tại sản phẩm"))
+                                                                                            .append($('<a>').addClass('show-item OverlayPopup').text("sandwich kinh đô"))
+                                                                                            )
+                                                                                    )
+                                                                              .append($('<span>').addClass('content-cmt-L').text("Trả lời @TenKhach"))
+                                                                              .append($('<p>').addClass('content-L').text("còn hàng k?"))
+                                                                              .append($('<div>').addClass('span-reply')
+                                                                                     .append($('<span>').addClass('reply-L').text("Trả lời").click(function(){
+                                                                                          showcmtinput(null,null,'comment-thu-1'); 
+                                                                                          event.preventDefault();
+                                                                                         })
+                                                                                     )
+                                                                             )
+                                                                       )
+                                                                )
+                                                         )
+                                                        //Reply Input will show-hide when click any reply
+                                                        .append($('<div>').addClass('input-reply').css('margin-left','16px')
+                                                               .append($('<div>').addClass('input-group-L').css('width','100%')
+                                                                      .append($('<input>').addClass("form-control comment_comment item-comment-input").setAttribute('type','text').setAttribute('placeholder','Nhập trả lời tại đây và enter'))
+                                                                      )
+                                                               ) //END Reply Input 
+                                                        )//END sub-comment
+                                                    )
+                                             ) //  END Product's comment
+                                      ) //END menu1 tab
+                                      .append($("<div>").setAttribute('id', 'menu2').addClass('tab-pane fade tab-pane-L').setAttribute('role', 'tabpanel'))
+                               )
+                            ) //END div id = qlcomment
+ 		        });//END $.each(responseJson, function(index, product)*/
+        //LOAD COMMENT WITH AJAX JQUERY
+             //$(document).ready(function(){
+//            function loadcomment(){
+//                alert("a");
+//                var comments = $.ajax({
+//                  type: "GET",
+//                  url: "/app/Http/Controllers/UserController/CategoryDetail.php",
+//                  //contentType: "application/x-www-form-urlencoded",
+//                  async: false,
+//                contentType: "application/json",
+//                dataType: "json",
+//               //data: { number : '1' },
+//                    
+//                /*done: function(results) {
+//                    // Uhm, maybe I don't even need this?
+//                    JSON.parse(results);
+//                    return results;
+//                },
+//                fail: function( jqXHR, textStatus, errorThrown ) {
+//                    alert( 'Could not get posts, server response: ' + textStatus + ': ' + errorThrown );
+//                }
+//               }).responseJSON; // <-- this instead of .responseText*/
+//                    
+//                  success: function (response) {
+//                      //alert("a1"+response);
+//                      //JSON.parse(response);
+//                      //var json = response.responseText.evalJSON();
+//                    //alert(json);
+//                    //return response;
+//                      alert("ajax completed2 " + JSON.stringify(response));
+//                    //OnSuccess(response)
+//                  },
+//                  error: function () {
+//                      //data = $.evalJSON(response.responseText);
+//                    //alert(data);  
+//                      //alert("a2");
+//                    //OnError(response)
+//                  },
+//                  complete: function (response) {
+//                    // Handle the complete event
+//                    alert("ajax completed " + JSON.stringify(response));
+//                  }
+//                });  // end Ajax     
+//                
+//                $.each(comments, function() {
+//                    alert("comment thu: "+this.value);
+//                    $('#comment-part-L').append( $('<option</option>').text(this.name).val(this.id) );
+//                });
+//                /*$.get("/CategoryDetail.php",  {number: 1}, function(responseJson) {          // Execute Ajax GET request on URL of "someservlet" and execute the following function with Ajax response JSON...
+// 		        //var $table = $("<table>").appendTo($("#somediv")); // Create HTML <table> element and append it to HTML DOM element with ID "somediv".
+//                alert("Loaddata succeed!");
+//                $("#comment-part-L").html(responseJson);
+// 		        if (responseJson.check == "fail") {
+//		                    //$('#message').text("List isEmpty! Name not found!");
+//		                    //$('#message').css('color', 'red');
+//		                  	alert("Loaddata failed!");
+//		                    return;
+//		        }
+//                       
+//                alert("Loaddata succeed!");
+// 		        
+//        
+//        });*/
+//                } //END loadcomment()
+//             //});
+        </script>
 
 <section class="content mt-2">
   <div class="container">
@@ -78,8 +223,76 @@
                 document.getElementById("modal-productinfo-L").setAttribute("style", "padding-left:8px;");
             }
         }
-          
+
+        
       </script>
+       
+      
+      
+     <div class="md-modal md-effect-1" id="modal-productview">
+       <div class="row">
+          <!--Image Zoom & Imagelist-->
+          <div class="col-lg-6 col-md-6 col-sm-6">
+             <div class="img-zoom-container" onmouseover="showZoomImg()" onmouseout="hideZoomImg()">
+                <img class="img-zoom" id="myimage" src="https://static8.muarecdn.com/zoom/430_430/muare/images/2019/01/30/5004798_giay-bong-da-205n-black-gold-1-360x360.jpg" xoriginal="https://static8.muarecdn.com/thumb_w/1000/muare/images/2019/01/30/5004798_giay-bong-da-205n-black-gold-1-360x360.jpg" width="400" height="400" >
+             </div>
+          </div>
+          <!-- Product Info -->
+          <div class="col-lg-6 col-md-6 col-sm-6">
+             <!-- Result when zoom image-->
+             <div id="myresult-div" class="img-zoom-container">
+                <div id="myresult" class="img-zoom-result"></div>
+             </div>
+             <!-- product info -->
+             <div id="modal-productinfo-L">
+                <p class="productinfo-title">Xe ba bánh đẩy trẻ em 218</p>
+                <p class="productinfo-seller">Người bán <i class="fas fa-check"></i> <a href="#">thegioixecuabe1</a> (thành viên từ 03/01/2019)</p>
+                <p class="productinfo-content">Được sản xuất trên dây chuyền công nghệ cao mua 1 được 2 xe đẩy trẻ em 218 vừa có thể làm xe đẩy cho bé khi còn nhỏ , vừa làm chiếc xe đạp rất tiện lợi phù hợp cho các bé từ 1-5 tuổi giúp giảm chi phí cho bố mẹ khi mua đồ cho bé . 
+                   Xe đẩy cho bé gấp gọn có mái che SJBB218 thiết kế phối hợp giữa xe đẩy và xe ba bánh có bàn đạp , rất đa năng phù hợp với nhiều giai đoạn phát triển của bé . Tay đẩy phía sau xe thuận lợi cho việc bố mẹ điều khiển hướng xe 
+                   Phần khung của xe được làm từ chất liệu kim loại chắc chắn ,vỏ bọc sử dụng chất liệu nhựa cao cấp không mùi , không chứa các chất độc hại gây ảnh hưởng đến sức khỏe của bé . 
+                   Mái che giúp chắn nắng , gió và hạn chế các tác động có hại từ môi trường . 
+                   Thiết kế phần khoang ngồi rộng rãi , có tựa lưng chống mỏi khung đai nhựa bao quanh chỗ ngồi giúp bảo vệ và tạo sự thoải mái cho bé
+                   Đặc biệt xe 3 bánh đẩy cao cấp còn thiết kế ghế ngồi xoay 2 chiều bố mẹ có thể vừa đẩy vừa nói chuyện với bé . 
+                   Xe có 3 bánh chắc chắn sử dụng chất liệu cao su giúp xe cân bằng và chống trơn trượt . Xe dễ dàng gấp gọn để cất giữ hoặc mang theo khi đi du lịch .
+                </p>
+                <!-- Price & Order Button -->
+                <div>
+                   <p class="productinfo-price">1.550.000đ</p>
+                   <a id="btn_left2" class="md-trigger2" data-modal2="modal-orderview" data-toggle="modal" data-target="#modal-orderview"><button class="productinfo-order"><i class="fas fa-cart-arrow-down"></i> <abbr style="font-style: normal !important;">&#160;|&#160;</abbr> Đặt hàng</button></a>
+                </div>
+                <div class="productinfo-phone">
+                   <img style="float: left;" src="data:image/png;base64,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">
+                   <p class="productinfo-phone-text">ẤN ĐỂ XEM SỐ</p>
+                </div>
+                <!-- Attention about product -->
+                 <div>
+                   <p class="productinfo-attention">LƯU Ý KHI MUA HÀNG:</p>
+                   <ul class="productinfo-atchild">
+                      <li>KHÔNG trả tiền trước khi nhận hàng.</li>
+                      <li>KIỂM TRA hàng cẩn thận, đặc biệt với hàng đắt tiền.</li>
+                   </ul>
+                </div>
+             </div>
+             <!--
+                <button class="md-close">Close me!</button>
+                -->
+          </div>
+          <!-- Comment part -->
+       </div>
+       <!------------------------ COMMENT PART----------------------------->
+         
+         
+         
+        <div id="comment-part-L"></div>
+    </div>
+    
+      <!--<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+        Open modal
+      </button>-->
+
+      
+      </script>
+
 
 
 
@@ -96,12 +309,8 @@
       <!-- END Confirm order modal -->
 
     @if(isset($hienthi) && $hienthi == 'san-pham') {{-- xet loai hien thi --}}
-
+      
       <div id="products-L" class="col-lg-10 col-md-10"><!-- nội dung các bài đăng -->     
-          <div id="app">
-              <modal-shoppingcart></modal-shoppingcart>
-          </div>
-          <script src="./js/app.js"></script>
                     <div id="view-post" class="view-post">
                         <div class="title-category">
                            <h1 class="title-box">
@@ -132,8 +341,10 @@
                                 @foreach($products as $childPro)
                                 <div class="col-lg-4 col-md-4 col-sm-4 item-L" style="float: left;">
                                     <div> <!-- SẢN PHẨM THỨ ? -->
+
                                         <div class="avatar-sp-L">
                                             <a title="{{$childPro->name}}" data-title="Load sản phẩm" data-size="l" data-id="{{$childPro->id}}" class="md-trigger img-rounded OverlayPopup" data-modal="modal-productview">
+
                                             <img class="lazy-image" src="{{$childPro->images}}" alt="{{$childPro->name}}" width="180px" height="180px" style="display: inline;">
 
                                             </a>
@@ -142,7 +353,9 @@
 
                                         <div class="title-sp-L">
                                             <h2 class="item-title-h2">
+
                                                 <a href="#" title="{{$childPro->name}}" data-id="popupItem" class="img-rounded OverlayPopup">
+
                                                     {{$childPro->name}}
                                                 </a>
                                             </h2>
@@ -170,10 +383,7 @@
 
 
 
-                                <?php
-                                    echo ($comments);
-                                ?>
-
+                                
                             </div>
                         </div>
                         @else
