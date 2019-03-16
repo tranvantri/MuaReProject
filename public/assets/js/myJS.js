@@ -1,7 +1,5 @@
 $(document).ready(function() {
 	// Responnse giao dien trang chu
-
-
 	$(window).resize(function(){
 		if($(window).width()<=1200){
 			// trang chu
@@ -209,11 +207,6 @@ $(document).ready(function() {
     }
   });
 
-  $('.back-to-top').click(function(){ 
-        $("html, body").animate({ scrollTop: 0 }, 700); 
-        return false; 
-    });
-
   // multi select
   if ($("#chon-danh-muc-multi-Tr").length) {
     $("#chon-danh-muc-multi-Tr").fSelect();
@@ -263,56 +256,7 @@ $(document).ready(function() {
     window.location.href = url;
   });
 
-  //Set id category cho search
-  $(document).on('click', '.searchtypes a.dropdown-item', function(event) {
-    event.preventDefault();
-    /* Act on the event */
-    var categoryParent_id = $(this).attr('data');
-    var categoryParent_name = $(this).html();
-    $('#categoryParent_id').val(categoryParent_id) ;
-    if(categoryParent_id == 'all'){
-      $('.searchtypes button.catename').html('Tất cả');
-    }else{
-      $('.searchtypes button.catename').html(categoryParent_name);
-    }
-  });
-
     /* Image Zoom for product Modal */
-
-    function moveLens(e) {
-            var pos, x, y;
-            /*prevent any other actions that may occur when moving over the image:*/
-            e.preventDefault();
-            /*get the cursor's x and y positions:*/
-            pos = getCursorPos(e);
-            /*calculate the position of the lens:*/
-            x = pos.x - (lens.offsetWidth / 2);
-            y = pos.y - (lens.offsetHeight / 2);
-            /*prevent the lens from being positioned outside the image:*/
-            if (x > img.width - lens.offsetWidth) {x = img.width - lens.offsetWidth;}
-            if (x < 0) {x = 0;}
-            if (y > img.height - lens.offsetHeight) {y = img.height - lens.offsetHeight;}
-            if (y < 0) {y = 0;}
-            /*set the position of the lens:*/
-            lens.style.left = x + "px";
-            lens.style.top = y + "px";
-            /*display what the lens "sees":*/
-            result.style.backgroundPosition = "-" + (x * cx) + "px -" + (y * cy) + "px";
-          }
-
-    function getCursorPos(e) {
-            var a, x = 0, y = 0;
-            e = e || window.event;
-            /*get the x and y positions of the image:*/
-            a = img.getBoundingClientRect();
-            /*calculate the cursor's x and y coordinates, relative to the image:*/
-            x = e.pageX - a.left;
-            y = e.pageY - a.top;
-            /*consider any page scrolling:*/
-            x = x - window.pageXOffset;
-            y = y - window.pageYOffset;
-            return {x : x, y : y};
-          }
     function imageZoom(imgID, resultID) {
           var img, lens, result, cx, cy;
           img = document.getElementById(imgID);
@@ -336,8 +280,39 @@ $(document).ready(function() {
           /*and also for touch screens:*/
           lens.addEventListener("touchmove", moveLens);
           img.addEventListener("touchmove", moveLens);
-          
-          
+          function moveLens(e) {
+            var pos, x, y;
+            /*prevent any other actions that may occur when moving over the image:*/
+            e.preventDefault();
+            /*get the cursor's x and y positions:*/
+            pos = getCursorPos(e);
+            /*calculate the position of the lens:*/
+            x = pos.x - (lens.offsetWidth / 2);
+            y = pos.y - (lens.offsetHeight / 2);
+            /*prevent the lens from being positioned outside the image:*/
+            if (x > img.width - lens.offsetWidth) {x = img.width - lens.offsetWidth;}
+            if (x < 0) {x = 0;}
+            if (y > img.height - lens.offsetHeight) {y = img.height - lens.offsetHeight;}
+            if (y < 0) {y = 0;}
+            /*set the position of the lens:*/
+            lens.style.left = x + "px";
+            lens.style.top = y + "px";
+            /*display what the lens "sees":*/
+            result.style.backgroundPosition = "-" + (x * cx) + "px -" + (y * cy) + "px";
+          }
+          function getCursorPos(e) {
+            var a, x = 0, y = 0;
+            e = e || window.event;
+            /*get the x and y positions of the image:*/
+            a = img.getBoundingClientRect();
+            /*calculate the cursor's x and y coordinates, relative to the image:*/
+            x = e.pageX - a.left;
+            y = e.pageY - a.top;
+            /*consider any page scrolling:*/
+            x = x - window.pageXOffset;
+            y = y - window.pageYOffset;
+            return {x : x, y : y};
+          }
         }
 	// Initiate zoom effect:
     imageZoom("myimage", "myresult");
@@ -349,88 +324,67 @@ $(document).ready(function() {
        document.getElementById("modal-productview").setAttribute("style","height: 100%;"); 
     }
 
-
-    if($('#step1-bar').length){
-      document.getElementById('step1-bar').style.pointerEvents = 'none';
-    }
-    if($('#step2-bar').length){
-      document.getElementById('step2-bar').style.pointerEvents = 'none';
-    }
-    if($('#step3-bar').length){
-      document.getElementById('step3-bar').style.pointerEvents = 'none';
-    }
+    document.getElementById('step1-bar').style.pointerEvents = 'none';
+    document.getElementById('step2-bar').style.pointerEvents = 'none';
+    document.getElementById('step3-bar').style.pointerEvents = 'none';
     
-
-
-
+    document.getElementById("step1-to-step2").addEventListener("click", function(){
+        document.getElementById("step2").classList.add('active');
+        document.getElementById("step1").classList.remove('active');
+        document.getElementById("step3").classList.remove('active');
+        
+        document.getElementById("step2-bar").classList.add('active');
+        document.getElementById("step1-bar").classList.remove('active');
+        document.getElementById("step3-bar").classList.remove('active');
+    }); 
+    document.getElementById("step2-to-step1").addEventListener("click", function(){
+        document.getElementById("step1").classList.add('active');
+        document.getElementById("step2").classList.remove('active');
+        document.getElementById("step3").classList.remove('active');
+        
+        document.getElementById("step1-bar").classList.add('active');
+        document.getElementById("step2-bar").classList.remove('active');
+        document.getElementById("step3-bar").classList.remove('active');
+    });
+    document.getElementById("step2-to-step3").addEventListener("click", function(){
+        document.getElementById("step3").classList.add('active');
+        document.getElementById("step1").classList.remove('active');
+        document.getElementById("step2").classList.remove('active');
+        
+        document.getElementById("step3-bar").classList.add('active');
+        document.getElementById("step1-bar").classList.remove('active');
+        document.getElementById("step2-bar").classList.remove('active');
+    });
+    document.getElementById("step3-to-step2").addEventListener("click", function(){
+        document.getElementById("step2").classList.add('active');
+        document.getElementById("step1").classList.remove('active');
+        document.getElementById("step3").classList.remove('active');
+        
+        document.getElementById("step2-bar").classList.add('active');
+        document.getElementById("step1-bar").classList.remove('active');
+        document.getElementById("step3-bar").classList.remove('active');
+    });
     
-    
-    if($('#step1-to-step2').length){
-      document.getElementById("step1-to-step2").addEventListener("click", function(){
-          document.getElementById("step2").classList.add('active');
-          document.getElementById("step1").classList.remove('active');
-          document.getElementById("step3").classList.remove('active');
-          
-          document.getElementById("step2-bar").classList.add('active');
-          document.getElementById("step1-bar").classList.remove('active');
-          document.getElementById("step3-bar").classList.remove('active');
-      }); 
-    }
-
-    if($('#step2-to-step1').length){
-      document.getElementById("step2-to-step1").addEventListener("click", function(){
-          document.getElementById("step1").classList.add('active');
-          document.getElementById("step2").classList.remove('active');
-          document.getElementById("step3").classList.remove('active');
-          
-          document.getElementById("step1-bar").classList.add('active');
-          document.getElementById("step2-bar").classList.remove('active');
-          document.getElementById("step3-bar").classList.remove('active');
-      }); 
-    }
-    
-    
-    if($('#step2-to-step3').length){
-        document.getElementById("step2-to-step3").addEventListener("click", function(){
-          document.getElementById("step3").classList.add('active');
-          document.getElementById("step1").classList.remove('active');
-          document.getElementById("step2").classList.remove('active');
-          
-          document.getElementById("step3-bar").classList.add('active');
-          document.getElementById("step1-bar").classList.remove('active');
-          document.getElementById("step2-bar").classList.remove('active');
-      });
-    }
-
-    if($('#step3-to-step2').length){
-        document.getElementById("step3-to-step2").addEventListener("click", function(){
-          document.getElementById("step2").classList.add('active');
-          document.getElementById("step1").classList.remove('active');
-          document.getElementById("step3").classList.remove('active');
-          
-          document.getElementById("step2-bar").classList.add('active');
-          document.getElementById("step1-bar").classList.remove('active');
-          document.getElementById("step3-bar").classList.remove('active');
-      });
-    }
-    
-    
-    if($('#btn-confirm-order').length){
-      document.getElementById("btn-confirm-order").addEventListener("click", function(){
-          //document.getElementById("md-overlay-id").style.visibility = 'hidden';
-         //document.getElementById("modal-productview").style.visibility = 'hidden';
-          $('#md-overlay-id').hide();
-          $('#modal-productview').hide();
-          
-      });
-    }
+    document.getElementById("btn-confirm-order").addEventListener("click", function(){
+        //document.getElementById("md-overlay-id").style.visibility = 'hidden';
+       //document.getElementById("modal-productview").style.visibility = 'hidden';
+        $('#md-overlay-id').hide();
+        $('#modal-productview').hide();
+        
+    });
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> parent of ab92e75... Sửa giao diện search, menu chọn tìm kiếm
     
     $(".img-rounded").click(function(){
         $('#md-overlay-id').show();
         $('#modal-productview').show();
     });
+<<<<<<< HEAD
     
 	// trang quan ly don hang
+<<<<<<< HEAD
 
     if($("#span-tuychon").length){
         document.getElementById("span-tuychon").onclick = function () {
@@ -454,11 +408,6 @@ $(document).ready(function() {
     }
     }
     
-    $.ajaxSetup({
-      headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-      }
-    });
     // For todays date;
     Date.prototype.today = function () { 
         return ((this.getDate() < 10)?"0":"") + this.getDate() +"/"+(((this.getMonth()+1) < 10)?"0":"") + (this.getMonth()+1) +"/"+ this.getFullYear();
@@ -518,55 +467,10 @@ $(document).ready(function() {
                     //
         return datetime
     }
-    var current_userId;
-    $.ajax({
-                  type: "GET",
-                  url: "getUserId",
-                  //contentType: "application/x-www-form-urlencoded",
-                  async: false,
-                contentType: "application/json",
-                dataType: "json",
-               //data: { number : '1' },
-                  success: function (response) {
-                      current_userId = response;
-                  },
-                  error: function () {
-                    alert("error get userid");  
-                  },
-                  complete: function (response) {}
-                });  // end Ajax  
-    function postcomment(idUser_post,content_post,idParent_post,parentName_post,date_post,idProduct_post,idBlock_post){
-                //alert('iduser: '+idUser_post+'; content: '+content_post+'; parent: '+parentName_post+'; date: '+date_post);
-        $.ajax({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-              },
-            type: "GET",
-            url: "postSubComment",
-            async: false,
-            contentType: "application/json",
-            dataType: "json",
-            data: { idUser_post : idUser_post, content_post : content_post, idParent_post : idParent_post, parentName_post : parentName_post, date_post : date_post, idProduct_post : idProduct_post, idBlock_post : idBlock_post},
-
-            success: function (response) {
-                alert(response);
-                if(response == 0){
-                    //alert(0);
-                    loadcomment(idPro);
-                    $('<input>').value = ""
-                    //$(document).on("keyup", "div.avatar-sp-L", loadcomment);                                   
-                }
-            },
-            error: function () {
-                alert('error post comment');  
-            },
-            complete: function (response) {}
-        });  // end Ajax  
-    }
-    var idPro = '';
-    function loadcomment(idPro){
-        //event.preventDefault();
-        
+    $(document).on("click", "div.avatar-sp-L", function(event) {
+        event.preventDefault();
+        console.log("dad");
+        var idPro = $(this).attr("dataIDProduct");
         //console.log(idPro);
         $.ajax({
                   type: "GET",
@@ -576,10 +480,21 @@ $(document).ready(function() {
                 contentType: "application/json",
                 dataType: "json",
                 data: { idProduct : idPro },
+                    
+                /*done: function(results) {
+                    // Uhm, maybe I don't even need this?
+                    JSON.parse(results);
+                    return results;
+                },
+                fail: function( jqXHR, textStatus, errorThrown ) {
+                    alert( 'Could not get posts, server response: ' + textStatus + ': ' + errorThrown );
+                }
+               }).responseJSON; // <-- this instead of .responseText*/
+                    
                   success: function (response) {
                     var $div = document.getElementById("comment-part-L");
-                    var createInput = true; //first comment input
-                    var createSubInput = true; //it's show when click a available comment
+                    var createInput = true;
+                    var createSubInput = true;
                 $.each(response, function(index, product) {    // Iterate over the JSON array.
     		        	$("#comment-part-L > br").remove();
                         $("#comment-part-L > hr").remove();
@@ -587,11 +502,8 @@ $(document).ready(function() {
                         $("#comment-part-L > div").remove();
       		 	});
                 
-                //using when POST comment
-                var idUser_post, content_post, date_post, idParent_post, parentName_post, idProduct_post, idBlock_post; 
-                idUser_post = current_userId;
  		        $.each(response, function(index, product) {
-                    //alert(product.userid);
+                    
                         var datetime = current_cmt_time(product.date_added);
                     
  		                if(createInput){ //create orinal comment input
@@ -612,8 +524,8 @@ $(document).ready(function() {
                                       .append($("<div>").attr('id', 'menu2').addClass('tab-pane fade tab-pane-L').attr('role', 'tabpanel'))
                                       ))
                             }
-                                                    if(product.idParent == '0' && product.idBlock == '0')
-                                                     {
+                                                    if(product.idParent == '0')
+                                                     { 
                                                          createSubInput = true;
                                                             $("<div>").appendTo(document.getElementsByClassName("comment-call-L"))
                                                           .append($('<a>').addClass('pull-left')
@@ -633,20 +545,6 @@ $(document).ready(function() {
                                                                   .append($('<p>').addClass('content-L').text(product.content))
                                                                   .append($('<div>').addClass('span-reply')
                                                                          .append($('<span>').addClass('reply-L').text("Trả lời").click(function(){
-                                                                if(current_userId == 0){
-                                                                    alert("Vui lòng đăng nhập trước khi bình luận!");
-                                                                }
-                                                                else if(product.idUser == current_userId){
-                                                                    idParent_post = 0;
-                                                                    parentName_post = null;
-                                                                    idBlock_post = product.idUser;
-                                                                } else {
-                                                                    idParent_post = product.idUser;
-                                                                    parentName_post = product.userName;
-                                                                    idBlock_post = product.idUser;
-                                                                }  
-                                                                            
-                                                                            idProduct_post = product.idProduct;
  		                		           	                                  showcmtinput(null,null,'comment-thu-1', product.idComment); 
                                                                               event.preventDefault();
  		                				                                     })
@@ -656,7 +554,7 @@ $(document).ready(function() {
                                                            ) //END comment 
                                                          var idToShowInput = product.idComment;
                                                           var idUser = product.idUser;
-                                                         var userName = product.userName;
+                                                     var userName = product.userName;
                                                         $.ajax({
                                                           type: "GET",
                                                           url: "getSubComment",
@@ -667,10 +565,7 @@ $(document).ready(function() {
                                                         data: { idUser : idUser },
                                                         success: function (response2) {
                                                             //alert(response2)
-                                                            var temp_subparenname=""
                                                             $.each(response2, function(index, sub) {
-                                                                if(sub.parentName == null) temp_subparenname=""
-                                                                else temp_subparenname = sub.parentName
                                                         var datetime = current_cmt_time(sub.date_added);
                                                         $("<div>").appendTo(document.getElementsByClassName("comment-call-L"))
                                                               .append($('<ul>').addClass('comments-list')
@@ -684,7 +579,7 @@ $(document).ready(function() {
                                                                              .append($('<div>').addClass('comment-heading-L')
                                                                                      .append($('<span>').addClass('post_title_L')
                                                                                             .append($('<span>').addClass('user-L').text(sub.userName))
-                                                                                             .append($('<abbr>').text(" Trả lời @"+temp_subparenname))
+                                                                                             .append($('<abbr>').text(" Trả lời @"+userName))
                                                                                              .append($('<span>').css('float','right').css('font-size','13px')
                                                                                        .append($('<i>').addClass('far fa-clock').text(' '+datetime))
                                                                                        )
@@ -694,20 +589,7 @@ $(document).ready(function() {
                                                                               .append($('<p>').addClass('content-L').text(sub.content))
                                                                               .append($('<div>').addClass('span-reply')
                                                                                      .append($('<span>').addClass('reply-L').text("Trả lời").click(function(){
-                                                                                if(current_userId == 0){
-                                                                                    alert("Vui lòng đăng nhập trước khi bình luận!");
-                                                                                }
-                                                                                else if(sub.idUser == current_userId){
-                                                                                    idParent_post = 0;
-                                                                                    parentName_post = null; 
-                                                                                    idBlock_post = sub.idBlock;
-                                                                                } else {
-                                                                                    idParent_post = sub.idUser;
-                                                                                    parentName_post = sub.userName; 
-                                                                                    idBlock_post = sub.idBlock;
-                                                                                }
-                                                                                        idProduct_post = sub.idProduct;
-                                                                                        showcmtinput(null,null,'comment-thu-1',idToShowInput); 
+                                                                                          showcmtinput(null,null,'comment-thu-1',idToShowInput); 
                                                                                           event.preventDefault();
                                                                                          })
                                                                                      )
@@ -715,6 +597,17 @@ $(document).ready(function() {
                                                                        )
                                                                 )
                                                          ))//END sub-comment
+                                                        //Reply Input will show-hide when click any reply
+                                                        /*if(createSubInput && index == (response2.length-1)){
+                                                            alert(index);
+                                                            createSubInput = false;
+                                                            $("<div>").appendTo(document.getElementsByClassName("comments-list"))
+                                                            .append($('<div>').addClass('input-reply').css('margin-left','16px')
+                                                               .append($('<div>').addClass('input-group-L').css('width','100%')
+                                                                      .append($('<input>').addClass("form-control comment_comment item-comment-input").attr('type','text').attr('placeholder','Nhập trả lời tại đây và enter'))
+                                                                      )
+                                                               ) //END Reply Input 
+                                                        }*/
                                                             });
                                                           },
                                                           error: function () {
@@ -724,34 +617,28 @@ $(document).ready(function() {
                                                         });  // end Ajax   */
                                                     }
                                                     else {//sub-comment
+                                                     
+                                                       
+                                                      
                                                      } //END check idParent
                                                     //)
                                              //) //  END Product's comment
+                                              
+                                              
                                       //) //END menu1 tab
                                       //.append($("<div>").attr('id', 'menu2').addClass('tab-pane fade tab-pane-L').attr('role', 'tabpanel'))
                                //)
                             //) //END div id = qlcomment
-                                        //Reply Input will show-hide when click any reply
                                                     if(createSubInput){ //create comment input when click tra loi
                                                             //alert(idToShowInput);
                                                             createSubInput = false;
                                                             $("<div>").appendTo(document.getElementsByClassName("comment-call-L"))
                                                             .append($('<div>').attr('id','idinput'+idToShowInput).addClass('input-reply').css('margin','8px 0px 10px 50px').css('display','none')
                                                                .append($('<div>').addClass('input-group-L').css('width','100%')
-                                                                      .append($('<input>').addClass("form-control comment_comment item-comment-input").attr('type','text').attr('placeholder','Nhập trả lời tại đây và enter').attr('id','id_cmtinput'+product.idComment)
-                                                                              .keyup(function(event) {
-                                                                            if (event.keyCode === 13 && this.value != '') {
-                                                        content_post = this.value;
-                                                        var subdatetime = "" + new Date().timeNow() + ' ' +new Date().today();
-                                                        date_post = current_cmt_time(subdatetime);
-                                                                                //alert('iduser: '+idUser_post+'; content: '+content_post+'; parent: '+parentName_post+'; date: '+date_post);
-                                                        postcomment(idUser_post,content_post,idParent_post,parentName_post,subdatetime,idProduct_post,idBlock_post);
-                                                                        }
-                                                            })
+                                                                      .append($('<input>').addClass("form-control comment_comment item-comment-input").attr('type','text').attr('placeholder','Nhập trả lời tại đây và enter'))
                                                                       )
-                                                               )
-                                                                   ) //END Reply Input 
-                                                    }
+                                                               ) //END Reply Input 
+                                                        }
                     firstM = 0;
                     i = 0;
  		        });//END $.each(responseJson, function(index, product)*/
@@ -765,11 +652,9 @@ $(document).ready(function() {
                     // Handle the complete event
                     //alert("ajax completed " + JSON.stringify(response));
                   }
-                });  // end Ajax 
-    }
-    $(document).on("click", "div.avatar-sp-L", function (event) {
-        idPro = $(this).attr("dataIDProduct")
-          loadcomment(idPro);
+                });  // end Ajax   
+        
+        
       });
     
 
@@ -784,19 +669,68 @@ $(document).ready(function() {
           
       }
   }    
+=======
+=======
     
-
-    if($('#span-reply').length){
-        document.getElementById("span-reply").onclick = function () {
-            if(document.getElementById("input-reply-customer").style.display == 'none'){
-                document.getElementById("input-reply-customer").style.display = 'block'; 
-            } else {
-                document.getElementById("input-reply-customer").style.display = 'none';
-            }
-            
+    $(".img-rounded").click(function(){
+        $('#md-overlay-id').show();
+        $('#modal-productview').show();
+    });
+    
+	// trang quan ly don hang
+>>>>>>> parent of ab92e75... Sửa giao diện search, menu chọn tìm kiếm
+	document.getElementById("span-tuychon").onclick = function () {
+        if(document.getElementById("a-phanhoi").style.display == 'none'){
+            document.getElementById("a-phanhoi").style.display = 'block'; 
+        } else {
+            document.getElementById("a-phanhoi").style.display = 'none';
         }
+        
+    }    
+<<<<<<< HEAD
+>>>>>>> parent of ab92e75... Sửa giao diện search, menu chọn tìm kiếm
+=======
+>>>>>>> parent of ab92e75... Sửa giao diện search, menu chọn tìm kiếm
+    
+    document.getElementById("span-reply").onclick = function () {
+        if(document.getElementById("input-reply-customer").style.display == 'none'){
+            document.getElementById("input-reply-customer").style.display = 'block'; 
+        } else {
+            document.getElementById("input-reply-customer").style.display = 'none';
+        }
+<<<<<<< HEAD
+<<<<<<< HEAD
       }
 
+=======
+        
+    }
+>>>>>>> parent of ab92e75... Sửa giao diện search, menu chọn tìm kiếm
+=======
+        
+    }
+>>>>>>> parent of ab92e75... Sửa giao diện search, menu chọn tìm kiếm
+=======
+    
+	// trang quan ly don hang
+	document.getElementById("span-tuychon").onclick = function () {
+        if(document.getElementById("a-phanhoi").style.display == 'none'){
+            document.getElementById("a-phanhoi").style.display = 'block'; 
+        } else {
+            document.getElementById("a-phanhoi").style.display = 'none';
+        }
+        
+    }    
+    
+    document.getElementById("span-reply").onclick = function () {
+        if(document.getElementById("input-reply-customer").style.display == 'none'){
+            document.getElementById("input-reply-customer").style.display = 'block'; 
+        } else {
+            document.getElementById("input-reply-customer").style.display = 'none';
+        }
+        
+    }
+>>>>>>> parent of ab92e75... Sửa giao diện search, menu chọn tìm kiếm
     
 });
 
