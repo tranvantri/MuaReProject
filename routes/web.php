@@ -136,6 +136,7 @@ Route::group(['namespace' => 'UserController' , 'middleware'=>'userCheckLogout']
     Route::get('/getProductComment', 'CategoryDetail@getComment')->name('danhmuc.getcomment');
     Route::get('/getSubComment', 'CategoryDetail@getSubComment')->name('danhmuc.getsubcomment');
     Route::get('/postSubComment', 'CategoryDetail@postSubComment')->name('danhmuc.postsubcomment');
+    Route::get('/getSeller', 'CategoryDetail@getSeller')->name('danhmuc.getseller');
     /*Route::post('/danh-muc/{nameCate}/{idCate}/{hienthi}/{tinhtrang}/{gia}/{sapxep}/uy-tin-chat-luong/2', 'CategoryDetail@getComment')->name('danhmuc.postcomment');*/
     
 
