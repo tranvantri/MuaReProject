@@ -146,6 +146,8 @@ $(document).ready(function() {
       autoplay: true,
       autoplayTimeout: 3000,
       responsiveClass: true,
+      //dots: ($(".owl-carousel .img-small").length > 5) ? true: false,
+      //loop:($(".owl-carousel .img-small").length > 5) ? true: false,
       responsive: {
         0: {
           items: 2,
@@ -341,6 +343,13 @@ $(document).ready(function() {
         }
 	// Initiate zoom effect:
     imageZoom("myimage", "myresult");
+    //cLIck below image list -> change main image
+    /*function changeMainImage(imgs) {
+       var Largeimg = document.getElementById("myimage"); //chitietdanhmuc - modal
+        Largeimg.src = imgs.src; //chitietdanhmuc - modal
+        var imgResult2 = document.getElementById("myresult"); //chitietdanhmuc - modal
+        imgResult2.style.backgroundImage= "url('" + imgs.src + "')"; //chitietdanhmuc - modal
+    }*/
     
     //Reponsive product model for Ipad (other devices the same size with Ipad)
     if(screen.width > 800 && screen.width < 1200){
@@ -593,7 +602,40 @@ $(document).ready(function() {
  		        $.each(response, function(index, product) {
                     //alert(product.userid);
                         var datetime = current_cmt_time(product.date_added);
+                        //put product info into modal
+                        var sellerName, sellerPhone;
+                        //Get name & phone of seller
+                        $.ajax({
+                            type: "GET",
+                            url: "getSeller",
+                            async: false,
+                            contentType: "application/json",
+                            dataType: "json",
+                            data: { productUserId : product.productUserId},
+
+                            success: function (response) {
+                                $.each(response, function(index, product) {    // Iterate over the JSON array.
+                                    sellerName = product.userName;
+                                    sellerPhone = product.userPhone;
+                                });
+                                
+                            },
+                            error: function () {
+                                alert('error post comment');  
+                            },
+                            complete: function (response) {}
+                        });  // end Ajax 
+    		        	$(".productinfo-title").text(product.productName);
+                        $(".productinfo-content").text(product.description);
+                        $(".productinfo-price").text(product.productPrice+' VNĐ');
+                        $("#myimage").attr('src',product.productImage);
+                        //$("#myresult").attr('',product.productImage);
+                        var myresult = document.getElementById("myresult"); //chitietdanhmuc - modal
+                        myresult.style.backgroundImage= "url('" + product.productImage + "')";
+                        $(".productinfo-seller > a").text(sellerName);
+                        $(".productinfo-phone-text").text(sellerPhone);
                     
+                        //Create main comment input
  		                if(createInput){ //create orinal comment input
                             createInput = false;
                         $("<div>").appendTo($div)
@@ -817,7 +859,6 @@ imageZoom1("expandedImg", "myresult-v");
 hideZoomImgPro();
 function showPicture(imgs) {
 	var expandImg = document.getElementById("expandedImg");
-  // var imgText = document.getElementById("imgtext");
 	expandImg.src = imgs.src;
 	var imgResult = document.getElementById("myresult-v");
   // var imgText = document.getElementById("imgtext");
@@ -828,6 +869,13 @@ function showPicture(imgs) {
   // expandImg.parentElement.style.display = "block";
   
 }
+//cLIck below image list -> change main image
+    function changeMainImage(imgs) {
+       var Largeimg = document.getElementById("myimage"); //chitietdanhmuc - modal
+        Largeimg.src = imgs.src; //chitietdanhmuc - modal
+        var imgResult2 = document.getElementById("myresult"); //chitietdanhmuc - modal
+        imgResult2.style.backgroundImage= "url('" + imgs.src + "')"; //chitietdanhmuc - modal
+    }
 function scrollleft() {
   var elmnt = document.getElementById("abc123");
   elmnt.scrollLeft += 50;
