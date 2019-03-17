@@ -24,7 +24,7 @@ class LogoController extends Controller
     {
         $slide = Logo::find($id);
         $slide->title = $req->tieude;
-        $slide->image = $req->img;
+        $slide->image = substr($req->img, 1, strlen($req->img));
         $slide->save();       
         return redirect('admin/logo/edit/'.$id)->with('thongbao','Sửa thành công!');
     }

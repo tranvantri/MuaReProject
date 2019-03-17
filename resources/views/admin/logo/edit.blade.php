@@ -32,12 +32,11 @@
                     </div>  
                     <div class="form-group">
                         <label>Chọn ảnh</label>                        
-                        <input id="ckfinder-input-logo" type="hidden" placeholder="Chọn hình ảnh" required maxlength="100" name="img" value="{{ $logo->image }}">
-                        <div><img id="img-logo" src="{{ $logo->image }}" alt="" class="img-edit img-fluid"></div>
+                        <input id="ckfinder-input-pro" type="hidden" placeholder="Chọn hình ảnh" required maxlength="190" name="img" value="{{ $logo->image }}">
+                        <div><img id="img-pro" src="{{ $logo->image }}"  alt="" class="img-edit img-fluid"></div>
                         <div class="input-group-btn">
-                          <button id="ckfinder-popup-logo" data-toggle="modal" data-target="#myModal" class="btn btn-info" type="button">Chọn ảnh</button>
-                        </div>   
-                        @include('admin.modalupload')                     
+                          <button id="ckfinder-popup-pro" data-input="ckfinder-input-pro" data-preview="img-pro" class="btn btn-info" type="button">Chọn ảnh</button>
+                        </div>  
                     </div>                         
 
                     <button type="submit" id="submit"  class="btn btn-warning">Chỉnh sửa</button>

@@ -67,6 +67,9 @@ return [
         // For ShoppingCart   of  Crinsane on github
         // Link github: https://github.com/Crinsane/LaravelShoppingcart
         Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
+        //file management Laravel
+        UniSharp\LaravelFilemanager\LaravelFilemanagerServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
 
     ],
 
@@ -108,6 +111,8 @@ return [
         // For ShoppingCart   of  Crinsane on github
         // Link github: https://github.com/Crinsane/LaravelShoppingcart
         'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
+        //file management Laravel
+        'Image' => Intervention\Image\Facades\Image::class,
 
     ],
 

@@ -11,11 +11,20 @@ $(document).ready(function() {
 	 		format:"DD-MM-YYYY HH:mm:ss",
 	 	});
 	}
-
-
-	if($('#detail').length){
-	 	CKEDITOR.replace('detail');
+	if($('#ckfinder-popup-pro').length){
+	 	$('#ckfinder-popup-pro').filemanager('image');
 	}
+
+	// var options = {
+ //            filebrowserImageBrowseUrl: 'laravel-filemanager?type=Images',
+ //            filebrowserImageUploadUrl: 'laravel-filemanager/upload?type=Images&_token={{csrf_token()}}',
+ //            filebrowserBrowseUrl: 'laravel-filemanager?type=Files',
+ //            filebrowserUploadUrl: 'laravel-filemanager/upload?type=Files&_token={{csrf_token()}}'
+ //          };
+
+	// if($('#detail').length){
+	//  	CKEDITOR.replace('detail', options);
+	// }
 	//multiselect
 	if($('.demo').length){
 	 	$('.demo').fSelect();

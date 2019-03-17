@@ -67,7 +67,7 @@
     <script src="admin_asset/dist/js/sb-admin-2.js"></script>
 
     <!-- DataTables JavaScript -->
-    <script src="admin_asset/bower_components/DataTables/media/js/jquery.dataTables.min.js"></script>
+    <script src="admin_asset/bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
     <script src="admin_asset/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
 
     {{-- ****************************************************** --}}
@@ -80,6 +80,7 @@
     <script src="ckfinder/ckfinder.js"></script>  --}} 
     <script src="admin_asset/js/fSelect.js"></script>
     <script src="dropzone/dist/dropzone.js"></script>  
+    <script src="vendor/laravel-filemanager/js/lfm.js"></script>
     <script src="admin_asset/js/myJS.js"></script>
      
 

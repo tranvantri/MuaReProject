@@ -102,9 +102,9 @@ Route::group(['namespace' => 'AdminManager'], function() {
             Route::get('enable/{id}', 'UserController@getEnable');
             // Route::get('delete/{id}', 'UserController@getDelete');
         });
-        Route::post('/imageupload', 'ImageUpLoadController@upLoadFiles');
-        Route::get('/imageview/{category}', 'ImageUpLoadController@viewImage');
-        Route::post('/imageremove', 'ImageUpLoadController@removeImage');
+        // Route::post('/imageupload', 'ImageUpLoadController@upLoadFiles');
+        // Route::get('/imageview/{category}', 'ImageUpLoadController@viewImage');
+        // Route::post('/imageremove', 'ImageUpLoadController@removeImage');
     });
 
 
