@@ -132,7 +132,7 @@
                                 </div>
                                 @else
                                 <!-- ĐĂNG NHẬP RỒI NHÉ -->
-                                <div class="hidden" id="you-re-user">
+                                <div id="you-re-user">
                                     &#160;
                                     <a data-placement="bottom" data-popover-content="#notifications-L" data-toggle="popover-notifications" data-trigger="click" tabindex="0"><i class="fas fa-bell" style="font-size: 20px;cursor: pointer;padding: 2px;color: #2c5987;"></i></a>
                                     &#160;&#160;
