@@ -17,10 +17,10 @@ Route::group(['namespace' => 'AdminManager'], function() {
         /* Product*/
         Route::group(['prefix' => 'product'], function() {
             Route::get('list', 'ProductController@getList');
-            Route::get('add', 'ProductController@getAdd');
-            Route::post('add', 'ProductController@postAdd');
-            Route::get('edit/{id}', 'ProductController@getEdit');
-            Route::post('edit/{id}', 'ProductController@postEdit');
+            // Route::get('add', 'ProductController@getAdd');
+            // Route::post('add', 'ProductController@postAdd');
+            // Route::get('edit/{id}', 'ProductController@getEdit');
+            // Route::post('edit/{id}', 'ProductController@postEdit');
             Route::get('enable/{id}/{option}', 'ProductController@getEnable');
             Route::get('view-info-user/{id}', 'ProductController@getInforUser');
             Route::get('view-info-pro/{id}', 'ProductController@getInforPro');
@@ -30,13 +30,26 @@ Route::group(['namespace' => 'AdminManager'], function() {
         /* TinDang*/
         Route::group(['prefix' => 'tindang'], function() {
             Route::get('list', 'TinDangController@getList');
-            Route::get('add', 'TinDangController@getAdd');
-            Route::post('add', 'TinDangController@postAdd');
-            Route::get('edit/{id}', 'TinDangController@getEdit');
-            Route::post('edit/{id}', 'TinDangController@postEdit');
+            // Route::get('add', 'TinDangController@getAdd');
+            // Route::post('add', 'TinDangController@postAdd');
+            // Route::get('edit/{id}', 'TinDangController@getEdit');
+            // Route::post('edit/{id}', 'TinDangController@postEdit');
             Route::get('enable/{id}/{option}', 'TinDangController@getEnable');
             Route::get('view-info-user/{id}', 'ProductController@getInforUser');
             Route::get('view-info-tindang/{id}', 'TinDangController@getInforTinDang');
+           
+        });
+
+        /* Dich vu*/
+        Route::group(['prefix' => 'dichvu'], function() {
+            Route::get('list', 'ServiceController@getList');
+            // Route::get('add', 'TinDangController@getAdd');
+            // Route::post('add', 'TinDangController@postAdd');
+            // Route::get('edit/{id}', 'TinDangController@getEdit');
+            // Route::post('edit/{id}', 'TinDangController@postEdit');
+            Route::get('enable/{id}/{option}', 'ServiceController@getEnable');
+            Route::get('view-info-user/{id}', 'ProductController@getInforUser');
+            Route::get('view-info-dichvu/{id}', 'ServiceController@getInforDichVu');
            
         });
 

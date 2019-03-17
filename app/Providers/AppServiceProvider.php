@@ -86,6 +86,9 @@ class AppServiceProvider extends ServiceProvider
        $tindangchuaduyet = TinDang::where('adminCheck','0')->count();
        view()->share('tindangchuaduyet', $tindangchuaduyet);
 
+       $dichvuchuaduyet = Services::where('adminCheck','0')->count();
+       view()->share('dichvuchuaduyet', $dichvuchuaduyet);
+
 
     }
 
