@@ -234,8 +234,35 @@
           <!--Image Zoom & Imagelist-->
           <div class="col-lg-6 col-md-6 col-sm-6">
              <div class="img-zoom-container" onmouseover="showZoomImg()" onmouseout="hideZoomImg()">
-                <img class="img-zoom" id="myimage" src="https://static8.muarecdn.com/zoom/430_430/muare/images/2019/01/30/5004798_giay-bong-da-205n-black-gold-1-360x360.jpg" xoriginal="https://static8.muarecdn.com/thumb_w/1000/muare/images/2019/01/30/5004798_giay-bong-da-205n-black-gold-1-360x360.jpg" width="400" height="400" >
+                <img class="img-zoom" id="myimage" src="https://static8.muarecdn.com/zoom/430_430/muare/images/2019/01/30/5004798_giay-bong-da-205n-black-gold-1-360x360.jpg" width="400" height="400" >
              </div>
+               <!-- Hình ảnh nhỏ của sp -->
+              <div class="scroll-small-img-v">
+                <div class="list-img-wrap-v owl-carousel" >
+                  
+                    <div style="padding: 0 10px;">
+                      <img class="img-thumbnail img-small" src="https://static8.muarecdn.com/zoom/430_430/muare/images/2019/01/30/5004798_giay-bong-da-205n-black-gold-1-360x360.jpg"
+                        onclick="changeMainImage(this);"/>
+                    </div>
+                    <div style="padding: 0 10px;">
+                      <img class="img-thumbnail img-small" src="https://static8.muarecdn.com/zoom,90/75_75/muare/images/2019/01/16/4994071_a76.jpg"
+                        onclick="changeMainImage(this);"/>
+                    </div>
+                    <div style="padding: 0 10px;">
+                      <img class="img-thumbnail img-small" src="https://static8.muarecdn.com/zoom/430_430/muare/images/2019/01/30/5004798_giay-bong-da-205n-black-gold-1-360x360.jpg"
+                        onclick="changeMainImage(this);"/>
+                    </div>
+
+
+                  </div>
+                {{-- <div class="scroll-v scroll-left-v" onclick="scrollright();" >
+                  <span class="icon-scroll-left-v" ></span>
+                </div>
+                <div class="scroll-v scroll-right-v"  onclick="scrollleft();">
+                  <span class="icon-scroll-right-v"></span>
+                </div> --}}
+              </div>
+              <!-- Kết thúc hình ảnh của sản phẩm -->
           </div>
           <!-- Product Info -->
           <div class="col-lg-6 col-md-6 col-sm-6">
@@ -343,10 +370,15 @@
                                     <div> <!-- SẢN PHẨM THỨ ? -->
 
                                         <div class="avatar-sp-L" dataIDProduct="{{$childPro->id}}">
+<<<<<<< HEAD
+
+                                            <a title="{{$childPro->name}}" data-title="Load sản phẩm" data-size="l" data-id="{{$childPro->id}}" class="md-trigger img-rounded OverlayPopup" data-modal="modal-productview">
+=======
+>>>>>>> comment-section-ajax
 
                                             <a title="{{$childPro->name}}" data-title="Load sản phẩm" data-size="l" data-id="{{$childPro->id}}" class="md-trigger img-rounded OverlayPopup" data-modal="modal-productview">
 
-                                            <img class="lazy-image" src="{{$childPro->images}}" alt="{{$childPro->name}}" width="180px" height="180px" style="display: inline;">
+                                            <img class="lazy-image" src="{{$childPro->images}}" alt="{{$childPro->name}}" width="170px" height="170px" style="display: inline;width: 180px !important; height: 180px !important;">
 
                                             </a>
 
