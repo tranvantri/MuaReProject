@@ -370,11 +370,10 @@
                                     <div> <!-- SẢN PHẨM THỨ ? -->
 
                                         <div class="avatar-sp-L" dataIDProduct="{{$childPro->id}}">
-<<<<<<< HEAD
+
 
                                             <a title="{{$childPro->name}}" data-title="Load sản phẩm" data-size="l" data-id="{{$childPro->id}}" class="md-trigger img-rounded OverlayPopup" data-modal="modal-productview">
-=======
->>>>>>> comment-section-ajax
+
 
                                             <a title="{{$childPro->name}}" data-title="Load sản phẩm" data-size="l" data-id="{{$childPro->id}}" class="md-trigger img-rounded OverlayPopup" data-modal="modal-productview">
 

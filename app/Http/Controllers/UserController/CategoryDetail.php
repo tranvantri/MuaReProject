@@ -30,19 +30,16 @@ class CategoryDetail extends Controller
 		$sapxep = 'tin-moi-nhat';
 		$place = Places::find($idPlace);
 		$childCate = DB::table('categories')->where('idParent', $id)->where('enable',1)->get();
-		$products = DB::table('products')
+		$products = DB::table('tindang')
 			->join('categories', function ($join) use ($id){
-				$join->on('products.idCate','=','categories.id')
+				$join->on('tindang.idCate','=','categories.id')
 				->where('categories.idParent','=', $id); // lấy sp có idCate = $id truyền vào
-			})			
-			->join('place_product', function($join) use ($idPlace){
-				$join->on('products.id', '=', 'place_product.idProduct')
-				->where('place_product.idPlace','=', $idPlace);
-			})
-			->join('users','products.idUser','=','Users.id')
-			->where('products.status',1)
-			->where('products.adminCheck',1)
-            ->select('products.*','users.name as tenchushop')
+			})	
+			->where('tindang.idPlace','=', $idPlace)			
+			->join('users','tindang.idUser','=','Users.id')
+			->where('tindang.status',1)
+			->where('tindang.adminCheck',1)
+            ->select('tindang.*','users.name as tenchushop')
             ->paginate(20);
 
   		return view('user.chitietdanhmuc',compact('categoryParent', 'categoryCurrent', 'childCate','products','place','hienthi', 'tinhtrang', 'gia', 'sapxep'));
