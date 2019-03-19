@@ -38,7 +38,7 @@
 
                     <div class="form-group">
                         <label>Thuộc danh mục</label>
-                        <select class="form-control" name="parent">
+                        <select class="form-control" name="parent" id="selectCateadd">
                             <!-- lấy danh sách các danh mục -->
                             <option value="0">----------------------</option>
                             @foreach($cateParent as $child)
@@ -57,6 +57,16 @@
                             <input name="enable" value="0" type="radio">Khóa
                         </label>
                     </div>
+
+                    <div class="form-group" id="chonanh">
+                        <label>Chọn ảnh</label>                        
+                        <input id="ckfinder-input-pro" type="hidden" placeholder="Chọn hình ảnh" required maxlength="190" name="img">
+                        <div><img id="img-pro" src="upload\images\image-icon.png"  alt="" class="img-edit img-fluid"></div>
+                        <div class="input-group-btn">
+                          <button id="ckfinder-popup-pro" data-input="ckfinder-input-pro" data-preview="img-pro" class="btn btn-info" type="button">Chọn ảnh</button>
+                        </div>         
+                             
+                    </div> 
                     <button type="submit" class="btn btn-warning"  id="submit">Thêm mới</button>
                                     
                 </div>
