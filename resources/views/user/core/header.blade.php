@@ -237,7 +237,7 @@
                           <tr>
                             <td><a href="#">Quản lý đơn hàng</a></td>
                             <td></td>
-                            <td><a href="#">Đăng xuất</a></td>
+                            <td><a href="logout">Đăng xuất</a></td>
                           </tr>
                           <tr>
                             <td><a href="#">Quản lý sự kiện</a></td>
