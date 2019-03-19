@@ -27,6 +27,7 @@ class HomePageController extends Controller
     						$join->on('categories.id','tindang.idCate')
     							->where('categories.enable',1)
     							->where('tindang.status', 1)
+                                ->where('tindang.adminCheck', 1)
     							->where('categories.idParent',$id);
     					})->count();
     		$arrval = array(
