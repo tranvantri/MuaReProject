@@ -45,7 +45,27 @@ class UserPageController extends Controller
     // Đầu vào: 
     // Đầu ra:
     public function getQuanLyDonHang(){
-        return view('user.trangquanlydonhang');
+        if(Auth::id()){
+            $idUser = Auth::id(); // id của chủ shop
+            $bills = DB::table('bills')
+                    ->join('users','users.id','=','bills.idUser')
+                    ->where('users.id',$idUser)
+                    ->where('users.status',1)->where('users.adminCheck',1)
+                    ->select('bills.nameCus as tenKhach','bills.phoneCus as sdtKhach','bills.addressCus as diaChiKhach',
+                            'noteCus as ghiChuKhach','bills.status as trangThaiBill'
+                        )
+                    ->get();
+            $b_details = DB::table('bill_detail')
+                ->join('bills','bills.id','=','bill_detail.idBill')
+                ->where('bills.idUser',$idUser)
+                ->get();
+
+            return view('user.trangquanlydonhang',compact('bills'));
+        }
+        else{
+            return redirect('login');
+        }
+
     }
 
     // trang quan ly kho hang cua user.(yeu caud ang nhap)
