@@ -963,6 +963,7 @@ function imageZoom1(imgID, resultID) {
     y = y - window.pageYOffset;
     return { x: x, y: y };
   }
+
 }
 //END JS product-info
 

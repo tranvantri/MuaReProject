@@ -79,7 +79,7 @@
 
             <!-- Thông tin của sản phẩm -->
             <div class="box-info-v col-md-6">
-              <h1 class="item-title-v">{{$child->usernameChuShop ?? 'username'}}
+              <h1 class="item-title-v">{{$child->name}}
               </h1>
               Người bán
               <span title="Đã kích hoạt SMS"><i class="fas fa-check"></i></span>
@@ -90,7 +90,7 @@
               <div class="item-des-v">
                 <div class="item-des-content-v">
                   <div class="item-des-text-v">
-                    <p>{{$child->name}}<br>
+                    <p>
                       {{$child->description}}<br>
 
                       Liên hệ: {{$child->phoneChuShop}}<br>

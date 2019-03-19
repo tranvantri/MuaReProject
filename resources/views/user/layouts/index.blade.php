@@ -39,11 +39,5 @@
 
 	@include('user.libraries.jsCode')
 
-	<script>
-
-
-	</script>
-
-
 </body>
 </html>

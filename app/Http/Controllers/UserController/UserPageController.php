@@ -50,17 +50,30 @@ class UserPageController extends Controller
             $bills = DB::table('bills')
                     ->join('users','users.id','=','bills.idUser')
                     ->where('users.id',$idUser)
-                    ->where('users.status',1)->where('users.adminCheck',1)
-                    ->select('bills.nameCus as tenKhach','bills.phoneCus as sdtKhach','bills.addressCus as diaChiKhach',
-                            'noteCus as ghiChuKhach','bills.status as trangThaiBill'
+                    ->where('users.status',1)
+                    ->where('users.adminCheck',1)
+                    ->select('bills.nameCus as tenKhach',
+                        'bills.phoneCus as sdtKhach',
+                        'bills.addressCus as diaChiKhach',
+                        'noteCus as ghiChuKhach',
+                        'bills.status as trangThaiBill',
+                        'bills.id as idBill'
                         )
                     ->get();
-            $b_details = DB::table('bill_detail')
+            $bill_details = DB::table('bill_detail')
                 ->join('bills','bills.id','=','bill_detail.idBill')
+                ->join('products','products.id','=','bill_detail.idProduct')
                 ->where('bills.idUser',$idUser)
+                ->select(
+                    'bills.id as billId',
+                    'bill_detail.nameProduct as tenSP',
+                    'bill_detail.quantity as slSP',
+                    'bill_detail.price as giaSP',
+                    'bill_detail.idProduct as sanphamId',
+                    'products.images as hinhanhSP')
                 ->get();
 
-            return view('user.trangquanlydonhang',compact('bills'));
+            return view('user.trangquanlydonhang',compact('bills','bill_details'));
         }
         else{
             return redirect('login');
@@ -114,5 +127,13 @@ class UserPageController extends Controller
         DB::table('tindang')->where('id',$request->idTinDang)->update(array('status' => -1));
         return redirect('quan-ly-tin-dang')->with('thongbao','Xóa tin đăng thành công');
     }
+
+    // thay đổi status của Bill: đang xử lý, giao hàng, chưa giao
+    public function changeStatusBill(Request $request){
+        DB::table('bills')
+            ->where('id', $request->id)
+            ->update(array('status' => $request->stt));
+    }
+
 
 }

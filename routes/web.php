@@ -192,6 +192,7 @@ Route::group(['namespace' => 'UserController' , 'middleware'=>'userCheckLogout']
 
     Route::get('/quan-ly-tin-dang',['as'=>'userquanlytindang','uses'=>'UserPageController@viewUserQuanLyTinDang']);
     Route::post('/xoa-tin-dang',['as'=>'xoatindang','uses'=>"UserPageController@xoaTinDang"]);
+    Route::get('/change-status-bill',"UserPageController@changeStatusBill");
 
 
     //--------------------
