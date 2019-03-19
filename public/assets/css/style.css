@@ -1707,12 +1707,14 @@ table .td-info .user-post .username .username-h4 a {
 }
 /*hÃƒÆ’Ã‚Â¬nh ÃƒÂ¡Ã‚ÂºÃ‚Â£nh thu nhÃƒÂ¡Ã‚Â»Ã‚Â*/
 .chip {
-  display: inline-block;
-  padding: 10px 0 10px 0;
   border-radius: 25px;
   font-size: 13px;
-  width: 100%;
   margin-left: 10px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  display: block;
+  overflow: hidden;
+  height: 31px;
 }
 
 .chip img {
@@ -1745,7 +1747,12 @@ table .td-info .user-post .username .username-h4 a {
 }
 
 .tieudetintuc {
-  margin: 10px 0;
+    margin: 10px 0;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: block;
+    overflow: hidden;
+    height: 20px;
 }
 
 .tieudetintuc a {
@@ -1765,25 +1772,19 @@ table .td-info .user-post .username .username-h4 a {
   padding: 5px 0 5px 5px;
 }
 .canTraiNoiDung {
-  padding: 0 0 0 10px;
-  margin: 0;
+  padding: 0 10px 0 10px;
   text-align: justify;
   font-size: 13px;
   color: #666;
-  display: table-cell;
-  width: auto;
-  position: relative;
-  vertical-align: top;
-  /*font-family: Roboto-Regular;*/
 }
 
 .thu_gon_text_tomiot{
   display: block;
-  text-overflow: ellipsis;
   word-wrap: break-word;
-  overflow: hidden;
-  max-height: 14em;
+  height: 6.4rem;
   line-height: 1.8em;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 .thu_gon_text_chitietsanpham_tomiot{
   display: block;
@@ -1813,24 +1814,23 @@ table .td-info .user-post .username .username-h4 a {
 }
 
 .imgTinDangMoiNhat {
-  display: table-cell;
-  vertical-align: top;
-  display: inline;
+
 }
 
 .imgTinDangMoiNhat img {
   border-radius: 10px;
+  width: 100%;
+  height: 134px;
 }
 .owl-nav{
   display: none;
 }
 
 .post-address {
-  margin: 0;
-  padding-top: 10px;
-  display: table;
-  width: 100%;
-  height: auto;
+  margin-top: 10px;
+  height: 18px;
+  display: block;
+  text-overflow: ellipsis;
   overflow: hidden;
 }
 

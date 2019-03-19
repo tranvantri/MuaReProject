@@ -56,11 +56,11 @@
 						</div> <!-- ----------------------- kết thúc div Tin đăng mới nhất -->
 
 						<div class="allNews col-md-12 col-sm-12 col-xs-12">
-							<div class="row">
+							
 								
 								@include('user.trangchu.tin-dang-moi-nhat')
 
-                        	</div> <!-- Kết thúc row -->
+                        	
 						</div> <!-- Kết thúc all News -->
 
 					</div><!-- -----------------------Kết thúc div row Tin đăng mới nhất -->
