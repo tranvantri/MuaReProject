@@ -29,7 +29,7 @@ class AppServiceProvider extends ServiceProvider
         // }
 
         /*  ------------- View share HEader---------------*/
-        $places = Places::all();
+        $places = Places::where('enable',1)->get();
         $cates = DB::table('categories')->where('idParent', 0)->where('enable',1)->get();
         $catesChilds = DB::table('categories')->where('idParent','<>', 0)->where('enable',1)->get();
         view()->share('places', $places);
