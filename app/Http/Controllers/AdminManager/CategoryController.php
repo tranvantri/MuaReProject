@@ -29,6 +29,7 @@ class CategoryController extends Controller
         $cate->name = $req->Ten;
         $cate->enable = $req->enable;
         $cate->idParent = $req->parent;
+        $cate->image = substr($req->img, 1, strlen($req->img));
         $cate->save();              
         return redirect('admin/category/add')->with('thongbao','Thêm thành công!');
     }
@@ -45,9 +46,8 @@ class CategoryController extends Controller
     {
         $cate = Categories::find($id);
         $cate->name = $req->Ten;
-        $cate->enable = $req->enable;
-        $cate->idParent = $req->parent;     
-       
+        $cate->enable = $req->enable;    
+        $cate->image = substr($req->img, 1, strlen($req->img));
         $cate->save();       
         return redirect('admin/category/edit/'.$id)->with('thongbao','Sửa thành công!');
     }

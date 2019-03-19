@@ -17,7 +17,26 @@ class HomePageController extends Controller
 
     	$newestProducts = DB::table('products')->where('adminCheck', 1)->orderBy('id','desc')->take(9)->get();
 
-        return view('user.trangchu',compact('tindang','products','newestProducts'));
+    	$categories = DB::table('categories')->where('idParent', 0)->where('enable',1)->select('id','name','image')->get();
+    	$cate_count = array();
+    	foreach($categories as $child){
+
+    		$id = $child->id;
+    		$count= DB::table('tindang')
+    					->join('categories',function($join) use($id){
+    						$join->on('categories.id','tindang.idCate')
+    							->where('categories.enable',1)
+    							->where('tindang.status', 1)
+    							->where('categories.idParent',$id);
+    					})->count();
+    		$arrval = array(
+    			'cate'=>$child,
+    			'count'=>$count
+    		);
+    		array_push($cate_count, $arrval);
+    	}
+
+        return view('user.trangchu',compact('tindang','products','newestProducts','cate_count'));
     }
     
 }

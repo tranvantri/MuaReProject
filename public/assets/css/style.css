@@ -457,7 +457,7 @@ button {
 .all-category .category-row .icon-category .icon-c {
   width: 85px;
   height: 49px;
-  margin: 15px 20px 5px;
+  margin: 15px auto 5px auto;
 }
 
 .title-category h2 {

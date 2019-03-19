@@ -30,7 +30,7 @@
                     </div>  
                     <div class="form-group">
                         <label>Thuộc danh mục</label>
-                        <select class="form-control" name="parent">
+                        <select class="form-control" name="parent" id="selectCateedit" disabled="">
                             <!-- lấy danh sách các danh mục -->
                             <option
 
@@ -68,7 +68,23 @@
                              @endif
                             type="radio">Khóa
                         </label>
-                    </div>                
+                    </div>  
+
+                    @if($cateCurrent->idParent == 0)
+                        <div class="form-group" id="chonanh">
+                            <label>Chọn ảnh</label>                        
+                            <input id="ckfinder-input-pro" type="hidden" placeholder="Chọn hình ảnh" required maxlength="190" name="img">
+                            <div><img id="img-pro" src="{{$cateCurrent->image}}"  alt="" class="img-edit img-fluid"></div>
+                            <div class="input-group-btn">
+                              <button id="ckfinder-popup-pro" data-input="ckfinder-input-pro" data-preview="img-pro" class="btn btn-info" type="button">Chọn ảnh</button>
+                            </div>         
+                                 
+                        </div>
+                    @endif
+
+                    
+
+                                
                     <button type="submit"  id="submit" class="btn btn-warning">Chỉnh sửa</button>
                                    
                 </div>
