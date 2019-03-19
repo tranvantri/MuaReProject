@@ -47,23 +47,24 @@
                                         <th width="30%">Shop</th>
                                       </tr>
                                     </thead>
+                                       @foreach($bills as $child)
                                     <tbody>
+
                                       <tr>
+
                                         <td class="td-center-L">1</td>
+
                                         <td>
                                             <div class="product-in-order-L">
                                                 <img class="lazy-image avatar" data-original="https://muare.vn/images/avatars/avatar_male_s.png?v=2" src="https://muare.vn/images/avatars/avatar_male_s.png?v=2" alt="" width="48px" height="48px" style="display: inline;float: left;padding-right: 8px;">
                                                 <a href="#" class="product-name-L">ASUS P008 – Tablet giá tốt, cấu hình ổn</a>
                                                 <p class="price-order-L">Số lượng: 2&#160;&#160;&#160;&#160;&#160;&#160;<abbr>Giá: 2,000,000 VNĐ</abbr></p>
                                             </div>
-                                            <div class="product-in-order-L">
-                                                <img class="lazy-image avatar" data-original="https://muare.vn/images/avatars/avatar_male_s.png?v=2" src="https://muare.vn/images/avatars/avatar_male_s.png?v=2" alt="" width="48px" height="48px" style="display: inline;float: left;padding-right: 8px;">
-                                                <a href="#" class="product-name-L">ASUS P008 – Tablet giá tốt, cấu hình ổn</a>
-                                                <p class="price-order-L">Số lượng: 2&#160;&#160;&#160;&#160;&#160;&#160;<abbr>Giá: 2,000,000 VNĐ</abbr></p>
-                                            </div>
+
                                             <h5 class="avgprice-order-L">Tổng: 4,000,000 VNĐ</h5>
                                         </td>
                                         <td class="td-center-L" style="padding: 16px;">
+
                                             <p>Họ tên: Hot Girl Quận Cam</p>
                                             <p>Số điện thoại : 0123456789</p>
                                             <p>Địa chỉ : Hồ Chí minh</p>
@@ -77,8 +78,11 @@
                                                 </select>
                                             </div>
                                         </td>
+
                                       </tr>
+
                                     </tbody>
+                                       @endforeach
                                   </table>
                                </div>
 
