@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Hash;
 class PostController extends Controller
 {
 	public function postProduct(){
-		$cateParents = Categories::where('idParent', 0)->where('ten-khong-dau','<>','cong-dong')->get();
+		$cateParents = Categories::where('idParent', 0)->where('name','<>','Cộng đồng')->get();
 		$cateChilds = Categories::where('idParent','<>', 0)->get();
 		$places = DB::table('places')->where('enable',1)->get();
 		return view('user.dangtinsanpham',compact('cateParents','cateChilds','places'));

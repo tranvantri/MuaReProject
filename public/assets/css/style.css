@@ -2622,7 +2622,7 @@ table .td-info .user-post .username .username-h4 a {
 .post-attr-Tr {
   margin: 0 auto;
   vertical-align: top;
-  width: 800px;
+  /*width: 800px;*/
 }
 
 .title-name-box-Tr {
@@ -2661,7 +2661,7 @@ table .td-info .user-post .username .username-h4 a {
 
 .post-form-Tr input[name="price"],
 .content_quan_ly_cua_hang input[name="price"] {
-  width: 300px;
+  /*width: 300px;*/
   display: inline-block;
   float: left;
 }
@@ -2669,7 +2669,7 @@ table .td-info .user-post .username .username-h4 a {
 .post-form-Tr .row-post-price-Tr span {
   position: absolute;
   top: 5px;
-  left: 295px;
+  right: 20px;
   color: #ccc;
 }
 
@@ -2679,7 +2679,7 @@ table .td-info .user-post .username .username-h4 a {
 }
 
 .post-form-Tr #location-post-Tr {
-  width: 300px;
+  /*width: 300px;*/
 }
 
 .post-form-Tr .storage-box-Tr {
@@ -2690,7 +2690,7 @@ table .td-info .user-post .username .username-h4 a {
   max-height: 500px;
   margin: 0 auto;
   vertical-align: top;
-  width: 800px;
+  /*width: 800px;*/
   /*overflow-y: scroll;
     overflow-x: hidden;*/
 }
@@ -2700,7 +2700,7 @@ table .td-info .user-post .username .username-h4 a {
   position: relative;
   list-style: none;
   height: 140px;
-  width: 50rem;
+  /*width: 50rem;*/
   margin-bottom: 5px;
   padding-bottom: 20px;
 }
@@ -2721,7 +2721,7 @@ table .td-info .user-post .username .username-h4 a {
   text-align: center;
   position: relative;
   display: inline-block;
-  width: 100%;
+  width: 100px;
   height: 100%;
   cursor: pointer;
 }
@@ -2741,7 +2741,7 @@ table .td-info .user-post .username .username-h4 a {
 .post-advance-Tr {
   margin: 0 auto;
   vertical-align: top;
-  width: 800px;
+  /*width: 800px;*/
   padding: 10px 15px;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
