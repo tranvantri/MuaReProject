@@ -3008,9 +3008,9 @@ table .td-info .user-post .username .username-h4 a {
 .comment-L {
   list-style-type: none;
   background: #fff;
-  padding: 10px 15px 0px 15px;
+  padding: 4px 15px 0px 15px;
   border-radius: 5px;
-  margin: 5px 0px;
+  margin: 0px 0px;
   width: 100%;
   display: inline-block;
 }

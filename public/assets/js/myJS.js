@@ -558,12 +558,10 @@ $(document).ready(function() {
             data: { idUser_post : idUser_post, content_post : content_post, idParent_post : idParent_post, parentName_post : parentName_post, date_post : date_post, idProduct_post : idProduct_post, idBlock_post : idBlock_post},
 
             success: function (response) {
-                alert(response);
+                //alert(response);
                 if(response == 0){
-                    //alert(0);
                     loadcomment(idPro);
                     $('<input>').value = ""
-                    //$(document).on("keyup", "div.avatar-sp-L", loadcomment);                                   
                 }
             },
             error: function () {
@@ -586,6 +584,7 @@ $(document).ready(function() {
                 dataType: "json",
                 data: { idProduct : idPro },
                   success: function (response) {
+                    var nums_comment = response.length;
                     var $div = document.getElementById("comment-part-L");
                     var createInput = true; //first comment input
                     var createSubInput = true; //it's show when click a available comment
@@ -634,30 +633,42 @@ $(document).ready(function() {
                         myresult.style.backgroundImage= "url('" + product.productImage + "')";
                         $(".productinfo-seller > a").text(sellerName);
                         $(".productinfo-phone-text").text(sellerPhone);
+                        
+                        idProduct_post = product.idProduct;
                     
                         //Create main comment input
  		                if(createInput){ //create orinal comment input
                             createInput = false;
-                        $("<div>").appendTo($div)
-                        .append($("<br/>"))        // Create HTML <td> element, set its text content with id of currently iterated product and append it to the <tr>.
-                        .append($("<hr>"))
-                        .append($("<p>").text("Bình luận (0)"))
-                        .append($("<div>").addClass('input-group-L').css('width','100%')
-                               .append($("<input>").attr('type', 'text').addClass("form-control comment_comment item-comment-input").attr('placeholder', 'Nhập bình luận tại đây'))
-                               )
-                        .append($("<div>").attr('id',"qlcomment")
-                               .append($("<div>").addClass("tab-content tab-content-L")
-                                      .append($("<div>").attr('id','menu1').addClass('tab-pane active tab-pane-L qlcomment-menu1').attr('role','tabpanel')
-                                            //  Product's comment
-                                             .append($('<ul>').css('list-style-type','none')
-                                                    .append($('<li>').addClass('comment-L comment-call-L'))))
-                                      .append($("<div>").attr('id', 'menu2').addClass('tab-pane fade tab-pane-L').attr('role', 'tabpanel'))
-                                      ))
+                            $("<div>").appendTo($div)
+                            .append($("<br/>"))        // Create HTML <td> element, set its text content with id of currently iterated product and append it to the <tr>.
+                            .append($("<hr>"))
+                            .append($("<p>").text("Bình luận ("+ nums_comment + ")"))
+                            .append($("<div>").addClass('input-group-L').css('width','100%')
+                                   .append($("<input>").attr('type', 'text').addClass("form-control comment_comment item-comment-input").attr('placeholder', 'Nhập bình luận tại đây')
+                                          .keyup(function(event) {
+                                                    if (event.keyCode === 13 && this.value != '') {
+                                                        content_post = this.value;
+                                                        var subdatetime = "" + new Date().timeNow() + ' ' +new Date().today();
+                                                        date_post = current_cmt_time(subdatetime);
+                                                                                alert('iduser: '+idUser_post+'; content: '+content_post+'; parent: '+null+'; date: '+date_post);
+                                                        postcomment(idUser_post,content_post,0,null,subdatetime,idProduct_post,0);
+                                                    }
+                                                })
+                                          )
+                                   )
+                            .append($("<div>").attr('id',"qlcomment")
+                                   .append($("<div>").addClass("tab-content tab-content-L")
+                                          .append($("<div>").attr('id','menu1').addClass('tab-pane active tab-pane-L qlcomment-menu1').attr('role','tabpanel')
+                                                //  Product's comment
+                                                 .append($('<ul>').css('list-style-type','none')
+                                                        .append($('<li>').addClass('comment-L comment-call-L'))))
+                                          .append($("<div>").attr('id', 'menu2').addClass('tab-pane fade tab-pane-L').attr('role', 'tabpanel'))
+                                          ))
                             }
                                                     if(product.idParent == '0' && product.idBlock == '0')
                                                      {
                                                          createSubInput = true;
-                                                            $("<div>").appendTo(document.getElementsByClassName("comment-call-L"))
+                                                            $("<div style='margin-bottom: 8px;margin-top: 12px;'>").appendTo(document.getElementsByClassName("comment-call-L"))
                                                           .append($('<a>').addClass('pull-left')
                                                                  .append($('<img>').addClass('lazy-image avatar').attr('src','https://muare.vn/images/avatars/avatar_male_s.png?v=2'))
                                                                  )
@@ -688,7 +699,6 @@ $(document).ready(function() {
                                                                     idBlock_post = product.idUser;
                                                                 }  
                                                                             
-                                                                            idProduct_post = product.idProduct;
  		                		           	                                  showcmtinput(null,null,'comment-thu-1', product.idComment); 
                                                                               event.preventDefault();
  		                				                                     })
@@ -717,7 +727,7 @@ $(document).ready(function() {
                                                         $("<div>").appendTo(document.getElementsByClassName("comment-call-L"))
                                                               .append($('<ul>').addClass('comments-list')
                                                          .append($('<ul>').css('list-style-type','none')
-                                                                .append($('<li>').addClass('comment-L')
+                                                                .append($("<li style='padding-right: 0 !important;'>").addClass('comment-L')
                                                                       .append($('<a>').addClass('pull-left')
                                                                              .append($('<img>').addClass('lazy-image avatar').attr('src','https://muare.vn/images/avatars/avatar_male_s.png?v=2'))
                                                                              )

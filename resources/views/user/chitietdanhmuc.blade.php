@@ -374,9 +374,6 @@
 
                                             <a title="{{$childPro->name}}" data-title="Load sản phẩm" data-size="l" data-id="{{$childPro->id}}" class="md-trigger img-rounded OverlayPopup" data-modal="modal-productview">
 
-
-                                            <a title="{{$childPro->name}}" data-title="Load sản phẩm" data-size="l" data-id="{{$childPro->id}}" class="md-trigger img-rounded OverlayPopup" data-modal="modal-productview">
-
                                             <img class="lazy-image" src="{{$childPro->images}}" alt="{{$childPro->name}}" width="170px" height="170px" style="display: inline;width: 180px !important; height: 180px !important;">
 
                                             </a>
