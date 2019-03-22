@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 use App\Categories;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
+use File;
 class PostController extends Controller
 {
 	public function postProduct(){
@@ -23,27 +24,57 @@ class PostController extends Controller
 		- Tao tin dang
 		- Tao Product
 		- Kiem tra User da co chua
+
+
+
 	*/
+
+	public static function upLoadFiles(Request $req,$path)
+    {
+    	//path 'upload/images/'
+    	if($req->hasFile('files')){
+    		$imageFiles = $req->file('files');
+    		$arrayImg= array();
+    		foreach($imageFiles as $imageFile){
+    			$imageName = uniqid().$imageFile->getClientOriginalName();
+    			$imageFile->move($path,$imageName);
+    			array_push($arrayImg, $path.$imageName);
+    		}    
+    		$arrayImg= json_encode($arrayImg,true);
+    		// echo "done";
+    	}
+    	return $arrayImg;
+
+    	// echo 'sss '.$req->category;
+
+    }
 	public function addNewProduct(Request $request){
 
 		//- Kiem tra User
 		// nếu chưa có thì tạo mới
 		// đã có rồi thì lấy id của user đó
-	    $name = strip_tags($request->input('name', 'Lỗi tên User'));
-	    $phone = strip_tags($request->input('phone', 'Lỗi sdt'));
-	    $email = strip_tags($request->input('email', 'Lỗi Email'));
-	    $addressUser = strip_tags($request->input('addressUser', 'Lỗi địa chỉ'));
+
+		// echo $request;
+	    $name = strip_tags($request->name);
+	    $phone = strip_tags($request->phone);
+	    $email = strip_tags($request->emailEmail);
+	    $addressUser = strip_tags($request->addressUser);
 	    
 	    #tìm user trong DB
 	    $user = DB::table('users')->where('phone',$phone)->orWhere('email',$email)->where('status',1)->first();
 
-	    
+	    if($request->hasFile('files')){
+			$image = $this->upLoadFiles($request,'upload/imageuser/products/');
+		}else{
+			$image = "null";
+		}
 
 	    if(isset($user)){
-	    	$this->createService($request,$user->id);
-	    	$this->createProduct($request,$user->id);
+	    	
+	    	$this->createService($request,$user->id,$image);
+	    	$this->createProduct($request,$user->id,$image);
 	    	$new_service_user = DB::table('tindang')->where('status',1)->where('idUser',$user->id)->orderBy('id', 'desc')->first();
-	    	return redirect()->route('chitiettindang', ['id' => $new_service_user->id]); 
+	    	return url('/').'/chi-tiet-tin-dang/'.$new_service_user->id;
 	    }
 	    else{
 	    	/*Thêm user vào bảng Users*/
@@ -60,31 +91,40 @@ class PostController extends Controller
 		    	'provider_id' => Null,
 		    )
 		);
-		$this->createService($request,$idUser);
-	    	$this->createProduct($request,$idUser);
-	    	$new_service_user = DB::table('tindang')->where('status',1)->where('idUser',$idUser)->orderBy('id', 'desc')->first();
-	    	return redirect()->route('chitiettindang', ['id' => $new_service_user->id]); 
 
+		$this->createService($request,$idUser,$image);
+	    	$this->createProduct($request,$idUser,$image);
+	    	$new_service_user = DB::table('tindang')->where('status',1)->where('idUser',$idUser)->orderBy('id', 'desc')->first();
+	    	return url('/').'/chi-tiet-tin-dang/'.$new_service_user->id;
+	    	
 	    }
 	    
 	}
 
-	public static  function createService(Request $request,$idUser){
+
+
+	public static  function createService(Request $request,$idUser, $image){
 		//- Tao tin dang
-		$nameService = strip_tags($request->input('nameService', 'Lỗi tên tin dịch vụ'));
-		$descriptionService = strip_tags($request->input('descriptionService', 'Lỗi mô tả dịch vụ'));
-		$priceService = strip_tags($request->input('priceService', -1));
+		$nameService = strip_tags($request->nameService);
+		$descriptionService = strip_tags($request->descriptionService);
+		$priceService = strip_tags($request->priceService);
 	    $tatus_Service = 1; // cot status
 	    $date_added = Carbon::now('Asia/Ho_Chi_Minh');
-	    $idCateService = strip_tags($request->input('idCateService', -1));
-	    $idPlaceService = strip_tags($request->input('idPlaceService', -1));
+	    $idCateService = strip_tags($request->idCateService);
+	    $idPlaceService = strip_tags($request->idPlaceService);
 	    $adminCheck = 0;
 	    $statusService = 0;
-	    $addressUser = strip_tags($request->input('addressUser', 'Lỗi địa chỉ'));
+	    $addressUser = strip_tags($request->addressUser);
 
 
 	    /*------------------------chưa lấy dc filepath*/
-	    $image = $request->input('image', 'Null');
+	 //    if($request->hasFile('files')){
+		// 	$image = $this->upLoadFiles($request,'upload/imageuser/services/');
+		// }else{
+		// 	$image = "null";
+		// }
+
+	    
 
 	    DB::table('tindang')->insert(
 		    array('name' => $nameService, 
@@ -98,38 +138,45 @@ class PostController extends Controller
 		    	'idUser' => $idUser,
 		    	'idCate' => $idCateService,
 		    	'adminCheck' => $adminCheck,
-		    	'statusService' => $statusService,
+		    	'statusTinDang' => $statusService,
 		    )
 		);
 	}
 
-	public static  function createProduct(Request $request,$idUser){
+	 
+
+	public static  function createProduct(Request $request,$idUser,$imageProduct){
 		//- Tao Product
-	    $nameProduct = strip_tags($request->input('nameProduct', 'Lỗi tên sản phẩm'));
-	    $descriptionProduct = strip_tags($request->input('descriptionProduct', 'Lỗi mô tả sản phẩm'));
-	    $priceProduct = strip_tags($request->input('priceProduct', -1));
-	    $idCateProduct = strip_tags($request->input('idCateProduct', -1));
+	    $nameProduct = strip_tags($request->nameProduct);
+	    $descriptionProduct = strip_tags($request->descriptionProduct);
+	    $priceProduct = strip_tags($request->priceProduct);
+	    $idCateProduct = strip_tags($request->idCateProduct);
 	    # 1: còn hàng, -1: hết hàng, 0: ngừng hàng
-	    $status = strip_tags($request->input('status', 0));
+	    $status = strip_tags($request->status);
 		# 1: mới, 2: mới 90%, 3: 80%, 4: cũ
-	    $statusProduct = strip_tags($request->input('statusProduct', 1));
+	    $statusProduct = strip_tags($request->statusProduct);
 		$date_added = Carbon::now('Asia/Ho_Chi_Minh');
 		$adminCheck = 1;
-		$addressUser = strip_tags($request->input('addressUser', 'Lỗi địa chỉ'));
+		$addressUser = strip_tags($request->addressUser);
 
 	    #địa điểm bán sản phẩm đó
-	    $locationItem = $request->input('locationItem', -1);
-	    foreach ($locationItem as $childLoc=>$value) {
-	    	echo "Hobby : ".$value."<br />";
-	    }
+	    
+	    $locationItem = (array)$request->locationItem;
+	    // foreach ($locationItem as $childLoc) {
+	    // 	echo "Hobby : ".$childLoc."<br />";
+	    // }
 
 	    /*------------------------chưa lấy dc hình ảnh path*/
-	    $imageProduct = $request->input('imageProduct', 'Null');
+	 //    if($request->hasFile('files')){
+		// 	$imageProduct = $this->upLoadFiles($request,'upload/imageuser/products/');
+		// }else{
+		// 	$imageProduct = "null";
+		// }
 
 	    DB::table('products')->insert(array(
 	    		'name' 			=> $nameProduct, 
 		    	'description' 	=> $descriptionProduct,
-		    	'title_tindang' => 'NULL',
+		    	'title_tindang' => $nameProduct,
 		    	'images' 		=> $imageProduct,
 		    	'price' 		=> $priceProduct,
 		    	'status' 		=> $status,

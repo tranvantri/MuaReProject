@@ -177,7 +177,7 @@ Route::group(['namespace' => 'UserController' , 'middleware'=>'userCheckLogout']
     });
 
     Route::get('/dang-tin-san-pham',['as'=>'getdangtinsanpham','uses'=>'PostController@postProduct']);
-    Route::post('/dang-tin-san-pham',['as'=>'postdangtinsanpham','uses'=>'PostController@addNewProduct']);
+    Route::post('/dang-tin-san-pham','PostController@addNewProduct');
 
 
     Route::get('/dang-tin-chung', function () {
