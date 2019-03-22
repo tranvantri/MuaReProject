@@ -6,7 +6,7 @@
 	<section class="content mt-5 mb-5">
         <div class="container">
             <div class="row">
-                <form action="{{ action('UserController\PostController@addNewProduct') }}" class="post-form-Tr" enctype="multipart/form-data" method="post" accept-charset="UTF-8">
+                <form  class="post-form-Tr" enctype="multipart/form-data" method="post" accept-charset="UTF-8">
                     <input name="_token" type="hidden" value="{{ csrf_token() }}"/>
                     
                     <div class="post-attr-Tr">
@@ -19,7 +19,7 @@
                             <div class="row-attr-Tr row">
                                 <label class="col-md-2">Tiêu đề</label>
                                 <div class="col-md-10">
-                                    <input class="form-control" type="text" id="postTitle" name="nameService" value="" maxlength="100" placeholder="Nhập tiêu đề tin đăng (tối đa 100 ký tự)" required />
+                                    <input class="form-control" type="text" id="nameService" name="nameService" value="" maxlength="100" placeholder="Nhập tiêu đề tin đăng (tối đa 100 ký tự)" required />
                                     
                                 </div>                                                
                             </div>
@@ -30,14 +30,14 @@
                             <div class="row-attr-Tr row">
                                 <label class="col-md-2">Nội dung</label>
                                 <div class="col-md-10">
-                                    <textarea class="form-control" placeholder="Nhập nội dung tin đăng ( chú ý tối đa 2000  ký tự )" name="descriptionService" rows="10" id="postDescription"></textarea>
+                                    <textarea class="form-control" placeholder="Nhập nội dung tin đăng ( chú ý tối đa 2000  ký tự )" id="descriptionService" name="descriptionService" rows="10"></textarea>
                                    
                                 </div>    
                             </div>                                                                        
                             <div class="row-attr-Tr row">
                                 <label class="col-md-4">Nhập giá:</label>
                                 <div class="col-md-8 row-post-price-Tr">
-                                    <input type="text" name="priceService" id="price" maxlength="14" class="form-control" value="" required>
+                                    <input type="text" name="priceService" id="priceService" maxlength="14" class="form-control" value="" required>
                                     <span class="vnd">.đ</span>
                                     <div class="trans_price" id="tprice"></div>
                                     
@@ -113,7 +113,7 @@
                                 <div class="row-attr-Tr row">
                                     <label class="col-md-3">Tên của tôi là:</label>
                                     <div class="col-md-9">
-                                        <input class="form-control" type="text" id="" name="name" value="" maxlength="100" placeholder="Họ và tên" required>
+                                        <input class="form-control" type="text" id="name" name="name" value="" maxlength="100" placeholder="Họ và tên" required>
                                         
                                     </div>                                                
                                 </div>
@@ -121,7 +121,7 @@
                                     <label class="col-md-3">Số điện thoại của tôi là:</label>
                                     <div class="col-md-9">
                                         <input class="form-control" type="text" 
-                                        required id="" name="phone" value="" 
+                                        required id="phone" name="phone" value="" 
                                         maxlength="15" placeholder="Số điện thoại liên hệ">
                                         
                                     </div>                                                
@@ -129,14 +129,14 @@
                                 <div class="row-attr-Tr row">
                                     <label class="col-md-3">Email của tôi là:</label>
                                     <div class="col-md-9">
-                                        <input class="form-control" type="email" id="" name="email" value="" maxlength="100" placeholder="Email liên hệ" required>
+                                        <input class="form-control" type="email" id="email" name="email" value="" maxlength="100" placeholder="Email liên hệ" required>
                                         
                                     </div>                                                
                                 </div>
                                 <div class="row-attr-Tr row">
                                     <label class="col-md-3">Bạn có thể đến xem hàng tại</label>
                                     <div class="col-md-9">
-                                        <input class="form-control" type="text" id="" name="addressUser" maxlength="100" placeholder="Địa chỉ cửa hàng/ shop">                                    
+                                        <input class="form-control" type="text" id="addressUser" name="addressUser" maxlength="100" placeholder="Địa chỉ cửa hàng/ shop">                                    
                                     </div>                                                
                                 </div>
                             </div>                                       
@@ -144,7 +144,7 @@
                     
                     <div class="post-advance-Tr"></div>
                     <div class="postSubmit-Tr row">
-                        <button type="submit" class="btn btn-warning btn-otp-Tr">Đăng tin</button>         
+                        <button type="button" id="submit-all" class="btn btn-warning btn-otp-Tr">Đăng tin</button>         
                     </div>
 
                     <div class="modal fade" id="addNewProduct" role="dialog">
@@ -166,14 +166,14 @@
                                                 <div class="title-item row">
                                                     <label for="nameItem" class="col-md-2">Tên sản phẩm:</label>
                                                     <div class="col-md-10">
-                                                        <input class="form-control" type="text" id="title" name="nameProduct" value="" placeholder="Tên sản phẩm cần bán" required>
+                                                        <input class="form-control" type="text" id="nameProduct" name="nameProduct" value="" placeholder="Tên sản phẩm cần bán" required>
                                                         <p class="err-alert title" style="visibility: hidden; opacity: 0;"></p>
                                                     </div>
                                                 </div>
                                                 <div class="price-item-Tr row">
                                                     <label for="price" class="col-md-2">Giá:</label>
                                                     <div class="col-md-10">
-                                                        <input type="text" name="priceProduct" id="popup_price" class="form-control" value="" required>
+                                                        <input type="text" name="priceProduct" id="priceProduct" class="form-control" value="" required>
                                                         <span class="vnd-Tr">.đ</span>
                                                         <div class="trans_price" id="tpopup_price"></div>                                                    
                                                     </div>
@@ -182,7 +182,7 @@
                                                 <div class="des-item row">
                                                     <label for="des" class="col-md-2">Mô tả sản phẩm:</label>
                                                     <div class="col-md-10">
-                                                        <textarea name="descriptionProduct" class="form-control" id="des" placeholder="Nhập thông tin sản phẩm vào đây"></textarea>
+                                                        <textarea name="descriptionProduct" class="form-control" id="descriptionProduct" placeholder="Nhập thông tin sản phẩm vào đây"></textarea>
                                                         <p class="err-alert des" style="visibility: hidden; opacity: 0;"></p>
                                                     </div>
                                                 </div>
@@ -211,15 +211,20 @@
                                                 <div class="row">
                                                     <label class="col-md-2">Ảnh sản phẩm:</label>
                                                     <div class="col-md-10"></div>
-                                                    <div class="box-image-Tr-2 row">
-                                                        <div class="add-box-Tr-2">
+                                                    <div class="box-image-Tr-2 row" style="width: 100%;">
+                                                        {{-- <div class="add-box-Tr-2">
                                                             <a class="add-img-Tr">
                                                                 <span>Thêm ảnh mới</span>
                                                             </a>
-                                                        </div><!--add-img-->
-                                                        <input name="imageProduct" type="file" id="upload2" class="upload-Tr upload-product-Tr" multiple="multiple" accept="image/png,.png,image/jpeg,.jpg,.jpeg,.jpe,image/gif,.gif">
+                                                        </div> --}}<!--add-img-->
+                                                        <div class="dropzone" style="width: 98%;" id="my-dropzone">
+                                                            {{-- <div class="fallback">
+                                                                <input name="files[]" type="file" multiple />
+                                                            </div> --}}
+                                                        </div>
+                                                        {{-- <input name="imageProduct" type="file" id="upload2" class="upload-Tr upload-product-Tr" multiple="multiple" accept="image/png,.png,image/jpeg,.jpg,.jpeg,.jpe,image/gif,.gif">
 
-                                                        <ul id="storage-info" class="listimage" value=""></ul>
+                                                        <ul id="storage-info" class="listimage" value=""></ul> --}}
                                                     </div><!--box-image-->
                                                 </div>
                                             </div>                                           
@@ -263,7 +268,7 @@
                                                 <div class="row">
                                                     @foreach($places as $child)
                                                         <div class="attr-box-Tr .col-md-3">
-                                                            <input id="location{{$child->id}}" class="locationItem" type="checkbox" name="locationItem[]" value="{{$child->id}}"}}=""><label for="location{{$child->id}}">{{$child->name}}</label>
+                                                            <input id="location{{$child->id}}" class="locationItem" type="checkbox" name="locationItem" value="{{$child->id}}"><label for="location{{$child->id}}">{{$child->name}}</label>
                                                         </div>
                                                     @endforeach
                                                     

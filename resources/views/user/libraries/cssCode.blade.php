@@ -11,6 +11,10 @@
 <link href="assets/css/style.css" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/media/media.css">
 
+{{-- Dropzone --}}
+<link rel="stylesheet" href="dropzone/dist/basic.css" />
+<link rel="stylesheet" href="dropzone/dist/dropzone.css"/>
+
 <link href="assets/css/gianhangcuchuoing.css" type="text/css" rel="stylesheet"/>
 <link href="assets/css/muaquangcao.css" type="text/css" rel="stylesheet">
 <link href="assets/css/product-info.css" type="text/css" rel="stylesheet" />

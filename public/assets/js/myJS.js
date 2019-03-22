@@ -167,6 +167,85 @@ $(document).ready(function() {
       }
     });
   }
+
+
+  if ($('#my-dropzone').length) {
+   // var category1 = '';
+
+    
+   var myDropzone = new Dropzone("#my-dropzone", {
+     url:"dang-tin-san-pham",
+     paramName: "files",
+     uploadMultiple:true,
+     addRemoveLinks: true,
+     headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+     dictRemoveFile: "Remove",
+     maxFilesize: 3,
+     maxFiles: 10,
+     autoProcessQueue: false,
+     method: 'POST',
+       acceptedFiles:".png,.jpg,.gif,.bmp,.jpeg",
+       dictFileTooBig:"Ảnh lớn hơn 3MB",
+
+       init: function(){
+         var submitButton = document.querySelector('#submit-all');
+         var locationItem="";
+         myDropzone1 = this;
+         submitButton.addEventListener("click", function(){  
+         
+            locationItem= $(".locationItem:checked").map(function(){
+              return $(this).val();
+            }).get();
+            // console.log(locationItem);
+                       
+              
+           myDropzone1.processQueue(); 
+                
+            // console.log(locationItem);
+         });
+          
+         
+         myDropzone1.on("sending", function(file, xhr, formData){              
+                     formData.append("nameService", $('#nameService').val());
+                     formData.append("descriptionService", $('#descriptionService').val());
+                     formData.append("priceService", $('#priceService').val());
+                     formData.append("idCateService", $("#chon-danh-muc-multi-Tr").val());
+                     formData.append("idPlaceService", $("#location-post-Tr").val());
+                     formData.append("name", $('#name').val());
+                     formData.append("phone", $('#phone').val());
+                     formData.append("email", $('#email').val());
+                     formData.append("addressUser", $('#addressUser').val());
+                     formData.append("nameProduct", $('#nameProduct').val());
+                     formData.append("priceProduct", $('#priceProduct').val());
+                     formData.append("descriptionProduct", $('#descriptionProduct').val());
+                     formData.append("idCateProduct", $('#chon-loai-san-pham-Tr').val());
+                     formData.append("status", $('.statusSale:checked').val());
+                     formData.append("statusProduct", $('.statusItem:checked').val());
+                     formData.append("locationItem", locationItem);
+
+
+             });
+
+          
+         this.on("complete", function(data){
+         
+              // console.log(data);
+             // window.location.href = url;
+         });         
+       },
+        
+            error: function (file, response) {
+       
+            // console.log(response);
+       // }
+       },
+       success: function(file, response){
+                // console.log('WE NEVER REACH THIS POINT.');
+                console.log(response);
+                 window.location = response;
+            }
+   });
+  }
   //khi load trang login, hide muc đăng ký đi
 
   $("#dangkysection").hide();
