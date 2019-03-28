@@ -156,7 +156,7 @@ class PostController extends Controller
 		# 1: mới, 2: mới 90%, 3: 80%, 4: cũ
 	    $statusProduct = strip_tags($request->statusProduct);
 		$date_added = Carbon::now('Asia/Ho_Chi_Minh');
-		$adminCheck = 1;
+		$adminCheck = 0;
 		$addressUser = strip_tags($request->addressUser);
 
 	    #địa điểm bán sản phẩm đó

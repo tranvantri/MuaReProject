@@ -15,7 +15,10 @@
 	<div class="noidungTin">
 		<div class="row">
 			<div class="imgTinDangMoiNhat col-md-5">
-				<a href="#"><img class="img-thumbnail" src="{{$child->images}}" alt="Hình ảnh của shop"></a>
+				<?php 
+	                $images = json_decode($child->images);
+	              ?>
+				<a href="#"><img class="img-thumbnail" src="{{$images[0] ?? 'assets/images/chitietsanpham/logo_muare.png'}}" alt="Hình ảnh của shop"></a>
 			</div>
 			<div class="canTraiNoiDung col-md-7">
 				<span class="thu_gon_text_tomiot" title="{{$child->description}} ">

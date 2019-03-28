@@ -39,7 +39,10 @@
                                 </div>
                                 <div class="row">
                                         <div class="chip">
-                                          <img src="https://www.w3schools.com/howto/img_avatar.png" alt="Person">
+                                            <?php 
+                                                $images = json_decode($child->images);
+                                              ?>
+                                          <img src="{{$images[0] ?? 'assets/images/chitietsanpham/logo_muare.png'}}" alt="Person">
                                           <a href="{{$child->username}}">{{$child->username}}</a>  đăng {{$child->date_added}} phút trước
                                         </div>
                                 </div>                                

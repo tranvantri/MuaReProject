@@ -238,9 +238,9 @@
              </div>
                <!-- Hình ảnh nhỏ của sp -->
               <div class="scroll-small-img-v">
-                <div class="list-img-wrap-v owl-carousel" >
+                <div class="list-img-wrap-v owl-carousel" id="list-img-wrap-v">
                   
-                    <div style="padding: 0 10px;">
+                    {{-- <div style="padding: 0 10px;">
                       <img class="img-thumbnail img-small" src="https://static8.muarecdn.com/zoom/430_430/muare/images/2019/01/30/5004798_giay-bong-da-205n-black-gold-1-360x360.jpg"
                         onclick="changeMainImage(this);"/>
                     </div>
@@ -251,7 +251,7 @@
                     <div style="padding: 0 10px;">
                       <img class="img-thumbnail img-small" src="https://static8.muarecdn.com/zoom/430_430/muare/images/2019/01/30/5004798_giay-bong-da-205n-black-gold-1-360x360.jpg"
                         onclick="changeMainImage(this);"/>
-                    </div>
+                    </div> --}}
 
 
                   </div>
@@ -373,8 +373,10 @@
 
 
                                             <a title="{{$childPro->name}}" data-title="Load sản phẩm" data-size="l" data-id="{{$childPro->id}}" class="md-trigger img-rounded OverlayPopup" data-modal="modal-productview">
-
-                                            <img class="lazy-image" src="{{$childPro->images}}" alt="{{$childPro->name}}" width="170px" height="170px" style="display: inline;width: 180px !important; height: 180px !important;">
+                                            <?php 
+                                              $images = json_decode($childPro->images);
+                                            ?>
+                                            <img class="lazy-image" src="{{$images[0] ?? 'assets/images/chitietsanpham/logo_muare.png'}}" alt="{{$childPro->name}}" width="170px" height="170px" style="display: inline;width: 180px !important; height: 180px !important;">
 
                                             </a>
 
@@ -557,7 +559,10 @@ display: none;
         <td class="td-avatar">
             <div class="avatar">
               <a title="{{$childPro->name}}" href="https://muare.vn/posts/philips-pin-khung-bh-chinh-hang-gia-moi-thang-12-2017-full-model.3941242" class="img-rounded">
-                <img class="lazy-image" src="{{$childPro->images}}" width="150px" height="150px">
+                <?php 
+                  $images = json_decode($childPro->images);
+                ?>
+                <img class="lazy-image" src="{{$images[0] ?? 'assets/images/chitietsanpham/logo_muare.png'}}" width="150px" height="150px">
               </a>
             </div>
             <div class="views-count">

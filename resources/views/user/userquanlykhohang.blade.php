@@ -45,7 +45,10 @@
                                     @foreach($products as $child)
                                     <div class="col-md-3  display_table_cell_tomiot">
                                         <div class="card" >
-                                              <img class="img_sp_kho_hang_tomiot card-img-top" src="{{$child->images}}" alt="{{$child->name}}">
+                                            <?php 
+                                                $images = json_decode($child->images);
+                                              ?>
+                                              <img class="img_sp_kho_hang_tomiot card-img-top" src="{{$images[0] ?? 'assets/images/chitietsanpham/logo_muare.png'}}" alt="{{$child->name}}">
                                               <div class="card-body">
                                                 <h5 class="can_giua_tomiot card-title">{{$child->name}}</h5>
                                                 

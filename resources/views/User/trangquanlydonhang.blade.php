@@ -59,7 +59,12 @@
                                             @foreach($bill_details as $childD)
                                                 @if($childD->billId == $child->idBill)
                                             <div class="product-in-order-L">
-                                                <a target="_blank" href="{{ route('sanpham', ['id' => $childD->sanphamId]) }}"> <img class="lazy-image avatar" src="{{$childD->hinhanhSP}}" alt="{{$childD->tenSP}}" width="48px" height="48px" style="display: inline;float: left;padding-right: 8px;"></a>
+                                                <a target="_blank" href="{{ route('sanpham', ['id' => $childD->sanphamId]) }}"> 
+                                                  <?php 
+                                                    $images = json_decode($childD->hinhanhSP);
+                                                  ?>
+
+                                                  <img class="lazy-image avatar" src="{{$images[0] ?? 'assets/images/chitietsanpham/logo_muare.png'}}" alt="{{$childD->tenSP}}" width="48px" height="48px" style="display: inline;float: left;padding-right: 8px;"></a>
                                                 <a target="_blank" href="{{ route('sanpham', ['id' => $childD->sanphamId]) }}" class=" product-name-L">{{$childD->tenSP}}</a>
                                                 <p class="price-order-L">Số lượng: {{$childD->slSP}}&#160;&#160;<abbr>Đơn giá: {{number_format($childD->giaSP,0)}} VNĐ  </abbr>&#160;&#160; Thành tiền: {{ number_format($childD->slSP * $childD->giaSP,0) }} VNĐ</p>
 

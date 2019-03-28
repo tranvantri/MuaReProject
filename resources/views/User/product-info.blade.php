@@ -21,29 +21,26 @@
             <div class="box-images-v col-md-6">
       
               <!-- hình ảnh của sản phẩm -->
-              
+              <?php 
+                $images = json_decode($child->images);
+              ?>
               <div class="xzoom-container" onmouseover="showZoomImgPro();" onmouseout="hideZoomImgPro()">
-                <img class="xzoom" id="expandedImg" style="width: 430px" src="{{$child->images}}"
-                xoriginal="{{$child->images}}" alt="{{$child->name}}" />
+                <img class="xzoom" id="expandedImg" style="width: 430px" src="{{$images[0] ?? 'assets/images/chitietsanpham/logo_muare.png'}}"
+                xoriginal="{{$images[0] ?? 'assets/images/chitietsanpham/logo_muare.png'}}" alt="{{$child->name}}" />
                 <div id="myresult-v" class="img-zoom-result-v" ></div>
               </div>
               
               <!-- Hình ảnh nhỏ của sp -->
               <div class="scroll-small-img-v">
                 <div class="list-img-wrap-v owl-carousel" >
-                  
+                  @if($images)
+                    @foreach($images as $childImg)
                     <div style="padding: 0 10px;">
-                      <img class="img-thumbnail img-small" src="{{$child->images}}" 
+                      <img class="img-thumbnail img-small" src="{{$childImg}}" 
                         onclick="showPicture(this);"/>
                     </div>
-                    <div style="padding: 0 10px;">
-                      <img class="img-thumbnail img-small" src="https://static8.muarecdn.com/zoom,90/75_75/muare/images/2019/01/16/4994071_a76.jpg"
-                        onclick="showPicture(this);"/>
-                    </div>
-                    <div style="padding: 0 10px;">
-                      <img class="img-thumbnail img-small" src="{{$child->images}}"
-                        onclick="showPicture(this);"/>
-                    </div>
+                    @endforeach
+                    @endif
 
 
                   </div>
@@ -186,7 +183,10 @@
 	<div class="card item">		
 		<div class="wrap-img">
 			<a href="{{ route('sanpham', $childOffer->id)}}">
-				<img class="card-img-top" src="{{$childOffer->images}}" alt="">
+        <?php 
+          $images = json_decode($childOffer->images);
+        ?>
+				<img class="card-img-top" src="{{$images[0] ?? 'assets/images/chitietsanpham/logo_muare.png'}}" alt="">
 			</a>
 			<div class="qv-button-container"> <a href="{{ route('sanpham', $childOffer->id)}}" title="{{$childOffer->name}}"><i class="fas fa-eye"></i></a></div>											
 		</div>		
@@ -223,7 +223,10 @@
 	<div class="card item">		
 		<div class="wrap-img">
 			<a href="{{ route('sanpham', $childRand->id)}}">
-				<img class="card-img-top" style="width: 159px; height: 159px;" src="{{$childRand->images}}" alt="">
+        <?php 
+          $images = json_decode($childRand->images);
+        ?>
+				<img class="card-img-top" style="width: 159px; height: 159px;" src="{{$images[0] ?? 'assets/images/chitietsanpham/logo_muare.png'}}" alt="">
 			</a>
 			<div class="qv-button-container"> <a href="{{ route('sanpham', $childRand->id)}}" title="{{$childRand->name}}"><i class="fas fa-eye"></i></a></div>											
 		</div>		

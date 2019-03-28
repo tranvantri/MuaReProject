@@ -3,7 +3,10 @@
 	<div class="card item">		
 		<div class="wrap-img">
 			<a href="">
-				<img class="card-img-top" src="{{$child->images}}" alt="">
+				<?php 
+                $images = json_decode($child->images);
+              ?>
+				<img class="card-img-top" src="{{$images[0] ?? 'assets/images/chitietsanpham/logo_muare.png'}}" alt="">
 			</a>
 			<div class="qv-button-container"> <a href="{{$child->id}}" title="{{$child->name}}"><i class="fas fa-eye"></i></a></div>											
 		</div>		

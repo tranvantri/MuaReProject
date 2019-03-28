@@ -36,8 +36,11 @@
                         <td>{{$pro->id}}</td>
                         <td style="width: 250px;">{{$pro->name}}</td>   
                         <td>
-                            <a target="_blank" href="{{$pro->images}}">
-                              <img class="img-avatar" src="{{$pro->images}}" alt="Forest"> <i class="fa fa-external-link" aria-hidden="true"></i>
+                            <?php 
+                                $images = json_decode($pro->images);
+                            ?>
+                            <a target="_blank" href="{{$images[0] ?? 'assets/images/chitietsanpham/logo_muare.png'}}">
+                              <img class="img-avatar" src="{{$images[0] ?? 'assets/images/chitietsanpham/logo_muare.png'}}" alt="Forest"> <i class="fa fa-external-link" aria-hidden="true"></i>
                             </a>                            
                         </td>   
                         <td>{{$pro->namecate}}</td>                                        
@@ -80,8 +83,11 @@
                         <td>{{$pro->id}}</td>
                         <td style="width: 250px;">{{$pro->name}}</td>   
                         <td>
-                            <a target="_blank" href="{{$pro->images}}">
-                              <img class="img-avatar" src="{{$pro->images}}" alt="Forest"> <i class="fa fa-external-link" aria-hidden="true"></i>
+                            <?php 
+                                $images = json_decode($pro->images);
+                            ?>
+                            <a target="_blank" href="{{$images[0] ?? 'assets/images/chitietsanpham/logo_muare.png'}}">
+                              <img class="img-avatar" src="{{$images[0] ?? 'assets/images/chitietsanpham/logo_muare.png'}}" alt="Forest"> <i class="fa fa-external-link" aria-hidden="true"></i>
                             </a>                            
                         </td>   
                         <td>{{$pro->namecate}}</td>                                        

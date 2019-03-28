@@ -55,7 +55,10 @@
           <div id="table_product_tomiot">
 
             <div id="img_shop_tomiot">
-              <img id="hinh_anh_shop_tomiot" src="{{$child->images ?? 'assets/images/chitietsanpham/hinh_anh_1.jpg'}}" alt="">
+              <?php 
+                $images = json_decode($child->images);
+              ?>
+              <img id="hinh_anh_shop_tomiot" src="{{$images[0] ?? 'assets/images/chitietsanpham/logo_muare.png'}}" alt="">
             </div>
 
             <div id="thong_tin_san_pham_tomiot">
@@ -223,7 +226,10 @@
 
           @foreach($randSer as $childPro)
             <div class="col-md-2">
-              <img class="image_spdx_tomiot" src="{{$childPro->images}}" alt="">
+              <?php 
+                $images = json_decode($childPro->images);
+              ?>
+              <img class="image_spdx_tomiot" src="{{$images[0] ?? 'assets/images/chitietsanpham/logo_muare.png'}}" alt="">
               <a style="max-height: 1.4em;   " class="thu_gon_text_chitietsanpham_tomiot ds_cac_sp_de_xuat_tomiot " href="#">{{$childPro->name}}</a>
               <h6 style="text-align: center;" class="gia_tien_spdx_tomiot">{{ number_format($childPro->price,0) }} đ</h6>
             </div>

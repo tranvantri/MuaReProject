@@ -377,7 +377,10 @@
                                         href="{{ route('chitiettindang', $childTinDang->id) }}"
                                         data-title="Load sản phẩm" data-size="l" data-id="popupItem"
                                         class="OverlayPopup">
-                                        <img class="lazy-images" src="{{$childTinDang->images}}"
+                                        <?php 
+                                            $images = json_decode($childTinDang->images);
+                                          ?>
+                                        <img class="lazy-images" src="{{$images[0] ?? 'assets/images/chitietsanpham/logo_muare.png'}}"
                                             alt="{{$childTinDang->name}}" />
                                     </a>
                                 </div>
@@ -533,8 +536,11 @@
                                         <a title="{{$childProduct->name}}"
                                             href="{{ route('sanpham', $childProduct->id) }}" data-title="Load sản phẩm"
                                             data-size="l" data-id="popupItem" class="OverlayPopup">
+                                            <?php 
+                                            $images = json_decode($childProduct->images);
+                                          ?>
                                             <img class="lazy-image" data-original="{{$childProduct->name}}"
-                                                src="{{$childProduct->images}}" alt="{{$childProduct->name}}"
+                                                src="{{$images[0] ?? 'assets/images/chitietsanpham/logo_muare.png'}}" alt="{{$childProduct->name}}"
                                                 style="width: 150px; height: 150px; border-radius: 10px; " />
                                         </a>
                                         <div class="sale-state"></div>

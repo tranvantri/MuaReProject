@@ -98,7 +98,10 @@
                                      <!-- SẢN PHẨM THỨ ? -->
                                         <div class="avatar-sp-L">
                                             <a id="avatar-sp-L2" title="name" data-title="Load sản phẩm" data-size="l" data-id="popupItem" class="md-trigger img-rounded OverlayPopup" data-modal="modal-productview">
-                                            <img class="lazy-image" src="{{$childPro->images}}" alt="name" width="180px" height="180px">
+                                              <?php 
+                                                $images = json_decode($childPro->images);
+                                              ?>
+                                            <img class="lazy-image" src="{{$images[0] ?? 'assets/images/chitietsanpham/logo_muare.png'}}" alt="name" width="180px" height="180px">
                                             </a>
                                             <!--<script src="/public/assets/js/classie.js"></script>
                                             <script src="/public/assets/js/modalEffects.js"></script>-->
@@ -197,7 +200,10 @@
                                     <div> <!-- SẢN PHẨM THỨ ? -->
                                         <div class="avatar-sp-L">
                                             <a id="avatar-sp-L2" title="{{$childPro->name}}" data-title="Load sản phẩm" data-size="l" data-id="popupItem" class="md-trigger img-rounded OverlayPopup" data-modal="modal-productview">
-                                            <img class="lazy-image" src="{{$childPro->images}}" alt="{{$childPro->name}}" width="180px" height="180px" style="display: inline;">
+                                              <?php 
+                                                $images = json_decode($childPro->images);
+                                              ?>
+                                            <img class="lazy-image" src="{{$images[0] ?? 'assets/images/chitietsanpham/logo_muare.png'}}" alt="{{$childPro->name}}" width="180px" height="180px" style="display: inline;">
                                             </a>
                                             <!--<script src="/public/assets/js/classie.js"></script>
                                             <script src="/public/assets/js/modalEffects.js"></script>-->

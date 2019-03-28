@@ -140,6 +140,7 @@ $(document).ready(function() {
 
   // owl-carousel 
   if ($(".list-img-wrap-v.owl-carousel").length) {
+
     $(".list-img-wrap-v.owl-carousel").owlCarousel({
       loop: true,
       autoplayHoverPause: true,
@@ -706,10 +707,24 @@ $(document).ready(function() {
     		        	$(".productinfo-title").text(product.productName);
                         $(".productinfo-content").text(product.description);
                         $(".productinfo-price").text(product.productPrice+' VNĐ');
-                        $("#myimage").attr('src',product.productImage);
+                        var listImg = jQuery.parseJSON(product.productImage);
+                        console.log("listImg");
+                        $("#myimage").attr('src',listImg[0]);
+                        var content = '';
+                        for (var i = listImg.length - 1; i >= 0; i--) {
+                          content += '<div style="padding: 0 10px;">'+
+                      '<img class="img-thumbnail img-small" src="'+listImg[i]+'"'+
+                        'onclick="changeMainImage(this);"/></div>'
+                          
+                        }
+
+                        // $('.list-img-wrap-v.owl-carousel').html(content);
+                        jQuery(".list-img-wrap-v.owl-carousel").trigger('add.owl.carousel', content).trigger('refresh.owl.carousel')
+
+                        // $('.list-img-wrap-v.owl-carousel').trigger('refresh.owl.carousel');
                         //$("#myresult").attr('',product.productImage);
                         var myresult = document.getElementById("myresult"); //chitietdanhmuc - modal
-                        myresult.style.backgroundImage= "url('" + product.productImage + "')";
+                        myresult.style.backgroundImage= "url('" + listImg[0] + "')";
                         $(".productinfo-seller > a").text(sellerName);
                         $(".productinfo-phone-text").text(sellerPhone);
                         
