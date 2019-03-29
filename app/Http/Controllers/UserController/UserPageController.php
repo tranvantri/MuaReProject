@@ -22,7 +22,7 @@ class UserPageController extends Controller
         if(Auth::id()) {
             $id = Auth::id();
             // truyền id của khách hàng đã đăng nhập vào đây -------------
-            $user = DB::table('users')->where('adminCheck', 1)->where('users.id', $id)->get();
+            $user = DB::table('users')->where('users.id', $id)->get();
 
             $tindang = DB::table('tindang')
                 ->join('places', 'places.id', '=', 'tindang.idPlace')

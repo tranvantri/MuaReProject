@@ -27,6 +27,7 @@ class SearchController extends Controller
     	if(is_null($idCate) || $idCate == 'tat-ca'){ // truong hop tat ca danh muc
     		$products = DB::table('tindang')
     		->join('users','users.id','tindang.idUser')
+    		->where('users.status',1)
     		->where('tindang.idPlace',$idPlace)
     		->when($textSearch, function($query) use ($textSearch){ //thuc hien khi text search khac null
     			$query->where('tindang.name','like','%'.$textSearch.'%');
@@ -49,6 +50,7 @@ class SearchController extends Controller
     			->where('categories.id', $idCate);
     		})
     		->join('users','users.id','tindang.idUser')//lay thong tin chu shop
+    		->where('users.status',1)
     		->where('tindang.idPlace',$idPlace)
     		->when($textSearch, function($query) use ($textSearch){ //thuc hien khi text search khac null
     			$query->where('tindang.name','like','%'.$textSearch.'%');
@@ -109,6 +111,7 @@ class SearchController extends Controller
 		if($idCate == 'tat-ca'){ // truong hop tat ca danh muc
     		$products = DB::table('tindang')
     		->join('users','users.id','tindang.idUser')
+    		->where('users.status',1)
     		->where('tindang.idPlace',$idPlace)
     		->when($textSearch, function($query) use ($textSearch){ //thuc hien khi text search khac null
     			$query->where('tindang.name','like','%'.$textSearch.'%');
@@ -131,6 +134,7 @@ class SearchController extends Controller
     			->where('categories.id', $idCate);
     		})
     		->join('users','users.id','tindang.idUser')//lay thong tin chu shop
+    		->where('users.status',1)
     		->where('tindang.idPlace',$idPlace)
     		->when($textSearch, function($query) use ($textSearch){ //thuc hien khi text search khac null
     			$query->where('tindang.name','like','%'.$textSearch.'%');
@@ -192,6 +196,7 @@ class SearchController extends Controller
 		if($idCate == 'tat-ca'){ // truong hop tat ca danh muc
     		$products = DB::table('products')
     		->join('users','users.id','products.idUser')
+    		->where('users.status',1)
     		->join('place_product', function($join) use ($idPlace){
 				$join->on('products.id', '=', 'place_product.idProduct')
 				->where('place_product.idPlace','=', $idPlace);
@@ -269,6 +274,7 @@ class SearchController extends Controller
     			->where('categories.id', $idCate);
     		})
     		->join('users','users.id','products.idUser')//lay thong tin chu shop
+    		->where('users.status',1)
     		->when($textSearch, function($query) use ($textSearch){ //thuc hien khi text search khac null
     			$query->where('products.name','like','%'.$textSearch.'%');
     		})

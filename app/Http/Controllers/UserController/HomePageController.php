@@ -22,6 +22,7 @@ class HomePageController extends Controller
     	$tindang = DB::table('tindang')
             ->leftJoin('users', 'users.id', '=', 'tindang.idUser')
             ->where('tindang.status', 1)
+            ->where('users.status',1)
             ->where('tindang.idPlace', $idPlace)
             ->orderBy('tindang.id', 'desc')
             ->take(18)
@@ -33,6 +34,8 @@ class HomePageController extends Controller
     	$newestProducts = DB::table('products')
             ->join('place_product','products.id','place_product.idProduct')
             ->where('products.adminCheck', 1)
+            ->join('users','products.idUser','=','users.id')
+            ->where('users.status',1)
             ->where('place_product.idPlace', $idPlace)          
             ->orderBy('id','desc')
             ->take(9)->get();
@@ -49,7 +52,10 @@ class HomePageController extends Controller
     							->where('tindang.status', 1)
                                 ->where('tindang.adminCheck', 1)
     							->where('categories.idParent',$id);
-    					})->count();
+    					})
+                        ->join('users','tindang.idUser','=','users.id')
+                        ->where('users.status',1)
+                        ->count();
     		$arrval = array(
     			'cate'=>$child,
     			'count'=>$count

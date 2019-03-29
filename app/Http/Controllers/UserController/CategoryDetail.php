@@ -36,8 +36,9 @@ class CategoryDetail extends Controller
 				->where('categories.idParent','=', $id); // lấy sp có idCate = $id truyền vào
 			})	
 			->where('tindang.idPlace','=', $idPlace)			
-			->join('users','tindang.idUser','=','Users.id')
+			->join('users','tindang.idUser','=','users.id')
 			->where('tindang.status',1)
+			->where('users.status',1)
 			->where('tindang.adminCheck',1)
             ->select('tindang.*','users.name as tenchushop')
             ->paginate(20);
@@ -94,8 +95,8 @@ class CategoryDetail extends Controller
 						$join->on('tindang.idCate','=','categories.id')
 						->where('categories.idParent','=', $categoryCurrent->id);//lay all sp thuoc danh muc cha
 					})			
-					->join('users','tindang.idUser','=','Users.id')
-
+					->join('users','tindang.idUser','=','users.id')
+					->where('users.status',1)
 					->where('tindang.status',1)
 					->where('tindang.adminCheck',1)
 					->where('tindang.idPlace',$idPlace)
@@ -163,7 +164,8 @@ class CategoryDetail extends Controller
 						$join->on('tindang.idCate','=','categories.id')
 						->where('categories.id','=', $categoryCurrent->id);//lay all sp thuoc danh muc cha
 					})			
-					->join('users','tindang.idUser','=','Users.id')
+					->join('users','tindang.idUser','=','users.id')
+					->where('users.status',1)
 					->where('tindang.status',1)
 					->where('tindang.adminCheck',1)
 					->where('tindang.idPlace',$idPlace)
@@ -265,7 +267,8 @@ class CategoryDetail extends Controller
 					// 	$join->on('products.id', '=', 'place_product.idProduct')
 					// 	->where('place_product.idPlace','=', $idPlace);
 					// })
-					->join('users','services.idUser','=','Users.id')
+					->join('users','services.idUser','=','users.id')
+					->where('users.status',1)
 					->where('services.status',1)
 					->where('services.adminCheck',1)
 					->where('services.idPlace',$idPlace)
@@ -336,7 +339,8 @@ class CategoryDetail extends Controller
 					// 	$join->on('products.id', '=', 'place_product.idProduct')
 					// 	->where('place_product.idPlace','=', $idPlace);
 					// })
-					->join('users','services.idUser','=','Users.id')
+					->join('users','services.idUser','=','users.id')
+					->where('users.status',1)
 					->where('services.status',1)
 					->where('services.adminCheck',1)
 					->where('services.idPlace',$idPlace)
@@ -438,7 +442,8 @@ class CategoryDetail extends Controller
 						$join->on('products.id', '=', 'place_product.idProduct')
 						->where('place_product.idPlace','=', $idPlace);
 					})
-					->join('users','products.idUser','=','Users.id')
+					->join('users','products.idUser','=','users.id')
+					->where('users.status',1)
 					->where('products.status',1)
 					->where('products.adminCheck',1)
 					->where(function($query) use ($tinhtrang){
@@ -509,7 +514,8 @@ class CategoryDetail extends Controller
 						$join->on('products.id', '=', 'place_product.idProduct')
 						->where('place_product.idPlace','=', $idPlace);
 					})
-					->join('users','products.idUser','=','Users.id')
+					->join('users','products.idUser','=','users.id')
+					->where('users.status',1)
 					->where('products.status',1)
 					->where('products.adminCheck',1)
 					->where(function($query) use ($tinhtrang){
