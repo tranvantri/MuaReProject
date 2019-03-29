@@ -32,12 +32,12 @@ class HomePageController extends Controller
     	$products =  DB::table('products')->where('adminCheck', 1)->inRandomOrder()->limit(6)->get();
 
     	$newestProducts = DB::table('products')
-            ->join('place_product','products.id','place_product.idProduct')
-            ->where('products.adminCheck', 1)
-            ->join('users','products.idUser','=','users.id')
+            ->join('users','users.id','=','products.idUser')
+            ->join('place_product','products.id','=','place_product.idProduct')            
+            ->where('products.adminCheck', 1)            
             ->where('users.status',1)
             ->where('place_product.idPlace', $idPlace)          
-            ->orderBy('id','desc')
+            ->orderBy('products.id','desc')
             ->take(9)->get();
 
     	$categories = DB::table('categories')->where('idParent', 0)->where('enable',1)->select('id','name','image')->get();
