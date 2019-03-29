@@ -6,7 +6,7 @@
 				<?php 
                 $images = json_decode($child->images);
               ?>
-				<img class="card-img-top" height="150" src="{{$images[0] ?? 'assets/images/chitietsanpham/logo_muare.png'}}" alt="">
+				<img class="card-img-top" style="width: 159px; height: 150px;" src="{{$images[0] ?? 'assets/images/chitietsanpham/logo_muare.png'}}" alt="">
 			</a>
 			<div class="qv-button-container"> <a href="{{$child->id}}" title="{{$child->name}}"><i class="fas fa-eye"></i></a></div>											
 		</div>		

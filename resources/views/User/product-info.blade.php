@@ -25,7 +25,7 @@
                 $images = json_decode($child->images);
               ?>
               <div class="xzoom-container" onmouseover="showZoomImgPro();" onmouseout="hideZoomImgPro()">
-                <img class="xzoom" id="expandedImg" style="width: 430px" src="{{$images[0] ?? 'assets/images/chitietsanpham/logo_muare.png'}}"
+                <img class="xzoom" id="expandedImg" style="width: 430px" height="400" src="{{$images[0] ?? 'assets/images/chitietsanpham/logo_muare.png'}}"
                 xoriginal="{{$images[0] ?? 'assets/images/chitietsanpham/logo_muare.png'}}" alt="{{$child->name}}" />
                 <div id="myresult-v" class="img-zoom-result-v" ></div>
               </div>
@@ -186,7 +186,7 @@
         <?php 
           $images = json_decode($childOffer->images);
         ?>
-				<img class="card-img-top" src="{{$images[0] ?? 'assets/images/chitietsanpham/logo_muare.png'}}" alt="">
+				<img class="card-img-top" style="width: 159px; height: 150px;" src="{{$images[0] ?? 'assets/images/chitietsanpham/logo_muare.png'}}" alt="">
 			</a>
 			<div class="qv-button-container"> <a href="{{ route('sanpham', $childOffer->id)}}" title="{{$childOffer->name}}"><i class="fas fa-eye"></i></a></div>											
 		</div>		
@@ -226,7 +226,7 @@
         <?php 
           $images = json_decode($childRand->images);
         ?>
-				<img class="card-img-top" style="width: 159px; height: 159px;" src="{{$images[0] ?? 'assets/images/chitietsanpham/logo_muare.png'}}" alt="">
+				<img class="card-img-top" style="width: 159px; height: 150px;" src="{{$images[0] ?? 'assets/images/chitietsanpham/logo_muare.png'}}" alt="">
 			</a>
 			<div class="qv-button-container"> <a href="{{ route('sanpham', $childRand->id)}}" title="{{$childRand->name}}"><i class="fas fa-eye"></i></a></div>											
 		</div>		
