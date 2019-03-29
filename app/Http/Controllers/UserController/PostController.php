@@ -117,12 +117,7 @@ class PostController extends Controller
 	    $addressUser = strip_tags($request->addressUser);
 
 
-	    /*------------------------chưa lấy dc filepath*/
-	 //    if($request->hasFile('files')){
-		// 	$image = $this->upLoadFiles($request,'upload/imageuser/services/');
-		// }else{
-		// 	$image = "null";
-		// }
+
 
 	    
 
@@ -166,12 +161,7 @@ class PostController extends Controller
 	    // 	echo "Hobby : ".$childLoc."<br />";
 	    // }
 
-	    /*------------------------chưa lấy dc hình ảnh path*/
-	 //    if($request->hasFile('files')){
-		// 	$imageProduct = $this->upLoadFiles($request,'upload/imageuser/products/');
-		// }else{
-		// 	$imageProduct = "null";
-		// }
+	
 
 	    DB::table('products')->insert(array(
 	    		'name' 			=> $nameProduct, 
