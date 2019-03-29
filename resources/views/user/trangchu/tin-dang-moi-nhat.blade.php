@@ -18,7 +18,7 @@
 				<?php 
 	                $images = json_decode($child->images);
 	              ?>
-				<a href="#"><img class="img-thumbnail" src="{{$images[0] ?? 'assets/images/chitietsanpham/logo_muare.png'}}" alt="Hình ảnh của shop"></a>
+				<a href="#"><img class="img-thumbnail"   height="134" src="{{$images[0] ?? 'assets/images/chitietsanpham/logo_muare.png'}}" alt="Hình ảnh của shop"></a>
 			</div>
 			<div class="canTraiNoiDung col-md-7">
 				<span class="thu_gon_text_tomiot" title="{{$child->description}} ">
