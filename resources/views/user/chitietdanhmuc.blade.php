@@ -812,6 +812,7 @@ span.price-int {
               @endif  {{-- end xet loai hien thi --}}
 
             </div>
-        <!--</section>-->
+    </div>
+        </section>
 
         @endsection

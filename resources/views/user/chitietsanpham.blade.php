@@ -9,6 +9,7 @@
   </title>
 @endsection
 @section('content')
+
 <section class="content mt-1">
 
   <div class="container">
@@ -27,7 +28,7 @@
             @endforeach
           </div>
           <div class="col-md-2">
-            <p>ID Tin: {{$child->id}} </p>
+            <p class="idtindang-cmt" dataIDTinDang="{{$child->id}}">ID Tin: {{$child->id}} </p>
             <div id="icon_action_tomiot">
               <a href="#" title="Loa tin"><i class="hovericon fas fa-bullhorn"></i></a>
               <a href="#" title="Theo dõi"><i class="hovericon fas fa-tags"></i></a>
@@ -107,9 +108,11 @@
         </div>
       </section> <!-- Kết thúc tin đăng liên quan -->
       <section class="binh-luan-san-pham_tomiot">
-        
+        <div id="comment-tindang-L">
+            <!--<a class="btn btn-primary" id="nhan"> nhan</a>-->
+          </div>
       </section>
-
+      
 
     </div>
 

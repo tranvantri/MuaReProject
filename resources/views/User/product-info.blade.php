@@ -56,7 +56,7 @@
               </div>
               <!-- Kết thúc hình ảnh của sản phẩm -->
 
-              <div class="view-caring-v">
+              <!--<div class="view-caring-v">
                 <div class="social-v">
                   <div class="view-saved-v">
                     <span class="glyphicon glyphicon-saved" aria-hidden="true"><i class="fas fa-shopping-cart"></i></span>
@@ -71,7 +71,7 @@
                     vào Facebook</a>
                   </div>
                 </div>
-              </div>
+              </div>-->
               
 
             </div>
@@ -81,7 +81,8 @@
             <div class="box-info-v col-md-6">
               <h1 class="item-title-v">{{$child->name}}
               </h1>
-              Người bán
+              Người bán <abbr class="chitietsp-am-using" dataCheckChiTietSP="{{$chitietsp}}"></abbr>
+                 <abbr class="avatar-sp-L2" dataIDProduct2="{{$child->id}}"></abbr>   
               <span title="Đã kích hoạt SMS"><i class="fas fa-check"></i></span>
               <a class="basic-info-name-v"
                  href="{{ route('gianhangcuanguoidung',$child->idChuShop) }}">{{$child->usernameChuShop ?? 'username'}} </a>
@@ -127,14 +128,17 @@
         </div>
       </div>
       <div class="nav-tab-right-v">
+        <section class="binh-luan-san-pham_tomiot">
+            <div id="comment-part-L2"></div>
+        </section>
         <!-- Nav tabs -->
-        <ul class="nav nav-tabs" role="tablist">
+        <!--<ul class="nav nav-tabs" role="tablist">
           <li class="nav-item active">
             <a class="nav-link" data-toggle="tab" href="#muareItem" role="tab">Bình luận (bình luận fb)</a>
           </li>
-        </ul>
+        </ul>-->
         <!-- Tab panes -->
-        <div class="tab-content-v">
+        <!--<div class="tab-content-v">
           <div class="tab-pane active" id="muareItem" role="tabpanel">
             <div id="comment_item">
               <div class="post-footer-v">
@@ -174,7 +178,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </div>-->
         <!-- Kết thúc phần hiển thị sản phẩm -->
 
         <!-- Đề xuất sản phẩm -->

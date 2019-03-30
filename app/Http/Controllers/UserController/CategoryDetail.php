@@ -606,6 +606,26 @@ class CategoryDetail extends Controller
                 $seller = json_encode($seller);
                 echo  $seller;
     }
+    public function getProductInfo(Request $request)
+    {
+        //$number = htmlspecialchars($_GET["idProduct"]);
+        $idPro = $request->idProduct;          
+        $comments = DB::table('products')
+                        ->where('products.id',$idPro)
+                        ->select('products.name as productName', 'products.description as description', 'products.images as productImage', 'products.price as productPrice', 'products.idUser as productUserId')
+                        ->get();
+                    //$this->myJson($comments);
+        if($comments != null || $comments != ''){
+             header("Content-type: application/json");
+            $comments = json_encode($comments);
+            echo  $comments;
+        } else {
+             header("Content-type: application/json");
+                $comments = json_encode(0);
+                echo  $comments;
+        }
+               
+    }
     public function getComment(Request $request)
     {
         //$number = htmlspecialchars($_GET["idProduct"]);
@@ -617,24 +637,39 @@ class CategoryDetail extends Controller
                         ->select('comments.id as idComment', 'comments.value as content', 'comments.idParent as idParent', 'users.avatar as userAvatar', 'users.name as userName', 'comments.idProduct as idProduct','products.name as productName', 'users.id as idUser', 'comments.idBlock as idBlock', 'comments.date_added as date_added', 'comments.parentName as parentName', 'products.name as productName', 'products.description as description', 'products.images as productImage', 'products.price as productPrice', 'products.idUser as productUserId')
                         ->get();
                     //$this->myJson($comments);
-                header("Content-type: application/json");
-                $comments = json_encode($comments);
+        if($comments != null || $comments != ''){
+             header("Content-type: application/json");
+            $comments = json_encode($comments);
+            echo  $comments;
+        } else {
+             header("Content-type: application/json");
+                $comments = json_encode(0);
                 echo  $comments;
+        }
+               
     }
     public function getSubComment(Request $request)
     {
         //$number = htmlspecialchars($_GET["idProduct"]);
-        $idUser = $request->idUser;          
+        $idComment = $request->idComment;          
         $comments = DB::table('comments')
                         ->join('products','products.id','=','comments.idProduct')
                         ->join('users','users.id','=','comments.idUser')
-                        ->where('comments.idBlock',$idUser)
+                        ->where('comments.idBlock',$idComment)
                         ->select('comments.id as idComment', 'comments.value as content', 'comments.idParent as idParent', 'users.avatar as userAvatar', 'users.name as userName', 'comments.idProduct as idProduct','products.name as productName','users.id as idUser','comments.idBlock as idBlock', 'comments.date_added as date_added', 'comments.parentName as parentName')
                         ->get();
                     //$this->myJson($comments);
                 header("Content-type: application/json");
                 $comments = json_encode($comments);
                 echo  $comments;
+    }
+    public function deleteComment(Request $request)
+    {
+        //$number = htmlspecialchars($_GET["idProduct"]);
+        $idComment = $request->idComment;
+        DB::table('comments')->where('id', $idComment)->delete();
+        header("Content-type: application/json");
+        echo json_encode(0);
     }
     public function postSubComment(Request $request)
     {
@@ -678,14 +713,11 @@ class CategoryDetail extends Controller
         else{
         // chưa đăng nhập, điều hướng về trang login
             //return redirect('/login');
-            $userId = "Bình luận không thành công2!"; //not login
+            $userId = "Vui lòng đăng nhập trước khi bình luận!"; //not login
             header("Content-type: application/json");
             $userId = json_encode($userId);
             echo  $userId;
         }
-
-
-        
     }
    
 }
