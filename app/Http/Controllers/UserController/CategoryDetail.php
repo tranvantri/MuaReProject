@@ -194,7 +194,7 @@ class CategoryDetail extends Controller
 					$productsVip = DB::table('tindang')
 					->join('categories', function ($join) use ($categoryCurrent){
 						$join->on('tindang.idCate','=','categories.id')
-						->where('categories.idParent','=', $categoryCurrent->idParent);
+						->where('categories.idParent','=', $categoryCurrent->idParent); // lấy tất cả danh mục thuộc 1 danh mục cha
 					})			
 					->join('users','tindang.idUser','=','users.id')
 					->where('users.status',1)
