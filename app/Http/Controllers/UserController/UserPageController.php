@@ -47,6 +47,8 @@ class UserPageController extends Controller
     public function getQuanLyDonHang(){
         if(Auth::id()){
             $idUser = Auth::id(); // id của chủ shop
+
+            // quan ly hoa don nguoi BAN
             $bills = DB::table('bills')
                     ->join('users','users.id','=','bills.idUser')
                     ->where('users.id',$idUser)
@@ -73,7 +75,40 @@ class UserPageController extends Controller
                     'products.images as hinhanhSP')
                 ->get();
 
-            return view('user.trangquanlydonhang',compact('bills','bill_details'));
+
+
+
+
+            // ket thuc quan ly hoa don nguoi BAN
+/*-----------------------------------------------------------------------------------------------*/
+            /*quản lý hóa đơn ng mua*/
+            $bills_products_buy = DB::table('bill_detail')
+                ->join('bills','bills.id','=','bill_detail.idBill')
+                ->join('products','products.id','=','bill_detail.idProduct')
+                ->join('users','users.id','=','products.idUser')
+                ->where('bills.idUserBuy',$idUser)
+                ->select(
+                    'bills.id as idBill',
+                    'bills.status as trangThaiBill',
+
+                    'bill_detail.nameProduct as tenSP',
+                    'bill_detail.quantity as slSP',
+                    'bill_detail.price as giaSP',
+                    'bill_detail.idProduct as sanphamId',
+
+                    'products.images as hinhanhSP',
+
+                    'users.username as usernameShop',
+                    'users.id as idShop',
+                    'users.name as nameShop',
+                    'users.phone as phoneShop'
+                    )
+                ->get();
+            /* Ket thuc quản lý hóa đơn ng mua*/
+            /*-----------------------------------------------------------------------------------------------*/
+
+            return view('user.trangquanlydonhang',compact('bills','bill_details',
+                'bills_products_buy'));
         }
         else{
             return redirect('login');
