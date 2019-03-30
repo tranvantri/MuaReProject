@@ -44,7 +44,7 @@
                                       <tr>
                                         <th width="5%">Mã HĐ</th>
                                         <th width="65%">Sản phẩm</th>
-                                        <th width="30%">Shop</th>
+                                        <th width="30%">Khách hàng</th>
                                       </tr>
                                     </thead>
                                        @foreach($bills as $child)
@@ -116,33 +116,53 @@
                                         <tr>
                                             <th width="5%">STT</th>
                                             <th width="65%">Sản phẩm</th>
-                                            <th width="30%">Khách hàng</th>
+                                            <th width="30%">Shop</th>
                                         </tr>
                                         </thead>
+                                        @foreach($bills_products_buy as $child)
                                         <tbody>
                                         <tr>
-                                            <td class="td-center-L">1</td>
+                                            <td class="td-center-L">SP_{{$child->sanphamId}}</td>
                                             <td>
-                                                <div class="product-in-order-L">
-                                                    <img class="lazy-image avatar" data-original="https://muare.vn/images/avatars/avatar_male_s.png?v=2" src="https://muare.vn/images/avatars/avatar_male_s.png?v=2" alt="" width="48px" height="48px" style="display: inline;float: left;padding-right: 8px;">
-                                                    <a href="#" class="product-name-L">ASUS P008 – Tablet giá tốt, cấu hình ổn</a>
-                                                    <p class="price-order-L">Số lượng: 2&#160;&#160;&#160;&#160;&#160;&#160;<abbr>Giá: 2,000,000 VNĐ</abbr></p>
-                                                </div>
-                                                <div class="product-in-order-L">
-                                                    <img class="lazy-image avatar" data-original="https://muare.vn/images/avatars/avatar_male_s.png?v=2" src="https://muare.vn/images/avatars/avatar_male_s.png?v=2" alt="" width="48px" height="48px" style="display: inline;float: left;padding-right: 8px;">
-                                                    <a href="#" class="product-name-L">ASUS P008 – Tablet giá tốt, cấu hình ổn</a>
-                                                    <p class="price-order-L">Số lượng: 2&#160;&#160;&#160;&#160;&#160;&#160;<abbr>Giá: 2,000,000 VNĐ</abbr></p>
-                                                </div>
-                                                <h5 class="avgprice-order-L">Tổng: 4,000,000 VNĐ</h5>
+                                                <?php
+                                                $tongtienBuy = 0;
+                                                ?>
+                                                        <div class="product-in-order-L">
+                                                            <a target="_blank" href="{{ route('sanpham', ['id' => $child->sanphamId]) }}">
+                                                                <?php
+                                                                $images = json_decode($child->hinhanhSP);
+                                                                ?>
+
+                                                                <img class="lazy-image avatar" src="{{$images[0] ?? 'assets/images/chitietsanpham/logo_muare.png'}}" alt="{{$child->tenSP}}" width="48px" height="48px" style="display: inline;float: left;padding-right: 8px;"></a>
+                                                            <a target="_blank" href="{{ route('sanpham', ['id' => $child->sanphamId]) }}" class=" product-name-L">{{$child->tenSP}}</a>
+                                                            <p class="price-order-L">Số lượng: {{$child->slSP}}&#160;&#160;<abbr>Đơn giá: {{number_format($child->giaSP,0)}} VNĐ  </abbr>&#160;&#160; Thành tiền: {{ number_format($child->slSP * $child->giaSP,0) }} VNĐ</p>
+
+                                                            <?php
+                                                            $tongtienBuy+= $child->slSP * $child->giaSP;
+                                                            ?>
+                                                        </div>
+
+
                                             </td>
                                             <td class="td-center-L" style="padding: 16px;">
-                                                <p>Chủ shop: <a href="#">Hot Girl Quận Cam</a></p>
-                                                <p>Số điện thoại : 0123456789</p>
-                                                <p>Địa chỉ : Hồ Chí minh</p>
-                                                <p>Trạng thái: <abbr class="stateorder-color-L">Chưa xử lý</abbr></p>
+                                                <p>Họ tên: {{$child->usernameShop ?? $child->nameShop }}</p>
+                                                <p>Số điện thoại : {{$child->phoneShop ?? 'Lỗi SDT'}}</p>
+                                                <p style="color: green; font-weight: bold;">Tổng tiền: {{ number_format($tongtienBuy,0) }} VNĐ</p>
+                                                <p>Trạng thái: <abbr class="stateorder-color-L">
+                                                        @if($child->trangThaiBill == -1)
+                                                            Chưa xử lý
+                                                        @elseif($child->trangThaiBill == 0)
+                                                            Đang xử lý
+                                                        @else
+                                                            Đã giao hàng
+                                                        @endif
+
+
+                                                    </abbr></p>
                                             </td>
                                         </tr>
                                         </tbody>
+                                        @endforeach
                                     </table>
 
                                 </div>
