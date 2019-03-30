@@ -19,16 +19,20 @@ class ServiceController extends Controller
     
     public function getEnable($id, $option)
     {
-        $dichvu = Services::find($id);       
+        $dichvu = Services::find($id);     
+        $tb = '';   
         if($option == 0){
-            $dichvu->adminCheck = 0;  //chua duyet            
+            $dichvu->adminCheck = 0;  //chua duyet  
+            $tb = 'Đã hủy duyệt dịch vụ "'. $dichvu->name.'"';          
         }elseif($option == 1){
             $dichvu->adminCheck = 1;  //da duyet
+            $tb = 'Đã duyệt dịch vụ "'. $dichvu->name.'"';
         }else{
             $dichvu->adminCheck = 2;//khoas
+            $tb = 'Đã khóa dịch vụ "'. $dichvu->name.'"';
         }
         $dichvu->save();    
-        return redirect('admin/dichvu/list');        
+        return redirect('admin/dichvu/list')->with('thongbao',$tb);        
     }
 
     // public function getInforUser($id){

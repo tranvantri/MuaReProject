@@ -25,6 +25,7 @@
                         <th>Ảnh mẫu</th>
                         <th>Danh mục</th>        
                         <th>Trạng thái</th>                                        
+                        <th>Kích hoạt vip</th>                                        
                         <th>Xem chi tiết</th>                                        
                         <th>Thông tin người đăng</th>                                        
                     </tr>
@@ -71,7 +72,14 @@
                                     <li><a href="admin/tindang/enable/{{$child->id}}/{{2}}">Khóa</a></li>
                                 </ul>
                             </div>
-                        </td>                                         
+                        </td>     
+                        <td>
+                            @if($child->vip == 0)                        
+                                <a href="admin/tindang/vip/{{$child->id}}" class="btn btn-danger">Chưa kích hoạt</a>
+                            @else
+                                <a href="admin/tindang/vip/{{$child->id}}" class="btn btn-info">Đã kích hoạt</a>
+                            @endif
+                        </td>                                    
                         <td><button class="view-info-tindang btn btn-info" data="{{$child->id}}" data-toggle="modal" data-target="#myModalProInfo">Xem</button></td>
                         <td><button class="view-info-user btn btn-info" data="{{$child->idchushop}}" data-toggle="modal" data-target="#myModalUserInfo">Xem</button></td>
                     </tr> 
@@ -118,6 +126,13 @@
                                     <li><a href="admin/tindang/enable/{{$child->id}}/{{2}}">Khóa</a></li>
                                 </ul>
                             </div>
+                        </td>
+                        <td>
+                            @if($child->vip == 0)                        
+                                <a href="admin/tindang/vip/{{$child->id}}" class="btn btn-danger">Chưa kích hoạt</a>
+                            @else
+                                <a href="admin/tindang/vip/{{$child->id}}" class="btn btn-info">Đã kích hoạt</a>
+                            @endif
                         </td>                                         
                         <td><button class="view-info-tindang btn btn-info" data="{{$child->id}}" data-toggle="modal" data-target="#myModalProInfo">Xem</button></td>
                         <td><button class="view-info-user btn btn-info" data="{{$child->idchushop}}" data-toggle="modal" data-target="#myModalUserInfo">Xem</button></td>

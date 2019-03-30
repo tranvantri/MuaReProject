@@ -35,6 +35,7 @@ Route::group(['namespace' => 'AdminManager'], function() {
             // Route::get('edit/{id}', 'TinDangController@getEdit');
             // Route::post('edit/{id}', 'TinDangController@postEdit');
             Route::get('enable/{id}/{option}', 'TinDangController@getEnable');
+            Route::get('vip/{id}', 'TinDangController@getVip');
             Route::get('view-info-user/{id}', 'ProductController@getInforUser');
             Route::get('view-info-tindang/{id}', 'TinDangController@getInforTinDang');
            

@@ -43,7 +43,22 @@ class CategoryDetail extends Controller
             ->select('tindang.*','users.name as tenchushop')
             ->paginate(20);
 
-  		return view('user.chitietdanhmuc',compact('categoryParent', 'categoryCurrent', 'childCate','products','place','hienthi', 'tinhtrang', 'gia', 'sapxep'));
+
+        $productsVip = DB::table('tindang')
+			->join('categories', function ($join) use ($id){
+				$join->on('tindang.idCate','=','categories.id')
+				->where('categories.idParent','=', $id); // lấy sp có idCate = $id truyền vào
+			})	
+			->where('tindang.idPlace','=', $idPlace)			
+			->join('users','tindang.idUser','=','users.id')
+			->where('tindang.status',1)
+			->where('tindang.vip',1)
+			->where('users.status',1)
+			->where('tindang.adminCheck',1)
+            ->select('tindang.*','users.name as tenchushop')
+            ->get(3);
+
+  		return view('user.chitietdanhmuc',compact('categoryParent', 'productsVip', 'categoryCurrent', 'childCate','products','place','hienthi', 'tinhtrang', 'gia', 'sapxep'));
 	}
 
     
@@ -56,6 +71,8 @@ class CategoryDetail extends Controller
 		else{
 			$idPlace = 1;//mac dinh laf id cua HaNoi
 		}
+
+		$productsVip = null;
 
 		switch($hienthi){
 			case 'tin-dang':
@@ -89,6 +106,20 @@ class CategoryDetail extends Controller
 					$childCate = DB::table('categories')
                         ->where('idParent', $categoryCurrent->id)
                         ->where('enable',1)->get();
+
+                    $productsVip = DB::table('tindang')
+					->join('categories', function ($join) use ($categoryCurrent){
+						$join->on('tindang.idCate','=','categories.id')
+						->where('categories.idParent','=', $categoryCurrent->id);//lay all sp thuoc danh muc cha
+					})			
+					->join('users','tindang.idUser','=','users.id')
+					->where('users.status',1)
+					->where('tindang.status',1)
+					->where('tindang.adminCheck',1)
+					->where('tindang.vip',1)
+					->where('tindang.idPlace',$idPlace)
+					->select('tindang.*','users.name as tenchushop')
+            		->get(3);
 
 					$products = DB::table('tindang')
 					->join('categories', function ($join) use ($categoryCurrent){
@@ -154,15 +185,30 @@ class CategoryDetail extends Controller
 		            ->paginate(20);
 
 
-		  			return view('user.chitietdanhmuc',compact('categoryParent', 'categoryCurrent', 'childCate','products','place','hienthi', 'tinhtrang', 'gia', 'sapxep'));
+		  			return view('user.chitietdanhmuc',compact('categoryParent', 'productsVip', 'categoryCurrent', 'childCate','products','place','hienthi', 'tinhtrang', 'gia', 'sapxep'));
 				}else{					
 					$categoryParent = Categories::find($categoryCurrent->idParent);//gan cho de dung
 					$place = Places::find($idPlace);
 					$childCate = DB::table('categories')->where('idParent', $categoryCurrent->idParent)->where('enable',1)->get();
+
+					$productsVip = DB::table('tindang')
+					->join('categories', function ($join) use ($categoryCurrent){
+						$join->on('tindang.idCate','=','categories.id')
+						->where('categories.idParent','=', $categoryCurrent->idParent);
+					})			
+					->join('users','tindang.idUser','=','users.id')
+					->where('users.status',1)
+					->where('tindang.status',1)
+					->where('tindang.adminCheck',1)
+					->where('tindang.vip',1)
+					->where('tindang.idPlace',$idPlace)
+					->select('tindang.*','users.name as tenchushop')
+            		->get(3);
+
 					$products = DB::table('tindang')
 					->join('categories', function ($join) use ($categoryCurrent){
 						$join->on('tindang.idCate','=','categories.id')
-						->where('categories.id','=', $categoryCurrent->id);//lay all sp thuoc danh muc cha
+						->where('categories.id','=', $categoryCurrent->id);
 					})			
 					->join('users','tindang.idUser','=','users.id')
 					->where('users.status',1)
@@ -222,7 +268,7 @@ class CategoryDetail extends Controller
 		            ->select('tindang.*','users.name as tenchushop')
 		            ->paginate(20);
 
-		  			return view('user.chitietdanhmuc',compact('categoryParent','categoryCurrent', 'childCate','products','place','hienthi', 'tinhtrang', 'gia', 'sapxep'));
+		  			return view('user.chitietdanhmuc',compact('categoryParent', 'productsVip','categoryCurrent', 'childCate','products','place','hienthi', 'tinhtrang', 'gia', 'sapxep'));
 				}
 				break;
 			case 'dich-vu':

@@ -551,6 +551,189 @@ display: none;
 </tbody>
 </table>
 </div>
+
+@if(isset($productsVip) && count($productsVip))
+@foreach($productsVip as $childPro)
+<div class="row post-items border-items">
+  <table>
+    <tbody>
+      <tr>
+        <td class="td-avatar">
+            <div class="avatar">
+              <a title="{{$childPro->name}}" href="{{$childPro->id}}" class="img-rounded">
+                <?php 
+                  $images = json_decode($childPro->images);
+                ?>
+                <img class="lazy-image" src="{{$images[0] ?? 'assets/images/chitietsanpham/logo_muare.png'}}" width="150px" height="150px">
+              </a>
+            </div>
+            <div class="views-count">
+              <div class="glyphicon glyphicon-eye-open">
+                <span class="fred"></span>
+                {{$childPro->view}}
+              </div>
+            </div>
+        </td>
+       <td class="td-info">
+         <div class="box-info">
+          <div class="title">
+           <h3 class="box-info-h3">
+            <a title="{{$childPro->name}}"
+             href="https://muare.vn/posts/philips-pin-khung-bh-chinh-hang-gia-moi-thang-12-2017-full-model.3941242">{{$childPro->name}}
+              </a>
+          </h3>
+        </div>
+        <div class="location">
+         <span class="glyphicon glyphicon-map-marker"><i class="fas fa-map-marker-alt" style="font-size: 12px;"></i></span>
+         <div title="{{$childPro->address}}" class="my-location">
+          <h4 class="marker-h4">{{$childPro->address}}</h4>
+        </div>
+      </div>
+      <div class="price">
+       <span class=""> </span> 
+       <div class="price-des"> Giá từ: </div>
+       <div class="my-price">{{number_format($childPro->price,0)}}  đ </div>
+      </div>
+      <div class="status">
+       <div class=""> Tình trạng: Mới</div>
+      </div>
+      <div class="user-post">
+       <div class="my-avatar">
+        <a title="{{$childPro->tenchushop}}" href="https://muare.vn/shop/diemsangviet/30270" class="img-rounded">
+          <img class="lazy-image" src="https://static8.muarecdn.com/zoom,80/74_74/muare/avatars/l/30/30270_1446804977.jpg?1446804977" alt="diemsangviet" width="40px" height="40px">
+        </a>
+      </div>
+      <div class="username">
+        <h4 class="username-h4">
+         <a title="{{$childPro->tenchushop}}" href="https://muare.vn/shop/diemsangviet/30270">{{$childPro->tenchushop}}</a>
+       </h4>
+      </div>
+      <div class="post-date-ad">{{date("d/m/Y", strtotime($childPro->date_added))}}, lúc {{date("H:m", strtotime($childPro->date_added))}}</div>
+      </div>
+      </div>
+      <hr/>
+      <div class="last-comment">
+        <div class="my-avatar" style="padding-top: 4px;">
+         <a href="https://muare.vn/shop" class="img-rounded" title="">
+           <img src="https://muare.vn/images/avatars/avatar_male_s.png?v=2" alt="" width="25px" height="25px">
+         </a>
+       </div>
+       <div class="cmt" title="Add co ban pin Philips E170 ko vay? Co gi lien he so 0909080986 cho minh nhé. Thanks ban">Add co ban pin Philips E170 ko...</div>
+       <div class="post-date">21/08/2018, lúc 11:43</div>
+       <div class="count_cmt">
+         <div class="glyphicon cmt"><a title="Philips pin khủng BH chính hãng giá mới tháng 12 2017 Full Model" href="https://muare.vn/posts/philips-pin-khung-bh-chinh-hang-gia-moi-thang-12-2017-full-model.3941242?#show_comment" style="color:#313131;text-decoration: none;cursor: pointer">Bình luận</a></div>
+       </div>
+       <div class="follow" data-id="3941242">
+         <div data-toggle="tooltip" data-placement="bottom" title="" class="icon-follow " data-original-title="Lưu tin"></div>
+       </div>
+      </div>
+      </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+@endforeach
+
+
+
+<div class="row post-items border-items" style="border-color: #ffbf02;border-style: dashed;border-width: 2px;">
+         <p class="post_sticky sticky_vip">
+          TOP VIP
+        </p>
+        <table>
+          <tbody>
+           <tr>
+            <td class="td-avatar">
+             <div class="avatar">
+              <a data-title="Mua tin VIP top" data-size="m" data-id="buy_post_vip">
+                <img src="https://static8.muarecdn.com/zoom,80/150_150/muare/images/2018/02/23/4513649_button.png" alt="iphone 6 lock" width="150px" height="150px" style="display: inline;">
+              </a>
+            </div>
+            <div class="views-count">
+              <div class="glyphicon-eye-opens">
+               <a href="#" data-title="Mua tin VIP top" data-size="m" data-id="buy_post_vip">
+                 Liên hệ ngay!
+               </a>
+             </div>
+           </div>
+         </td>
+         <td class="td-info">
+           <div class="box-info" style="border: none;padding-right: 10px;padding-bottom: 5px;">
+            <div class="title" style="position: relative;">
+             <h3 class="box-info-h3" style="position: relative;">
+              <a data-title="Mua tin VIP top" data-size="m" data-id="buy_post_vip" class="OverlayPopup" title="Vị trí tin vip này đang trống, vui lòng click xem chi tiết..." style="
+              text-transform: none;
+              color: black !important;
+              line-height: 20px;
+              padding-bottom: 10px;
+              ">Tăng hiệu quả bán hàng với việc đặt tin đăng của bạn tại vị trí <span style="
+              color: #eb100e;
+              ">VIP</span> nhất trên muare.vn</a>
+            </h3>
+          </div>
+          <div class="location">
+           <div title="số 5 ngõ 88 trần quý cáp" class="my-location">
+            <h4 class="marker-h4">
+             - Tin VIP luôn nằm vị trí cố định và trên cùng của trang chuyên mục. <br>
+             - Tin VIP Top hiển thị ở tất cả các trang sau của chuyên mục. <br>
+             - Tin VIP Top mua chuyên mục nào sẽ hiển thị vị trí VIP Top tại chuyên mục đó. <br>
+             - Được nhắc nhở trước khi bị xử lý nếu có vi phạm trong tin VIP. <br>
+             - Được quyền xóa bỏ các comment không mong muốn trong tin VIP. <br>
+           </h4>
+         </div>
+       </div>
+       <div class="price" style="
+       padding-top: 20px;
+       ">
+       <span class=""> </span>
+       <div class="price-des">Liên hệ quảng cáo: </div>
+       <div class="my-price">096 906 1788</div>
+     </div>
+     <div class="status" style="
+     display: none;
+     ">
+     <div class=""> Tình trạng: Cũ</div>
+   </div>
+   <div class="user-post" style="
+   display: none;
+   ">
+   <div class="my-avatar">
+    <a title="master1405" href="https://muare.vn/shop/master1405/609685" class="img-rounded">
+      <img class="lazy-image" data-original="https://static8.muarecdn.com/zoom,80/74_74/muare/avatars/l/609/609685_1487749845.jpg?1487749845" src="https://static8.muarecdn.com/zoom,80/74_74/muare/avatars/l/609/609685_1487749845.jpg?1487749845" alt="master1405" width="40px" height="40px" style="display: inline;">
+    </a>
+  </div>
+  <div class="username">
+    <h4 class="username-h4">
+     <a title="master1405" href="https://muare.vn/shop/master1405/609685">master1405</a>
+   </h4>
+ </div>
+ <div class="post-date">10/02, lúc 14:45</div>
+</div>
+</div>
+<div class="last-comment" style="
+display: none;
+">
+<div class="my-avatar">
+ <a title="" href="https://muare.vn/shop" class="img-rounded">
+   <img src="https://static18.muarecdn.com/styles/muare/xenforo/avatars/avatar_male_s.png?v=1" alt="" width="25px" height="25px">
+ </a>
+</div>
+<div class="cmt">Shop nghỉ tết đến bao h...</div>
+<div class="post-date">19/02, lúc 17:51</div>
+<div class="count_cmt">
+ <div class="glyphicon cmt"><a title="APPLE JAPAN ➞ CHUYÊN IP LOCK NHẬT ➞ UY TÍN ĐẢM BẢO Như bài viết ➞ mua bán tại nhà riêng ➞ bh 1 đổi 1" href="https://muare.vn/posts/apple-japan-chuyen-ip-lock-nhat-uy-tin-dam-bao-nhu-bai-viet-mua-ban-tai-nha-rieng-bh-1-doi-1.3852363" style="color:#313131;text-decoration: none;cursor: pointer">Bình luận</a></div>
+</div>
+<div class="follow" data-id="3852363">
+ <div data-toggle="tooltip" data-placement="bottom" title="" class="icon-follow " data-original-title="Lưu tin"></div>
+</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+@endif
+
 @foreach($products as $childPro)
 <div class="row post-items border-items">
   <table>
@@ -558,7 +741,7 @@ display: none;
       <tr>
         <td class="td-avatar">
             <div class="avatar">
-              <a title="{{$childPro->name}}" href="https://muare.vn/posts/philips-pin-khung-bh-chinh-hang-gia-moi-thang-12-2017-full-model.3941242" class="img-rounded">
+              <a title="{{$childPro->name}}" href="{{$childPro->id}}" class="img-rounded">
                 <?php 
                   $images = json_decode($childPro->images);
                 ?>

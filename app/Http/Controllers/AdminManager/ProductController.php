@@ -19,16 +19,20 @@ class ProductController extends Controller
     
     public function getEnable($id, $option)
     {
-        $pro = Products::find($id);       
+        $pro = Products::find($id);  
+        $tb = '';     
         if($option == 0){
-            $pro->adminCheck = 0;  //chua duyet            
+            $pro->adminCheck = 0;  //chua duyet   
+            $tb = 'Đã hủy duyệt sản phẩm "'. $pro->name.'"';         
         }elseif($option == 1){
             $pro->adminCheck = 1;  //da duyet
+            $tb = 'Đã duyệt sản phẩm "'. $pro->name.'"';
         }else{
             $pro->adminCheck = 2;//khoas
+            $tb = 'Đã khóa sản phẩm "'. $pro->name.'"';
         }
         $pro->save();    
-        return redirect('admin/product/list');        
+        return redirect('admin/product/list')->with('thongbao',$tb);        
     }
 
     public function getInforUser($id){

@@ -20,15 +20,34 @@ class TinDangController extends Controller
     public function getEnable($id, $option)
     {
         $tindang = TinDang::find($id);       
+        $tb = '';
         if($option == 0){
-            $tindang->adminCheck = 0;  //chua duyet            
+            $tindang->adminCheck = 0;  //chua duyet  
+             $tb = 'Đã hủy duyệt tin đăng "'. $tindang->name.'"';          
         }elseif($option == 1){
             $tindang->adminCheck = 1;  //da duyet
+            $tb = 'Đã duyệt tin đăng "'. $tindang->name.'"';
         }else{
             $tindang->adminCheck = 2;//khoas
+            $tb = 'Đã khóa tin đăng "'. $tindang->name.'"';
         }
         $tindang->save();    
-        return redirect('admin/tindang/list');        
+        return redirect('admin/tindang/list')->with('thongbao',$tb);     
+    }
+
+    public function getVip($id)
+    {
+        $tindang = TinDang::find($id);       
+        $tb = '';
+        if($tindang->vip == 0){
+            $tindang->vip = 1;  //kich hoat     
+            $tb = 'Đã kích hoạt vip của tin đăng "'. $tindang->name.'"';
+        }else{
+            $tindang->vip = 0;//chưa kich hoat
+            $tb = 'Đã tắt vip của tin đăng "'. $tindang->name.'"';
+        }
+        $tindang->save();    
+        return redirect('admin/tindang/list')->with('thongbao',$tb);   
     }
 
     // public function getInforUser($id){
