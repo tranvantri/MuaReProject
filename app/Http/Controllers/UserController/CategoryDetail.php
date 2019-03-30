@@ -72,7 +72,7 @@ class CategoryDetail extends Controller
 			$idPlace = 1;//mac dinh laf id cua HaNoi
 		}
 
-		$productsVip = null;
+		// $productsVip = null;
 
 		switch($hienthi){
 			case 'tin-dang':
