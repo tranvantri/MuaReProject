@@ -1000,6 +1000,6 @@ span.price-int {
               @endif  {{-- end xet loai hien thi --}}
 
             </div>
-        <!--</section>-->
+        </section>
 
         @endsection
