@@ -857,8 +857,8 @@ span.price-int {
   <!-- Vùng tìm kiếm -->
   <div id="search-zone" class="search-zone">
     <div class="sidebar" style=" font-size: 14px;">
-      <div class="box-location">
-        <h3 class="glyphicon2" style="padding-bottom: 16px;">
+      <div class="box-location-L">
+        <h3 class="glyphicon2-L" style="padding-bottom: 16px;">
           <!--<i class="fas fa-map-marked-alt"></i>-->
           <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAJeSURBVFhH7Za5qhRBFEBHBRdww8gFRBDEQAN/wA9QcAlMXHDBzAUXMBMx8A9EBAP/QlxAFASXQEFBQURMDDR0SQSXc7rrDv2a6qp5TyOZA4epuvfWVE91T3WNpvxPLMTT+BS/JR/jKTT3T5iP89rmDNbhC/w94HNci3NmOZ7Bt/gOL+MGlEX4Ep3oNe7GZcm9+AbjIma9EpvxKn7B7i/SCyguu30nX2mgh7G4iJMGarjMO/EO/kIH+nkrtfUmbkV5gsb2NL32Fh1Ixu1yJazxmajiEsdE/nJXYBNKxLv4sBlb2vRGo4MYdV6EeAvt+31VYvBZXGGgQ+S6fEZjq5vezAvYbwDWoH1rq8TgHLncXTR2vOm1y+7EGrfAnDW3m16F3CRBLncIjT3D3F/UmDlrrK2SmyTI5ZbgRzS+y0APY+assbZKbpJgKHcCjb9C/0WBbWPmrJmIoUlkKOcG8wHNHTaQsG3M3MSb0NAkUsodRXOfcFXStjFzsi99FilNUsr5sD1C8zeSto2ZW4zvsUppklJO3B1/oDun2t6CchFLY8f8zQXIFYw628F3rI1tKE1SygW+HX3y1XYwydiGUmHtS46lz23JLrWxY0qFtS/xZRPnhD61sWNyhb7Tz2HkLuFG7GPuQdsc0x9bpVvoE3wd45Xb1af8IR7BeBVHTnJjfdVXieL7nbaTeUDZgdvRA0n3lPQ1xaKfG+shp7tNDxID1au/hh7N+vhi8cBxD39id5zGYSY3toiD3bHOY+6Ml2M9utG4xB5cPcB6CpoTnu0WtM1Z45Y70TJPmdIyGv0BNSDoxqdYt5QAAAAASUVORK5CYII=">
           <span>&nbsp;Tìm người bán tại khu vực</span>
@@ -888,7 +888,7 @@ span.price-int {
           >
         </select>
         <input
-        id="search-now"
+        id="search-now-L"
         type="button"
         value="Tìm kiếm ngay!"
         />
