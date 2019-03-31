@@ -338,6 +338,29 @@ $(document).ready(function() {
         // console.log("complete");
       });
   });
+
+
+  $("#options_city").on("change", function() {
+    var idPlace = this.value;
+    
+    $(document).on("click", "#search-now-L", function(event) {
+      event.preventDefault();
+      $.ajax({
+        url: "set-cookie/" + idPlace,
+        type: "get"
+      })
+        .done(function() {
+          // console.log("success");
+          location.reload();
+        })
+        .fail(function() {
+          // console.log("error");
+        })
+        .always(function() {
+          // console.log("complete");
+        });
+    });
+  });
 	// Sap xep trang chi tiet danh muc
 	
   $("#sorting_select").on("change", function() {
