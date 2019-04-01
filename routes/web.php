@@ -173,10 +173,11 @@ Route::group(['namespace' => 'UserController' , 'middleware'=>'userCheckLogout']
     /****---------****-- -----***---------***------- */
 
     /*  dang tin san pham va dich vu*/
-    Route::get('/dang-tin-dich-vu', function () {
-        return view('user.dangtindichvu');
-    });
+    Route::get('/dang-tin-dich-vu','PostController@postService');
+    Route::post('/dang-tin-dich-vu','PostController@addNewService');
 
+
+    //dang tin san pham
     Route::get('/dang-tin-san-pham',['as'=>'getdangtinsanpham','uses'=>'PostController@postProduct']);
     Route::post('/dang-tin-san-pham','PostController@addNewProduct');
 

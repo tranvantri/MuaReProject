@@ -20,6 +20,13 @@ class PostController extends Controller
 		return view('user.dangtinsanpham',compact('cateParents','cateChilds','places'));
 	}
 
+	public function postService(){
+		$cateParents = Categories::where('idParent', 0)->where('name','<>','Cộng đồng')->get();
+		$cateChilds = Categories::where('idParent','<>', 0)->get();
+		$places = DB::table('places')->where('enable',1)->get();
+		return view('user.dangtindichvu',compact('cateParents','cateChilds','places'));
+	}
+
 	/*Khi nguoi dung dang tin:
 		- Tao tin dang
 		- Tao Product
@@ -71,28 +78,28 @@ class PostController extends Controller
 
 	    if(isset($user)){
 	    	
-	    	$this->createService($request,$user->id,$image);
+	    	$this->createTinDang($request,$user->id,$image);
 	    	$this->createProduct($request,$user->id,$image);
 	    	$new_service_user = DB::table('tindang')->where('status',1)->where('idUser',$user->id)->orderBy('id', 'desc')->first();
 	    	return url('/').'/chi-tiet-tin-dang/'.$new_service_user->id;
 	    }
 	    else{
 	    	/*Thêm user vào bảng Users*/
-   		$idUser = DB::table('users')->insertGetId(array(
-		    	'name' => $name, 
-		    	'phone' => $phone, 
-		    	'email' => $email, 
-		    	'address' => $addressUser,
-		    	'password' => Hash::make($phone),
-		    	'username' => $phone,
-		    	'status' => 1,
-		    	'adminCheck' => 1,
-		    	'provider' => Null,
-		    	'provider_id' => Null,
-		    )
-		);
+	   		$idUser = DB::table('users')->insertGetId(array(
+			    	'name' => $name, 
+			    	'phone' => $phone, 
+			    	'email' => $email, 
+			    	'address' => $addressUser,
+			    	'password' => Hash::make($phone),
+			    	'username' => $phone,
+			    	'status' => 1,
+			    	'adminCheck' => 1,
+			    	'provider' => Null,
+			    	'provider_id' => Null,
+			    )
+			);
 
-		$this->createService($request,$idUser,$image);
+			$this->createTinDang($request,$idUser,$image);
 	    	$this->createProduct($request,$idUser,$image);
 	    	$new_service_user = DB::table('tindang')->where('status',1)->where('idUser',$idUser)->orderBy('id', 'desc')->first();
 	    	return url('/').'/chi-tiet-tin-dang/'.$new_service_user->id;
@@ -101,9 +108,95 @@ class PostController extends Controller
 	    
 	}
 
+	public function addNewService(Request $request){
 
+		//- Kiem tra User
+		// nếu chưa có thì tạo mới
+		// đã có rồi thì lấy id của user đó
+
+		// echo $request;
+	    $name = strip_tags($request->name);
+	    $phone = strip_tags($request->phone);
+	    $email = strip_tags($request->emailEmail);
+	    $addressUser = strip_tags($request->addressUser);
+	    
+	    #tìm user trong DB
+	    $user = DB::table('users')->where('phone',$phone)->orWhere('email',$email)->where('status',1)->first();
+
+	    if($request->hasFile('files')){
+			$image = $this->upLoadFiles($request,'upload/imageuser/services/');
+		}else{
+			$image = "null";
+		}
+
+	    if(isset($user)){
+	    	
+	    	$this->createService($request,$user->id,$image);
+	    	
+	    	$new_service_user = DB::table('services')->where('status',1)->where('idUser',$user->id)->orderBy('id', 'desc')->first();
+	    	return url('/').'/dich-vu/'.$new_service_user->id;
+	    }
+	    else{
+	    	/*Thêm user vào bảng Users*/
+	   		$idUser = DB::table('users')->insertGetId(array(
+			    	'name' => $name, 
+			    	'phone' => $phone, 
+			    	'email' => $email, 
+			    	'address' => $addressUser,
+			    	'password' => Hash::make($phone),
+			    	'username' => $phone,
+			    	'status' => 1,
+			    	'adminCheck' => 1,
+			    	'provider' => Null,
+			    	'provider_id' => Null,
+			    )
+			);
+
+			$this->createService($request,$idUser,$image);
+	    	
+	    	$new_service_user = DB::table('services')->where('status',1)->where('idUser',$idUser)->orderBy('id', 'desc')->first();
+	    	return url('/').'/dich-vu/'.$new_service_user->id;
+	    	
+	    }
+	    
+	}
 
 	public static  function createService(Request $request,$idUser, $image){
+		//- Tao tin dang
+		$nameService = strip_tags($request->nameService);
+		$descriptionService = strip_tags($request->descriptionService);
+		$priceService = strip_tags($request->priceService);
+	    $tatus_Service = 1; // cot status
+	    $date_added = Carbon::now('Asia/Ho_Chi_Minh');
+	    $idCateService = strip_tags($request->idCateService);
+	    $idPlaceService = strip_tags($request->idPlaceService);
+	    $adminCheck = 1;
+	    $statusService = 1;
+	    $addressUser = strip_tags($request->addressUser);
+
+
+
+
+	    
+
+	    DB::table('services')->insert(
+		    array('name' => $nameService, 
+		    	'description' => $descriptionService,
+		    	'images' => $image,
+		    	'address' => $addressUser,
+		    	'price' => $priceService,
+		    	'idPlace' => $idPlaceService,
+		    	'status' => $tatus_Service,
+		    	'date_added' => $date_added,
+		    	'idUser' => $idUser,
+		    	'idCate' => $idCateService,
+		    	'adminCheck' => $adminCheck,
+		    	'statusService' => $statusService,
+		    )
+		);
+	}
+
+	public static  function createTinDang(Request $request,$idUser, $image){
 		//- Tao tin dang
 		$nameService = strip_tags($request->nameService);
 		$descriptionService = strip_tags($request->descriptionService);
@@ -156,14 +249,11 @@ class PostController extends Controller
 
 	    #địa điểm bán sản phẩm đó
 	    
-	    $locationItem = (array)$request->locationItem;
-	    // foreach ($locationItem as $childLoc) {
-	    // 	echo "Hobby : ".$childLoc."<br />";
-	    // }
+	    
 
 	
 
-	    DB::table('products')->insert(array(
+	    $idProduct = DB::table('products')->insertGetId(array(
 	    		'name' 			=> $nameProduct, 
 		    	'description' 	=> $descriptionProduct,
 		    	'title_tindang' => $nameProduct,
@@ -178,6 +268,25 @@ class PostController extends Controller
 		    	'address' 		=> $addressUser,
 		    )
 		);
+
+		$locationItem = $request->locationItem;
+		$locationItemArr = array();
+		for($i = 0; $i < strlen($locationItem);$i++){
+			if($locationItem[$i] != ','){
+				array_push($locationItemArr, $locationItem[$i]);
+			}
+		}
+	    foreach ($locationItemArr as $childLoc) {
+	    	DB::table('place_product')->insert(
+			    array(
+			    	'idProduct' => $idProduct, 
+			    	'idPlace' => (int)$childLoc
+			    )
+			);
+	    }
+		// echo '<pre>';
+		// var_dump($locationItemArr);
+		// echo '</pre>';
 	}
 
 	// đầu ra: trang chitiet dich vu

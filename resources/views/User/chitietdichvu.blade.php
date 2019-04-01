@@ -48,7 +48,7 @@
 
           <hr>
           <div class="clearfix"></div>
-          <div class="col-md-12">
+          {{-- <div class="col-md-12">
             <strong><b>DANH SÁCH SẢN PHẨM ĐĂNG BÁN</b></strong>
           </div>
 
@@ -65,7 +65,7 @@
               </span>
             </div>
 
-          </div>
+          </div> --}}
 
 
           <div class="clearfix"></div>

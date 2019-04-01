@@ -217,7 +217,7 @@
                                                                 <span>Thêm ảnh mới</span>
                                                             </a>
                                                         </div> --}}<!--add-img-->
-                                                        <div class="dropzone" style="width: 98%;" id="my-dropzone">
+                                                        <div class="dropzone" style="width: 98%;" id="my-dropzone-dang-tin-sp">
                                                             {{-- <div class="fallback">
                                                                 <input name="files[]" type="file" multiple />
                                                             </div> --}}

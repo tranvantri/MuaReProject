@@ -7,7 +7,7 @@
 
         <div class="container">
             <div class="row">
-                <form action="" class="post-form-Tr" enctype="multipart/form-data" method="post">
+                <form  class="post-form-Tr" enctype="multipart/form-data" method="post">
                     
                     <div class="post-attr-Tr">
                         <div class="title-name-box-Tr">
@@ -19,7 +19,7 @@
                             <div class="row-attr-Tr row">
                                 <label class="col-md-2">Tiêu đề</label>
                                 <div class="col-md-10">
-                                    <input class="form-control" type="text" id="postTitle" name="postTitle" value="" maxlength="100" placeholder="Nhập tiêu đề tin đăng vào đây (tối đa 100 ký tự)">
+                                    <input class="form-control" type="text" id="nameService" name="nameService" value="" maxlength="100" placeholder="Nhập tiêu đề tin đăng vào đây (tối đa 100 ký tự)">
                                     
                                 </div>                                                
                             </div>
@@ -30,14 +30,14 @@
                             <div class="row-attr-Tr row">
                                 <label class="col-md-2">Nội dung</label>
                                 <div class="col-md-10">
-                                    <textarea class="form-control" placeholder="Nhập nội dung tin đăng ( chú ý tối đa 2000  ký tự )" name="postDescription" rows="10" id="postDescription"></textarea>
+                                    <textarea class="form-control" placeholder="Nhập nội dung tin đăng ( chú ý tối đa 2000  ký tự )" id="descriptionService" name="descriptionService" rows="10"></textarea>
                                    
                                 </div>    
                             </div>                                                                        
                             <div class="row-attr-Tr row">
                                 <label class="col-md-4">Nhập giá:</label>
                                 <div class="col-md-8 row-post-price-Tr">
-                                    <input type="text" name="price" id="price" maxlength="14" class="form-control" value="">
+                                    <input type="text" name="priceService" id="priceService" maxlength="14" class="form-control" value="">
                                     <span class="vnd">.đ</span>
                                     <div class="trans_price" id="tprice"></div>
                                     
@@ -50,31 +50,28 @@
                                     Tôi muốn đăng bán trong chuyên mục:                               
                                 </label>
                                 <div class="forum-thread-infor-Tr form-horizontal col-md-8">
-                                    <select id="chon-danh-muc-multi-Tr" name="cateIdPost" class="form-control select-thread-infor-Tr select2-hidden-accessible">
-                                        <optgroup label="Languages">
-                                                <option value="cp">C++</option>
-                                               <option value="cs">C#</option>
-                                               <option value="oc">Object C</option>
-                                               <option value="c">C</option>
+                                    <select  id="chon-danh-muc-multi-Tr" name="idCateService" 
+                                    class="form-control select-thread-infor-Tr select2-hidden-accessible">
+                                        @foreach($cateParents as $childCate)
+                                        <optgroup label="{{$childCate->name}}">
+                                            @foreach($cateChilds as $cateChild)
+                                                @if($childCate->id == $cateChild->idParent)
+                                                    <option title="{{$cateChild->id}}" value="{{$cateChild->id}}">{{$cateChild->name}}</option>
+                                                @endif
+                                            @endforeach
                                         </optgroup>
-                                        <optgroup label="Scripts">
-                                                <option value="js">JavaScript</option>
-                                                <option value="php">PHP</option>
-                                                <option value="asp">ASP</option>
-                                                <option value="jsp">JSP</option>
-                                        </optgroup>
-                                    </select>                                
+                                        @endforeach   
+                                    </select>                       
                                 </div>
 
                             </div>
                             <div class="row-attr-Tr row">
                                 <label class="col-md-4">Tại khu vực:</label>
                                 <div class="col-md-8">
-                                    <select id="location-post-Tr" name="location-post" class="form-control">
-                                        <option value="1">Hà Nội</option>
-                                        <option value="2">Hải Phòng</option>
-                                        <option value="3">Đà Nẵng</option>
-                                        <option value="4">TP.HCM</option>
+                                    <select id="location-post-Tr" name="idPlaceService" class="form-control">
+                                        @foreach($places as $child)
+                                            <option value="{{$child->id}}">{{$child->name}}</option>
+                                        @endforeach
                                     </select>
                                     
                                 </div>
@@ -84,20 +81,23 @@
 
                         <div class="title-name-box-Tr" style="margin-top: 25px;">
                             <span>
-                                Sản phẩm đang bán <!--Padding is optional-->
+                                Ảnh sản phẩm <!--Padding is optional-->
                             </span>
                         </div>
                         <div class="row-attr-Tr row storage-box-Tr">
-                            <div class="box-image-Tr row">
-                                <div class="add-box-Tr col-md-2">
+                            <div class="box-image-Tr row" style="width: 100%;">
+                                {{-- <div class="add-box-Tr col-md-2">
                                     <a class="add-new-Tr">
                                         <span>Thêm ảnh mới</span>
                                     </a>
-                                </div><!--add-img-->
-                                <input name="image" type="file" id="upload" class="upload-Tr upload-service" multiple="multiple" accept="image/png,.png,image/jpeg,.jpg,.jpeg,.jpe,image/gif,.gif">
-                                <ul class="list-image-storage" value="">
-
-                                </ul>
+                                </div> --}}<!--add-img-->
+                                {{-- <input name="images" type="file" id="upload" class="upload-Tr upload-service"  accept="image/png,.png,image/jpeg,.jpg,.jpeg,.jpe"> --}}
+                                <div class="dropzone" style="width: 98%; margin-left: auto;margin-right: auto;" id="my-dropzone-dang-tin-dv">
+                                    {{-- <div class="fallback">
+                                        <input name="files[]" type="file" multiple />
+                                    </div> --}}
+                                </div>
+                                
                             </div><!--box-image-->
                         </div>                   
                         
@@ -117,28 +117,28 @@
                                 <div class="row-attr-Tr row">
                                     <label class="col-md-3">Tên của tôi là:</label>
                                     <div class="col-md-9">
-                                        <input class="form-control" type="text" id="" name="" value="" maxlength="100" placeholder="Họ và tên">
+                                        <input class="form-control" type="text" id="name" name="name" value="" maxlength="100" placeholder="Họ và tên">
                                         
                                     </div>                                                
                                 </div>
                                 <div class="row-attr-Tr row">
                                     <label class="col-md-3">Số điện thoại của tôi là:</label>
                                     <div class="col-md-9">
-                                        <input class="form-control" type="text" id="" name="" value="" maxlength="100" placeholder="Số điện thoại liên hệ">
+                                        <input class="form-control" type="text" id="phone" name="phone" value="" maxlength="100" placeholder="Số điện thoại liên hệ">
                                         
                                     </div>                                                
                                 </div>
                                 <div class="row-attr-Tr row">
                                     <label class="col-md-3">Email của tôi là:</label>
                                     <div class="col-md-9">
-                                        <input class="form-control" type="text" id="" name="" value="" maxlength="100" placeholder="Email liên hệ">
+                                        <input class="form-control" type="text" id="email" name="email" value="" maxlength="100" placeholder="Email liên hệ">
                                         
                                     </div>                                                
                                 </div>
                                 <div class="row-attr-Tr row">
                                     <label class="col-md-3">Bạn có thể đến xem hàng tại</label>
                                     <div class="col-md-9">
-                                        <input class="form-control" type="text" id="postTitle" name="postTitle" value="" maxlength="100" placeholder="Đại chỉ cửa hàng/ shop">                                    
+                                        <input class="form-control" type="text" id="addressUser" name="addressUser" value="" maxlength="100" placeholder="Đại chỉ cửa hàng/ shop">                                    
                                     </div>                                                
                                 </div>
                             </div>                                       
@@ -161,7 +161,7 @@
                         </div>
                     </div>
                     <div class="postSubmit-Tr row">
-                        <a class="btn btn-warning btn-otp-Tr"> Đăng tin</a>
+                        <a class="btn btn-warning btn-otp-Tr" id="submit-all"> Đăng tin</a>
                     </div>
 
                 </form>
