@@ -21,9 +21,9 @@
                               <div class="loc_san_pham_tomiot col-md-7 col-sm-7 col-lg-4" style="float: right;">
                                  <p class="thong_tin_loc_tomiot" style="float: left;padding: 8px;">Lọc theo:</p>
                                  <select  class="combo_loc_tomiot custom-select" style="width: 140px;">
-                                    <option>Chưa xử lý</option>
-                                    <option>Đang xử lý</option>
-                                    <option>Đã xử lý</option>
+                                    <option >Chưa xử lý</option>
+                                    <option >Đang xử lý</option>
+                                    <option >Đã xử lý</option>
                                  </select>
                               </div>
                            </div>
@@ -33,7 +33,7 @@
                               <a class="nav-link" data-toggle="tab" href="#menu1">Đơn hàng bán ({{$bills->count()}})</a>
                             </li>
                             <li class="nav-item">
-                              <a class="nav-link" data-toggle="tab" href="#menu2">Sản phẩm đặt mua (1)</a>
+                              <a class="nav-link" data-toggle="tab" href="#menu2">Sản phẩm đặt mua ({{$bills_products_buy->count() }})</a>
                             </li>
                           </ul>
 
@@ -50,54 +50,57 @@
                                        @foreach($bills as $child)
                                     <tbody>
                                       <tr>
-                                        <td class="td-center-L">H{{$child->idBill}}</td>
+                                        <td class="td-center-L">H{{$child->id}}</td>
 
                                         <td>
                                             <?php
                                                 $tongtien = 0;
                                             ?>
                                             @foreach($bill_details as $childD)
-                                                @if($childD->billId == $child->idBill)
+                                                @if($childD->idBill == $child->id)
                                             <div class="product-in-order-L">
-                                                <a target="_blank" href="{{ route('sanpham', ['id' => $childD->sanphamId]) }}"> 
+                                                <a target="_blank" href="{{ route('sanpham', ['id' => $childD->idProduct]) }}">
                                                   <?php 
                                                     $images = json_decode($childD->hinhanhSP);
                                                   ?>
 
                                                   <img class="lazy-image avatar" src="{{$images[0] ?? 'assets/images/chitietsanpham/logo_muare.png'}}" alt="{{$childD->tenSP}}" width="48px" height="48px" style="display: inline;float: left;padding-right: 8px;"></a>
-                                                <a target="_blank" href="{{ route('sanpham', ['id' => $childD->sanphamId]) }}" class=" product-name-L">{{$childD->tenSP}}</a>
-                                                <p class="price-order-L">Số lượng: {{$childD->slSP}}&#160;&#160;<abbr>Đơn giá: {{number_format($childD->giaSP,0)}} VNĐ  </abbr>&#160;&#160; Thành tiền: {{ number_format($childD->slSP * $childD->giaSP,0) }} VNĐ</p>
+                                                <a target="_blank" href="{{ route('sanpham', ['id' => $childD->idProduct]) }}" class=" product-name-L">{{$childD->tenSP}}</a>
+                                                <p class="price-order-L">Số lượng: {{$childD->quantity}}&#160;&#160;<abbr>Đơn giá: {{number_format($childD->price,0)}} VNĐ  </abbr>&#160;&#160; Thành tiền: {{ number_format($childD->quantity * $childD->price,0) }} VNĐ</p>
 
                                                 <?php
-                                                $tongtien+= $childD->slSP * $childD->giaSP;
+                                                $tongtien+= $childD->quantity * $childD->price;
                                                 ?>
                                             </div>
+
                                                 @endif
                                             @endforeach
                                         </td>
                                         <td class="td-center-L" style="padding: 16px;">
 
-                                            <p>Họ tên: {{$child->tenKhach}}</p>
-                                            <p>Số điện thoại : {{$child->sdtKhach ?? 'Lỗi SDT'}}</p>
-                                            <p>Địa chỉ : {{$child->diaChiKhach ?? 'Lỗi địa chỉ'}}</p>
-                                            <p>Thông tin thêm : {{$child->ghiChuKhach ?? 'không'}}</p>
+                                            <p>Họ tên: {{$child->nameCus}}</p>
+                                            <p>Số điện thoại : {{$child->phoneCus ?? 'Lỗi SDT'}}</p>
+                                            <p>Địa chỉ : {{$child->addressCus ?? 'Lỗi địa chỉ'}}</p>
+                                            <p>Thông tin thêm : {{$child->noteCus ?? 'không'}}</p>
                                             <p style="color: green; font-weight: bold;">Tổng tiền: {{ number_format($tongtien,0) }} VNĐ</p>
 
                                             <div style="text-align: center;">
                                                 <p class="state-order-L">Trạng thái:</p>
-                                                <select data-id="{{$child->idBill}}" class="combo-status-bill combo_loc_tomiot custom-select " style="width: 110px;text-align: center;">
+
+                                                <select data-idshop="{{Auth::user()->id}}" data-idbill = "{{$child->id}}" class="combo-status-bill combo_loc_tomiot custom-select " style="width: 110px;text-align: center;">
                                                      <option value="-1"
-                                                        @if($child->trangThaiBill == -1)
+                                                        @if($child->trangthaiBD == -1)
                                                             selected
                                                         @endif
                                                      >Chưa xử lý</option>
-                                                     <option value="0" @if($child->trangThaiBill == 0)
+                                                     <option value="0" @if($child->trangthaiBD == 0)
                                                      selected
                                                              @endif>Đang xử lý</option>
-                                                     <option value="1" @if($child->trangThaiBill == 1)
+                                                     <option value="1" @if($child->trangthaiBD == 1)
                                                      selected
                                                              @endif>Đã xử lý</option>
                                                 </select>
+
                                             </div>
                                         </td>
 
@@ -145,7 +148,8 @@
 
                                             </td>
                                             <td class="td-center-L" style="padding: 16px;">
-                                                <p>Họ tên: {{$child->usernameShop ?? $child->nameShop }}</p>
+                                                <p>Tên Shop: <a href=" {{ route('xemgianhang', ['id' => $child
+                                                ->idShop ]) }} ">{{$child->usernameShop ?? $child->nameShop }}</a></p>
                                                 <p>Số điện thoại : {{$child->phoneShop ?? 'Lỗi SDT'}}</p>
                                                 <p style="color: green; font-weight: bold;">Tổng tiền: {{ number_format($tongtienBuy,0) }} VNĐ</p>
                                                 <p>Trạng thái: <abbr class="stateorder-color-L">
