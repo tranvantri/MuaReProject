@@ -424,14 +424,14 @@ $(document).ready(function() {
       document.getElementById("btn-confirm-order").addEventListener("click", function(){
           //document.getElementById("md-overlay-id").style.visibility = 'hidden';
          //document.getElementById("modal-productview").style.visibility = 'hidden';
-          $('#md-overlay-id').hide();
+          $('.md-overlay-id').hide();
           $('#modal-productview').hide();
           
       });
     }
     
     $(".img-rounded").click(function(){
-        $('#md-overlay-id').show();
+        $('.md-overlay-id').show();
         $('#modal-productview').show();
     });
     
@@ -691,7 +691,7 @@ $(document).ready(function() {
                         $("#"+$divname+" > p").remove();
                         $("#"+$divname+" > div").remove();
                     
-                    //if($divname == "comment-part-L") loadproductinfo(idPro,'getProductInfo');
+                    if($divname == "comment-part-L") loadproductinfo(idPro,'getProductInfo');
                     
                     $("<div>").appendTo($div)
                             .append($("<br/>"))        // Create HTML <td> element, set its text content with id of currently iterated product and append it to the <tr>.
@@ -720,7 +720,7 @@ $(document).ready(function() {
                                           ))
                 } else {
                     
-                     //if($divname == "comment-part-L") loadproductinfo(idPro,'getProductInfo');
+                     if($divname == "comment-part-L") loadproductinfo(idPro,'getProductInfo');
                     
                     var nums_comment = response.length;
                     var createInput = true; //first comment input
@@ -932,6 +932,30 @@ $(document).ready(function() {
           getuserid('getUserId');
           loadcomment(idPro, 'getProductComment'); //comment modal
       });
+    
+    document.getElementById("md-overlay-id").style.visibility = 'hidden';
+    document.getElementById("modal-productview").style.visibility = 'hidden';
+    
+    $(document).on("click", ".md-overlay", function (event) {
+        document.getElementById("modal-productview").style.visibility = 'hidden'; 
+        document.getElementById("md-overlay-id").style.visibility = 'hidden';
+         document.getElementById("md-overlay-id").style.opacity = '0';
+      });
+    
+    $(document).on("click", ".wrap-img", function (event) {
+        /*if(document.getElementById("modal-productview").getAttribute("display")=="null"){
+            document.getElementById("modal-productview").setAttribute("style","display: block;"); 
+        }*/
+        document.getElementById("modal-productview").style.visibility = 'visible';
+        document.getElementById("md-overlay-id").style.visibility = 'visible';
+        document.getElementById("md-overlay-id").style.opacity = '1';
+        $('.md-overlay-id').show();
+        $('#modal-productview').show();
+        idPro = $(this).attr("dataIDProduct2")
+        //alert(idPro);
+          getuserid('getUserId');
+          loadcomment(idPro, 'getProductComment'); //comment modal
+      });
     /****************************************** END COMMENT PRODUCT ******************************************************/
     
     /****************************************** COMMENT SERVICE ******************************************************/
@@ -944,13 +968,21 @@ $(document).ready(function() {
         idPro = $('.idservice-cmt').attr("dataIDService");
         getuserid('getSerUserId');
         loadcomment(idPro,'getServiceComment');
-    } else if($('.chitietsp-am-using').attr("dataCheckChiTietSP") != null){ //comment service
+    } else if($('.chitietsp-am-using').attr("dataCheckChiTietSP") != null){ //comment chitietsp page
         idPro = $('.avatar-sp-L2').attr("dataIDProduct2");
+        //alert(idPro);
         getuserid('getUserId');
         $div = document.getElementById("comment-part-L2");
         $divname = "comment-part-L2";
         loadcomment(idPro,'getProductComment');
-    }
+    } /*else if($('.wrap-img').attr("dataIDProduct2") != null){ //comment chitietsp page
+        idPro = $('.wrap-img').attr("dataIDProduct2");
+        alert(idPro);
+        getuserid('getUserId');
+        //$div = document.getElementById("comment-part-L2");
+        //$divname = "comment-part-L2";
+        loadcomment(idPro,'getProductComment');
+    }*/
     
     /****************************************** END COMMENT SERVICE ******************************************************/
     
