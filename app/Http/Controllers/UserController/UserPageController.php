@@ -41,6 +41,24 @@ class UserPageController extends Controller
         }
     }
 
+    public function getViewShop($id){
+
+        $user = DB::table('users')->where('users.id', $id)->get();
+
+        $tindang = DB::table('tindang')
+            ->join('places', 'places.id', '=', 'tindang.idPlace')
+            ->where('tindang.adminCheck', 1)->where('tindang.idUser', $id)->where('places.enable', 1)
+            ->select('tindang.*', 'places.name as namePlace', 'places.id as idPlace')
+            ->get();
+        $soluongTinDang = $tindang->count();
+
+        $products = DB::table('products')->where('adminCheck', 1)->where('idUser', $id)->get();
+        $soluongProducts = $products->count();
+
+        return view('user.gianhangcuanguoidung', compact('user', 'tindang', 'soluongTinDang', 'products', 'soluongProducts'));
+
+    }
+
     // Trang quản lý đơn hàng
     // Đầu vào: 
     // Đầu ra:
@@ -49,33 +67,21 @@ class UserPageController extends Controller
             $idUser = Auth::id(); // id của chủ shop
 
             // quan ly hoa don nguoi BAN
-            $bills = DB::table('bills')
-                    ->join('users','users.id','=','bills.idUser')
-                    ->where('users.id',$idUser)
-                    ->where('users.status',1)
-                    ->where('users.adminCheck',1)
-                    ->select('bills.nameCus as tenKhach',
-                        'bills.phoneCus as sdtKhach',
-                        'bills.addressCus as diaChiKhach',
-                        'noteCus as ghiChuKhach',
-                        'bills.status as trangThaiBill',
-                        'bills.id as idBill'
-                        )
-                    ->get();
             $bill_details = DB::table('bill_detail')
-                ->join('bills','bills.id','=','bill_detail.idBill')
                 ->join('products','products.id','=','bill_detail.idProduct')
-                ->where('bills.idUser',$idUser)
-                ->select(
-                    'bills.id as billId',
-                    'bill_detail.nameProduct as tenSP',
-                    'bill_detail.quantity as slSP',
-                    'bill_detail.price as giaSP',
-                    'bill_detail.idProduct as sanphamId',
-                    'products.images as hinhanhSP')
+                ->where('idShop',$idUser)
+                ->orderBy('bill_detail.status', 'asc')
+                ->select('bill_detail.*','products.images as hinhanhSP','products.name as tenSP')
                 ->get();
 
-
+            $bills = DB::table('bills')
+                ->join('bill_detail','bill_detail.idBill','=','bills.id')
+                ->where('bill_detail.idShop',$idUser)
+                ->groupBy('bills.id','bills.nameCus','bills.addressCus','bills.noteCus','bills.phoneCus','bills.status',
+                    'bills.cancelBill','bills.reasonCancel','bills.idUserBuy','bill_detail.status')
+                ->orderBy('trangthaiBD', 'asc')
+                ->select('bills.id','bills.*','bill_detail.status as trangthaiBD')
+                ->get();
 
 
 
@@ -84,12 +90,12 @@ class UserPageController extends Controller
             /*quản lý hóa đơn ng mua*/
             $bills_products_buy = DB::table('bill_detail')
                 ->join('bills','bills.id','=','bill_detail.idBill')
+                ->join('users','users.id','=','bill_detail.idShop')
                 ->join('products','products.id','=','bill_detail.idProduct')
-                ->join('users','users.id','=','products.idUser')
                 ->where('bills.idUserBuy',$idUser)
                 ->select(
                     'bills.id as idBill',
-                    'bills.status as trangThaiBill',
+                    'bill_detail.status as trangThaiBill',
 
                     'bill_detail.nameProduct as tenSP',
                     'bill_detail.quantity as slSP',
@@ -163,10 +169,11 @@ class UserPageController extends Controller
         return redirect('quan-ly-tin-dang')->with('thongbao','Xóa tin đăng thành công');
     }
 
-    // thay đổi status của Bill: đang xử lý, giao hàng, chưa giao
+    // thay đổi status của Bill_detail: đang xử lý, giao hàng, chưa giao
     public function changeStatusBill(Request $request){
-        DB::table('bills')
-            ->where('id', $request->id)
+        DB::table('bill_detail')
+            ->where('idShop', $request->idShop)
+            ->where('idBill',$request->idBill)
             ->update(array('status' => $request->stt));
     }
 

@@ -187,7 +187,10 @@ Route::group(['namespace' => 'UserController' , 'middleware'=>'userCheckLogout']
     });
 
     //----------------------------------------------
-    Route::get('/gian-hang-cua-nguoi-dung', ['as'=>'gianhangcuanguoidung','uses'=>"UserPageController@getView"]); // xong
+    Route::get('/gian-hang-cua-nguoi-dung', ['as'=>'gianhangcuanguoidung','uses'=>"UserPageController@getView"]); //  chưa chỉnh sửa dử liệu
+
+
+    Route::get('/gian-hang-cua-nguoi-dung/{id}', ['as'=>'xemgianhang','uses'=>"UserPageController@getViewShop"]); // xong
 
     Route::get('/quan-ly-don-hang',['as'=>'quanlydonhang','uses'=>'UserPageController@getQuanLyDonHang']); // chưa xong, cần phần giỏ hàng
     Route::get('/quan-ly-kho-hang',['as'=>'userquanlykhohang','uses'=>'UserPageController@getUserQuanLyKhoHang']);
