@@ -584,7 +584,7 @@ display: none;
           </h3>
         </div>
         <div class="location">
-         <span class="glyphicon glyphicon-map-marker"><i class="fas fa-map-marker-alt" style="font-size: 12px;"></i></span>
+         <span class=""><i class="fas fa-map-marker-alt" style="font-size: 12px;"></i></span>
          <div title="{{$childPro->address}}" class="my-location">
           <h4 class="marker-h4">{{$childPro->address}}</h4>
         </div>
@@ -765,7 +765,7 @@ display: none;
           </h3>
         </div>
         <div class="location">
-         <span class="glyphicon glyphicon-map-marker"><i class="fas fa-map-marker-alt" style="font-size: 12px;"></i></span>
+         <span class=""><i class="fas fa-map-marker-alt" style="font-size: 12px;"></i></span>
          <div title="{{$childPro->address}}" class="my-location">
           <h4 class="marker-h4">{{$childPro->address}}</h4>
         </div>

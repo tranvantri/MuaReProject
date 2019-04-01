@@ -3697,8 +3697,8 @@ output {
     text-align: left;
 }
 #modal-orderview #step3 #ordertable-L th,td{
-    text-align: center;
-    padding: 4px;
+    /*text-align: center;
+    padding: 4px;*/
 }
 #modal-orderview #step3 #ordertable-L td{
     text-align: center;
