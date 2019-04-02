@@ -1094,7 +1094,7 @@ $(document).ready(function() {
         document.getElementById("md-overlay-id").style.opacity = '1';
         //$('.md-overlay-id').show();
         //$('#modal-productview').show();
-        alert(idPro);
+        //alert(idPro);
           getuserid('getUserId');
           loadcomment(idPro, 'getProductComment'); //comment modal
         }
