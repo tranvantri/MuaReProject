@@ -203,8 +203,6 @@
         }
 
       ?>
-    
-      
 
         @include('user.core.modalChiTietSanPham')
 
@@ -873,6 +871,7 @@ span.price-int {
               @endif  {{-- end xet loai hien thi --}}
 
             </div>
+    </div>
         </section>
 
         @endsection

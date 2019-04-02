@@ -18,7 +18,25 @@
 							</div>
 						</div>
 					</div>	
-					<div class="clearfix"></div>		
+					<div class="clearfix"></div>	
+
+
+                    
+        @include('user.core.modalChiTietSanPham')
+
+        @include('user.core.modalDatHang')
+
+
+        <div class="md-overlay" id="md-overlay-id"></div>
+    
+      <!-- Confirm order modal  - thong bao đa dat hang thanh cong-->
+        @include('user.chitietdanhmuc.modalConfirmMuaHang')
+      <!-- END Confirm order modal -->
+
+                    
+                    
+                    
+                    
 					<div class="row"><!-- San pham doc dao -->
 						<div class="san-pham-doc-dao">
 							<div class="large-title promote">

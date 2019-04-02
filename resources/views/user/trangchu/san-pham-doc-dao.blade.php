@@ -1,14 +1,16 @@
+
 @foreach($products as $child)	
 <div class="motkhoi col-lg-3 col-md-4 col-sm-6">
 	<div class="card item">		
-		<div class="wrap-img">
+		<div class="wrap-img" dataIDProduct2="{{$child->id}}">
 			<a href="">
 				<?php 
                 $images = json_decode($child->images);
               ?>
 				<img class="card-img-top" style="width: 159px; height: 150px;" src="{{$images[0] ?? 'assets/images/chitietsanpham/logo_muare.png'}}" alt="">
 			</a>
-			<div class="qv-button-container"> <a href="{{$child->id}}" title="{{$child->name}}"><i class="fas fa-eye"></i></a></div>											
+            <div class="qv-button-container md-trigger img-rounded OverlayPopup" data-modal="modal-productview"><a title="{{$child->name}}"><i class="fas fa-eye"></i></a></div>
+			<!--<div class="qv-button-container"> <a href="{{$child->id}}" title="{{$child->name}}"><i class="fas fa-eye"></i></a></div>-->											
 		</div>		
 
 		<div class="card-body info">

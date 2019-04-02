@@ -62,7 +62,7 @@ class HomePageController extends Controller
     		);
     		array_push($cate_count, $arrval);
     	}
-
+        
         return view('user.trangchu',compact('tindang','products','newestProducts','cate_count'));
     }
     

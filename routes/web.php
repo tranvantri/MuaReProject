@@ -147,14 +147,12 @@ Route::group(['namespace' => 'UserController' , 'middleware'=>'userCheckLogout']
 
     Route::get('/danh-muc/{nameCate}/{idCate}/{hienthi}/{tinhtrang}/{gia}/{sapxep}/uy-tin-chat-luong', 'CategoryDetail@getCustomCategory')->name('danhmuc');
     Route::get('/getUserId', 'CategoryDetail@getUserId')->name('danhmuc.getuserid');
+    Route::get('/getProductInfo', 'CategoryDetail@getProductInfo')->name('danhmuc.getproductinfo');
     Route::get('/getProductComment', 'CategoryDetail@getComment')->name('danhmuc.getcomment');
     Route::get('/getSubComment', 'CategoryDetail@getSubComment')->name('danhmuc.getsubcomment');
     Route::get('/postSubComment', 'CategoryDetail@postSubComment')->name('danhmuc.postsubcomment');
     Route::get('/getSeller', 'CategoryDetail@getSeller')->name('danhmuc.getseller');
-    /*Route::post('/danh-muc/{nameCate}/{idCate}/{hienthi}/{tinhtrang}/{gia}/{sapxep}/uy-tin-chat-luong/2', 'CategoryDetail@getComment')->name('danhmuc.postcomment');*/
-    
-
-    /*Route::get('/danh-muc/{nameCate}/{idCate}/{hienthi}/{tinhtrang}/{gia}/{sapxep}/uy-tin-chat-luong/modal', 'CategoryDetail@getComment')->name('danhmuc');*/
+    Route::get('/deleteComment', 'CategoryDetail@deleteComment')->name('danhmuc.deletecomment');
     //search
     Route::get('/search', 'SearchController@getIndex');
     Route::get('/search/{hienthi}/{text}/{idCate}/{sapxep}', 'SearchController@getSearchPost')->name('searchtindang');
@@ -162,14 +160,35 @@ Route::group(['namespace' => 'UserController' , 'middleware'=>'userCheckLogout']
 
     Route::get('/chi-tiet-tin-dang/{id}',
                ['as'=>'chitiettindang','uses'=>'ServiceController@getTinDang']);
-
+    //
+    Route::get('/getTDUserId', 'ServiceController@getTDUserId'); //dòng này đéo ăn nè????????///
+    Route::get('/getTinDangComment', 'ServiceController@getTinDangComment');
+    Route::get('/getSubTDComment', 'ServiceController@getSubTDComment');
+    Route::get('/postSubTDComment', 'ServiceController@postSubTDComment');
+    Route::get('/deleteTDComment', 'ServiceController@deleteTDComment');
+    
     /* Lay chi tiet san pham va dich vu theo id*/
     // tra về chi tiet san pham theo id
     Route::get('/san-pham/{id}',['as'=>'sanpham','uses'=>'ProductController@viewProduct']);
+    //
+    /*Route::get('/getCTSPUserId', 'ProductController@getCTSPUserId'); //dòng này đéo ăn nè????????///
+    Route::get('/getProductInfo', 'ProductController@getProductInfo');
+    Route::get('/getChiTietSPComment', 'ProductController@getChiTietSPComment');
+    Route::get('/getSubCTSPComment', 'ProductController@getSubCTSPComment');
+    Route::get('/postSubCTSPComment', 'ProductController@postSubCTSPComment');
+    Route::get('/getCTSPSeller', 'CategoryDetail@getCTSPSeller');
+    Route::get('/deleteCTSPComment', 'ProductController@deleteCTSPComment');*/
+    
+    
     // trả về chi tiet dich vu theo id của url
     Route::get('/dich-vu/{id}',
                ['as'=>'chitietdichvu','uses'=>'PostController@getDichVu']);
-
+    Route::get('/getSerUserId', 'PostController@getSerUserId'); //dòng này đéo ăn nè????????///
+    Route::get('/getServiceComment', 'PostController@getServiceComment');
+    Route::get('/getSubSerComment', 'PostController@getSubSerComment');
+    Route::get('/postSubSerComment', 'PostController@postSubSerComment');
+    Route::get('/deleteSerComment', 'PostController@deleteSerComment');
+    
     /****---------****-- -----***---------***------- */
 
     /*  dang tin san pham va dich vu*/

@@ -460,10 +460,648 @@ $(document).ready(function() {
       $('.searchtypes button.catename').html(categoryParent_name);
     }
   });
-
-    /* Image Zoom for product Modal */
-
     
+    
+    if($('#step1-bar').length){
+      document.getElementById('step1-bar').style.pointerEvents = 'none';
+    }
+    if($('#step2-bar').length){
+      document.getElementById('step2-bar').style.pointerEvents = 'none';
+    }
+    if($('#step3-bar').length){
+      document.getElementById('step3-bar').style.pointerEvents = 'none';
+    }
+        
+    
+    if($('#step1-to-step2').length){
+      document.getElementById("step1-to-step2").addEventListener("click", function(){
+          document.getElementById("step2").classList.add('active');
+          document.getElementById("step1").classList.remove('active');
+          document.getElementById("step3").classList.remove('active');
+          
+          document.getElementById("step2-bar").classList.add('active');
+          document.getElementById("step1-bar").classList.remove('active');
+          document.getElementById("step3-bar").classList.remove('active');
+      }); 
+    }
+
+    if($('#step2-to-step1').length){
+      document.getElementById("step2-to-step1").addEventListener("click", function(){
+          document.getElementById("step1").classList.add('active');
+          document.getElementById("step2").classList.remove('active');
+          document.getElementById("step3").classList.remove('active');
+          
+          document.getElementById("step1-bar").classList.add('active');
+          document.getElementById("step2-bar").classList.remove('active');
+          document.getElementById("step3-bar").classList.remove('active');
+      }); 
+    }
+    
+    
+    if($('#step2-to-step3').length){
+        document.getElementById("step2-to-step3").addEventListener("click", function(){
+          document.getElementById("step3").classList.add('active');
+          document.getElementById("step1").classList.remove('active');
+          document.getElementById("step2").classList.remove('active');
+          
+          document.getElementById("step3-bar").classList.add('active');
+          document.getElementById("step1-bar").classList.remove('active');
+          document.getElementById("step2-bar").classList.remove('active');
+      });
+    }
+
+    if($('#step3-to-step2').length){
+        document.getElementById("step3-to-step2").addEventListener("click", function(){
+          document.getElementById("step2").classList.add('active');
+          document.getElementById("step1").classList.remove('active');
+          document.getElementById("step3").classList.remove('active');
+          
+          document.getElementById("step2-bar").classList.add('active');
+          document.getElementById("step1-bar").classList.remove('active');
+          document.getElementById("step3-bar").classList.remove('active');
+      });
+    }
+    
+    
+    if($('#btn-confirm-order').length){
+      document.getElementById("btn-confirm-order").addEventListener("click", function(){
+          //document.getElementById("md-overlay-id").style.visibility = 'hidden';
+         //document.getElementById("modal-productview").style.visibility = 'hidden';
+          $('.md-overlay-id').hide();
+          $('#modal-productview').hide();
+          
+      });
+    }
+    
+    $(".img-rounded").click(function(){
+        $('.md-overlay-id').show();
+        $('#modal-productview').show();
+    });
+    
+	// trang quan ly don hang
+
+    if($("#span-tuychon").length){
+        document.getElementById("span-tuychon").onclick = function () {
+            if(document.getElementById("a-phanhoi").style.display == 'none'){
+                document.getElementById("a-phanhoi").style.display = 'block'; 
+            } else {
+                document.getElementById("a-phanhoi").style.display = 'none';
+            }
+
+        }  
+    }
+	  
+    if($("#span-reply").length){
+        document.getElementById("span-reply").onclick = function () {
+        if(document.getElementById("input-reply-customer").style.display == 'none'){
+            document.getElementById("input-reply-customer").style.display = 'block'; 
+        } else {
+            document.getElementById("input-reply-customer").style.display = 'none';
+        }
+        
+    }
+    }
+    
+    
+    $.ajaxSetup({
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      }
+    });
+    // For todays date;
+    Date.prototype.today = function () { 
+        return ((this.getDate() < 10)?"0":"") + this.getDate() +"/"+(((this.getMonth()+1) < 10)?"0":"") + (this.getMonth()+1) +"/"+ this.getFullYear();
+    }
+    // For the time now
+    Date.prototype.timeNow = function () {
+         return ((this.getHours() < 10)?"0":"") + this.getHours() +":"+ ((this.getMinutes() < 10)?"0":"") + this.getMinutes();
+    }
+    Date.prototype.monthyearNow = function () {
+         return (((this.getMonth()+1) < 10)?"0":"") + (this.getMonth()+1) +"/"+ this.getFullYear();;
+    }
+    //Return true if 28 or false-29 in feb
+    /*function isLeapYear(year) { 
+        return new Date(year, 2, 0).getDate() > 28; 
+    } */
+    //analysis current time with comments's time to show between space
+    function current_cmt_time(time){
+        var now = new Date();
+        var nowday = ((now.getDate() < 10)?"0":"") + now.getDate();
+        var nowhour = ((now.getHours() < 10)?"0":"") + now.getHours();
+        var nowminute = ((now.getMinutes() < 10)?"0":"") + now.getMinutes();
+        var datetime = "" + new Date().timeNow() + ' ' +new Date().today();
+        var firstM = 0;
+        var i, cmtDay, cmtMonth;
+        //analysis current time with comments's time to show between space
+                        for(i = 0;i<time.length;i++){
+                            if(time[i] == '/') {
+                                firstM = i; 
+                                break;
+                            }
+                        }
+                        cmtminute = time.substring(3,5);
+                        cmthour = time.substring(0,2);
+                        cmtday = time.substring(firstM-2,firstM);
+                        cmtMonthYear = time.substring(firstM+1,time.length);
+                        //cmtYear = product.date_added.substring(firstM+4,product.date_added.length);
+                        if(now.monthyearNow() == cmtMonthYear){
+                            if(nowday != cmtday){
+                                datetime = (parseInt(nowday) - parseInt(cmtday)).toString() + " ngày trước";
+                            }
+                            else if(nowhour != cmthour){
+                                if((nowminute - cmtminute) >= 0){
+                                    datetime = (parseInt(nowhour) - parseInt(cmthour)).toString() + " giờ trước"; 
+                                }else{
+                                    if((parseInt(nowhour) - parseInt(cmthour) - 1).toString() == '0'){
+                                        datetime = ((60 - parseInt(cmtminute))+ parseInt(nowminute)).toString() + " phút trước";
+                                    }
+                                    else datetime = (parseInt(nowhour) - parseInt(cmthour) - 1).toString() + " giờ trước";
+                                }
+                                    
+                            } else if (nowhour == cmthour){
+                                datetime = (parseInt(nowminute) - parseInt(cmtminute)).toString() + " phút trước";
+                            }
+                        } else {
+                            datetime = time;
+                        }
+                    //
+        return datetime
+    }
+    /****************************************** COMMENT PRODUCT******************************************************/
+    var current_userId;
+    function getuserid(url){
+        $.ajax({
+                  type: "GET",
+                  url: url,
+                  //contentType: "application/x-www-form-urlencoded",
+                  async: false,
+                contentType: "application/json",
+                dataType: "json",
+               //data: { number : '1' },
+                  success: function (response) {
+                      current_userId = response;
+                  },
+                  error: function () {
+                    //alert("error get userid");  
+                  },
+                  complete: function (response) {}
+                });  // end Ajax    
+    }
+
+    function loadproductinfo(idPro,url){
+        //event.preventDefault();
+        //console.log(idPro);
+        $.ajax({
+                  type: "GET",
+                  url: url,
+                  //contentType: "application/x-www-form-urlencoded",
+                  async: false,
+                contentType: "application/json",
+                dataType: "json",
+                data: { idProduct : idPro },
+                  success: function (response) {
+                      $.each(response, function(index, product) {
+                          var sellerName, sellerPhone;
+                        //Get name & phone of seller
+                        $.ajax({
+                            type: "GET",
+                            url: "getSeller",
+                            async: false,
+                            contentType: "application/json",
+                            dataType: "json",
+                            data: { productUserId : product.productUserId},
+
+                            success: function (response) {
+                                $.each(response, function(index, product) {    // Iterate over the JSON array.
+                                    sellerName = product.userName;
+                                    sellerPhone = product.userPhone;
+                                });
+                                
+                            },
+                            error: function () {
+                                //alert('error post comment');  
+                            },
+                            complete: function (response) {}
+                        });  // end Ajax 
+                          
+    		        	$(".productinfo-title").text(product.productName);
+                        $(".productinfo-content").text(product.description);
+                        $(".productinfo-price").text(product.productPrice+' VNĐ');
+                        var listImg = jQuery.parseJSON(product.productImage);
+                        console.log("listImg");
+                        $("#myimage").attr('src',listImg[0]);
+                        var content = '';
+                        for (var i = listImg.length - 1; i >= 0; i--) {
+                          content += '<div style="padding: 0 10px;">'+
+                      '<img class="img-thumbnail img-small" src="'+listImg[i]+'"'+
+                        'onclick="changeMainImage(this);"/></div>'
+                          
+                        }
+
+                        // $('.list-img-wrap-v.owl-carousel').html(content);
+                        jQuery(".list-img-wrap-v.owl-carousel").trigger('add.owl.carousel', content).trigger('refresh.owl.carousel')
+
+                        // $('.list-img-wrap-v.owl-carousel').trigger('refresh.owl.carousel');
+                        //$("#myresult").attr('',product.productImage);
+                        var myresult = document.getElementById("myresult"); //chitietdanhmuc - modal
+                        myresult.style.backgroundImage= "url('" + listImg[0] + "')";
+                        $(".productinfo-seller > a").text(sellerName);
+                        $(".productinfo-phone-text").text(sellerPhone);
+                      });
+                  },
+                  error: function () {},
+                  complete: function (response) {}
+        });
+    }
+    function postcomment(idUser_post,content_post,idParent_post,parentName_post,date_post,idProduct_post,idBlock_post,url){
+                //alert('iduser: '+idUser_post+'; content: '+content_post+'; parent: '+parentName_post+'; date: '+date_post);
+        $.ajax({
+            type: "GET",
+            url: url,
+            async: false,
+            contentType: "application/json",
+            dataType: "json",
+            data: { idUser_post : idUser_post, content_post : content_post, idParent_post : idParent_post, parentName_post : parentName_post, date_post : date_post, idProduct_post : idProduct_post, idBlock_post : idBlock_post},
+
+            success: function (response) {
+                //alert(response);
+                if(response == 0){
+                    loadcomment(idPro,$getcmt_url);
+                    $('<input>').value = ""
+                } else alert(response);
+            },
+            error: function () {
+                //alert('error post comment');  
+            },
+            complete: function (response) {}
+        });  // end Ajax  
+    }
+    function deletecomment(idComment,url){
+                //alert('iduser: '+idUser_post+'; content: '+content_post+'; parent: '+parentName_post+'; date: '+date_post);
+        $.ajax({
+            type: "GET",
+            url: url,
+            async: false,
+            contentType: "application/json",
+            dataType: "json",
+            data: { idComment : idComment},
+            success: function (response) {
+                //alert(response);
+                if(response == 0){
+                    loadcomment(idPro,$getcmt_url);
+                    $('<input>').value = ""
+                } else alert(response);
+            },
+            error: function () {
+                //alert('error post comment');  
+            },
+            complete: function (response) {}
+        });  // end Ajax  
+    }
+    
+    var idPro = '';
+    var $divname = "comment-part-L";
+    var $getcmt_url = "getProductComment";
+    var $subcmt_url = "getSubComment";
+    var $postcmt_url = "postSubComment";
+    var $idcmt_url = "deleteComment";
+    var $div = document.getElementById("comment-part-L");
+                          
+    function loadcomment(idPro,url){
+        //event.preventDefault();
+        //console.log(idPro);
+        $.ajax({
+                  type: "GET",
+                  url: url,
+                  //contentType: "application/x-www-form-urlencoded",
+                  async: false,
+                contentType: "application/json",
+                dataType: "json",
+                data: { idProduct : idPro },
+                  success: function (response) {
+                      
+                      
+                      if(url == 'getTinDangComment'){
+                          $getcmt_url = "getTinDangComment";
+                          $divname = "comment-tindang-L";
+                          $subcmt_url = "getSubTDComment";
+                          $postcmt_url = "postSubTDComment";
+                          $idcmt_url = "deleteTDComment";
+                          //$divname = "comment-tindang-L";
+                          
+                          $div = document.getElementById("comment-tindang-L");
+                      } else if(url == 'getServiceComment'){
+                          $getcmt_url = "getServiceComment";
+                          $divname = "comment-service-L";
+                          $subcmt_url = "getSubSerComment";
+                          $postcmt_url = "postSubSerComment";
+                          $idcmt_url = "deleteSerComment";
+                          //$divname = "comment-tindang-L";
+                          
+                          $div = document.getElementById("comment-service-L");
+                      }
+                      
+                if(response == ''){
+                    //remove all before push data
+                        $("#"+$divname+" > br").remove();
+                        $("#"+$divname+" > hr").remove();
+                        $("#"+$divname+" > p").remove();
+                        $("#"+$divname+" > div").remove();
+                    
+                    if($divname == "comment-part-L") loadproductinfo(idPro,'getProductInfo');
+                    
+                    $("<div>").appendTo($div)
+                            .append($("<br/>"))        // Create HTML <td> element, set its text content with id of currently iterated product and append it to the <tr>.
+                            .append($("<hr>"))
+                            .append($("<p>").text("Bình luận (0)"))
+                            .append($("<div>").addClass('input-group-L').css('width','100%')
+                                   .append($("<input>").attr('type', 'text').addClass("form-control comment_comment item-comment-input").attr('placeholder', 'Nhập bình luận tại đây')
+                                          .keyup(function(event) {
+                                                    if (event.keyCode === 13 && this.value != '') {
+                                                        content_post = this.value;
+                                                        var subdatetime = "" + new Date().timeNow() + ' ' +new Date().today();
+                                                        date_post = current_cmt_time(subdatetime);
+                                                                                //alert('iduser: '+current_userId+'; content: '+content_post+'; parent: '+null+'; date: '+date_post);
+                                                        postcomment(current_userId,content_post,0,null,subdatetime,idPro,0,$postcmt_url);
+                                                    }
+                                                })
+                                          )
+                                   )
+                            .append($("<div>").attr('id',"qlcomment")
+                                   .append($("<div>").addClass("tab-content tab-content-L")
+                                          .append($("<div>").attr('id','menu1').addClass('tab-pane active tab-pane-L qlcomment-menu1').attr('role','tabpanel')
+                                                //  Product's comment
+                                                 .append($('<ul>').css('list-style-type','none')
+                                                        .append($('<li>').addClass('comment-L comment-call-L'))))
+                                          .append($("<div>").attr('id', 'menu2').addClass('tab-pane fade tab-pane-L').attr('role', 'tabpanel'))
+                                          ))
+                } else {
+                    
+                     if($divname == "comment-part-L") loadproductinfo(idPro,'getProductInfo');
+                    
+                    var nums_comment = response.length;
+                    var createInput = true; //first comment input
+                    var createSubInput = true; //it's show when click a available comment
+                $.each(response, function(index, product) {    // Iterate over the JSON array.
+    		        	$("#"+$divname+" > br").remove();
+                        $("#"+$divname+" > hr").remove();
+                        $("#"+$divname+" > p").remove();
+                        $("#"+$divname+" > div").remove();
+      		 	});
+                
+                //using when POST comment
+                var idUser_post, content_post, date_post, idParent_post, parentName_post, idProduct_post, idBlock_post; 
+                idUser_post = current_userId;
+ 		        $.each(response, function(index, product) {
+                        var datetime = current_cmt_time(product.date_added);
+                        
+                        idProduct_post = product.idProduct;
+                    
+                        //Create main comment input
+ 		                if(createInput){ //create orinal comment input
+                            createInput = false;
+                            $("<div>").appendTo($div)
+                            .append($("<br/>"))        // Create HTML <td> element, set its text content with id of currently iterated product and append it to the <tr>.
+                            .append($("<hr>"))
+                            .append($("<p>").text("Bình luận ("+ nums_comment + ")"))
+                            .append($("<div>").addClass('input-group-L').css('width','100%')
+                                   .append($("<input>").attr('type', 'text').addClass("form-control comment_comment item-comment-input").attr('placeholder', 'Nhập bình luận tại đây')
+                                          .keyup(function(event) {
+                                                    if (event.keyCode === 13 && this.value != '') {
+                                                        content_post = this.value;
+                                                        var subdatetime = "" + new Date().timeNow() + ' ' +new Date().today();
+                                                        date_post = current_cmt_time(subdatetime);
+                                                                                //alert('iduser: '+idUser_post+'; content: '+content_post+'; parent: '+null+'; date: '+date_post);
+                                                        postcomment(idUser_post,content_post,0,null,subdatetime,idProduct_post,0,$postcmt_url);
+                                                    }
+                                                })
+                                          )
+                                   )
+                            .append($("<div>").attr('id',"qlcomment")
+                                   .append($("<div>").addClass("tab-content tab-content-L")
+                                          .append($("<div>").attr('id','menu1').addClass('tab-pane active tab-pane-L qlcomment-menu1').attr('role','tabpanel')
+                                                //  Product's comment
+                                                 .append($('<ul>').css('list-style-type','none')
+                                                        .append($('<li>').addClass('comment-L comment-call-L'))))
+                                          .append($("<div>").attr('id', 'menu2').addClass('tab-pane fade tab-pane-L').attr('role', 'tabpanel'))
+                                          ))
+                            }
+                                                    if(product.idParent == '0' && product.idBlock == '0')
+                                                     {
+                                                         createSubInput = true;
+                                                            $("<div style='margin-bottom: 8px;margin-top: 12px;'>").appendTo(document.getElementsByClassName("comment-call-L"))
+                                                          .append($('<a>').addClass('pull-left')
+                                                                 .append($('<img>').addClass('lazy-image avatar').attr('src','https://muare.vn/images/avatars/avatar_male_s.png?v=2'))
+                                                                 )
+                                                            //Phần comment
+                                                          .append($('<div>').addClass('comment-body-L')
+                                                                 .append($('<div>').addClass('comment-heading-L')
+                                                                         .append($('<span>').addClass('post_title_L')
+                                                                                .append($('<span>').addClass('user-L').text(product.userName))
+                                                                                .append($('<abbr>').text(" đã bình luận về sản phẩm "))
+                                                                                .append($('<span>').css('float','right').css('font-size','13px')
+                                                                                       .append($('<i>').addClass('far fa-clock').text(' '+datetime))
+                                                                                       )
+                                                                                )
+                                                                        )
+                                                                  .append($('<p>').addClass('content-L').text(product.content))
+                                                                  .append($('<div>').addClass('span-reply')
+                                                                         .append($('<span>').addClass('reply-L').text("Trả lời").attr('float','left').css('margin-right','10px').click(function(){
+                                                                if(current_userId == 0){
+                                                                    alert("Vui lòng đăng nhập trước khi bình luận!");
+                                                                }
+                                                                else if(product.idUser == current_userId){
+                                                                    idParent_post = 0;
+                                                                    parentName_post = null;
+                                                                    idBlock_post = product.idComment;
+                                                                } else {
+                                                                    idParent_post = product.idUser;
+                                                                    parentName_post = product.userName;
+                                                                    idBlock_post = product.idComment;
+                                                                }  
+                                                                            
+ 		                		           	                                  showcmtinput(null,null,'comment-thu-1', product.idComment); 
+                                                                              event.preventDefault();
+ 		                				                                     })
+                                                                         )
+                                                                          .append($("<span style='font-size: 13.5px !important;'>").addClass('reply-L').text("Xóa").click(function(){
+                                                                                deletecomment(product.idComment,$idcmt_url);
+ 		                				                                     })
+                                                                         )
+                                                                 )
+                                                                  
+                                                           ) //END comment 
+                                                         var idToShowInput = product.idComment;
+                                                          var idComment = product.idComment;
+                                                         var userName = product.userName;
+                                                        $.ajax({
+                                                          type: "GET",
+                                                          url: $subcmt_url,
+                                                          //contentType: "application/x-www-form-urlencoded",
+                                                          async: false,
+                                                        contentType: "application/json",
+                                                        dataType: "json",
+                                                        data: { idComment : idComment },
+                                                        success: function (response2) {
+                                                            //alert(response2)
+                                                            var temp_subparenname=""
+                                                            $.each(response2, function(index, sub) {
+                                                                if(sub.parentName == null) temp_subparenname=""
+                                                                else temp_subparenname = sub.parentName
+                                                        var datetime = current_cmt_time(sub.date_added);
+                                                        $("<div>").appendTo(document.getElementsByClassName("comment-call-L"))
+                                                              .append($('<ul>').addClass('comments-list')
+                                                         .append($('<ul>').css('list-style-type','none')
+                                                                .append($("<li style='padding-right: 0 !important;'>").addClass('comment-L')
+                                                                      .append($('<a>').addClass('pull-left')
+                                                                             .append($('<img>').addClass('lazy-image avatar').attr('src','https://muare.vn/images/avatars/avatar_male_s.png?v=2'))
+                                                                             )
+                                                                        //Phần comment
+                                                                      .append($('<div>').addClass('comment-body-L')
+                                                                             .append($('<div>').addClass('comment-heading-L')
+                                                                                     .append($('<span>').addClass('post_title_L')
+                                                                                            .append($('<span>').addClass('user-L').text(sub.userName))
+                                                                                             .append($('<abbr>').text(" Trả lời @"+temp_subparenname))
+                                                                                             .append($('<span>').css('float','right').css('font-size','13px')
+                                                                                       .append($('<i>').addClass('far fa-clock').text(' '+datetime))
+                                                                                       )
+                                                                                            )
+                                                                                    )
+                                                                              
+                                                                              .append($('<p>').addClass('content-L').text(sub.content))
+                                                                              .append($('<div>').addClass('span-reply')
+                                                                                     .append($('<span>').addClass('reply-L').text("Trả lời").attr('float','left').css('margin-right','10px').click(function(){
+                                                                                if(current_userId == 0){
+                                                                                    alert("Vui lòng đăng nhập trước khi bình luận!");
+                                                                                }
+                                                                                else if(sub.idUser == current_userId){
+                                                                                    idParent_post = 0;
+                                                                                    parentName_post = null; 
+                                                                                    idBlock_post = sub.idBlock;
+                                                                                } else {
+                                                                                    idParent_post = sub.idUser;
+                                                                                    parentName_post = sub.userName; 
+                                                                                    idBlock_post = sub.idBlock;
+                                                                                }
+                                                                                        idProduct_post = sub.idProduct;
+                                                                                        showcmtinput(null,null,'comment-thu-1',idToShowInput); 
+                                                                                          event.preventDefault();
+                                                                                         })
+                                                                                     )
+                                                                                      .append($("<span style='font-size: 13.5px !important;'>").addClass('reply-L').text("Xóa").click(function(){
+                                                                                            deletecomment(sub.idComment,$idcmt_url);
+                                                                                         })
+                                                                                     )
+                                                                             )
+                                                                       )
+                                                                )
+                                                         ))//END sub-comment
+                                                            });
+                                                          },
+                                                          error: function () {
+                                                          },
+                                                          complete: function (response) {
+                                                          }
+                                                        });  // end Ajax   */
+                                                    }
+                                                    else {//sub-comment
+                                                     } //END check idParent
+                                                    //)
+                                             //) //  END Product's comment
+                                      //) //END menu1 tab
+                                      //.append($("<div>").attr('id', 'menu2').addClass('tab-pane fade tab-pane-L').attr('role', 'tabpanel'))
+                               //)
+                            //) //END div id = qlcomment
+                                        //Reply Input will show-hide when click any reply
+                                                    if(createSubInput){ //create comment input when click tra loi
+                                                            //alert(idToShowInput);
+                                                            createSubInput = false;
+                                                            $("<div>").appendTo(document.getElementsByClassName("comment-call-L"))
+                                                            .append($('<div>').attr('id','idinput'+idToShowInput).addClass('input-reply').css('margin','8px 0px 10px 50px').css('display','none')
+                                                               .append($('<div>').addClass('input-group-L').css('width','100%')
+                                                                      .append($('<input>').addClass("form-control comment_comment item-comment-input").attr('type','text').attr('placeholder','Nhập trả lời tại đây và enter').attr('id','id_cmtinput'+product.idComment)
+                                                                              .keyup(function(event) {
+                                                                            if (event.keyCode === 13 && this.value != '') {
+                                                        content_post = this.value;
+                                                        var subdatetime = "" + new Date().timeNow() + ' ' +new Date().today();
+                                                        date_post = current_cmt_time(subdatetime);
+                                                                                //alert('iduser: '+idUser_post+'; content: '+content_post+'; parent: '+parentName_post+'; date: '+date_post);
+                                                        postcomment(idUser_post,content_post,idParent_post,parentName_post,subdatetime,idProduct_post,idBlock_post,$postcmt_url);
+                                                                        }
+                                                            })
+                                                                      )
+                                                               )
+                                                                   ) //END Reply Input 
+                                                    }
+                    firstM = 0;
+                    i = 0;
+ 		        });//END $.each(responseJson, function(index, product)*/
+                    //OnSuccess(response)
+                  }
+                  },
+                  error: function () {},
+                  complete: function (response) {}
+                });  // end Ajax 
+    }
+    $(document).on("click", "div.avatar-sp-L", function (event) {
+        document.getElementById("modal-productview").style.visibility = 'visible';
+        document.getElementById("md-overlay-id").style.visibility = 'visible';
+        document.getElementById("md-overlay-id").style.opacity = '1';
+        
+        idPro = $(this).attr("dataIDProduct")
+        //alert(dataIDProduct);
+          getuserid('getUserId');
+          loadcomment(idPro, 'getProductComment'); //comment modal
+      });
+    
+    
+    /****************************************** END COMMENT PRODUCT ******************************************************/
+    
+    /****************************************** COMMENT SERVICE ******************************************************/
+    
+    if($('.idtindang-cmt').attr("dataIDTinDang") != null){ //comment tin dang
+        idPro = $('.idtindang-cmt').attr("dataIDTinDang");
+        getuserid('getTDUserId');
+        loadcomment(idPro,'getTinDangComment');
+    } else if($('.idservice-cmt').attr("dataIDService") != null){ //comment service
+        idPro = $('.idservice-cmt').attr("dataIDService");
+        getuserid('getSerUserId');
+        loadcomment(idPro,'getServiceComment');
+    } else if($('.chitietsp-am-using').attr("dataCheckChiTietSP") != null){ //comment chitietsp page
+        idPro = $('.avatar-sp-L2').attr("dataIDProduct2");
+        getuserid('getUserId');
+        $div = document.getElementById("comment-part-L2");
+        $divname = "comment-part-L2";
+        loadcomment(idPro,'getProductComment');
+    }
+    
+    /****************************************** END COMMENT SERVICE ******************************************************/
+    
+    //document.getElementById("md-overlay-id").style.visibility = 'hidden';
+    //document.getElementById("modal-productview").style.visibility = 'hidden';
+    
+    $(document).on("click", ".md-overlay", function (event) {
+        document.getElementById("modal-productview").style.visibility = 'hidden'; 
+        document.getElementById("md-overlay-id").style.visibility = 'hidden';
+         document.getElementById("md-overlay-id").style.opacity = '0';
+      });
+    
+    $(document).on("click", ".wrap-img", function (event) {
+        idPro = $(this).attr("dataIDProduct2")
+        if(idPro != 0){
+            document.getElementById("modal-productview").style.visibility = 'visible';
+        document.getElementById("md-overlay-id").style.visibility = 'visible';
+        document.getElementById("md-overlay-id").style.opacity = '1';
+        //$('.md-overlay-id').show();
+        //$('#modal-productview').show();
+        alert(idPro);
+          getuserid('getUserId');
+          loadcomment(idPro, 'getProductComment'); //comment modal
+        }
+        
+      });
+    
+    /* Image Zoom for product Modal */
     function imageZoom(imgID, resultID) {
           var img, lens, result, cx, cy;
           img = document.getElementById(imgID);
@@ -541,485 +1179,6 @@ $(document).ready(function() {
     }
 
 
-    if($('#step1-bar').length){
-      document.getElementById('step1-bar').style.pointerEvents = 'none';
-    }
-    if($('#step2-bar').length){
-      document.getElementById('step2-bar').style.pointerEvents = 'none';
-    }
-    if($('#step3-bar').length){
-      document.getElementById('step3-bar').style.pointerEvents = 'none';
-    }
-    
-
-
-
-    
-    
-    if($('#step1-to-step2').length){
-      document.getElementById("step1-to-step2").addEventListener("click", function(){
-          document.getElementById("step2").classList.add('active');
-          document.getElementById("step1").classList.remove('active');
-          document.getElementById("step3").classList.remove('active');
-          
-          document.getElementById("step2-bar").classList.add('active');
-          document.getElementById("step1-bar").classList.remove('active');
-          document.getElementById("step3-bar").classList.remove('active');
-      }); 
-    }
-
-    if($('#step2-to-step1').length){
-      document.getElementById("step2-to-step1").addEventListener("click", function(){
-          document.getElementById("step1").classList.add('active');
-          document.getElementById("step2").classList.remove('active');
-          document.getElementById("step3").classList.remove('active');
-          
-          document.getElementById("step1-bar").classList.add('active');
-          document.getElementById("step2-bar").classList.remove('active');
-          document.getElementById("step3-bar").classList.remove('active');
-      }); 
-    }
-    
-    
-    if($('#step2-to-step3').length){
-        document.getElementById("step2-to-step3").addEventListener("click", function(){
-          document.getElementById("step3").classList.add('active');
-          document.getElementById("step1").classList.remove('active');
-          document.getElementById("step2").classList.remove('active');
-          
-          document.getElementById("step3-bar").classList.add('active');
-          document.getElementById("step1-bar").classList.remove('active');
-          document.getElementById("step2-bar").classList.remove('active');
-      });
-    }
-
-    if($('#step3-to-step2').length){
-        document.getElementById("step3-to-step2").addEventListener("click", function(){
-          document.getElementById("step2").classList.add('active');
-          document.getElementById("step1").classList.remove('active');
-          document.getElementById("step3").classList.remove('active');
-          
-          document.getElementById("step2-bar").classList.add('active');
-          document.getElementById("step1-bar").classList.remove('active');
-          document.getElementById("step3-bar").classList.remove('active');
-      });
-    }
-    
-    
-    if($('#btn-confirm-order').length){
-      document.getElementById("btn-confirm-order").addEventListener("click", function(){
-          //document.getElementById("md-overlay-id").style.visibility = 'hidden';
-         //document.getElementById("modal-productview").style.visibility = 'hidden';
-          $('#md-overlay-id').hide();
-          $('#modal-productview').hide();
-          
-      });
-    }
-    
-    $(".img-rounded").click(function(){
-        $('#md-overlay-id').show();
-        $('#modal-productview').show();
-    });
-    
-	// trang quan ly don hang
-
-    if($("#span-tuychon").length){
-        document.getElementById("span-tuychon").onclick = function () {
-            if(document.getElementById("a-phanhoi").style.display == 'none'){
-                document.getElementById("a-phanhoi").style.display = 'block'; 
-            } else {
-                document.getElementById("a-phanhoi").style.display = 'none';
-            }
-
-        }  
-    }
-	  
-    if($("#span-reply").length){
-        document.getElementById("span-reply").onclick = function () {
-        if(document.getElementById("input-reply-customer").style.display == 'none'){
-            document.getElementById("input-reply-customer").style.display = 'block'; 
-        } else {
-            document.getElementById("input-reply-customer").style.display = 'none';
-        }
-        
-    }
-    }
-    
-    $.ajaxSetup({
-      headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-      }
-    });
-    // For todays date;
-    Date.prototype.today = function () { 
-        return ((this.getDate() < 10)?"0":"") + this.getDate() +"/"+(((this.getMonth()+1) < 10)?"0":"") + (this.getMonth()+1) +"/"+ this.getFullYear();
-    }
-    // For the time now
-    Date.prototype.timeNow = function () {
-         return ((this.getHours() < 10)?"0":"") + this.getHours() +":"+ ((this.getMinutes() < 10)?"0":"") + this.getMinutes();
-    }
-    Date.prototype.monthyearNow = function () {
-         return (((this.getMonth()+1) < 10)?"0":"") + (this.getMonth()+1) +"/"+ this.getFullYear();;
-    }
-    //Return true if 28 or false-29 in feb
-    /*function isLeapYear(year) { 
-        return new Date(year, 2, 0).getDate() > 28; 
-    } */
-    //analysis current time with comments's time to show between space
-    function current_cmt_time(time){
-        var now = new Date();
-        var nowday = ((now.getDate() < 10)?"0":"") + now.getDate();
-        var nowhour = ((now.getHours() < 10)?"0":"") + now.getHours();
-        var nowminute = ((now.getMinutes() < 10)?"0":"") + now.getMinutes();
-        var datetime = "" + new Date().timeNow() + ' ' +new Date().today();
-        var firstM = 0;
-        var i, cmtDay, cmtMonth;
-        //analysis current time with comments's time to show between space
-                        for(i = 0;i<time.length;i++){
-                            if(time[i] == '/') {
-                                firstM = i; 
-                                break;
-                            }
-                        }
-                        cmtminute = time.substring(3,5);
-                        cmthour = time.substring(0,2);
-                        cmtday = time.substring(firstM-2,firstM);
-                        cmtMonthYear = time.substring(firstM+1,time.length);
-                        //cmtYear = product.date_added.substring(firstM+4,product.date_added.length);
-                        if(now.monthyearNow() == cmtMonthYear){
-                            if(nowday != cmtday){
-                                datetime = (parseInt(nowday) - parseInt(cmtday)).toString() + " ngày trước";
-                            }
-                            else if(nowhour != cmthour){
-                                if((nowminute - cmtminute) >= 0){
-                                    datetime = (parseInt(nowhour) - parseInt(cmthour)).toString() + " giờ trước"; 
-                                }else{
-                                    if((parseInt(nowhour) - parseInt(cmthour) - 1).toString() == '0'){
-                                        datetime = ((60 - parseInt(cmtminute))+ parseInt(nowminute)).toString() + " phút trước";
-                                    }
-                                    else datetime = (parseInt(nowhour) - parseInt(cmthour) - 1).toString() + " giờ trước";
-                                }
-                                    
-                            } else if (nowhour == cmthour){
-                                datetime = (parseInt(nowminute) - parseInt(cmtminute)).toString() + " phút trước";
-                            }
-                        } else {
-                            datetime = time;
-                        }
-                    //
-        return datetime
-    }
-    var current_userId;
-    $.ajax({
-                  type: "GET",
-                  url: "getUserId",
-                  //contentType: "application/x-www-form-urlencoded",
-                  async: false,
-                contentType: "application/json",
-                dataType: "json",
-               //data: { number : '1' },
-                  success: function (response) {
-                      current_userId = response;
-                  },
-                  error: function () {
-                    alert("error get userid");  
-                  },
-                  complete: function (response) {}
-                });  // end Ajax  
-    function postcomment(idUser_post,content_post,idParent_post,parentName_post,date_post,idProduct_post,idBlock_post){
-                //alert('iduser: '+idUser_post+'; content: '+content_post+'; parent: '+parentName_post+'; date: '+date_post);
-        $.ajax({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-              },
-            type: "GET",
-            url: "postSubComment",
-            async: false,
-            contentType: "application/json",
-            dataType: "json",
-            data: { idUser_post : idUser_post, content_post : content_post, idParent_post : idParent_post, parentName_post : parentName_post, date_post : date_post, idProduct_post : idProduct_post, idBlock_post : idBlock_post},
-
-            success: function (response) {
-                //alert(response);
-                if(response == 0){
-                    loadcomment(idPro);
-                    $('<input>').value = ""
-                }
-            },
-            error: function () {
-                alert('error post comment');  
-            },
-            complete: function (response) {}
-        });  // end Ajax  
-    }
-    var idPro = '';
-    function loadcomment(idPro){
-        //event.preventDefault();
-        
-        //console.log(idPro);
-        $.ajax({
-                  type: "GET",
-                  url: "getProductComment",
-                  //contentType: "application/x-www-form-urlencoded",
-                  async: false,
-                contentType: "application/json",
-                dataType: "json",
-                data: { idProduct : idPro },
-                  success: function (response) {
-                    var nums_comment = response.length;
-                    var $div = document.getElementById("comment-part-L");
-                    var createInput = true; //first comment input
-                    var createSubInput = true; //it's show when click a available comment
-                $.each(response, function(index, product) {    // Iterate over the JSON array.
-    		        	$("#comment-part-L > br").remove();
-                        $("#comment-part-L > hr").remove();
-                        $("#comment-part-L > p").remove();
-                        $("#comment-part-L > div").remove();
-      		 	});
-                
-                //using when POST comment
-                var idUser_post, content_post, date_post, idParent_post, parentName_post, idProduct_post, idBlock_post; 
-                idUser_post = current_userId;
- 		        $.each(response, function(index, product) {
-                    //alert(product.userid);
-                        var datetime = current_cmt_time(product.date_added);
-                        //put product info into modal
-                        var sellerName, sellerPhone;
-                        //Get name & phone of seller
-                        $.ajax({
-                            type: "GET",
-                            url: "getSeller",
-                            async: false,
-                            contentType: "application/json",
-                            dataType: "json",
-                            data: { productUserId : product.productUserId},
-
-                            success: function (response) {
-                                $.each(response, function(index, product) {    // Iterate over the JSON array.
-                                    sellerName = product.userName;
-                                    sellerPhone = product.userPhone;
-                                });
-                                
-                            },
-                            error: function () {
-                                alert('error post comment');  
-                            },
-                            complete: function (response) {}
-                        });  // end Ajax 
-    		        	$(".productinfo-title").text(product.productName);
-                        $(".productinfo-content").text(product.description);
-                        $(".productinfo-price").text(product.productPrice+' VNĐ');
-                        var listImg = jQuery.parseJSON(product.productImage);
-                        console.log("listImg");
-                        $("#myimage").attr('src',listImg[0]);
-                        var content = '';
-                        for (var i = listImg.length - 1; i >= 0; i--) {
-                          content += '<div style="padding: 0 10px;">'+
-                      '<img class="img-thumbnail img-small" src="'+listImg[i]+'"'+
-                        'onclick="changeMainImage(this);"/></div>'
-                          
-                        }
-
-                        // $('.list-img-wrap-v.owl-carousel').html(content);
-                        jQuery(".list-img-wrap-v.owl-carousel").trigger('add.owl.carousel', content).trigger('refresh.owl.carousel')
-
-                        // $('.list-img-wrap-v.owl-carousel').trigger('refresh.owl.carousel');
-                        //$("#myresult").attr('',product.productImage);
-                        var myresult = document.getElementById("myresult"); //chitietdanhmuc - modal
-                        myresult.style.backgroundImage= "url('" + listImg[0] + "')";
-                        $(".productinfo-seller > a").text(sellerName);
-                        $(".productinfo-phone-text").text(sellerPhone);
-                        
-                        idProduct_post = product.idProduct;
-                    
-                        //Create main comment input
- 		                if(createInput){ //create orinal comment input
-                            createInput = false;
-                            $("<div>").appendTo($div)
-                            .append($("<br/>"))        // Create HTML <td> element, set its text content with id of currently iterated product and append it to the <tr>.
-                            .append($("<hr>"))
-                            .append($("<p>").text("Bình luận ("+ nums_comment + ")"))
-                            .append($("<div>").addClass('input-group-L').css('width','100%')
-                                   .append($("<input>").attr('type', 'text').addClass("form-control comment_comment item-comment-input").attr('placeholder', 'Nhập bình luận tại đây')
-                                          .keyup(function(event) {
-                                                    if (event.keyCode === 13 && this.value != '') {
-                                                        content_post = this.value;
-                                                        var subdatetime = "" + new Date().timeNow() + ' ' +new Date().today();
-                                                        date_post = current_cmt_time(subdatetime);
-                                                                                alert('iduser: '+idUser_post+'; content: '+content_post+'; parent: '+null+'; date: '+date_post);
-                                                        postcomment(idUser_post,content_post,0,null,subdatetime,idProduct_post,0);
-                                                    }
-                                                })
-                                          )
-                                   )
-                            .append($("<div>").attr('id',"qlcomment")
-                                   .append($("<div>").addClass("tab-content tab-content-L")
-                                          .append($("<div>").attr('id','menu1').addClass('tab-pane active tab-pane-L qlcomment-menu1').attr('role','tabpanel')
-                                                //  Product's comment
-                                                 .append($('<ul>').css('list-style-type','none')
-                                                        .append($('<li>').addClass('comment-L comment-call-L'))))
-                                          .append($("<div>").attr('id', 'menu2').addClass('tab-pane fade tab-pane-L').attr('role', 'tabpanel'))
-                                          ))
-                            }
-                                                    if(product.idParent == '0' && product.idBlock == '0')
-                                                     {
-                                                         createSubInput = true;
-                                                            $("<div style='margin-bottom: 8px;margin-top: 12px;'>").appendTo(document.getElementsByClassName("comment-call-L"))
-                                                          .append($('<a>').addClass('pull-left')
-                                                                 .append($('<img>').addClass('lazy-image avatar').attr('src','https://muare.vn/images/avatars/avatar_male_s.png?v=2'))
-                                                                 )
-                                                            //Phần comment
-                                                          .append($('<div>').addClass('comment-body-L')
-                                                                 .append($('<div>').addClass('comment-heading-L')
-                                                                         .append($('<span>').addClass('post_title_L')
-                                                                                .append($('<span>').addClass('user-L').text(product.userName))
-                                                                                .append($('<abbr>').text(" đã bình luận về sản phẩm "))
-                                                                                .append($('<span>').css('float','right').css('font-size','13px')
-                                                                                       .append($('<i>').addClass('far fa-clock').text(' '+datetime))
-                                                                                       )
-                                                                                )
-                                                                        )
-                                                                  .append($('<p>').addClass('content-L').text(product.content))
-                                                                  .append($('<div>').addClass('span-reply')
-                                                                         .append($('<span>').addClass('reply-L').text("Trả lời").click(function(){
-                                                                if(current_userId == 0){
-                                                                    alert("Vui lòng đăng nhập trước khi bình luận!");
-                                                                }
-                                                                else if(product.idUser == current_userId){
-                                                                    idParent_post = 0;
-                                                                    parentName_post = null;
-                                                                    idBlock_post = product.idUser;
-                                                                } else {
-                                                                    idParent_post = product.idUser;
-                                                                    parentName_post = product.userName;
-                                                                    idBlock_post = product.idUser;
-                                                                }  
-                                                                            
- 		                		           	                                  showcmtinput(null,null,'comment-thu-1', product.idComment); 
-                                                                              event.preventDefault();
- 		                				                                     })
-                                                                         )
-                                                                 )
-                                                                  
-                                                           ) //END comment 
-                                                         var idToShowInput = product.idComment;
-                                                          var idUser = product.idUser;
-                                                         var userName = product.userName;
-                                                        $.ajax({
-                                                          type: "GET",
-                                                          url: "getSubComment",
-                                                          //contentType: "application/x-www-form-urlencoded",
-                                                          async: false,
-                                                        contentType: "application/json",
-                                                        dataType: "json",
-                                                        data: { idUser : idUser },
-                                                        success: function (response2) {
-                                                            //alert(response2)
-                                                            var temp_subparenname=""
-                                                            $.each(response2, function(index, sub) {
-                                                                if(sub.parentName == null) temp_subparenname=""
-                                                                else temp_subparenname = sub.parentName
-                                                        var datetime = current_cmt_time(sub.date_added);
-                                                        $("<div>").appendTo(document.getElementsByClassName("comment-call-L"))
-                                                              .append($('<ul>').addClass('comments-list')
-                                                         .append($('<ul>').css('list-style-type','none')
-                                                                .append($("<li style='padding-right: 0 !important;'>").addClass('comment-L')
-                                                                      .append($('<a>').addClass('pull-left')
-                                                                             .append($('<img>').addClass('lazy-image avatar').attr('src','https://muare.vn/images/avatars/avatar_male_s.png?v=2'))
-                                                                             )
-                                                                        //Phần comment
-                                                                      .append($('<div>').addClass('comment-body-L')
-                                                                             .append($('<div>').addClass('comment-heading-L')
-                                                                                     .append($('<span>').addClass('post_title_L')
-                                                                                            .append($('<span>').addClass('user-L').text(sub.userName))
-                                                                                             .append($('<abbr>').text(" Trả lời @"+temp_subparenname))
-                                                                                             .append($('<span>').css('float','right').css('font-size','13px')
-                                                                                       .append($('<i>').addClass('far fa-clock').text(' '+datetime))
-                                                                                       )
-                                                                                            )
-                                                                                    )
-                                                                              
-                                                                              .append($('<p>').addClass('content-L').text(sub.content))
-                                                                              .append($('<div>').addClass('span-reply')
-                                                                                     .append($('<span>').addClass('reply-L').text("Trả lời").click(function(){
-                                                                                if(current_userId == 0){
-                                                                                    alert("Vui lòng đăng nhập trước khi bình luận!");
-                                                                                }
-                                                                                else if(sub.idUser == current_userId){
-                                                                                    idParent_post = 0;
-                                                                                    parentName_post = null; 
-                                                                                    idBlock_post = sub.idBlock;
-                                                                                } else {
-                                                                                    idParent_post = sub.idUser;
-                                                                                    parentName_post = sub.userName; 
-                                                                                    idBlock_post = sub.idBlock;
-                                                                                }
-                                                                                        idProduct_post = sub.idProduct;
-                                                                                        showcmtinput(null,null,'comment-thu-1',idToShowInput); 
-                                                                                          event.preventDefault();
-                                                                                         })
-                                                                                     )
-                                                                             )
-                                                                       )
-                                                                )
-                                                         ))//END sub-comment
-                                                            });
-                                                          },
-                                                          error: function () {
-                                                          },
-                                                          complete: function (response) {
-                                                          }
-                                                        });  // end Ajax   */
-                                                    }
-                                                    else {//sub-comment
-                                                     } //END check idParent
-                                                    //)
-                                             //) //  END Product's comment
-                                      //) //END menu1 tab
-                                      //.append($("<div>").attr('id', 'menu2').addClass('tab-pane fade tab-pane-L').attr('role', 'tabpanel'))
-                               //)
-                            //) //END div id = qlcomment
-                                        //Reply Input will show-hide when click any reply
-                                                    if(createSubInput){ //create comment input when click tra loi
-                                                            //alert(idToShowInput);
-                                                            createSubInput = false;
-                                                            $("<div>").appendTo(document.getElementsByClassName("comment-call-L"))
-                                                            .append($('<div>').attr('id','idinput'+idToShowInput).addClass('input-reply').css('margin','8px 0px 10px 50px').css('display','none')
-                                                               .append($('<div>').addClass('input-group-L').css('width','100%')
-                                                                      .append($('<input>').addClass("form-control comment_comment item-comment-input").attr('type','text').attr('placeholder','Nhập trả lời tại đây và enter').attr('id','id_cmtinput'+product.idComment)
-                                                                              .keyup(function(event) {
-                                                                            if (event.keyCode === 13 && this.value != '') {
-                                                        content_post = this.value;
-                                                        var subdatetime = "" + new Date().timeNow() + ' ' +new Date().today();
-                                                        date_post = current_cmt_time(subdatetime);
-                                                                                //alert('iduser: '+idUser_post+'; content: '+content_post+'; parent: '+parentName_post+'; date: '+date_post);
-                                                        postcomment(idUser_post,content_post,idParent_post,parentName_post,subdatetime,idProduct_post,idBlock_post);
-                                                                        }
-                                                            })
-                                                                      )
-                                                               )
-                                                                   ) //END Reply Input 
-                                                    }
-                    firstM = 0;
-                    i = 0;
- 		        });//END $.each(responseJson, function(index, product)*/
-                    //OnSuccess(response)
-                  },
-                  error: function () {
-                    alert("error");  
-                    //OnError(response)
-                  },
-                  complete: function (response) {
-                    // Handle the complete event
-                    //alert("ajax completed " + JSON.stringify(response));
-                  }
-                });  // end Ajax 
-    }
-    $(document).on("click", "div.avatar-sp-L", function (event) {
-        idPro = $(this).attr("dataIDProduct")
-        //alert(dataIDProduct);
-          loadcomment(idPro);
-      });
     
 });
 
