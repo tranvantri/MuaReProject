@@ -27,11 +27,11 @@
              <div class="img-zoom-container" onmouseover="showZoomImg()" onmouseout="hideZoomImg()">
                 <img class="img-zoom" id="myimage" src="https://static8.muarecdn.com/zoom/430_430/muare/images/2019/01/30/5004798_giay-bong-da-205n-black-gold-1-360x360.jpg" width="400" height="400" >
              </div>
-               <!-- Hình ảnh nhỏ của sp -->
+                <!-- Hình ảnh nhỏ của sp -->
               <div class="scroll-small-img-v">
-                <div class="list-img-wrap-v owl-carousel" >
+                <div class="list-img-wrap-v owl-carousel" id="list-img-wrap-v">
                   
-                    <div style="padding: 0 10px;">
+                    {{-- <div style="padding: 0 10px;">
                       <img class="img-thumbnail img-small" src="https://static8.muarecdn.com/zoom/430_430/muare/images/2019/01/30/5004798_giay-bong-da-205n-black-gold-1-360x360.jpg"
                         onclick="changeMainImage(this);"/>
                     </div>
@@ -42,7 +42,7 @@
                     <div style="padding: 0 10px;">
                       <img class="img-thumbnail img-small" src="https://static8.muarecdn.com/zoom/430_430/muare/images/2019/01/30/5004798_giay-bong-da-205n-black-gold-1-360x360.jpg"
                         onclick="changeMainImage(this);"/>
-                    </div>
+                    </div> --}}
 
 
                   </div>
