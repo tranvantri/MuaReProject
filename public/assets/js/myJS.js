@@ -927,35 +927,17 @@ $(document).ready(function() {
                 });  // end Ajax 
     }
     $(document).on("click", "div.avatar-sp-L", function (event) {
+        document.getElementById("modal-productview").style.visibility = 'visible';
+        document.getElementById("md-overlay-id").style.visibility = 'visible';
+        document.getElementById("md-overlay-id").style.opacity = '1';
+        
         idPro = $(this).attr("dataIDProduct")
         //alert(dataIDProduct);
           getuserid('getUserId');
           loadcomment(idPro, 'getProductComment'); //comment modal
       });
     
-    document.getElementById("md-overlay-id").style.visibility = 'hidden';
-    document.getElementById("modal-productview").style.visibility = 'hidden';
     
-    $(document).on("click", ".md-overlay", function (event) {
-        document.getElementById("modal-productview").style.visibility = 'hidden'; 
-        document.getElementById("md-overlay-id").style.visibility = 'hidden';
-         document.getElementById("md-overlay-id").style.opacity = '0';
-      });
-    
-    $(document).on("click", ".wrap-img", function (event) {
-        /*if(document.getElementById("modal-productview").getAttribute("display")=="null"){
-            document.getElementById("modal-productview").setAttribute("style","display: block;"); 
-        }*/
-        document.getElementById("modal-productview").style.visibility = 'visible';
-        document.getElementById("md-overlay-id").style.visibility = 'visible';
-        document.getElementById("md-overlay-id").style.opacity = '1';
-        $('.md-overlay-id').show();
-        $('#modal-productview').show();
-        idPro = $(this).attr("dataIDProduct2")
-        //alert(idPro);
-          getuserid('getUserId');
-          loadcomment(idPro, 'getProductComment'); //comment modal
-      });
     /****************************************** END COMMENT PRODUCT ******************************************************/
     
     /****************************************** COMMENT SERVICE ******************************************************/
@@ -970,21 +952,37 @@ $(document).ready(function() {
         loadcomment(idPro,'getServiceComment');
     } else if($('.chitietsp-am-using').attr("dataCheckChiTietSP") != null){ //comment chitietsp page
         idPro = $('.avatar-sp-L2').attr("dataIDProduct2");
-        //alert(idPro);
         getuserid('getUserId');
         $div = document.getElementById("comment-part-L2");
         $divname = "comment-part-L2";
         loadcomment(idPro,'getProductComment');
-    } /*else if($('.wrap-img').attr("dataIDProduct2") != null){ //comment chitietsp page
-        idPro = $('.wrap-img').attr("dataIDProduct2");
-        alert(idPro);
-        getuserid('getUserId');
-        //$div = document.getElementById("comment-part-L2");
-        //$divname = "comment-part-L2";
-        loadcomment(idPro,'getProductComment');
-    }*/
+    }
     
     /****************************************** END COMMENT SERVICE ******************************************************/
+    
+    //document.getElementById("md-overlay-id").style.visibility = 'hidden';
+    //document.getElementById("modal-productview").style.visibility = 'hidden';
+    
+    $(document).on("click", ".md-overlay", function (event) {
+        document.getElementById("modal-productview").style.visibility = 'hidden'; 
+        document.getElementById("md-overlay-id").style.visibility = 'hidden';
+         document.getElementById("md-overlay-id").style.opacity = '0';
+      });
+    
+    $(document).on("click", ".wrap-img", function (event) {
+        idPro = $(this).attr("dataIDProduct2")
+        if(idPro != 0){
+            document.getElementById("modal-productview").style.visibility = 'visible';
+        document.getElementById("md-overlay-id").style.visibility = 'visible';
+        document.getElementById("md-overlay-id").style.opacity = '1';
+        //$('.md-overlay-id').show();
+        //$('#modal-productview').show();
+        alert(idPro);
+          getuserid('getUserId');
+          loadcomment(idPro, 'getProductComment'); //comment modal
+        }
+        
+      });
     
     /* Image Zoom for product Modal */
     function imageZoom(imgID, resultID) {

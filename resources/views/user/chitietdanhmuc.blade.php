@@ -212,7 +212,7 @@
         @include('user.core.modalDatHang')
 
 
-    <div class="md-overlay"></div>
+    <div class="md-overlay" id="md-overlay-id"></div>
     <!--<div id="md-overlay2-id" class="md-overlay2"></div>-->
     
       <!-- Confirm order modal  - thong bao đa dat hang thanh cong-->

@@ -9,6 +9,21 @@
   <div class="container">
     <div class="admicro_top"></div>
     <div class="mrfoot-v row">
+        
+        
+        @include('user.core.modalChiTietSanPham')
+
+        @include('user.core.modalDatHang')
+
+
+        <div class="md-overlay" id="md-overlay-id"></div>
+    
+      <!-- Confirm order modal  - thong bao đa dat hang thanh cong-->
+        @include('user.chitietdanhmuc.modalConfirmMuaHang')
+      <!-- END Confirm order modal -->
+        
+        
+        
       <div class="content-v col-md-9">
         <input type="hidden" name="user_login" class="user_login" value="" />
         <input type="hidden" name="_token" value="" />
@@ -180,7 +195,7 @@
           </div>
         </div>-->
         <!-- Kết thúc phần hiển thị sản phẩm -->
-
+          
         <!-- Đề xuất sản phẩm -->
         <div id="title-product-related-v"><span>NGƯỜI BÁN KHÁC ĐỀ XUẤT CHO BẠN</span></div>
         
@@ -188,11 +203,11 @@
         @foreach($product_offer as $childOffer)	
 <div class="motkhoi col-lg-3 col-md-4 col-sm-6">
 	<div class="card item">		
-		<div class="wrap-img">
+		<div class="wrap-img" dataIDProduct2="{{0}}">
 			<a href="{{ route('sanpham', $childOffer->id)}}">
 				<img class="card-img-top" src="{{$childOffer->images}}" alt="">
 			</a>
-			<div class="qv-button-container"> <a href="{{ route('sanpham', $childOffer->id)}}" title="{{$childOffer->name}}"><i class="fas fa-eye"></i></a></div>											
+            <!--<div class="qv-button-container md-trigger img-rounded OverlayPopup" data-modal="modal-productview"><a title="{{$childOffer->name}}"><i class="fas fa-eye"></i></a></div>-->
 		</div>		
 
 		<div class="card-body info">
@@ -225,11 +240,11 @@
         @foreach($randPro as $childRand)	
 <div class="motkhoi col-lg-3 col-md-4 col-sm-6">
 	<div class="card item">		
-		<div class="wrap-img">
+		<div class="wrap-img" dataIDProduct2="{{0}}">
 			<a href="{{ route('sanpham', $childRand->id)}}">
 				<img class="card-img-top" style="width: 159px; height: 159px;" src="{{$childRand->images}}" alt="">
 			</a>
-			<div class="qv-button-container"> <a href="{{ route('sanpham', $childRand->id)}}" title="{{$childRand->name}}"><i class="fas fa-eye"></i></a></div>											
+			<!--<div class="qv-button-container"> <a href="{{ route('sanpham', $childRand->id)}}" title="{{$childRand->name}}"><i class="fas fa-eye"></i></a></div>		-->									
 		</div>		
 
 		<div class="card-body info">

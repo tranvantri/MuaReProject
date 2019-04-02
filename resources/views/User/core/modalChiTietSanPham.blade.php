@@ -1,7 +1,7 @@
 <script type="text/javascript">
           //hover on myimage -> show myresult
 /* Show/hide khi hover ảnh trên product modal - đồng thời kiểm tra loại thiết bị đang sử dụng để căn chỉnh suitble size */
-          //document.getElementById("myresult-div").style.display = "none";
+          document.getElementById("myresult-div").style.display = "none";
         
         function showZoomImg() {
           document.getElementById("myresult-div").style.display = "block";
