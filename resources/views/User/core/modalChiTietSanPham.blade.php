@@ -20,9 +20,6 @@
 
         
       </script>
-       
-      
-      
      <div class="md-modal md-effect-1" id="modal-productview">
        <div class="row">
           <!--Image Zoom & Imagelist-->
