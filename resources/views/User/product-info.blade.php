@@ -246,7 +246,7 @@
 		<div class="wrap-img" dataIDProduct2="{{0}}">
             <a href="{{ route('sanpham', $childRand->id)}}">
         <?php 
-          $images = json_decode(childRand->images);
+          $images = json_decode($childRand->images);
         ?>
 				<img class="card-img-top" style="width: 159px; height: 150px;" src="{{$images[0] ?? 'assets/images/chitietsanpham/logo_muare.png'}}" alt="">
 			</a>
