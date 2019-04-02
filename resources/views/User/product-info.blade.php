@@ -204,8 +204,11 @@
 <div class="motkhoi col-lg-3 col-md-4 col-sm-6">
 	<div class="card item">		
 		<div class="wrap-img" dataIDProduct2="{{0}}">
-			<a href="{{ route('sanpham', $childOffer->id)}}">
-				<img class="card-img-top" src="{{$childOffer->images}}" alt="">
+            <a href="{{ route('sanpham', $childOffer->id)}}">
+        <?php 
+          $images = json_decode($childOffer->images);
+        ?>
+				<img class="card-img-top" style="width: 159px; height: 150px;" src="{{$images[0] ?? 'assets/images/chitietsanpham/logo_muare.png'}}" alt="">
 			</a>
             <!--<div class="qv-button-container md-trigger img-rounded OverlayPopup" data-modal="modal-productview"><a title="{{$childOffer->name}}"><i class="fas fa-eye"></i></a></div>-->
 		</div>		
@@ -241,8 +244,11 @@
 <div class="motkhoi col-lg-3 col-md-4 col-sm-6">
 	<div class="card item">		
 		<div class="wrap-img" dataIDProduct2="{{0}}">
-			<a href="{{ route('sanpham', $childRand->id)}}">
-				<img class="card-img-top" style="width: 159px; height: 159px;" src="{{$childRand->images}}" alt="">
+            <a href="{{ route('sanpham', $childRand->id)}}">
+        <?php 
+          $images = json_decode(childRand->images);
+        ?>
+				<img class="card-img-top" style="width: 159px; height: 150px;" src="{{$images[0] ?? 'assets/images/chitietsanpham/logo_muare.png'}}" alt="">
 			</a>
 			<!--<div class="qv-button-container"> <a href="{{ route('sanpham', $childRand->id)}}" title="{{$childRand->name}}"><i class="fas fa-eye"></i></a></div>		-->									
 		</div>		
