@@ -115,8 +115,9 @@
               </div>
 
                 @include('user.modal.modalProductInfo')
-              <button class="order-v" data-toggle="modal" data-target="#modal-productview" data-modal="modal-productview"></button>
-
+                
+              <!--<button class="order-v" data-toggle="modal" data-target="#modal-productview" data-modal="modal-productview"></button>-->
+                <button class="order-v md-trigger2" data-modal2="modal-orderview" data-toggle="modal" data-target="#modal-orderview"></button>
 
 
               <p class="item-price-v">{{number_format($child->price,0)}}đ</p>

@@ -31,7 +31,7 @@
 				<button type="button" title="Add to Cart" class="button btn-cart">
 					<div class="box-info">
 						<span>	                                                
-							<a href="#" class="order">Thêm vào giỏ</a>
+							<a class="order md-trigger2" data-modal2="modal-orderview" data-toggle="modal" data-target="#modal-orderview">Thêm vào giỏ</a>
 						</span>
 					</div>
 					
