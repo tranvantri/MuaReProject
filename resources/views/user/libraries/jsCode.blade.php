@@ -23,6 +23,23 @@
 	Dropzone.autoDiscover = false;
 </script>
 
+// xử lý ajax thêm sản phẩm vào giỏ hàng
+<script>
+	$(document).ready(function () {
+	    $(".btnAddToCart_tomiot").click(function() {
+		   idSP = $('#LayIdSanPhamGioHang').val();
+		   console.log("id sản phẩm: " +idSP);
+		   $.get("them-gio-hang", {id: idSP}, function (data) {
+			  console.log('Them thành công');
+			  console.log(data);
+		   });
+		
+		
+	    });
+	});
+	
+ </script>
+
 
 
 

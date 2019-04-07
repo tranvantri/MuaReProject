@@ -28,40 +28,40 @@
                         <br>
                         <!-- List product in your order modal-->
                         <div style="overflow-y: auto;max-height: 274px;max-height: 400px;height: auto;">
-                            <div class="product-in-order-L">
-                                <img class="lazy-image avatar" data-original="https://muare.vn/images/avatars/avatar_male_s.png?v=2" src="https://static8.muarecdn.com/zoom,80/100_100/muare/images/2019/02/16/5010043_40.jpg" alt="Order US UK GER" width="72px" height="72px" style="display: inline;float: left;padding-right: 10px;">
-                                <a href="#" class="product-name-L">Order US UK GER – Order US UK GER</a>
-                                <div>
-                                    <p class="price-order-L"><abbr>Số lượng: &#160;<input type="text" class="input-numbsproduct"></abbr> <abbr style="padding-left: 5%;">Giá: 300,000 VNĐ</abbr> <abbr style="padding-left: 5%;">Thành tiền: <abbr style="color: red;">2,000,000 VNĐ</abbr></abbr><a href="#" style="float: right;right: 0 !important;;padding-top: 2px;padding-right: 4px;color: red;font-size: 16px;"><i class="far fa-trash-alt"></i></a></p>
+                            {{--  đây là phần hiển thi gio hàng  --}}
 
-                                    <!--<p class="price-order-L" style="float: left;margin-left: -18%;padding-top: 12px;">Giá: 300,000 VNĐ</p>
-                                    <p class="price-order-L" style="padding-top: 12px;">Thành tiền: <abbr style="color: red;">2,000,000 VNĐ</abbr></p>-->
+                            <?php foreach(Cart::content() as $row) :?>
+                            <div class="product-in-order-L">
+                                <img class="lazy-image avatar" src="<?php echo ($row->options->has('hinhanhsp') ? $row->options->hinhanhsp : ''); ?>" alt="Lỗi hình ảnh" 
+                                width="72px" height="72px" style="display: inline;float: left;padding-right: 10px;">
+                                <a href="#" class="product-name-L"><?php echo $row->name; ?></a>
+                                <div>
+                                    <p class="price-order-L">
+                                        <abbr>Số lượng: 
+                                        &#160;<input type="number" min="1" value="<?php echo $row->qty; ?>" class="input-numbsproduct"></abbr> 
+
+                                        <abbr style="padding-left: 5%;">Đơn giá: <?php echo number_format($row->price,0); ?> VNĐ</abbr> 
+
+                                        <abbr style="padding-left: 5%;">Thành tiền: <abbr style="color: red;"><?php echo number_format($row->price*$row->qty,0); ?> VNĐ</abbr></abbr>
+                                            <abbr>
+                                        {{--Xu ly xoa san pham khoi gio hang--}}
+                                        <form action="{{ route('cart.remove', $row->rowId) }}" method="post" class="form-inline">
+                                            {{ csrf_field() }}
+                                            <button type="submit" style="color: red;font-size: 16px;display: contents;" class="btn btn-sm">
+                                                <span class="fas fa-trash-alt"></span>
+                                            </button>
+                                        </form></abbr> 
+
+                                    
+                                    </p>
+
+                                    
                                 </div>
                                 <hr>
                             </div>
-                            <div class="product-in-order-L">
-                                <img class="lazy-image avatar" data-original="https://muare.vn/images/avatars/avatar_male_s.png?v=2" src="https://static8.muarecdn.com/zoom,80/100_100/muare/images/2019/02/16/5010043_40.jpg" alt="Order US UK GER" width="72px" height="72px" style="display: inline;float: left;padding-right: 10px;">
-                                <a href="#" class="product-name-L">Order US UK GER – Order US UK GER</a>
-                                <div>
-                                    <p class="price-order-L"><abbr>Số lượng: &#160;<input type="text" class="input-numbsproduct"></abbr> <abbr style="padding-left: 5%;">Giá: 300,000 VNĐ</abbr> <abbr style="padding-left: 5%;">Thành tiền: <abbr style="color: red;">2,000,000 VNĐ</abbr></abbr><a href="#" style="float: right;right: 0 !important;;padding-top: 2px;padding-right: 4px;color: red;font-size: 16px;"><i class="far fa-trash-alt"></i></a></p>
+                            <?php endforeach;?>
 
-                                    <!--<p class="price-order-L" style="float: left;margin-left: -18%;padding-top: 12px;">Giá: 300,000 VNĐ</p>
-                                    <p class="price-order-L" style="padding-top: 12px;">Thành tiền: <abbr style="color: red;">2,000,000 VNĐ</abbr></p>-->
-                                </div>
-                                <hr>
-                            </div>
-                            <div class="product-in-order-L">
-                                <img class="lazy-image avatar" data-original="https://muare.vn/images/avatars/avatar_male_s.png?v=2" src="https://static8.muarecdn.com/zoom,80/100_100/muare/images/2019/02/16/5010043_40.jpg" alt="Order US UK GER" width="72px" height="72px" style="display: inline;float: left;padding-right: 10px;">
-                                <a href="#" class="product-name-L">Order US UK GER – Order US UK GER</a>
-                                <div>
-                                    <p class="price-order-L"><abbr>Số lượng: &#160;<input type="text" class="input-numbsproduct"></abbr> <abbr style="padding-left: 5%;">Giá: 300,000 VNĐ</abbr> <abbr style="padding-left: 5%;">Thành tiền: <abbr style="color: red;">2,000,000 VNĐ</abbr></abbr><a href="#" style="float: right;right: 0 !important;;padding-top: 2px;padding-right: 4px;color: red;font-size: 16px;"><i class="far fa-trash-alt"></i></a></p>
-
-                                    <!--<p class="price-order-L" style="float: left;margin-left: -18%;padding-top: 12px;">Giá: 300,000 VNĐ</p>
-                                    <p class="price-order-L" style="padding-top: 12px;">Thành tiền: <abbr style="color: red;">2,000,000 VNĐ</abbr></p>-->
-                                </div>
-                                <hr>
-                            </div>
-
+                             {{--  Ket thuc đây là phần hiển thi gio hàng   --}}
                         </div>
 
                         <h5 class="avgprice-order-L">Tổng tiền: 4,000,000 VNĐ</h5>
