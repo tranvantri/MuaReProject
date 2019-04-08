@@ -19,7 +19,7 @@
           
           <button type="button"
                 style="color: red;font-size: 16px;display: contents;" class="btn btn-sm">
-               <span class="fas fa-trash-alt btnXoaSP_tomiot" data_idXoa="{{$row->rowId}}" ></span>
+               <span class="fas fa-trash-alt btnXoaSP_tomiot" data_idXoa="{{$row->rowId}}" style="float:right;padding-right: 8px;padding-top: 4px;" ></span>
           </button>
 
           </abbr> 
