@@ -22,7 +22,6 @@ class ProductController extends Controller
 
 		$product_relate = DB::table('products')->join('categories','categories.id','=','products.idCate')->join('users', 'users.id', '=', 'products.idUser')->where('categories.name','smartphone')->where('products.adminCheck',1)->inRandomOrder()->limit(3)->select('products.*','users.name as nameChuShop')->get();
 
-
 		$randPro = DB::table('products')->where('products.adminCheck',1)->inRandomOrder()->limit(6)->get();
 
 

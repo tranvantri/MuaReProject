@@ -20,7 +20,9 @@ class CartController extends Controller
                     ->where('products.status',1)
                     ->select("products.name as tensp", "products.price as giasp","products.images as hinhanhsp")
                     ->first();
-        Cart::add($request->id, $product->tensp, 1,$product->giasp, ['hinhanhsp' => $product->hinhanhsp]);
+        $images = json_decode($product->hinhanhsp);            
+        Cart::add($request->id, $product->tensp, 1,$product->giasp, 
+        ['hinhanhsp' => $images[0]?? "assets/images/chitietsanpham/logo_muare.png"]);
     }
     
     public function remove($item_id)

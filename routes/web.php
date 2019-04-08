@@ -223,8 +223,13 @@ Route::group(['namespace' => 'UserController' , 'middleware'=>'userCheckLogout']
 
     // nhóm xử lý giỏ hàng Ajax
     Route::get('/them-gio-hang',"CartController@getAddCart");
-    Route::post('cart/remove/{item_id}', 'CartController@remove')->name('cart.remove');
+    Route::get('cart/remove/{item_id}', 'CartController@remove')->name('cart.remove');
     Route::post('cart/update/{item_id}', 'CartController@update')->name('cart.update');
+ 
+    Route::get('loadModalGioHang/',function(){
+        return view('User.core.loadModalGioHang');
+    });
+
 
    //--------------------
 

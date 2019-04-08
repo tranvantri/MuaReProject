@@ -9,7 +9,7 @@
 
             <!-- Modal body -->
             <div class="modal-body">
-                <!--<div class="md-modal2 md-effect-1" id="modal-orderview">-->
+                
                 <!-- Nav tabs -->
                 <ul class="nav nav-tabs" role="tablist">
                     <li class="nav-item">
@@ -30,36 +30,9 @@
                         <div style="overflow-y: auto;max-height: 274px;max-height: 400px;height: auto;">
                             {{--  đây là phần hiển thi gio hàng  --}}
 
-                            <?php foreach(Cart::content() as $row) :?>
-                            <div class="product-in-order-L">
-                                <img class="lazy-image avatar" src="<?php echo ($row->options->has('hinhanhsp') ? $row->options->hinhanhsp : ''); ?>" alt="Lỗi hình ảnh" 
-                                width="72px" height="72px" style="display: inline;float: left;padding-right: 10px;">
-                                <a href="#" class="product-name-L"><?php echo $row->name; ?></a>
-                                <div>
-                                    <p class="price-order-L">
-                                        <abbr>Số lượng: 
-                                        &#160;<input type="number" min="1" value="<?php echo $row->qty; ?>" class="input-numbsproduct"></abbr> 
+                            <div class="sanpham_load">
 
-                                        <abbr style="padding-left: 5%;">Đơn giá: <?php echo number_format($row->price,0); ?> VNĐ</abbr> 
-
-                                        <abbr style="padding-left: 5%;">Thành tiền: <abbr style="color: red;"><?php echo number_format($row->price*$row->qty,0); ?> VNĐ</abbr></abbr>
-                                            <abbr>
-                                        {{--Xu ly xoa san pham khoi gio hang--}}
-                                        <form action="{{ route('cart.remove', $row->rowId) }}" method="post" class="form-inline">
-                                            {{ csrf_field() }}
-                                            <button type="submit" style="color: red;font-size: 16px;display: contents;" class="btn btn-sm">
-                                                <span class="fas fa-trash-alt"></span>
-                                            </button>
-                                        </form></abbr> 
-
-                                    
-                                    </p>
-
-                                    
-                                </div>
-                                <hr>
                             </div>
-                            <?php endforeach;?>
 
                              {{--  Ket thuc đây là phần hiển thi gio hàng   --}}
                         </div>
