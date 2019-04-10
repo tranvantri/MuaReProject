@@ -177,8 +177,9 @@ $(document).ready(function() {
      addRemoveLinks: true,
      headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
      dictRemoveFile: "Remove",
-     maxFilesize: 3,
-     maxFiles: 10,
+     parallelUploads: 10,    
+      maxFilesize: 2, 
+      maxFiles: 10,
      autoProcessQueue: false,
      method: 'POST',
        acceptedFiles:".png,.jpg,.gif,.bmp,.jpeg",
@@ -686,13 +687,17 @@ $(document).ready(function() {
                         var listImg = jQuery.parseJSON(product.productImage);
                         // console.log(listImg.length);
                         $("#myimage").attr('src',listImg[0]);
-                        for (var i=0; i<$('.list-img-wrap-v.owl-carousel .owl-item').length; i++) {
+                        var dodai = $('.list-img-wrap-v.owl-carousel .owl-item').length;
+                        for (var i=0; i < dodai; i++) {
+                          console.log(dodai);
                            $(".list-img-wrap-v.owl-carousel").trigger('remove.owl.carousel', [i])
                                                      .trigger('refresh.owl.carousel');
+                                                     console.log('a');
                         }
                         var content = '';
 
                         $.each( listImg, function( key, value ) {
+                          console.log('b');
                           content = '<div style="padding: 0 10px;">'+
                           '<img class="img-thumbnail img-small" src="'+value+'"'+
                             'onclick="changeMainImage(this);"/></div>'

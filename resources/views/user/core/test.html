@@ -1,0 +1,22 @@
+<img src="hero.jpg" alt=".."/>
+
+<!-- Let's lazy-load the rest of these images -->
+<img data-src="unicorn.jpg" loading="lazy" alt=".." class="lazyload"/>
+<img data-src="cats.jpg" loading="lazy" alt=".." class="lazyload"/>
+<img data-src="dogs.jpg" loading="lazy" alt=".." class="lazyload"/>
+
+<script>
+(async () => {
+    if ('loading' in HTMLImageElement.prototype) {
+        const images = document.querySelectorAll("img.lazyload");
+        images.forEach(img => {
+            img.src = img.dataset.src;
+        });
+    } else {
+        // Dynamically import the LazySizes library
+        const lazySizesLib = await import('/lazysizes.min.js');
+        // Initiate LazySizes (reads data-src & class=lazyload)
+        lazySizes.init(); // lazySizes works off a global.
+    }
+})();
+</script>
