@@ -218,10 +218,9 @@ Route::group(['namespace' => 'UserController' , 'middleware'=>'userCheckLogout']
     Route::post('/xoa-tin-dang',['as'=>'xoatindang','uses'=>"UserPageController@xoaTinDang"]);
     Route::get('/change-status-bill',"UserPageController@changeStatusBill");
 
-
     //--------------------
 
-    // nhóm xử lý giỏ hàng Ajax
+    // nhóm giỏ hàng Ajax
     Route::get('/them-gio-hang',"CartController@getAddCart");
     Route::get('cart/remove/{item_id}', 'CartController@remove')->name('cart.remove');
     Route::post('cart/update/{item_id}', 'CartController@update')->name('cart.update');
@@ -230,15 +229,19 @@ Route::group(['namespace' => 'UserController' , 'middleware'=>'userCheckLogout']
         return view('User.core.loadModalGioHang');
     });
 
+    Route::get('loadGioHangModal3NeConTrai/',function(){
+        return view('User.core.loadGioHangModal3NeConTrai');
+    });
 
-   //--------------------
+   //----------Ket thuc Cart ----------
 
+
+   /*Tạo Bill và Bill detail */
+    Route::post("/taoBill","BillController@createBill");
+
+   /**Ket thuc tao Bill User */
 
     Route::get('/tat-ca-tin-dang',['as'=>'tatcatindang','uses'=>'ServiceController@viewAllServices']); // 
-
-
-
-    
 
     Route::get('/mua-quang-cao', function () {
         return view('user.muaquangcao');
@@ -251,10 +254,6 @@ Route::group(['namespace' => 'UserController' , 'middleware'=>'userCheckLogout']
 
     Route::get('logout','LoginUserController@getUserLogout');
     Route::post('register',['as'=>'postUserRegister','uses'=>'LoginUserController@postUserRegister']);
-
-    
-
-
 
 });
 

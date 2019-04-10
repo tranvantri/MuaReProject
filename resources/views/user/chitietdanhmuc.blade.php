@@ -872,6 +872,26 @@ span.price-int {
 
             </div>
     </div>
+    <style >
+      .momo{
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #e2caca78;
+        display: none;
+      }
+      .momo i{
+        font-size: 4rem;
+      position: absolute;
+      top: 45%;
+      right: 45%;
+      }
+    </style>
+    <div class="momo">
+      <i class="fas fa-spinner fa-spin"></i>
+    </div>
         </section>
 
         @endsection
