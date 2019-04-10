@@ -252,11 +252,14 @@
                                         <div class="avatar-sp-L" dataIDProduct="{{$childPro->id}}">
 
 
-                                            <a title="{{$childPro->name}}" data-title="Load sản phẩm" data-size="l" data-id="{{$childPro->id}}" class="md-trigger img-rounded OverlayPopup" data-modal="modal-productview">
+                                            <a title="{{$childPro->name}}" data-title="Load sản phẩm" data-size="l" data-id="{{$childPro->id}}" 
+                                              class="md-trigger img-rounded OverlayPopup" data-modal="modal-productview">
                                             <?php 
                                               $images = json_decode($childPro->images);
                                             ?>
-                                            <img class="lazy-image" src="{{$images[0] ?? 'assets/images/chitietsanpham/logo_muare.png'}}" alt="{{$childPro->name}}" width="170px" height="170px" style="display: inline;width: 180px !important; height: 180px !important;">
+                                            <img class="lazy-image" src="{{$images[0] ?? 'assets/images/chitietsanpham/logo_muare.png'}}" 
+                                            alt="{{$childPro->name}}" width="170px" height="170px" 
+                                            style="display: inline;width: 180px !important; height: 180px !important;">
 
                                             </a>
 
