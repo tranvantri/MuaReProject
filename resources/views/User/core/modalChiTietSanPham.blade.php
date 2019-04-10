@@ -96,9 +96,7 @@
                 -->
           </div>
           <!-- Comment part -->
-       </div>
-       <!------------------------ COMMENT PART----------------------------->
-         
+       </div>         
          
          
         <div id="comment-part-L"></div>
