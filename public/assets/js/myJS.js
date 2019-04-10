@@ -142,7 +142,6 @@ $(document).ready(function() {
   if ($(".list-img-wrap-v.owl-carousel").length) {
 
     $(".list-img-wrap-v.owl-carousel").owlCarousel({
-      loop: true,
       autoplayHoverPause: true,
       autoplay: true,
       autoplayTimeout: 3000,
@@ -153,17 +152,14 @@ $(document).ready(function() {
         0: {
           items: 2,
           // nav: true,
-          loop: true
         },
         600: {
           items: 3,
           // nav: true,
-          loop: true
         },
         1000: {
           items: 4,
           // nav: true,
-          loop: true
         }
       }
     });
@@ -688,18 +684,24 @@ $(document).ready(function() {
                         $(".productinfo-content").text(product.description);
                         $(".productinfo-price").text(product.productPrice+' VNĐ');
                         var listImg = jQuery.parseJSON(product.productImage);
-                        console.log("listImg");
+                        // console.log(listImg.length);
                         $("#myimage").attr('src',listImg[0]);
-                        var content = '';
-                        for (var i = listImg.length - 1; i >= 0; i--) {
-                          content += '<div style="padding: 0 10px;">'+
-                      '<img class="img-thumbnail img-small" src="'+listImg[i]+'"'+
-                        'onclick="changeMainImage(this);"/></div>'
-                          
+                        for (var i=0; i<$('.list-img-wrap-v.owl-carousel .owl-item').length; i++) {
+                           $(".list-img-wrap-v.owl-carousel").trigger('remove.owl.carousel', [i])
+                                                     .trigger('refresh.owl.carousel');
                         }
+                        var content = '';
+
+                        $.each( listImg, function( key, value ) {
+                          content = '<div style="padding: 0 10px;">'+
+                          '<img class="img-thumbnail img-small" src="'+value+'"'+
+                            'onclick="changeMainImage(this);"/></div>'
+                            jQuery(".list-img-wrap-v.owl-carousel").trigger('add.owl.carousel', content).trigger('refresh.owl.carousel')
+                        });
+                        
 
                         // $('.list-img-wrap-v.owl-carousel').html(content);
-                        jQuery(".list-img-wrap-v.owl-carousel").trigger('add.owl.carousel', content).trigger('refresh.owl.carousel')
+                        
 
                         // $('.list-img-wrap-v.owl-carousel').trigger('refresh.owl.carousel');
                         //$("#myresult").attr('',product.productImage);
