@@ -18,24 +18,25 @@ class CartController extends Controller
         $product = DB::table('products')
                     ->where('products.id',$request->id)
                     ->where('products.status',1)
-                    ->select("products.name as tensp", "products.price as giasp","products.images as hinhanhsp")
+                    ->select("products.name as tensp", "products.price as giasp","products.images as hinhanhsp","products.idUser as idShop")
                     ->first();
         $images = json_decode($product->hinhanhsp);            
         Cart::add($request->id, $product->tensp, 1,$product->giasp, 
-        ['hinhanhsp' => $images[0]?? "assets/images/chitietsanpham/logo_muare.png"]);
+        ['hinhanhsp' => $images[0]?? "assets/images/chitietsanpham/logo_muare.png","idShop"=>$product->idShop]);
+        return Cart::total();
     }
     
     public function remove($item_id)
     {
         \Cart::remove($item_id);
-        return back();
+        return Cart::total();
     }
 
 
     public function update($item_id, Request $request)
     {
         Cart::update($item_id, $request->soLuongSp);
-        return back();
+        return Cart::total();
     }
 
 }

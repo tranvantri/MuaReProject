@@ -29,15 +29,12 @@
                         <!-- List product in your order modal-->
                         <div style="overflow-y: auto;max-height: 274px;max-height: 400px;height: auto;">
                             {{--  đây là phần hiển thi gio hàng  --}}
-
                             <div class="sanpham_load">
-
                             </div>
-
                              {{--  Ket thuc đây là phần hiển thi gio hàng   --}}
                         </div>
 
-                        <h5 class="avgprice-order-L">Tổng tiền: 4,000,000 VNĐ</h5>
+                        <h5 class="avgprice-order-L inTongTien_tomiot"></h5>
                         <div style="margin: 38px 10px 10px 10px;">
                             <button class="btn order-btn1">TIẾP TỤC MUA HÀNG</button>
                             <button id="step1-to-step2" class="btn order-btn2">TIẾP TỤC</button>
@@ -47,31 +44,42 @@
                     <div id="step2" class="container tab-pane">
                         <br>
                         <p>Địa chỉ nhận hàng của bạn:</p>
-                        <!--<div>
-                            <p>Họ và tên *:</p>
-                            <input type="text" class="input-step2" placeholder="Nhập vào họ và tên">
-                        </div>-->
                         <table class="table-borderless" style="width: 100%;">
                             <tbody>
                             <tr>
                                 <td colspan="1" width="18%">Họ và tên*:</td>
-                                <td colspan="2"><input type="text" class="input-step2" placeholder="Nhập vào họ và tên" style="width: 40%;min-width: 150px;"></td>
+                                <td colspan="2">
+                                    <input type="text" required id="HoTenKH"
+                                     class="input-step2" placeholder="Nhập vào họ và tên" 
+                                     style="width: 40%;min-width: 150px;" />
+                                </td>
                             </tr>
                             <tr>
                                 <td colspan="1" width="18%">Số điện thoại *:</td>
-                                <td><input type="text" class="input-step2" placeholder="Nhập vào số điện thoại" style="width: 40%;min-width: 150px;"></td>
+                                <td><input type="tel" class="input-step2" required id="SDTKH"
+                                    placeholder="Nhập vào số điện thoại" style="width: 40%;min-width: 150px;"></td>
                             </tr>
                             <tr>
                                 <td colspan="1" width="18%">Email:</td>
-                                <td><input type="text" class="input-step2" placeholder="Nhập vào email" style="width: 40%;min-width: 150px;"></td>
+                                <td>
+                                    <input type="email" class="input-step2"  id="EmailKH"
+                                    placeholder="Nhập vào email" style="width: 40%;min-width: 150px;">
+                                </td>
                             </tr>
                             <tr>
                                 <td colspan="1" width="18%">Địa chỉ *:</td>
-                                <td><input type="text" class="input-step2" placeholder="Nhập vào địa chỉ" style="width: 60%;min-width: 170px;"></td>
+                                <td>
+                                    <input type="text" maxlength="100" required class="input-step2" 
+                                    id="DiaChiKH"
+                                    placeholder="Nhập vào địa chỉ" style="width: 60%;min-width: 170px;">
+                                </td>
                             </tr>
                             <tr>
                                 <td colspan="1" width="18%">Thông tin thêm:</td>
-                                <td><textarea type="text" class="input-step2" placeholder="Nhập vào thông tin thêm (nếu có)" style="width: 60%;min-width: 170px;"></textarea></td>
+                                <td><textarea type="text" class="input-step2"
+                                    id="ThongTinThemKH"
+                                     placeholder="Nhập vào thông tin thêm (nếu có)" 
+                                     style="width: 60%;min-width: 170px;"></textarea></td>
                             </tr>
                             </tbody>
                         </table>
@@ -95,23 +103,23 @@
                             <tbody>
                             <tr>
                                 <td width="18%">Họ và tên:</td>
-                                <td><b>Thúy Diễm - Hotgirl Quận Cam</b></td>
+                                <td><b id="HoTenKH2"></b></td>
                             </tr>
                             <tr>
                                 <td width="18%">Số điện thoại:</td>
-                                <td><b>696966969696969</b></td>
+                                <td><b id="SDTKH2"></b></td>
                             </tr>
                             <tr>
                                 <td width="18%">Email:</td>
-                                <td><b>thuydiemquancam@gmail.com</b></td>
+                                <td><b id="EmailKH2"></b></td>
                             </tr>
                             <tr>
                                 <td width="18%">Địa chỉ:</td>
-                                <td><b>Quận Cam, Cam, Cam, Cam, America</b></td>
+                                <td><b id="DiaChiKH2"></b></td>
                             </tr>
                             <tr>
                                 <td width="18%">Thông tin thêm:</td>
-                                <td><b>Xin chào tất cả mọi người, chào bé Lê Văn Đạt...</b></td>
+                                <td><b id="ThongTinThemKH2"></b></td>
                             </tr>
                             </tbody>
                         </table>
@@ -128,42 +136,30 @@
                                     <th>Thành tiền</th>
                                 </tr>
                                 </thead>
-                                <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td><a href="#">Búp Bê Thúy Diễm - Quận Cam</a></td>
-                                    <td>100</td>
-                                    <td>800,000 vnđ	</td>
-                                    <td>3,200,000 vnđ</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td><a href="#">Búp Bê Thúy Diễm - Quận Cam</a></td>
-                                    <td>100</td>
-                                    <td>800,000 vnđ	</td>
-                                    <td>3,200,000 vnđ</td>
-                                </tr>
+                                <tbody class="appendModal3NeConTrai">
+                                
 
                                 </tbody>
                             </table>
                         </div>
 
 
-                        <h5 class="avgprice-order-L" style="margin-top: 0px;">Tổng tiền: 4,000,000 VNĐ</h5>
+                        <h5 class="avgprice-order-L inTongTien_tomiot" style="margin-top: 0px;"></h5>
                         <div style="margin: 44px 10px 10px 10px;">
                             <button id="step3-to-step2" class="btn order-btn1">QUAY LẠI</button>
-                            <button id="btn-confirm-order" class="btn order-btn2" data-toggle="modal" data-target="#modal-confirmorder" data-dismiss="modal">ĐỒNG Ý VÀ ĐẶT HÀNG</button>
+                            
+                            <button id="btn-confirm-order" class="btn order-btn2" 
+                            data-toggle="modal" 
+                            data-target="#modal-confirmorder" data-dismiss="modal">ĐỒNG Ý VÀ ĐẶT HÀNG</button>
                         </div>
 
 
                     </div>
+
+
                 </div>
-                <!--</div>-->
             </div>
-            <!-- Modal footer -->
-            <!--<div class="modal-footer">
-              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-            </div>-->
+
         </div>
     </div>
 </div>

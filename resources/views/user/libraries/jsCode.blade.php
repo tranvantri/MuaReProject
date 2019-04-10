@@ -25,9 +25,10 @@
 <script>
 	$(document).ready(function () {
 		$('#modal-orderview').modal({show:false});
+		
+		//them san pham vao gio hang
 	    $(".btnAddToCart_tomiot").click(function() {
 		   idSP = $('#LayIdSanPhamGioHang').val();
-		   console.log("id sản phẩm: " +idSP);
 		  
 		   $.ajax({
 			url: "them-gio-hang",
@@ -36,13 +37,14 @@
 				id: idSP,
 			},
 		   })
-			.done(function() {
-			  // console.log("success");
-			  console.log('Them thành công');
+			.done(function(data) {
 			  $('.sanpham_load').load('loadModalGioHang',function(){
 				$('#modal-orderview').modal({show:true});
-				console.log('sdfsdffsdf');
+				
+				$(".inTongTien_tomiot").text("Tổng tiền: " +data + " VNĐ");
 			  });
+
+			  
 			})
 			.fail(function() {
 				console.log('Thêm thất bại');
@@ -53,21 +55,23 @@
 
 		   
 		 });
+
+		 // xóa san pham khoi gio hang
 		 $(document).on("click",".btnXoaSP_tomiot",function(event){
 			var idXoa = $(this).attr("data_idXoa");
-			console.log(idXoa);
 			$.ajax({
 				url: "cart/remove/"+idXoa,
 				type: "get",
 				
 			   })
-				.done(function() {
-				  // console.log("success");
-				  console.log('Xóa thành công');
+				.done(function(data) {
 				  $('.sanpham_load').load('loadModalGioHang',function(){
 					$('#modal-orderview').modal({show:true});
-					console.log('sdfsdffsdf');
+					$(".inTongTien_tomiot").text("Tổng tiền: " +data + " VNĐ");
 				  });
+
+				 
+
 				})
 				.fail(function() {
 					console.log('Xóa thất bại');
@@ -79,7 +83,7 @@
 		 });
 
 
-
+		 // thay doi so luong san pham
 		 $(document).on("blur",".changeNumber_tomiot",function(event){
 			var idSua = $(this).attr("data_idSua");
 			$.ajax({
@@ -89,12 +93,10 @@
 					soLuongSp:$(this).val(),
 				}
 			   })
-				.done(function() {
-				  // console.log("success");
-				  console.log('Sửa thành công');
+				.done(function(data) {
 				  $('.sanpham_load').load('loadModalGioHang',function(){
 					$('#modal-orderview').modal({show:true});
-					console.log('sdfsdffsdf');
+					$(".inTongTien_tomiot").text("Tổng tiền: " +data + " VNĐ");
 				  });
 				})
 				.fail(function() {
@@ -104,6 +106,54 @@
 				  // console.log("complete");
 				});
 		});
+
+		var bill = [];
+		// tạo mảng lưu thong tin khác hàng
+		$("#step2-to-step3").click(function(){
+			
+			bill["name"] = $("#HoTenKH").val();
+			bill["SDTKH"] = $("#SDTKH").val();
+			bill["EmailKH"] = $("#EmailKH").val();
+			bill["DiaChiKH"] = $("#DiaChiKH").val();
+			bill["ThongTinThemKH"] = $("#ThongTinThemKH").val();
+			
+			$("#HoTenKH2").text(bill["name"]);
+			$("#SDTKH2").text(bill["SDTKH"]);
+			$("#EmailKH2").text(bill["EmailKH"]);
+			$("#DiaChiKH2").text(bill["DiaChiKH"]);
+			$("#ThongTinThemKH2").text(bill["ThongTinThemKH"]);
+
+		});
+
+		$("#step2-to-step3").click(function(){
+			$('.appendModal3NeConTrai').load('loadGioHangModal3NeConTrai');
+		
+		});
+
+		$("#btn-confirm-order").click(function(){
+			$.ajax({
+				url: "taoBill",
+				type: "post",
+				data:{					
+					name:bill["name"],
+					SDTKH:bill["SDTKH"],
+					EmailKH: bill["EmailKH"],
+					DiaChiKH : bill["DiaChiKH"],
+					ThongTinThemKH:bill["ThongTinThemKH"],
+
+				}
+			   })
+				.done(function(data) {
+					bill=[];
+				})
+				.fail(function() {
+
+				})
+				.always(function() {
+				});
+
+		});
+
 	});
 
 

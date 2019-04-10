@@ -1,6 +1,6 @@
 <?php foreach(Cart::content() as $row) :?>
 <div class="product-in-order-L">
-     <img class="lazy-image avatar" src="<?php echo ($row->options->has('hinhanhsp') ? $row->options->hinhanhsp : ''); ?>" alt="Lỗi hình ảnh" 
+     <img class="lazy-image avatar" src="<?php echo ($row->options->has('hinhanhsp') ? $row->options["hinhanhsp"] : ''); ?>" alt="Lỗi hình ảnh" 
      width="72px" height="72px" style="display: inline;float: left;padding-right: 10px;">
      <a href="#" class="product-name-L"><?php echo $row->name; ?></a>
      <div>
