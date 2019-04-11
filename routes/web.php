@@ -191,7 +191,9 @@ Route::group(['namespace' => 'UserController' , 'middleware'=>'userCheckLogout']
     
     /****---------****-- -----***---------***------- */
 
-    Route::get('san-pham-doc-dao',['as'=>'spdocdao','uses'=>'PageController@viewSpecialProducts']);
+    Route::get('san-pham-doc-dao','PageController@viewSpecialProducts');
+
+    Route::get('san-pham-doc-dao/{namecate}/{id}',['as'=>'spdocdao','uses'=>'PageController@viewSpecialProductsCustom']);
 
 
     /*  dang tin san pham va dich vu*/

@@ -506,6 +506,11 @@ button {
   overflow: hidden;
 }
 
+.promoteProduct .wrap-img-tr {
+    position: relative;
+    overflow: hidden;
+}
+
 .promoteProduct .wrap-img .qv-button-container {
   position: absolute;
   top: 5rem;
@@ -628,6 +633,10 @@ button.button span {
 }
 
 .owl-item .motkhoi {
+  display: table-cell;
+}
+
+.motkhoi-tri {
   display: table-cell;
 }
 

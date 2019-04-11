@@ -93,7 +93,7 @@
                         </div>
                         @foreach($products as $childPro)
                         
-                            <div class="row product-list-L">                                
+                            <div class="row product-list-L mt-2">                                
                                 <div class="col-lg-2 col-md-2 col-sm-2 ">
                                      <!-- SẢN PHẨM THỨ ? -->
                                         <div class="avatar-sp-L">
@@ -101,7 +101,7 @@
                                               <?php 
                                                 $images = json_decode($childPro->images);
                                               ?>
-                                            <img class="lazy-image" src="{{$images[0] ?? 'assets/images/chitietsanpham/logo_muare.png'}}" alt="name" width="180px" height="180px">
+                                            <img class="lazy-image" src="{{$images[0] ?? 'assets/images/chitietsanpham/logo_muare.png'}}" alt="{{$childPro->name}}" style="height: 140px;width: 140px;">
                                             </a>
                                             <!--<script src="/public/assets/js/classie.js"></script>
                                             <script src="/public/assets/js/modalEffects.js"></script>-->

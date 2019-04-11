@@ -1,4 +1,4 @@
-<select name="sorting_select" id="sorting_select" class="sorting_select"">
+<select name="sorting_select" id="sorting_select" class="sorting_select">
 	<option value=
 	"{{route('danhmuc', [
         'nameCate' => str_slug($categoryCurrent->name), 

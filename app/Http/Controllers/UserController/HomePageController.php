@@ -29,7 +29,16 @@ class HomePageController extends Controller
             ->select('tindang.*','users.id as idChuShop','users.name as tenChuShop','users.address as diaChiChuShop')
             ->get();
 
-    	$products =  DB::table('products')->where('adminCheck', 1)->inRandomOrder()->limit(6)->get();
+    	$products =  DB::table('products')
+            ->join('users','users.id','=','products.idUser')
+            ->join('place_product','products.id','=','place_product.idProduct')
+            ->where('users.status',1)
+            ->where('place_product.idPlace', $idPlace)
+            ->where('products.adminCheck', 1)
+            ->where('products.special', 1)
+            ->where('products.status', 1)
+            ->select('products.*','users.id as idChuShop','users.name as tenChuShop','users.address as diaChiChuShop')
+            ->inRandomOrder()->limit(6)->get();
 
     	$newestProducts = DB::table('products')
             ->join('users','users.id','=','products.idUser')
@@ -38,6 +47,7 @@ class HomePageController extends Controller
             ->where('users.status',1)
             ->where('place_product.idPlace', $idPlace)          
             ->orderBy('products.id','desc')
+            ->select('products.*','users.id as idChuShop','users.name as tenChuShop','users.address as diaChiChuShop')
             ->take(9)->get();
 
     	$categories = DB::table('categories')->where('idParent', 0)->where('enable',1)->select('id','name','image')->get();

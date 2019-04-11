@@ -1,0 +1,1 @@
+{{ $products->links('vendor.pagination.simple-bootstrap-4') }}
