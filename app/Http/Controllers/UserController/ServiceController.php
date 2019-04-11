@@ -24,6 +24,7 @@ class ServiceController extends Controller
 	// đầu vào: id của tin đăng
 	//đầu ra: chi tiet cua tin dang theo id
 	public function getTinDang($id){
+
 		$services = DB::table('tindang')->join('users', 'users.id', '=', 'tindang.idUser')
 		->where('tindang.id',$id)
 		->where('tindang.status',1)
@@ -37,8 +38,6 @@ class ServiceController extends Controller
 		->where('tindang.status',1)
 		->select('categories.name as nameCate','categories.id as idCate')->get();
 
-
-		/*Thế đéo nào lại truyền smartphone vào categories.name??????*/
 		$service_relate = DB::table('tindang')
 		->join('categories','categories.id','=','tindang.idCate')
 		->join('users', 'users.id', '=', 'tindang.idUser')
