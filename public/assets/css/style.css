@@ -1360,7 +1360,7 @@ table .td-info .user-post .username .username-h4 a {
 .username-sp-L span {
   font-family: Roboto;
   font-weight: bold;
-  color: #000;
+  /* color: #000; */
   position: relative;
 }
 .username-sp-L .box-arrow-L {

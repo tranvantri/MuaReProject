@@ -6,7 +6,8 @@
                 <ul class="pagination toplinks" style="width: auto;">
                     <li class="page-item">
                         <div class="dropdown">
-                          <button type="button" data-toggle="dropdown" style="color: white;background: none;">
+                          <button type="button" data-toggle="dropdown" 
+                          style="color: white;background: none;">
                             <i class="fas fa-map-marker-alt iconstyle"></i>
                             @if(Cookie::get('place') != null)
                                 @foreach($places as $child)                                
@@ -75,7 +76,9 @@
                 <div class="row">
             <!-- menu 2 -->
                     <div class="col-lg-2 ">
-                        <a class="logo" title="Tìm là có, ngó là mua, vừa là bán" href="https://muare.vn"><img src="https://static8.muarecdn.com/original/muare/images/2018/05/25/4657344_new-logo.png" alt="Tìm là có, ngó là mua, vừa là bán"></a>
+                        <a class="logo" title="Tìm là có, ngó là mua, vừa là bán" href="home">
+                            <img src="https://static8.muarecdn.com/original/muare/images/2018/05/25/4657344_new-logo.png" 
+                            alt=""></a>
                     </div>
                     <div class="col-lg-7 " style="margin-top: 1%;">
                             <form action="search" method="get">

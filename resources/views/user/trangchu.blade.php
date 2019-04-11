@@ -22,9 +22,9 @@
 
 
                     
-        @include('user.core.modalChiTietSanPham')
+        {{-- @include('user.core.modalChiTietSanPham') --}}
 
-        @include('user.core.modalDatHang')
+        {{-- @include('user.core.modalDatHang') --}}
 
 
         <div class="md-overlay" id="md-overlay-id"></div>
@@ -33,16 +33,13 @@
         @include('user.chitietdanhmuc.modalConfirmMuaHang')
       <!-- END Confirm order modal -->
 
-                    
-                    
-                    
-                    
+
 					<div class="row"><!-- San pham doc dao -->
 						<div class="san-pham-doc-dao">
 							<div class="large-title promote">
 								<span style="">Sản phẩm độc đáo</span>
 							</div>
-							<span><a class="view-promote-page" href="https://muare.vn/san-pham-doc-dao">Xem Thêm</a></span>
+							<span><a class="view-promote-page" href="san-pham-doc-dao">Xem Thêm</a></span>
 							<div class="promoteProduct row owl-carousel">
 								@include('user.trangchu.san-pham-doc-dao')
 							</div>

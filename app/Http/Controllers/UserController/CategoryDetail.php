@@ -664,8 +664,12 @@ class CategoryDetail extends Controller
         $idPro = $request->idProduct;          
         $comments = DB::table('products')
                         ->where('products.id',$idPro)
-                        ->select('products.name as productName', 'products.description as description', 'products.images as productImage', 'products.price as productPrice', 'products.idUser as productUserId')
-                        ->get();
+				    ->select('products.name as productName', 
+				    'products.description as description', 
+				    'products.images as productImage', 
+				    'products.price as productPrice', 
+				    'products.idUser as productUserId'
+				    )->get();
                     //$this->myJson($comments);
         if($comments != null || $comments != ''){
              header("Content-type: application/json");

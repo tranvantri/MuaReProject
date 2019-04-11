@@ -191,6 +191,9 @@ Route::group(['namespace' => 'UserController' , 'middleware'=>'userCheckLogout']
     
     /****---------****-- -----***---------***------- */
 
+    Route::get('san-pham-doc-dao',['as'=>'spdocdao','uses'=>'PageController@viewSpecialProducts']);
+
+
     /*  dang tin san pham va dich vu*/
     Route::get('/dang-tin-dich-vu','PostController@postService');
     Route::post('/dang-tin-dich-vu','PostController@addNewService');
@@ -211,7 +214,8 @@ Route::group(['namespace' => 'UserController' , 'middleware'=>'userCheckLogout']
 
     Route::get('/gian-hang-cua-nguoi-dung/{id}', ['as'=>'xemgianhang','uses'=>"UserPageController@getViewShop"]); // xong
 
-    Route::get('/quan-ly-don-hang',['as'=>'quanlydonhang','uses'=>'UserPageController@getQuanLyDonHang']); // chưa xong, cần phần giỏ hàng
+    Route::get('/quan-ly-don-hang',['as'=>'quanlydonhang','uses'=>'UserPageController@getQuanLyDonHang']);
+     // chưa xong, cần phần giỏ hàng
     Route::get('/quan-ly-kho-hang',['as'=>'userquanlykhohang','uses'=>'UserPageController@getUserQuanLyKhoHang']);
 
     Route::get('/quan-ly-tin-dang',['as'=>'userquanlytindang','uses'=>'UserPageController@viewUserQuanLyTinDang']);
@@ -234,7 +238,6 @@ Route::group(['namespace' => 'UserController' , 'middleware'=>'userCheckLogout']
     });
 
    //----------Ket thuc Cart ----------
-
 
    /*Tạo Bill và Bill detail */
     Route::post("/taoBill","BillController@createBill");

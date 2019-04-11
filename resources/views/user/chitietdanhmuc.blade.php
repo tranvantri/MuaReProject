@@ -203,9 +203,6 @@
         }
 
       ?>
-
-        @include('user.core.modalChiTietSanPham')
-
         @include('user.core.modalDatHang')
 
 
@@ -251,9 +248,11 @@
 
                                         <div class="avatar-sp-L" dataIDProduct="{{$childPro->id}}">
 
-
-                                            <a title="{{$childPro->name}}" data-title="Load sản phẩm" data-size="l" data-id="{{$childPro->id}}" 
-                                              class="md-trigger img-rounded OverlayPopup" data-modal="modal-productview">
+                                            {{-- <a title="{{$childPro->name}}" data-title="Load sản phẩm" data-size="l" data-id="{{$childPro->id}}" 
+                                                class="md-trigger img-rounded OverlayPopup" data-modal="modal-productview"> --}}
+                                            <a href="san-pham/{{$childPro->id}}" title="{{$childPro->name}}" data-title="Load sản phẩm" data-size="l" 
+                                              data-id="{{$childPro->id}}" 
+                                              class="md-trigger img-rounded OverlayPopup" >
                                             <?php 
                                               $images = json_decode($childPro->images);
                                             ?>
@@ -268,7 +267,7 @@
                                         <div class="title-sp-L">
                                             <h2 class="item-title-h2">
 
-                                                <a href="#" title="{{$childPro->name}}" data-id="popupItem" class="img-rounded OverlayPopup">
+                                                <a href="san-pham/{{$childPro->id}}" title="{{$childPro->name}}" data-id="popupItem" class="img-rounded OverlayPopup">
 
                                                     {{$childPro->name}}
                                                 </a>
@@ -280,7 +279,7 @@
                                             </h3>
                                         </div>
                                         <div class="user-post-L">
-                                            <div class="username-sp-L">bán bởi <span class="name">{{$childPro->tenchushop}}</span>
+                                            <div class="username-sp-L">bán bởi <a href="gian-hang-cua-nguoi-dung/{{$childPro->idUser}}"><span class="name">{{$childPro->tenchushop}}</span></a>
                                             </div>
                                             <div class="post-date-L">{{date("d/m/Y", strtotime($childPro->date_added))}}, lúc {{date("H:m", strtotime($childPro->date_added))}}</div>
                                         </div>
@@ -291,13 +290,7 @@
                                     <hr>
                                     
                                 </div>
-                                @endforeach
-
-
-
-
-
-                                
+                                @endforeach                                
                             </div>
                         </div>
                         @else
@@ -396,39 +389,24 @@
      ">
      <div class=""> Tình trạng: Cũ</div>
    </div>
-   <div class="user-post" style="
-   display: none;
-   ">
-   <div class="my-avatar">
-    <a title="master1405" href="https://muare.vn/shop/master1405/609685" class="img-rounded">
-      <img class="lazy-image" data-original="https://static8.muarecdn.com/zoom,80/74_74/muare/avatars/l/609/609685_1487749845.jpg?1487749845" src="https://static8.muarecdn.com/zoom,80/74_74/muare/avatars/l/609/609685_1487749845.jpg?1487749845" alt="master1405" width="40px" height="40px" style="display: inline;">
-    </a>
-  </div>
-  <div class="username">
-    <h4 class="username-h4">
-     <a title="master1405" href="https://muare.vn/shop/master1405/609685">master1405</a>
-   </h4>
- </div>
- <div class="post-date">10/02, lúc 14:45</div>
+   
 </div>
-</div>
-<div class="last-comment" style="
+{{-- <div class="last-comment" style="
 display: none;
 ">
 <div class="my-avatar">
- <a title="" href="https://muare.vn/shop" class="img-rounded">
-   <img src="https://static18.muarecdn.com/styles/muare/xenforo/avatars/avatar_male_s.png?v=1" alt="" width="25px" height="25px">
- </a>
+
 </div>
 <div class="cmt">Shop nghỉ tết đến bao h...</div>
 <div class="post-date">19/02, lúc 17:51</div>
 <div class="count_cmt">
- <div class="glyphicon cmt"><a title="APPLE JAPAN ➞ CHUYÊN IP LOCK NHẬT ➞ UY TÍN ĐẢM BẢO Như bài viết ➞ mua bán tại nhà riêng ➞ bh 1 đổi 1" href="https://muare.vn/posts/apple-japan-chuyen-ip-lock-nhat-uy-tin-dam-bao-nhu-bai-viet-mua-ban-tai-nha-rieng-bh-1-doi-1.3852363" style="color:#313131;text-decoration: none;cursor: pointer">Bình luận</a></div>
+ <div class="glyphicon cmt">
+   <a title="APPLE JAPAN ➞ CHUYÊN IP LOCK NHẬT ➞ UY TÍN ĐẢM BẢO Như bài viết ➞ mua bán tại nhà riêng ➞ bh 1 đổi 1" href="https://muare.vn/posts/apple-japan-chuyen-ip-lock-nhat-uy-tin-dam-bao-nhu-bai-viet-mua-ban-tai-nha-rieng-bh-1-doi-1.3852363" style="color:#313131;text-decoration: none;cursor: pointer">Bình luận</a></div>
 </div>
 <div class="follow" data-id="3852363">
  <div data-toggle="tooltip" data-placement="bottom" title="" class="icon-follow " data-original-title="Lưu tin"></div>
 </div>
-</div>
+</div> --}}
 </td>
 </tr>
 </tbody>
@@ -443,7 +421,7 @@ display: none;
       <tr>
         <td class="td-avatar">
             <div class="avatar">
-              <a title="{{$childPro->name}}" href="{{$childPro->id}}" class="img-rounded">
+              <a title="{{$childPro->name}}" href="san-pham/{{$childPro->id}}" class="img-rounded">
                 <?php 
                   $images = json_decode($childPro->images);
                 ?>
@@ -462,7 +440,7 @@ display: none;
           <div class="title">
            <h3 class="box-info-h3">
             <a title="{{$childPro->name}}"
-             href="https://muare.vn/posts/philips-pin-khung-bh-chinh-hang-gia-moi-thang-12-2017-full-model.3941242">{{$childPro->name}}
+             href="san-pham/{{$childPro->id}}">{{$childPro->name}}
               </a>
           </h3>
         </div>
@@ -482,23 +460,25 @@ display: none;
       </div>
       <div class="user-post">
        <div class="my-avatar">
-        <a title="{{$childPro->tenchushop}}" href="https://muare.vn/shop/diemsangviet/30270" class="img-rounded">
-          <img class="lazy-image" src="https://static8.muarecdn.com/zoom,80/74_74/muare/avatars/l/30/30270_1446804977.jpg?1446804977" alt="diemsangviet" width="40px" height="40px">
+        <a title="{{$childPro->tenchushop}}" href="gian-hang-cua-nguoi-dung/{{$childPro->idUser}}" class="img-rounded">
+          <img class="lazy-image" 
+          src="gian-hang-cua-nguoi-dung/{{$childPro->idUser}}" alt="{{$childPro->tenchushop}}"
+           width="40px" height="40px">
         </a>
       </div>
       <div class="username">
         <h4 class="username-h4">
-         <a title="{{$childPro->tenchushop}}" href="https://muare.vn/shop/diemsangviet/30270">{{$childPro->tenchushop}}</a>
+         <a title="{{$childPro->tenchushop}}" href="gian-hang-cua-nguoi-dung/{{$childPro->idUser}}">{{$childPro->tenchushop}}</a>
        </h4>
       </div>
       <div class="post-date-ad">{{date("d/m/Y", strtotime($childPro->date_added))}}, lúc {{date("H:m", strtotime($childPro->date_added))}}</div>
       </div>
       </div>
       <hr/>
-      <div class="last-comment">
+      {{-- <div class="last-comment">
         <div class="my-avatar" style="padding-top: 4px;">
-         <a href="https://muare.vn/shop" class="img-rounded" title="">
-           <img src="https://muare.vn/images/avatars/avatar_male_s.png?v=2" alt="" width="25px" height="25px">
+         <a href="gian-hang-cua-nguoi-dung/{{$childPro->idUser}}" class="img-rounded" title="">
+           <img src="assets\images\chitietsanpham\avatar_male.png" alt="" width="25px" height="25px">
          </a>
        </div>
        <div class="cmt" title="Add co ban pin Philips E170 ko vay? Co gi lien he so 0909080986 cho minh nhé. Thanks ban">Add co ban pin Philips E170 ko...</div>
@@ -509,7 +489,7 @@ display: none;
        <div class="follow" data-id="3941242">
          <div data-toggle="tooltip" data-placement="bottom" title="" class="icon-follow " data-original-title="Lưu tin"></div>
        </div>
-      </div>
+      </div> --}}
       </td>
       </tr>
     </tbody>
@@ -628,7 +608,9 @@ display: none;
                 <?php 
                   $images = json_decode($childPro->images);
                 ?>
-                <img class="lazy-image" src="{{$images[0] ?? 'assets/images/chitietsanpham/logo_muare.png'}}" width="150px" height="150px">
+                <img class="lazy-image" 
+                src="{{$images[0] ?? 'assets/images/chitietsanpham/logo_muare.png'}}" 
+                width="150px" height="150px">
               </a>
             </div>
             <div class="views-count">

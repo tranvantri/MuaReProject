@@ -30,28 +30,9 @@
                 <!-- Hình ảnh nhỏ của sp -->
               <div class="scroll-small-img-v">
                 <div class="list-img-wrap-v owl-carousel" id="list-img-wrap-v">
-                  
-                    {{-- <div style="padding: 0 10px;">
-                      <img class="img-thumbnail img-small" src="https://static8.muarecdn.com/zoom/430_430/muare/images/2019/01/30/5004798_giay-bong-da-205n-black-gold-1-360x360.jpg"
-                        onclick="changeMainImage(this);"/>
-                    </div>
-                    <div style="padding: 0 10px;">
-                      <img class="img-thumbnail img-small" src="https://static8.muarecdn.com/zoom,90/75_75/muare/images/2019/01/16/4994071_a76.jpg"
-                        onclick="changeMainImage(this);"/>
-                    </div>
-                    <div style="padding: 0 10px;">
-                      <img class="img-thumbnail img-small" src="https://static8.muarecdn.com/zoom/430_430/muare/images/2019/01/30/5004798_giay-bong-da-205n-black-gold-1-360x360.jpg"
-                        onclick="changeMainImage(this);"/>
-                    </div> --}}
-
 
                   </div>
-                {{-- <div class="scroll-v scroll-left-v" onclick="scrollright();" >
-                  <span class="icon-scroll-left-v" ></span>
-                </div>
-                <div class="scroll-v scroll-right-v"  onclick="scrollleft();">
-                  <span class="icon-scroll-right-v"></span>
-                </div> --}}
+               
               </div>
               <!-- Kết thúc hình ảnh của sản phẩm -->
           </div>
@@ -64,15 +45,9 @@
              <!-- product info -->
              <div id="modal-productinfo-L">
                 <p class="productinfo-title">Xe ba bánh đẩy trẻ em 218</p>
-                <p class="productinfo-seller">Người bán <i class="fas fa-check"></i> <a href="#">thegioixecuabe1</a> (thành viên từ 03/01/2019)</p>
-                <p class="productinfo-content">Được sản xuất trên dây chuyền công nghệ cao mua 1 được 2 xe đẩy trẻ em 218 vừa có thể làm xe đẩy cho bé khi còn nhỏ , vừa làm chiếc xe đạp rất tiện lợi phù hợp cho các bé từ 1-5 tuổi giúp giảm chi phí cho bố mẹ khi mua đồ cho bé . 
-                   Xe đẩy cho bé gấp gọn có mái che SJBB218 thiết kế phối hợp giữa xe đẩy và xe ba bánh có bàn đạp , rất đa năng phù hợp với nhiều giai đoạn phát triển của bé . Tay đẩy phía sau xe thuận lợi cho việc bố mẹ điều khiển hướng xe 
-                   Phần khung của xe được làm từ chất liệu kim loại chắc chắn ,vỏ bọc sử dụng chất liệu nhựa cao cấp không mùi , không chứa các chất độc hại gây ảnh hưởng đến sức khỏe của bé . 
-                   Mái che giúp chắn nắng , gió và hạn chế các tác động có hại từ môi trường . 
-                   Thiết kế phần khoang ngồi rộng rãi , có tựa lưng chống mỏi khung đai nhựa bao quanh chỗ ngồi giúp bảo vệ và tạo sự thoải mái cho bé
-                   Đặc biệt xe 3 bánh đẩy cao cấp còn thiết kế ghế ngồi xoay 2 chiều bố mẹ có thể vừa đẩy vừa nói chuyện với bé . 
-                   Xe có 3 bánh chắc chắn sử dụng chất liệu cao su giúp xe cân bằng và chống trơn trượt . Xe dễ dàng gấp gọn để cất giữ hoặc mang theo khi đi du lịch .
-                </p>
+                <p class="productinfo-seller">Người bán <i class="fas fa-check"></i> 
+                  <a href="#"></a> (thành viên từ 03/01/2019)</p>
+                <p class="productinfo-content"></p>
                 <!-- Price & Order Button -->
                 <div>
                    <p class="productinfo-price">1.550.000đ</p>

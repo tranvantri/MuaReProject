@@ -43,13 +43,13 @@
                                     <div class="col-md-9">
                                         <div class="row">
                                             <div class="col-md-3">
-                                                <a href="{{$child->id}}">
+                                                <a href="chi-tiet-tin-dang/{{$child->id}}">
                                                     <img style="height: 150px; width: 100%;" src="{{$child->images}}" title="{{$child->name}}" alt="{{$child->name}}">
                                                 </a>
                                             </div>
                                             <div class="post-info-v col-md-9">
                                                 <div class="title-v">
-                                                    <a href="{{$child->id}}" style="text-decoration: none; font-weight: bold;color: #176093;" title="{{$child->name}}">
+                                                    <a href="chi-tiet-tin-dang/{{$child->id}}" style="text-decoration: none; font-weight: bold;color: #176093;" title="{{$child->name}}">
                                                         {{$child->name}}
                                                     </a>
                                                 </div>

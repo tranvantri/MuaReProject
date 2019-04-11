@@ -530,10 +530,10 @@ $(document).ready(function() {
       });
     }
     
-    $(".img-rounded").click(function(){
-        $('.md-overlay-id').show();
-        $('#modal-productview').show();
-    });
+    // $(".img-rounded").click(function(){
+    //     $('.md-overlay-id').show();
+    //     $('#modal-productview').show();
+    // });
     
 	// trang quan ly don hang
 
