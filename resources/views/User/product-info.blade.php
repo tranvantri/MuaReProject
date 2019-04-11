@@ -97,7 +97,7 @@
                  <abbr class="avatar-sp-L2" dataIDProduct2="{{$child->id}}"></abbr>   
               <span title="Đã kích hoạt SMS"><i class="fas fa-check"></i></span>
               <a class="basic-info-name-v"
-                 href="{{ route('gianhangcuanguoidung',$child->idChuShop) }}">{{$child->usernameChuShop ?? 'username'}} </a>
+                 href="{{ route('xemgianhang',$child->idChuShop) }}">{{$child->usernameChuShop ?? 'username'}} </a>
 
               (thành viên từ {{$child->ngayTaoChuShop ?? '1/1/2019'}})
               <div class="item-des-v">
@@ -286,7 +286,8 @@
           <div class="basic-info-main-v">
             <div class="basic-info-title-v">Được bán bởi</div>
             <h2>
-              <a class="basic-info-name-v" href="{{ route('gianhangcuanguoidung',$child->idChuShop) }}">{{$child->usernameChuShop??'user404'}}</a>
+              <a class="basic-info-name-v" href="{{ route('xemgianhang',$child->idChuShop) }}">
+                {{$child->usernameChuShop??'user404'}}</a>
             </h2>
 
             <div class="register-date-v">
@@ -301,7 +302,7 @@
           </div>
 
           <div class="basic-info-avatar-v">
-            <a href="{{$child->idChuShop}}" class="img-rounded-v">
+            <a href="{{ route('xemgianhang',$child->idChuShop) }}" class="img-rounded-v">
               <img class="avatar-v" src="{{$child->avatarChuShop ?? 'assets/images/chitietsanpham/avatar_male.png'}}"
               alt="{{$child->usernameChuShop}}" >
             </a>
@@ -310,7 +311,7 @@
         </div>
         <div class="seller-details-footer-v">
           <h2>
-            <a class="seller-details-link-v" href="{{ route('gianhangcuanguoidung', $child->idChuShop)}}">ĐẾN
+            <a class="seller-details-link-v" href="{{ route('xemgianhang', $child->idChuShop)}}">ĐẾN
             CỬA HÀNG</a>
           </h2>
         </div>

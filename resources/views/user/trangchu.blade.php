@@ -8,7 +8,12 @@
 	
 		<div class="container">
 			<div class="row">
-				<div class="content-left col-lg-9 col-md-9"> <!-- content-left -->				
+				<div class="content-left col-lg-9 col-md-9"> <!-- content-left -->
+					@if (session("Loi"))
+					<div class="alert alert-danger">
+						<strong>Thông báo: </strong>{{session("Loi")}}
+					</div>
+					@endif			
 					<div class="row"> <!-- category -->
 						@include('user.trangchu.thongbaothaydoi')
 						

@@ -1790,7 +1790,7 @@ table .td-info .user-post .username .username-h4 a {
 .thu_gon_text_tomiot{
   display: block;
   word-wrap: break-word;
-  height: 6.4rem;
+  height: 5.4rem;
   line-height: 1.8em;
   text-overflow: ellipsis;
   overflow: hidden;
@@ -1822,9 +1822,7 @@ table .td-info .user-post .username .username-h4 a {
     line-height: 3em;
 }
 
-.imgTinDangMoiNhat {
 
-}
 
 .imgTinDangMoiNhat img {
   border-radius: 10px;
@@ -1835,9 +1833,11 @@ table .td-info .user-post .username .username-h4 a {
   display: none;
 }
 
+
+
 .post-address {
   margin-top: 10px;
-  height: 18px;
+  /* height: 18px; */
   display: block;
   text-overflow: ellipsis;
   overflow: hidden;
@@ -2293,6 +2293,8 @@ table .td-info .user-post .username .username-h4 a {
   border-radius: 10px;
   -webkit-box-shadow: 0 1px 20px #ccc;
   box-shadow: 0 1px 20px #ccc;
+  width: 160px;
+  height: 160px;
 }
 
 #chu-gian-hang-tomiot {

@@ -16,12 +16,14 @@
                                 <h3>
                                     <span style="">Tin đăng mới nhất</span>
                                 </h3>							
-							</div>
+                            </div>
+                            {{--  phân trang  --}}
                             <div class="row-no-padding pagination-box">
                                 <ul class="pagination pagination2 pagination-Tr">
                                    <li class="page-item">
                                        <a class="page-link" href="http://muare.vn/posts/ha-noi/dien-thoai-pho-thong.94?page=1" rel="prev" style="border-radius: 0px;">« Trang trước</a></li>
-                                   <li class="page-item"><a class="page-link" href="http://muare.vn/posts/ha-noi/dien-thoai-pho-thong.94?page=3" rel="next" style="border-radius: 0px;">Trang sau »</a></li>
+                                   <li class="page-item">
+                                       <a class="page-link" href="http://muare.vn/posts/ha-noi/dien-thoai-pho-thong.94?page=3" rel="next" style="border-radius: 0px;">Trang sau »</a></li>
                                 </ul>                           
                             </div>
 						</div> <!-- ----------------------- kết thúc div Tin đăng mới nhất -->
@@ -34,7 +36,7 @@
                                 <div class="row">                                    
                                     <div class="recent-item-title-Tr">
                                         <div class="title-dotted-Tr thu_gon_text_tindang_tomiot">
-                                            <a href="{{$child->id}}"> {{$child->name}}</a>
+                                            <a href="chi-tiet-tin-dang/{{$child->id}}"> {{$child->name}}</a>
                                         </div>                                        
                                     </div> 
                                 </div>
@@ -43,8 +45,9 @@
                                             <?php 
                                                 $images = json_decode($child->images);
                                               ?>
-                                          <img src="{{$images[0] ?? 'assets/images/chitietsanpham/logo_muare.png'}}" alt="Person">
-                                          <a href="{{$child->username}}">{{$child->username}}</a>  đăng {{$child->date_added}} phút trước
+                                          <a href="gian-hang-cua-nguoi-dung/{{$child->idUser}}"><img src="{{$images[0] ?? 'assets/images/chitietsanpham/logo_muare.png'}}" 
+                                          alt="{{$child->name}}"></a>
+                                          <a href="gian-hang-cua-nguoi-dung/{{$child->idUser}}">{{$child->username}}</a>  đăng {{$child->date_added}} phút trước
                                         </div>
                                 </div>                                
                                 <div class="noidungTin">
@@ -54,14 +57,14 @@
                                             {{$child->description}}
                                         </span> 
                                         <div class="post-address">
-                                            <i class="fas fa-tag"></i> <span> {{number_format($child->price,0)}}đ</span>
+                                            <i class="fas fa-tag"></i> <span style="color: green;font-size: 20px;" > {{number_format($child->price,0)}}đ</span>
                                         </div>
                                         <div class="post-address ">
                                              <span class="thu_gon_text_diachitindang_tomiot"><i class="fas fa-map-marker-alt"></i> {{$child->address}}</span>
                                         </div>
                                     </div>
                                     <div class="imgTinDangMoiNhat col-md-5">
-                                        <a href="{{$child->id}}">
+                                        <a href="chi-tiet-tin-dang/{{$child->id}}">
                                         <img  style="width: 150px; height: 150px;" class="" src="{{$child->images?? 'https://static8.muarecdn.com/zoom,90/150_150/muare/images/2019/01/08/4984389_4be0279c5442b71cee53.jpg'}}" alt="{{$child->name}}"></a>
                                     </div>
                                     </div>
@@ -69,216 +72,11 @@
                             </div>
                             @endforeach
 
-                            <!-- <div class="col-md-6 recentNew recentNew-Tr">
-                                <div class="row">                                    
-                                    <div class="recent-item-title-Tr">
-                                        <div class="title-dotted-Tr">
-                                            <a href="#"> Tour du lịch ninh chữ - bình ba 3n2đ</a>
-                                        </div>                                        
-                                    </div> 
-                                </div>
-                                <div class="row">
-                                        <div class="chip">
-                                          <img src="https://www.w3schools.com/howto/img_avatar.png" alt="Person">
-                                          <a href="#">haihaln</a>  đăng 43 phút trước
-                                        </div>
-                                </div>                                
-                                <div class="noidungTin">
-                                    <div class="row">
-                                        <div class="canTraiNoiDung col-md-7">
-                                            <span>
-                                                Cuối năm cần tiền xoay vòng vốn nên bán gấp tổ hợp nhà hàng khách sạn và 4ha đất mặt tiền tại phường 10, tp đà 
-                                            </span> 
-                                            <div class="post-address">
-                                                <i class="fas fa-tag"></i> <span>800.000đ</span>
-                                            </div>
-                                            <div class="post-address">
-                                                <i class="fas fa-map-marker-alt"></i> <span>phường 10, TP Đà Lạt</span>
-                                            </div>
-                                        </div>
-                                        <div class="imgTinDangMoiNhat col-md-5">
-                                            <a href="#">
-                                            <img  style="" class="" src="https://static8.muarecdn.com/zoom,90/150_150/muare/images/2019/01/08/4984389_4be0279c5442b71cee53.jpg" alt=""></a>
-                                        </div>
-                                    </div>
-                                </div>                              
-                            </div>
-                            <div class="col-md-6 recentNew recentNew-Tr">
-                                <div class="row">                                    
-                                    <div class="recent-item-title-Tr">
-                                        <div class="title-dotted-Tr">
-                                            <a href="#"> Tour du lịch ninh chữ - bình ba 3n2đ</a>
-                                        </div>                                        
-                                    </div> 
-                                </div>
-                                <div class="row">
-                                        <div class="chip">
-                                          <img src="https://www.w3schools.com/howto/img_avatar.png" alt="Person">
-                                          <a href="#">haihaln</a>  đăng 43 phút trước
-                                        </div>
-                                </div>                                
-                                <div class="noidungTin">
-                                    <div class="row">
-                                        <div class="canTraiNoiDung col-md-7">
-                                        <span>
-                                            Cuối năm cần tiền xoay vòng vốn nên bán gấp tổ hợp nhà hàng khách sạn và 4ha đất mặt tiền tại phường 10, tp đà 
-                                        </span> 
-                                        <div class="post-address">
-                                            <i class="fas fa-tag"></i> <span>800.000đ</span>
-                                        </div>
-                                        <div class="post-address">
-                                            <i class="fas fa-map-marker-alt"></i> <span>phường 10, TP Đà Lạt</span>
-                                        </div>
-                                    </div>
-                                    <div class="imgTinDangMoiNhat col-md-5">
-                                        <a href="#">
-                                        <img  style="" class="" src="https://static8.muarecdn.com/zoom,90/150_150/muare/images/2019/01/08/4984389_4be0279c5442b71cee53.jpg" alt=""></a>
-                                    </div>
-                                    </div>
-                                </div>                              
-                            </div>
-                            <div class="col-md-6 recentNew recentNew-Tr">
-                                <div class="row">                                    
-                                    <div class="recent-item-title-Tr">
-                                        <div class="title-dotted-Tr">
-                                            <a href="#"> Tour du lịch ninh chữ - bình ba 3n2đ</a>
-                                        </div>                                        
-                                    </div> 
-                                </div>
-                                <div class="row">
-                                        <div class="chip">
-                                          <img src="https://www.w3schools.com/howto/img_avatar.png" alt="Person">
-                                          <a href="#">haihaln</a>  đăng 43 phút trước
-                                        </div>
-                                </div>                                
-                                <div class="noidungTin">
-                                    <div class="row">
-                                        <div class="canTraiNoiDung col-md-7">
-                                        <span>
-                                            Cuối năm cần tiền xoay vòng vốn nên bán gấp tổ hợp nhà hàng khách sạn và 4ha đất mặt tiền tại phường 10, tp đà 
-                                        </span> 
-                                        <div class="post-address">
-                                            <i class="fas fa-tag"></i> <span>800.000đ</span>
-                                        </div>
-                                        <div class="post-address">
-                                            <i class="fas fa-map-marker-alt"></i> <span>phường 10, TP Đà Lạt</span>
-                                        </div>
-                                    </div>
-                                    <div class="imgTinDangMoiNhat col-md-5">
-                                        <a href="#">
-                                        <img  style="" class="" src="https://static8.muarecdn.com/zoom,90/150_150/muare/images/2019/01/08/4984389_4be0279c5442b71cee53.jpg" alt=""></a>
-                                    </div>
-                                    </div>
-                                </div>                              
-                            </div>
-                            <div class="col-md-6 recentNew recentNew-Tr">
-                                <div class="row">                                    
-                                    <div class="recent-item-title-Tr">
-                                        <div class="title-dotted-Tr">
-                                            <a href="#"> Tour du lịch ninh chữ - bình ba 3n2đ</a>
-                                        </div>                                        
-                                    </div> 
-                                </div>
-                                <div class="row">
-                                        <div class="chip">
-                                          <img src="https://www.w3schools.com/howto/img_avatar.png" alt="Person">
-                                          <a href="#">haihaln</a>  đăng 43 phút trước
-                                        </div>
-                                </div>                                
-                                <div class="noidungTin">
-                                    <div class="row">
-                                        <div class="canTraiNoiDung col-md-7">
-                                        <span>
-                                            Cuối năm cần tiền xoay vòng vốn nên bán gấp tổ hợp nhà hàng khách sạn và 4ha đất mặt tiền tại phường 10, tp đà 
-                                        </span> 
-                                        <div class="post-address">
-                                            <i class="fas fa-tag"></i> <span>800.000đ</span>
-                                        </div>
-                                        <div class="post-address">
-                                            <i class="fas fa-map-marker-alt"></i> <span>phường 10, TP Đà Lạt</span>
-                                        </div>
-                                    </div>
-                                    <div class="imgTinDangMoiNhat col-md-5">
-                                        <a href="#">
-                                        <img  style="" class="" src="https://static8.muarecdn.com/zoom,90/150_150/muare/images/2019/01/08/4984389_4be0279c5442b71cee53.jpg" alt=""></a>
-                                    </div>
-                                    </div>
-                                </div>                              
-                            </div>
-                            <div class="col-md-6 recentNew recentNew-Tr">
-                                <div class="row">                                    
-                                    <div class="recent-item-title-Tr">
-                                        <div class="title-dotted-Tr">
-                                            <a href="#"> Tour du lịch ninh chữ - bình ba 3n2đ</a>
-                                        </div>                                        
-                                    </div> 
-                                </div>
-                                <div class="row">
-                                        <div class="chip">
-                                          <img src="https://www.w3schools.com/howto/img_avatar.png" alt="Person">
-                                          <a href="#">haihaln</a>  đăng 43 phút trước
-                                        </div>
-                                </div>                                
-                                <div class="noidungTin">
-                                    <div class="row">
-                                        <div class="canTraiNoiDung col-md-7">
-                                        <span>
-                                            Cuối năm cần tiền xoay vòng vốn nên bán gấp tổ hợp nhà hàng khách sạn và 4ha đất mặt tiền tại phường 10, tp đà 
-                                        </span> 
-                                        <div class="post-address">
-                                            <i class="fas fa-tag"></i> <span>800.000đ</span>
-                                        </div>
-                                        <div class="post-address">
-                                            <i class="fas fa-map-marker-alt"></i> <span>phường 10, TP Đà Lạt</span>
-                                        </div>
-                                    </div>
-                                    <div class="imgTinDangMoiNhat col-md-5">
-                                        <a href="#">
-                                        <img  style="" class="" src="https://static8.muarecdn.com/zoom,90/150_150/muare/images/2019/01/08/4984389_4be0279c5442b71cee53.jpg" alt=""></a>
-                                    </div>
-                                    </div>
-                                </div>                              
-                            </div>
-                            <div class="col-md-6 recentNew recentNew-Tr">
-                                <div class="row">                                    
-                                    <div class="recent-item-title-Tr">
-                                        <div class="title-dotted-Tr">
-                                            <a href="#"> Tour du lịch ninh chữ - bình ba 3n2đ</a>
-                                        </div>                                        
-                                    </div> 
-                                </div>
-                                <div class="row">
-                                        <div class="chip">
-                                          <img src="https://www.w3schools.com/howto/img_avatar.png" alt="Person">
-                                          <a href="#">haihaln</a>  đăng 43 phút trước
-                                        </div>
-                                </div>                                
-                                <div class="noidungTin">
-                                    <div class="row">
-                                        <div class="canTraiNoiDung col-md-7">
-                                        <span>
-                                            Cuối năm cần tiền xoay vòng vốn nên bán gấp tổ hợp nhà hàng khách sạn và 4ha đất mặt tiền tại phường 10, tp đà 
-                                        </span> 
-                                        <div class="post-address">
-                                            <i class="fas fa-tag"></i> <span>800.000đ</span>
-                                        </div>
-                                        <div class="post-address">
-                                            <i class="fas fa-map-marker-alt"></i> <span>phường 10, TP Đà Lạt</span>
-                                        </div>
-                                    </div>
-                                    <div class="imgTinDangMoiNhat col-md-5">
-                                        <a href="#">
-                                        <img  style="" class="" src="https://static8.muarecdn.com/zoom,90/150_150/muare/images/2019/01/08/4984389_4be0279c5442b71cee53.jpg" alt=""></a>
-                                    </div>
-                                    </div>
-                                </div>                              
-                            </div> -->
-
-
                         </div> <!-- Kết thúc all News -->
                     </div>
                     <div class="row">
                         <div class="col-md-12">
+                             {{--  phân trang tin đăng  --}}
                             <div class="row-no-padding pagination-box">
                                 <ul class="pagination pagination2 pagination-Tr">
                                    <li class="page-item"><a class="page-link" href="http://muare.vn/posts/ha-noi/dien-thoai-pho-thong.94?page=1" rel="prev" style="border-radius: 0px;">« Trang trước</a></li>

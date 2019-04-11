@@ -211,8 +211,9 @@ Route::group(['namespace' => 'UserController' , 'middleware'=>'userCheckLogout']
     });
 
     //----------------------------------------------
-    Route::get('/gian-hang-cua-nguoi-dung', ['as'=>'gianhangcuanguoidung','uses'=>"UserPageController@getView"]); //  chưa chỉnh sửa dử liệu
-
+    Route::get('/gian-hang-cua-nguoi-dung', ['as'=>'gianhangcuanguoidung','uses'=>"UserPageController@getView"]); 
+    //  chưa chỉnh sửa dử liệu
+    
 
     Route::get('/gian-hang-cua-nguoi-dung/{id}', ['as'=>'xemgianhang','uses'=>"UserPageController@getViewShop"]); // xong
 
