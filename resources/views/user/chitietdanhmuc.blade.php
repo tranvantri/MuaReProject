@@ -341,7 +341,7 @@
       <tr>
         <td class="td-avatar">
             <div class="avatar">
-              <a title="{{$childPro->name}}" href="{{$childPro->id}}" class="img-rounded">
+              <a title="{{$childPro->name}}" href="dich-vu/{{$childPro->id}}" class="img-rounded">
                 <?php 
                   $images = json_decode($childPro->images);
                 ?>
@@ -362,7 +362,7 @@
           <div class="title">
            <h3 class="box-info-h3">
             <a title="{{$childPro->name}}"
-             href="https://muare.vn/posts/philips-pin-khung-bh-chinh-hang-gia-moi-thang-12-2017-full-model.3941242">{{$childPro->name}}
+             href="dich-vu/{{$childPro->id}}">{{$childPro->name}}
               </a>
           </h3>
         </div>
@@ -382,20 +382,20 @@
       </div>
       <div class="user-post">
        <div class="my-avatar">
-        <a title="{{$childPro->tenchushop}}" href="https://muare.vn/shop/diemsangviet/30270" class="img-rounded">
+        <a title="{{$childPro->tenchushop}}" href="gian-hang-cua-nguoi-dung/{{$childPro->idUser}}" class="img-rounded">
           <img class="lazy-image" src="https://static8.muarecdn.com/zoom,80/74_74/muare/avatars/l/30/30270_1446804977.jpg?1446804977" alt="diemsangviet" width="40px" height="40px">
         </a>
       </div>
       <div class="username">
         <h4 class="username-h4">
-         <a title="{{$childPro->tenchushop}}" href="https://muare.vn/shop/diemsangviet/30270">{{$childPro->tenchushop}}</a>
+         <a title="{{$childPro->tenchushop}}" href="gian-hang-cua-nguoi-dung/{{$childPro->idUser}}">{{$childPro->tenchushop}}</a>
        </h4>
       </div>
       <div class="post-date-ad">{{date("d/m/Y", strtotime($childPro->date_added))}}, lúc {{date("H:m", strtotime($childPro->date_added))}}</div>
       </div>
       </div>
       <hr/>
-      <div class="last-comment">
+      {{-- <div class="last-comment">
         <div class="my-avatar" style="padding-top: 4px;">
          <a href="https://muare.vn/shop" class="img-rounded" title="">
            <img src="https://muare.vn/images/avatars/avatar_male_s.png?v=2" alt="" width="25px" height="25px">
@@ -409,7 +409,7 @@
        <div class="follow" data-id="3941242">
          <div data-toggle="tooltip" data-placement="bottom" title="" class="icon-follow " data-original-title="Lưu tin"></div>
        </div>
-      </div>
+      </div> --}}
       </td>
       </tr>
     </tbody>
@@ -578,7 +578,7 @@ display: none;
       <tr>
         <td class="td-avatar">
             <div class="avatar">
-              <a title="{{$childPro->name}}" href="san-pham/{{$childPro->id}}" class="img-rounded">
+              <a title="{{$childPro->name}}" href="chi-tiet-tin-dang/{{$childPro->id}}" class="img-rounded">
                 <?php 
                   $images = json_decode($childPro->images);
                 ?>
@@ -597,7 +597,7 @@ display: none;
           <div class="title">
            <h3 class="box-info-h3">
             <a title="{{$childPro->name}}"
-             href="san-pham/{{$childPro->id}}">{{$childPro->name}}
+             href="chi-tiet-tin-dang/{{$childPro->id}}">{{$childPro->name}}
               </a>
           </h3>
         </div>
@@ -761,7 +761,7 @@ display: none;
       <tr>
         <td class="td-avatar">
             <div class="avatar">
-              <a title="{{$childPro->name}}" href="{{$childPro->id}}" class="img-rounded">
+              <a title="{{$childPro->name}}" href="chi-tiet-tin-dang/{{$childPro->id}}" class="img-rounded">
                 <?php 
                   $images = json_decode($childPro->images);
                 ?>
@@ -782,7 +782,7 @@ display: none;
           <div class="title">
            <h3 class="box-info-h3">
             <a title="{{$childPro->name}}"
-             href="https://muare.vn/posts/philips-pin-khung-bh-chinh-hang-gia-moi-thang-12-2017-full-model.3941242">{{$childPro->name}}
+             href="chi-tiet-tin-dang/{{$childPro->id}}">{{$childPro->name}}
               </a>
           </h3>
         </div>
@@ -802,20 +802,20 @@ display: none;
       </div>
       <div class="user-post">
        <div class="my-avatar">
-        <a title="{{$childPro->tenchushop}}" href="https://muare.vn/shop/diemsangviet/30270" class="img-rounded">
+        <a title="{{$childPro->tenchushop}}" href="gian-hang-cua-nguoi-dung/{{$childPro->idUser}}" class="img-rounded">
           <img class="lazy-image" src="https://static8.muarecdn.com/zoom,80/74_74/muare/avatars/l/30/30270_1446804977.jpg?1446804977" alt="diemsangviet" width="40px" height="40px">
         </a>
       </div>
       <div class="username">
         <h4 class="username-h4">
-         <a title="{{$childPro->tenchushop}}" href="https://muare.vn/shop/diemsangviet/30270">{{$childPro->tenchushop}}</a>
+         <a title="{{$childPro->tenchushop}}" href="gian-hang-cua-nguoi-dung/{{$childPro->idUser}}">{{$childPro->tenchushop}}</a>
        </h4>
       </div>
       <div class="post-date-ad">{{date("d/m/Y", strtotime($childPro->date_added))}}, lúc {{date("H:m", strtotime($childPro->date_added))}}</div>
       </div>
       </div>
       <hr/>
-      <div class="last-comment">
+      {{-- <div class="last-comment">
         <div class="my-avatar" style="padding-top: 4px;">
          <a href="https://muare.vn/shop" class="img-rounded" title="">
            <img src="https://muare.vn/images/avatars/avatar_male_s.png?v=2" alt="" width="25px" height="25px">
@@ -829,7 +829,7 @@ display: none;
        <div class="follow" data-id="3941242">
          <div data-toggle="tooltip" data-placement="bottom" title="" class="icon-follow " data-original-title="Lưu tin"></div>
        </div>
-      </div>
+      </div> --}}
       </td>
       </tr>
     </tbody>

@@ -97,7 +97,7 @@
                                 <div class="col-lg-2 col-md-2 col-sm-2 ">
                                      <!-- SẢN PHẨM THỨ ? -->
                                         <div class="avatar-sp-L">
-                                            <a id="avatar-sp-L2" title="name" data-title="Load sản phẩm" data-size="l" data-id="popupItem" class="md-trigger img-rounded OverlayPopup" data-modal="modal-productview">
+                                            <a id="avatar-sp-L2" title="name" data-title="Load sản phẩm" data-size="l" data-id="popupItem" class="md-trigger img-rounded OverlayPopup" data-modal="modal-productview" href="chi-tiet-tin-dang/{{$childPro->id}}">
                                               <?php 
                                                 $images = json_decode($childPro->images);
                                               ?>
@@ -112,7 +112,7 @@
                                 <div class="col-lg-10 col-md-10 col-sm-10">
                                   <div class="title-sp-L">
                                             <h2 class="item-title-h2">
-                                                <a href="#" title="name" data-title="Load sản phẩm" data-size="l" data-id="popupItem" class="img-rounded OverlayPopup" data-item="224062">
+                                                <a href="chi-tiet-tin-dang/{{$childPro->id}}" title="{{$childPro->name}}" data-title="Load sản phẩm" data-size="l" data-id="popupItem" class="img-rounded OverlayPopup" data-item="224062">
                                                     {{$childPro->name}}
                                                 </a>
                                             </h2>
@@ -123,7 +123,7 @@
                                             </h3>
                                         </div>
                                         <div class="user-post-L mt-2">
-                                            <div >Bán bởi <strong style="font-weight: bold; font-size: 14px;">{{$childPro->tenchushop}}</strong>
+                                            <div >Bán bởi <a href="gian-hang-cua-nguoi-dung/{{$childPro->id}}">{{$childPro->tenchushop}}</a>
                                                 {{-- <div class="box-arrow-L">
                                                     <div class="user-info-L">
                                                         <div class="user-name-L">
@@ -196,14 +196,14 @@
                         <div class="row-no-padding" style="padding: 0;">
                             <div class="product-list-L">
                                 @foreach($products as $childPro)
-                                <div class="col-lg-4 col-md-4 col-sm-4 item-L" style="float: left;">
+                                <div class="col-lg-3 col-md-3 col-sm-3 item-L" style="float: left;">
                                     <div> <!-- SẢN PHẨM THỨ ? -->
                                         <div class="avatar-sp-L">
-                                            <a id="avatar-sp-L2" title="{{$childPro->name}}" data-title="Load sản phẩm" data-size="l" data-id="popupItem" class="md-trigger img-rounded OverlayPopup" data-modal="modal-productview">
+                                            <a id="avatar-sp-L2" title="{{$childPro->name}}" data-title="Load sản phẩm" data-size="l" data-id="popupItem" class="md-trigger img-rounded OverlayPopup" data-modal="modal-productview" href="san-pham/{{$childPro->id}}">
                                               <?php 
                                                 $images = json_decode($childPro->images);
                                               ?>
-                                            <img class="lazy-image" src="{{$images[0] ?? 'assets/images/chitietsanpham/logo_muare.png'}}" alt="{{$childPro->name}}" width="180px" height="180px" style="display: inline;">
+                                            <img class="lazy-image" src="{{$images[0] ?? 'assets/images/chitietsanpham/logo_muare.png'}}" alt="{{$childPro->name}}" style="display: inline; width: 100%;height: 200px">
                                             </a>
                                             <!--<script src="/public/assets/js/classie.js"></script>
                                             <script src="/public/assets/js/modalEffects.js"></script>-->
@@ -211,7 +211,7 @@
 
                                         <div class="title-sp-L">
                                             <h2 class="item-title-h2">
-                                                <a href="#" title="name" data-title="Load sản phẩm" data-size="l" data-id="popupItem" class="img-rounded OverlayPopup" data-item="224062">
+                                                <a href="san-pham/{{$childPro->id}}" title="{{$childPro->name}}" data-title="Load sản phẩm" data-size="l" data-id="popupItem" class="img-rounded OverlayPopup" data-item="224062">
                                                     {{$childPro->name}}
                                                 </a>
                                             </h2>
@@ -222,7 +222,7 @@
                                             </h3>
                                         </div>
                                         <div class="user-post-L">
-                                            <div class="username-sp-L">bán bởi <span class="name">{{$childPro->tenchushop}}</span>
+                                            <div class="username-sp-L">bán bởi <a href="gian-hang-cua-nguoi-dung/{{$childPro->id}}"><span class="name">{{$childPro->tenchushop}}</span></a>
                                                 <div class="box-arrow-L">
                                                     <div class="user-info-L">
                                                         <div class="user-name-L">
@@ -231,7 +231,7 @@
                                                         </div>
                                                         <div class="user-shop-L">
                                                             <ul>
-                                                                <li><span>Cửa hàng: </span><a href="https://muare.vn/shop/GioKayVaLa/29055">{{$childPro->tenchushop}}</a></li>
+                                                                <li><span>Cửa hàng: </span><a href="gian-hang-cua-nguoi-dung/{{$childPro->id}}">{{$childPro->tenchushop}}</a></li>
 
                                                             </ul>
                                                         </div>
