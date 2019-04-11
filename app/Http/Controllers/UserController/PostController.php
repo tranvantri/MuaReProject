@@ -301,7 +301,7 @@ class PostController extends Controller
 
 		$countService = $services->count();
         if($countService == 0){
-            return redirect()->route('trangchu');
+            return redirect()->route('trangchu')->with("Loi","Tin dịch vụ đã bị khóa.Vui lòng liên hệ Admin để biết thêm thông tin.");
         }
 
         $services_category = DB::table('services')->join('categories','categories.id','=','services.idCate')
@@ -316,7 +316,10 @@ class PostController extends Controller
                             ->select('services.*','users.name as nameChuShop')->get();
 
 
-        $randPro = DB::table('products')->where('products.status',1)->inRandomOrder()->limit(6)->get();
+		$randPro = DB::table('products')
+		->where('products.status',1)
+		->where('products.adminCheck',1)
+		->inRandomOrder()->limit(6)->get();
 
         $getService = DB::table('services')->where('id', $id)->first();
         $product_user = DB::table('products')->join('users','users.id','=','products.idUser')

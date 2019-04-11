@@ -39,9 +39,8 @@
 		   })
 			.done(function(data) {
 			  $('.sanpham_load').load('loadModalGioHang',function(){
-				$('#modal-orderview').modal({show:true});
-				
-				$(".inTongTien_tomiot").text("Tổng tiền: " +data + " VNĐ");
+						$('#modal-orderview').modal({show:true});
+						$(".inTongTien_tomiot").text("Tổng tiền: " +data + " VNĐ");
 			  });
 
 			  
@@ -153,11 +152,21 @@
 				});
 
 		});
-
+	
 	});
 
 
 
+ </script>
+
+
+ <script>
+		$("#hienthigiohang_tomiot8485").click(function(){
+			$('.sanpham_load').load('loadModalGioHang',function(){
+				$('#modal-orderview').modal({show:true});
+				
+		});
+	});
  </script>
 
 

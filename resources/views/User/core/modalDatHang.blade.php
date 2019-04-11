@@ -36,7 +36,7 @@
 
                         <h5 class="avgprice-order-L inTongTien_tomiot"></h5>
                         <div style="margin: 38px 10px 10px 10px;">
-                            <button class="btn order-btn1">TIẾP TỤC MUA HÀNG</button>
+                            <button data-dismiss="modal" class="btn order-btn1">TIẾP TỤC MUA HÀNG</button>
                             <button id="step1-to-step2" class="btn order-btn2">TIẾP TỤC</button>
                         </div>
                     </div>
