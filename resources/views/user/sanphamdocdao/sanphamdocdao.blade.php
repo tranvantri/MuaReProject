@@ -36,7 +36,7 @@
                                 </div>
                                 
                                 <div class="sorting">
-                                     @include('user.sanphamdocdao.sort-timkiem-sanpham')
+                                    Chuyên mục: @include('user.sanphamdocdao.sort-timkiem-sanpham')
                                 </div>                        
                             </div>
 						</div> <!-- ----------------------- kết thúc div Tin đăng mới nhất -->
