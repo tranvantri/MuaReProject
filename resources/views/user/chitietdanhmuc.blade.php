@@ -212,7 +212,7 @@
         @include('user.chitietdanhmuc.modalConfirmMuaHang')
       <!-- END Confirm order modal -->
 
-    @if(isset($hienthi) && $hienthi == 'san-pham') {{-- xet loai hien thi --}}
+    @if(isset($hienthi) && $hienthi == 'san-pham') {{-- xet loai hien thi san pham--}}
       
       <div id="products-L" class="col-lg-10 col-md-10"><!-- nội dung các bài đăng -->     
                     <div id="view-post" class="view-post">
@@ -300,7 +300,298 @@
                         @endif
                     </div>
                 </div>
-    @else {{-- xet loai hien thi --}}
+    @elseif(isset($hienthi) && $hienthi == 'dich-vu') {{-- xet loai hien thi dịch vụ --}}
+    <div class="col-lg-7 col-md-7"><!-- nội dung các bài đăng -->
+      <div id="view-post-tt-dv" class="view-post">
+        <div class="title-category">
+         <h1 class="title-box">
+          Đăng bán 
+            @if(isset($categoryCurrent->name))
+            {{$categoryCurrent->name}}
+            @endif
+           tại {{$place->name}}
+        </h1>
+        <p class="count-result"> Dịch vụ rao bán về <b style="font-weight: bold;">
+          @if(isset($categoryCurrent->name))
+          {{$categoryCurrent->name}}
+          @endif
+        </b> tại <b style="font-weight: bold;">{{$place->name}}</b></p>
+      </div>
+
+      
+      @if($checknull)
+      <div class="row-no-padding pagination-box">
+        @include('user.chitietdanhmuc.phantrang')
+          
+        <div class="sorting">
+          @include('user.chitietdanhmuc.sort-timkiem-tintuc-dv')
+        </div>
+      </div>
+      
+      <div class="row-no-padding">
+       <div class="posts-list">
+        
+
+
+
+@foreach($products as $childPro)
+<div class="row post-items border-items">
+  <table>
+    <tbody>
+      <tr>
+        <td class="td-avatar">
+            <div class="avatar">
+              <a title="{{$childPro->name}}" href="{{$childPro->id}}" class="img-rounded">
+                <?php 
+                  $images = json_decode($childPro->images);
+                ?>
+                <img class="lazy-image" 
+                src="{{$images[0] ?? 'assets/images/chitietsanpham/logo_muare.png'}}" 
+                width="150px" height="150px">
+              </a>
+            </div>
+            <div class="views-count">
+              <div class="glyphicon glyphicon-eye-open">
+                <span class="fred"></span>
+                {{$childPro->view}}
+              </div>
+            </div>
+        </td>
+       <td class="td-info">
+         <div class="box-info">
+          <div class="title">
+           <h3 class="box-info-h3">
+            <a title="{{$childPro->name}}"
+             href="https://muare.vn/posts/philips-pin-khung-bh-chinh-hang-gia-moi-thang-12-2017-full-model.3941242">{{$childPro->name}}
+              </a>
+          </h3>
+        </div>
+        <div class="location">
+         <span class=""><i class="fas fa-map-marker-alt" style="font-size: 12px;"></i></span>
+         <div title="{{$childPro->address}}" class="my-location">
+          <h4 class="marker-h4">{{$childPro->address}}</h4>
+        </div>
+      </div>
+      <div class="price">
+       <span class=""> </span> 
+       <div class="price-des"> Giá từ: </div>
+       <div class="my-price">{{number_format($childPro->price,0)}}  đ </div>
+      </div>
+      <div class="status">
+       <div class=""> Tình trạng: Mới</div>
+      </div>
+      <div class="user-post">
+       <div class="my-avatar">
+        <a title="{{$childPro->tenchushop}}" href="https://muare.vn/shop/diemsangviet/30270" class="img-rounded">
+          <img class="lazy-image" src="https://static8.muarecdn.com/zoom,80/74_74/muare/avatars/l/30/30270_1446804977.jpg?1446804977" alt="diemsangviet" width="40px" height="40px">
+        </a>
+      </div>
+      <div class="username">
+        <h4 class="username-h4">
+         <a title="{{$childPro->tenchushop}}" href="https://muare.vn/shop/diemsangviet/30270">{{$childPro->tenchushop}}</a>
+       </h4>
+      </div>
+      <div class="post-date-ad">{{date("d/m/Y", strtotime($childPro->date_added))}}, lúc {{date("H:m", strtotime($childPro->date_added))}}</div>
+      </div>
+      </div>
+      <hr/>
+      <div class="last-comment">
+        <div class="my-avatar" style="padding-top: 4px;">
+         <a href="https://muare.vn/shop" class="img-rounded" title="">
+           <img src="https://muare.vn/images/avatars/avatar_male_s.png?v=2" alt="" width="25px" height="25px">
+         </a>
+       </div>
+       <div class="cmt" title="Add co ban pin Philips E170 ko vay? Co gi lien he so 0909080986 cho minh nhé. Thanks ban">Add co ban pin Philips E170 ko...</div>
+       <div class="post-date">21/08/2018, lúc 11:43</div>
+       <div class="count_cmt">
+         <div class="glyphicon cmt"><a title="Philips pin khủng BH chính hãng giá mới tháng 12 2017 Full Model" href="https://muare.vn/posts/philips-pin-khung-bh-chinh-hang-gia-moi-thang-12-2017-full-model.3941242?#show_comment" style="color:#313131;text-decoration: none;cursor: pointer">Bình luận</a></div>
+       </div>
+       <div class="follow" data-id="3941242">
+         <div data-toggle="tooltip" data-placement="bottom" title="" class="icon-follow " data-original-title="Lưu tin"></div>
+       </div>
+      </div>
+      </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+@endforeach
+
+
+</div>
+
+<div class="row-no-padding">
+ @include('user.chitietdanhmuc.phantrang')
+</div>
+
+
+<style>
+label.col-md-12.text-bold {
+ padding: unset;
+}
+form.form-horizontal.postForm {
+ padding: 0px 15px;
+}
+span.price-int {
+ color: red;
+ font-size: 16px;
+}
+.notice-vip {
+ padding: 10px;
+ margin-top: 20px;
+ color: #696666;
+ border: 1px solid #ccc;
+ border-radius: 5px;
+ background: #fbfbfb;
+}
+</style>
+</div>
+@else
+  <div class="text-center mt-2">
+    <h4>Chuyên mục này chưa có tin đăng!</h4>
+  </div>
+@endif
+</div>
+</div>
+      
+
+<div class="col-lg-3 col-md-3">
+  <!-- Vùng tìm kiếm -->
+  <div id="search-zone" class="search-zone">
+    <div class="sidebar" style=" font-size: 14px;">
+      <div class="box-location-L">
+        <h3 class="glyphicon2-L" style="padding-bottom: 16px;">
+          <!--<i class="fas fa-map-marked-alt"></i>-->
+          <img src="assets/images/chitietdanhmuc/location.png">
+          <span>&nbsp;Tìm người bán tại khu vực</span>
+        </h3>
+        {{-- <form id="form-location"> --}}
+          <select name="location_id" id="options_city" class="location-items">
+
+            @if(Cookie::get('place') != null)
+              @foreach($places as $child) 
+                  <option
+                  @if($child->id == Cookie::get('place'))
+                  selected
+                  @endif
+                  value="{{$child->id}}">{{$child->name}}</option>
+              @endforeach
+          @else
+              @foreach($places as $child) 
+                  <option value="{{$child->id}}">{{$child->name}}</option> 
+              @endforeach
+          @endif         
+          
+          
+        </select>
+        <input id="search-now-L" type="button" value="Tìm kiếm ngay!" />
+      {{-- </form> --}}
+    </div>
+
+    <!-- enbac box -->
+    <div
+    id="__ebwidget"
+    style="display: block;float: left;padding-top: 10px;"
+    >
+    <iframe
+    src="https://m.enbac.com/widget/zamba.html?site=muare.vn&amp;zone=thoi-trang"
+    style="width: 300px; overflow: hidden !important;height: 385px;border: 0;"
+    ></iframe>
+  </div>
+  <div style="padding-bottom:5px" class="sidebar_eb">
+    <div id="mr_widget">
+      <iframe
+      src="https://muare.vn/widget/zamba?site=muare.vn&amp;type=ver&amp;zone=other&amp;location=ha-noi"
+      style="width:300px; overflow: hidden !important;height: 385px;border: 0;"
+      frameborder="0"
+      allowfullscreen=""
+      ></iframe>
+    </div>
+    <a
+    rel="nofollow"
+    target="_blank"
+    href="https://rongbay.com/dat-mua-quang-cao.html?utm_source=backup&amp;utm_medium=3sites_backup&amp;utm_content=[admdomain]&amp;utm_campaign=3sites_Camp"
+    >
+    <img
+    src="https://muare.vn//images/admicro/300x600.jpg?v=11010"
+    />
+  </a>
+  <div id="zone-jfjjrzax" class="ArfGroup">
+    <div id="share-jfjjtht2" class="ArfGroup">
+      <div id="placement-jfvym1n9" class="ArfGroup">
+        <div
+        id="banner-jfjjrzax-jfvym1x2"
+        class="ArfGroup"
+        style="min-height: 0px; min-width: 10px;"
+        >
+        <div id="slot-1-jfvym1x2">
+          <div
+          id="adnzone_29628"
+          data-admssprqid="9052610d-4251-4449-a14f-f4b257344021"
+          data-width="300"
+          data-height="250"
+          data-ssp="sspbid_3093"
+          >
+          <div
+          style="position:relative;width:300px;height:auto;"
+          >
+          <iframe
+          src="javascript:if(typeof(adnzone29628)!='undefined'){adnzone29628.renderIframe();}else{parent.adnzone29628.renderIframe();}"
+          style="border:none;background:#fff;"
+          marginheight="0"
+          align="top"
+          scrolling="No"
+          frameborder="0"
+          hspace="0"
+          vspace="0"
+          name="adnzone_29628_0_126676"
+          id="adnzone_29628_0_126676"
+          width="300"
+          height="250"
+          ></iframe
+                                ><!--<a
+                                  class="admLogoAdx29628"
+                                  href="http://adx.admicro.vn/?utm_source=Admicro&amp;utm_medium=muare.vn&amp;utm_campaign=adxzone"
+                                  target="_blank"
+                                  ><span class="txtlogo">Admicro AdX</span
+                                  ><span></span
+                                    ></a>-->
+                                  </div>
+                                  <div id="ads_top_bottom"></div>
+                                </div>
+                                <script type="text/javascript">
+                                  admsspreg({ sspid: 3093, w: 300, h: 250 });
+                                </script>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <script
+                      src="//media1.admicro.vn/cms/arf-jfjjrzax.min.js"
+                      async=""
+                      ></script>
+
+                      <script
+                      src="//media1.admicro.vn/cms/arf-jfjjrl6t.min.js"
+                      async=""
+                      ></script>
+                      <div id="advZoneSticky2Top" style="clear:both"></div>
+                      <div
+                      id="advZoneSticky2"
+                      style="clear: both; display: block; left: 1026px; top: 2883px; bottom: auto;"
+                      ></div>
+
+                      <script
+                      src="//media1.admicro.vn/cms/arf-jfkxhs01.min.js"
+                      async=""
+                      ></script>
+                    </div>
+                  </div>
+                </div>
+              </div> {{-- vung tim kiem --}}
+        
+    @else {{-- xet loai hien thi tin dang --}}
 
     <div class="col-lg-7 col-md-7"><!-- nội dung các bài đăng -->
       <div id="view-post-tt-dv" class="view-post">
