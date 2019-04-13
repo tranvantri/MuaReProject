@@ -1,11 +1,9 @@
 @extends('user.layouts.index')
 @section('title')
   <title>
-
     @foreach($services as $child)
       {{$child->name}}
     @endforeach
-
   </title>
 @endsection
 @section('content')
@@ -23,9 +21,10 @@
         <div class="row">
           <div class="col-md-10">
             <b><strong><p style="margin-bottom: 0rem;">{{$child->name}}</p></strong></b>
-            @foreach($service_category as $childCate)
-              <p class="timePost_tomiot">Cập nhật: {{$child->date_added }} - <a href="{{$childCate->idCate}}">{{$childCate->nameCate}}</a></p>
-            @endforeach
+            @if(isset($service_category))
+              <p class="timePost_tomiot">Cập nhật: {{ date("d-m-Y",strtotime($child->date_added))  }} lúc {{date("H:i:s",strtotime($child->date_added))}} - 
+                <a href="danh-muc/{{str_slug($service_category->nameCate)}}/{{$service_category->idCate}}/tin-dang/moi-va-cu/gia-tot/tin-moi-nhat/uy-tin-chat-luong">{{$service_category->nameCate}}</a></p>
+            @endif
           </div>
           <div class="col-md-2">
             <p class="idtindang-cmt" dataIDTinDang="{{$child->id}}">ID Tin: {{$child->id}} </p>
@@ -54,7 +53,7 @@
           </div>
 
           <div id="table_product_tomiot">
-
+             {{--  /*in ra danh sách các san phẩm của cửa hàng đó nhaaaaaaaaaaaaaaaa*/  --}}
             <div id="img_shop_tomiot">
               <?php 
                 $images = json_decode($child->images);
@@ -69,6 +68,7 @@
               </span>
             </div>
 
+            {{--  /*in ra danh sách các san phẩm của cửa hàng đó nhaaaaaaaaaaaaaaaa*/  --}}
           </div>
 
 
@@ -82,28 +82,37 @@
         
 
       </div> <!-- Kết thúc nội dung đăng -->
+
+
       <section class="tin-dang-lien-quan_tomiot">
         <div id="san_pham_lien_quan_tomiot">
           <div class="row">
             <div class="col-md-12" style="border-bottom: 1px solid #ccc; padding: 10px">
               TIN ĐĂNG LIÊN QUAN
             </div>
-
-
             <div class="danhsach_sp_lien_quan_tomiot">
               <div class="list_item_tomiot row">
+
+
                 <!-- Hiện sản phẩm tin đăng liên quan -->
                 @foreach($service_relate as $childRelate)
                 <div class="col-md-4 sp_lien_quan_tomiot">
                   <div class="avatar_splq_tomiot">
-                    <img class="img_splq_tomiot" src="assets/images/chitietsanpham/logo_muare.png" alt="">
+                      <?php 
+                      $images = json_decode($childRelate->images);
+                      ?>
+                    <a href="chi-tiet-tin-dang/{{$childRelate->id}}">
+                      <img class="img_splq_tomiot" src="{{$images[0]?? 'assets/images/chitietsanpham/logo_muare.png'}}" alt="Images 404">
+                    </a>
                     <ul class="thong_tin_splq_tomiot">
-                      <li class="tieu_de_splq_tomiot"><a href="#">{{$childRelate->name}}</a></li>
+                      <li class="tieu_de_splq_tomiot"><a href="chi-tiet-tin-dang/{{$childRelate->id}}">{{$childRelate->name}}</a></li>
                       <li class="user_thongtin_splq_tomiot"><h6><i class="fas fa-user"></i> {{$childRelate->nameChuShop}}</h6></li>
                     </ul>
                   </div>
                 </div>
                 @endforeach
+
+
               </div>
             </div>
             
@@ -130,10 +139,12 @@
         </div>
         <div class="chu_shop_area_tomiot col-md-12">
           <div class="avt_chu_shop_tomiot ">
-            <a href=""><img src="{{$child->avatarChuShop ?? 'assets/images/chitietsanpham/avatar_male.png'}}" alt="avatar shop" /></a>
+            <a href="gian-hang-cua-nguoi-dung/{{$child->idChuShop}}"><img src="{{$child->avatarChuShop ?? 'assets/images/chitietsanpham/avatar_male.png'}}" alt="avatar shop" /></a>
           </div>
           <div class="ten_chu_shop_tomiot">
-            <p>{{$child->username}}</p>
+            <p><a href="gian-hang-cua-nguoi-dung/{{$child->idChuShop}}">
+                {{$child->username}}
+            </a></p>
           </div>
 
 
@@ -144,7 +155,7 @@
               <button style="background-color:  #18b132; border-radius: 5px;" class="custom_btn_chu_shop_tomiot btn btn-info">Chat với shop</button>
             </div>
             <div class="xem_gian_hang_shop_tomiot">
-              <a href="{{$child->idChuShop}}">Xem gian hàng của tôi</a>
+                <a href="gian-hang-cua-nguoi-dung/{{$child->idChuShop}}">Xem gian hàng của tôi</a>
             </div>
 
             
@@ -159,9 +170,22 @@
           <p><i class="fas fa-map-marker-alt"></i> {{$child->address ?? $child->addressChuShop}}</p>
         </div>
 
-        <div class="so_phone_cua_shop_tomiot">
-          <button class="btn">  {{$child->phoneChuShop}}</button>
-        </div>
+        <div style="float:unset;"  class="box-info-v">
+
+            <div class="phone-fix-v">
+              <a href="tel:{{$child->phoneChuShop}}">
+                <div class="phone-head-v"></div>
+                <div class="phone-body-v">
+                  <div class="shop-phone-v">
+                      {{$child->phoneChuShop}}
+                </div>
+              </div>
+              <div class="phone-footer-v"></div>
+            </a>
+            </div>
+          </div>
+
+
         <div class="huongdan">
           <span class="huong-dan-1">Lưu ý khi mua hàng:</span>
           <ul>
@@ -175,12 +199,7 @@
 
   </div>
 
-
-  <div class="clearfix" style="padding-top: 20px">
-   
-  </div>
-
-
+  <div class="clearfix" style="padding-top: 20px"></div>
 
   <div class="border_solid_tomiot">
     <div class="service-title-tomiot col-md-12">
@@ -195,14 +214,16 @@
         <li>
           <div class="post-title">
             <h3 class="post-title-h3">
-              <a title="{{$childpc->name}}" href="{{$childpc->id}}">{{$childpc->name}}</a>
+              <a title="{{$childpc->name}}" href="chi-tiet-tin-dang/{{$childpc->id}}">{{$childpc->name}}</a>
             </h3>
           </div>
           <div class="post-info">
-            <span class="date">{{$childpc->date_added}}</span>
+            <span class="date">ngày {{ date("d-m-Y",strtotime($childpc->date_added)) }}</span>
             <span class="category">
               <h4 class="post-info-category-h4">
-                <a href="{{$childpc->idCate}}" title="{{$childpc->nameCate}}"><i class="fas fa-user-tag"></i> {{$childpc->nameCate}}</a>
+                <a href="danh-muc/{{str_slug($childpc->nameCate)}}/{{$childpc->idCate}}/tin-dang/moi-va-cu/gia-tot/tin-moi-nhat/uy-tin-chat-luong" title="{{$childpc->nameCate}}">
+                  <i class="fas fa-user-tag"></i> {{$childpc->nameCate}}
+                </a>
               </h4>
             </span>
           </div>
@@ -227,13 +248,14 @@
       <div class="nguoi_ban_de_xuat_tomiot col-md-12">
         <div class="row">
 
-          @foreach($randSer as $childPro)
+          @foreach($randomProducts as $childPro)
             <div class="col-md-2">
               <?php 
                 $images = json_decode($childPro->images);
               ?>
-              <img class="image_spdx_tomiot" src="{{$images[0] ?? 'assets/images/chitietsanpham/logo_muare.png'}}" alt="">
-              <a style="max-height: 1.4em;   " class="thu_gon_text_chitietsanpham_tomiot ds_cac_sp_de_xuat_tomiot " href="#">{{$childPro->name}}</a>
+              <a href="san-pham/{{$childPro->id}}">
+              <img class="image_spdx_tomiot" src="{{$images[0] ?? 'assets/images/chitietsanpham/logo_muare.png'}}" alt=""></a>
+              <a style="max-height: 1.4em;   " class="thu_gon_text_chitietsanpham_tomiot ds_cac_sp_de_xuat_tomiot " href="san-pham/{{$childPro->id}}">{{$childPro->name}}</a>
               <h6 style="text-align: center;" class="gia_tien_spdx_tomiot">{{ number_format($childPro->price,0) }} đ</h6>
             </div>
           @endforeach
